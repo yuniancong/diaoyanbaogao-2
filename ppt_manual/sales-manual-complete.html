@@ -1,0 +1,3473 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+
+    <meta charset="UTF-8">
+    <title>比亚迪半导体销售手册 - 场景1-2详细剧本</title>
+    <style>
+        :root {
+            --color-primary-red: #e60012;
+            --color-primary-red-dark: #c50010;
+            --text-color-on-dark: #ffffff;
+            --bg-page: #ffffff;
+            --bg-table-stripe: #f2f2f2;
+            --border-color-table: #ddd;
+            --shadow-page: rgba(0, 0, 0, 0.1);
+        }
+
+        body {
+            font-family: "Microsoft YaHei", "SimHei", sans-serif;
+            background-color: #f0f0f0;
+            margin: 0;
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 20px;
+        }
+
+        .page {
+            width: 297mm;
+            min-height: 210mm;
+            background-color: var(--bg-page);
+            position: relative;
+            box-shadow: 0 0 10px var(--shadow-page);
+            padding: 40px;
+            box-sizing: border-box;
+        }
+
+        .page-title {
+            font-size: 26px;
+            font-weight: bold;
+            color: var(--text-color-on-dark);
+            background: linear-gradient(45deg, var(--color-primary-red), var(--color-primary-red-dark));
+            padding: 15px 30px;
+            margin: -40px -40px 30px -40px;
+            clip-path: polygon(0 0, calc(100% - 30px) 0, 100% 100%, 0 100%);
+        }
+
+        .section-title {
+            font-size: 18px;
+            font-weight: bold;
+            color: var(--color-primary-red);
+            margin: 20px 0 12px 0;
+            border-left: 4px solid var(--color-primary-red);
+            padding-left: 12px;
+        }
+
+        .subsection-title {
+            font-size: 16px;
+            font-weight: bold;
+            color: var(--color-primary-red-dark);
+            margin: 15px 0 10px 0;
+        }
+
+        .data-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-bottom: 18px;
+        }
+        .data-table th {
+            background-color: var(--color-primary-red);
+            color: white;
+            font-weight: normal;
+            font-size: 13px;
+            padding: 9px;
+            border: 1px solid var(--border-color-table);
+        }
+        .data-table td {
+            padding: 7px 9px;
+            text-align: left;
+            font-size: 12.5px;
+            border: 1px solid var(--border-color-table);
+            color: #333;
+        }
+        .data-table tr:nth-child(even) {
+            background-color: var(--bg-table-stripe);
+        }
+
+        .strategy-box {
+            background: linear-gradient(135deg, #fff5f5 0%, #ffffff 100%);
+            border-left: 4px solid var(--color-primary-red);
+            padding: 15px;
+            margin: 15px 0;
+            border-radius: 6px;
+        }
+
+        .strategy-title {
+            font-size: 17px;
+            font-weight: bold;
+            color: var(--color-primary-red-dark);
+            margin-bottom: 10px;
+        }
+
+        .quote-box {
+            background-color: #f5f5f5;
+            border-left: 4px solid #999;
+            padding: 12px 15px;
+            margin: 12px 0;
+            font-style: italic;
+            color: #555;
+            line-height: 1.6;
+            font-size: 13px;
+        }
+
+        .tip-box {
+            background-color: #fff9e6;
+            border-left: 4px solid #ffc107;
+            padding: 12px 15px;
+            margin: 12px 0;
+            font-size: 13px;
+            line-height: 1.6;
+        }
+
+        .tip-title {
+            font-weight: bold;
+            color: #cc9900;
+            margin-bottom: 8px;
+        }
+
+        .tip-title::before {
+            content: "💡 ";
+        }
+
+        .warning-box {
+            background-color: #fff0f0;
+            border: 2px solid #ff6b6b;
+            border-radius: 6px;
+            padding: 10px 12px;
+            margin: 10px 0;
+            font-size: 12.5px;
+        }
+
+        .bullet-point {
+            margin: 8px 0 8px 20px;
+            line-height: 1.6;
+            font-size: 13px;
+            position: relative;
+        }
+
+        .bullet-point::before {
+            content: "▸";
+            color: var(--color-primary-red);
+            font-weight: bold;
+            position: absolute;
+            left: -15px;
+        }
+
+        .grid-2col {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 15px;
+        }
+
+        .grid-3col {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 12px;
+        }
+
+        .highlight-red {
+            color: var(--color-primary-red);
+            font-weight: bold;
+        }
+
+        .highlight-green {
+            color: #28a745;
+            font-weight: bold;
+        }
+
+        .small-text {
+            font-size: 11.5px;
+            line-height: 1.5;
+        }
+
+        .checkmark::before {
+            content: "✓ ";
+            color: #28a745;
+            font-weight: bold;
+        }
+    </style>
+
+    <title>比亚迪半导体销售手册 - 完整版 | BYD Semiconductor Sales Manual</title>
+</head>
+<body>
+
+<div class="page">
+    <div class="page-title">场景1：客户砍价到底线以下 💰</div>
+
+    <div class="section-title">【场景背景】</div>
+    <div class="quote-box">
+        <strong>情境：</strong>技术评审已通过，商务谈判阶段客户持续压价，要求价格低于公司底线<br><br>
+        <strong>典型对话：</strong><br>
+        客户："你们报价¥12/颗，我们预算只有¥9，降不下来就没法合作了。"<br>
+        销售："¥9确实太低了，这个价格我们做不了。您能说说为什么预算只有¥9吗？"<br>
+        客户："竞品报价就是¥9，你们不降价我们就用他们的。"
+    </div>
+
+    <div class="section-title">【分析框架：判断砍价真实性】</div>
+
+    <div class="subsection-title">🔍 步骤1：五大关键问题</div>
+    <div class="grid-2col">
+        <div>
+            <div class="bullet-point">竞品报价是正式报价单还是口头承诺？</div>
+            <div class="bullet-point">竞品型号与我们的对标吗？（性能、认证）</div>
+            <div class="bullet-point">客户年采购量是多少？（影响折扣空间）</div>
+        </div>
+        <div>
+            <div class="bullet-point">客户付款条件如何？（账期影响价格）</div>
+            <div class="bullet-point">是单项目还是战略合作？（合作深度）</div>
+        </div>
+    </div>
+
+    <div class="subsection-title">⚠️ 识别常见砍价套路</div>
+    <div class="grid-2col">
+        <div class="warning-box">
+            <strong>套路1：虚报竞品价格</strong><br>
+            诱导降价，实际竞品并未报价或价格更高
+        </div>
+        <div class="warning-box">
+            <strong>套路2：低配比高配</strong><br>
+            拿低配产品价格与高配产品对比，偷换概念
+        </div>
+    </div>
+    <div class="grid-2col" style="margin-top: 10px;">
+        <div class="warning-box">
+            <strong>套路3：促销价当常规价</strong><br>
+            拿竞品临时促销价作为谈判筹码，不可持续
+        </div>
+        <div class="warning-box">
+            <strong>套路4：小批量价格谈大单</strong><br>
+            拿小批量报价要求大批量订单价格
+        </div>
+    </div>
+
+    <div class="section-title">【步骤2：识别客户真实意图】</div>
+    <table class="data-table">
+        <thead>
+            <tr>
+                <th style="width: 22%;">客户意图</th>
+                <th style="width: 33%;">特征表现</th>
+                <th style="width: 45%;">应对策略</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td><strong>意图A：预算有限</strong></td>
+                <td>有预算文件、愿意透露信息、寻求降本方案</td>
+                <td><span class="highlight-green">→ 寻找降本方案</span><br>技术优化、批量折扣、阶梯定价</td>
+            </tr>
+            <tr>
+                <td><strong>意图B：谈判技巧</strong></td>
+                <td>反复强调价格、拒绝透露细节、态度模糊</td>
+                <td><span class="highlight-green">→ 坚守价值</span><br>展示差异化，强调TCO总成本</td>
+            </tr>
+            <tr>
+                <td><strong>意图C：更低报价</strong></td>
+                <td>有正式报价单、说出具体型号、要求价格匹配</td>
+                <td><span class="highlight-green">→ 质疑可持续性</span><br>强调竞品风险，TCO对比分析</td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+<div class="page">
+    <div class="page-title">场景1：应对策略（上）- 价格拆解与TCO分析</div>
+
+    <div class="strategy-box">
+        <div class="strategy-title">策略1：拆解价格构成（透明化）💵</div>
+        <table class="data-table" style="margin-top: 10px;">
+            <thead>
+                <tr>
+                    <th>MCU价格构成（以¥12/颗为例）</th>
+                    <th style="width: 18%;">金额</th>
+                    <th style="width: 15%;">占比</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr><td>晶圆成本</td><td>¥4.5</td><td>37.5%</td></tr>
+                <tr><td>封装测试</td><td>¥2.0</td><td>16.7%</td></tr>
+                <tr><td>研发摊销</td><td>¥1.5</td><td>12.5%</td></tr>
+                <tr><td>质量成本</td><td>¥1.0</td><td>8.3%</td></tr>
+                <tr><td>渠道费用</td><td>¥1.5</td><td>12.5%</td></tr>
+                <tr><td>公司利润</td><td>¥1.5</td><td>12.5%</td></tr>
+                <tr style="background: #fff3f3;"><td><strong>总计</strong></td><td><strong>¥12.0</strong></td><td><strong>100%</strong></td></tr>
+            </tbody>
+        </table>
+        <div class="tip-box">
+            <div class="tip-title">关键话术</div>
+            "我们的利润率只有12.5%，行业平均是15-20%。如果降到¥9，我们不仅没利润，还要亏损¥3/颗。这样的合作是不可持续的。"
+        </div>
+    </div>
+
+    <div class="strategy-box">
+        <div class="strategy-title">策略2：TCO总拥有成本分析 📊</div>
+        <table class="data-table">
+            <thead>
+                <tr>
+                    <th>成本项目</th>
+                    <th>方案A（竞品¥9）</th>
+                    <th>方案B（我们¥12）</th>
+                    <th style="width: 15%;">差距</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td><strong>1. 采购成本</strong></td>
+                    <td>¥9×10万=¥90万</td>
+                    <td>¥12×10万=¥120万</td>
+                    <td style="color: red;">+¥30万</td>
+                </tr>
+                <tr>
+                    <td><strong>2. 开发成本</strong></td>
+                    <td>工具不完善，多2个月=¥50万</td>
+                    <td>工具完善=¥0</td>
+                    <td style="color: green;">-¥50万</td>
+                </tr>
+                <tr>
+                    <td><strong>3. 风险成本</strong></td>
+                    <td>交期不稳定，可能缺货=¥200万</td>
+                    <td>12周交货，供应保障=¥0</td>
+                    <td style="color: green;">-¥200万</td>
+                </tr>
+                <tr>
+                    <td><strong>4. 质量成本</strong></td>
+                    <td>PPM未知，返工风险=¥100万</td>
+                    <td>PPM<5，500万台验证=¥0</td>
+                    <td style="color: green;">-¥100万</td>
+                </tr>
+                <tr style="background: #e6ffe6;">
+                    <td><strong>总成本</strong></td>
+                    <td><strong>¥440万</strong></td>
+                    <td><strong>¥120万</strong></td>
+                    <td style="color: green; font-weight: bold;">节省¥320万</td>
+                </tr>
+            </tbody>
+        </table>
+        <div class="tip-box">
+            <div class="tip-title">核心观点</div>
+            "虽然我们单价高¥3，但综合成本其实低¥320万。这才是真正的成本优势。"
+        </div>
+    </div>
+</div>
+<div class="page">
+    <div class="page-title">场景1：应对策略（下）- 阶梯让步与价值重构</div>
+
+    <div class="strategy-box">
+        <div class="strategy-title">策略3：阶梯式让步（条件交换）🎯</div>
+        <div class="subsection-title">让步原则：每次让步都要换取对等条件</div>
+        <div class="grid-3col" style="margin-top: 10px;">
+            <div style="background: white; border: 2px solid #28a745; padding: 12px; border-radius: 6px;">
+                <div style="background: #28a745; color: white; padding: 8px; margin: -12px -12px 10px -12px; font-weight: bold; font-size: 14px;">第一轮：1-2%</div>
+                <div class="small-text">
+                    <strong>条件：</strong>年采购量承诺<br>
+                    <strong>话术：</strong>"承诺年采购100万颗以上，可申请5%折扣，降到¥11.4。"
+                </div>
+            </div>
+            <div style="background: white; border: 2px solid #ffc107; padding: 12px; border-radius: 6px;">
+                <div style="background: #ffc107; color: white; padding: 8px; margin: -12px -12px 10px -12px; font-weight: bold; font-size: 14px;">第二轮：3-5%</div>
+                <div class="small-text">
+                    <strong>条件：</strong>长期协议+付款优化<br>
+                    <strong>话术：</strong>"签3年协议，付款从60天缩短到30天，可再降5%，到¥10.8。"
+                </div>
+            </div>
+            <div style="background: white; border: 2px solid #dc3545; padding: 12px; border-radius: 6px;">
+                <div style="background: #dc3545; color: white; padding: 8px; margin: -12px -12px 10px -12px; font-weight: bold; font-size: 14px;">第三轮：5-8%</div>
+                <div class="small-text">
+                    <strong>条件：</strong>独家供应+联合推广<br>
+                    <strong>话术：</strong>"独家供应+案例推广，申请特批价¥10.2。需向总经理申请。"
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="strategy-box">
+        <div class="strategy-title">策略4：转移焦点（价值重构）🎁</div>
+        <div class="grid-2col">
+            <div>
+                <div class="subsection-title">💎 1. 供应保障（避免缺货停产）</div>
+                <div class="small-text" style="padding-left: 8px;">
+                    "国际MCU厂商普遍缺货，交期半年以上。因省¥3选竞品，结果缺货停产，损失可能几千万。"
+                </div>
+                <div class="subsection-title">⚡ 2. 技术支持（缩短上市周期）</div>
+                <div class="small-text" style="padding-left: 8px;">
+                    "FAE团队4小时响应，免费驻场。项目若因技术问题延期3个月，市场损失可能上亿。"
+                </div>
+            </div>
+            <div>
+                <div class="subsection-title">🛡️ 3. 质量保障（避免召回风险）</div>
+                <div class="small-text" style="padding-left: 8px;">
+                    "500万台实车验证，PPM<5。因质量问题召回，单次成本至少几千万。"
+                </div>
+                <div class="subsection-title">🤝 4. 长期合作（供应链稳定）</div>
+                <div class="small-text" style="padding-left: 8px;">
+                    "不只是供应商，可成为战略合作伙伴。比亚迪集团产业链协同价值远超¥3差价。"
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="section-title">【底线守护话术】</div>
+    <div class="grid-2col">
+        <div class="quote-box">
+            <strong>话术A：直接拒绝（坚定但礼貌）</strong><br>
+            "¥9我们确实做不了，这会亏损。如果价格是第一考量，可能我们暂时不合适。但如果看重供应保障、技术支持、质量可靠性，我们是最佳选择。建议您先用竞品试试，如果合作过程中遇到问题，我们随时欢迎您回来。"
+        </div>
+        <div class="quote-box">
+            <strong>话术B：保留后路（给客户台阶）</strong><br>
+            "这个价格我没权限批。向总经理汇报需要：①年采购量承诺（至少100万颗）②3年战略协议意向 ③竞品正式报价单 ④付款条件优化（缩短到30天）。我拿这些材料去争取特批。"
+        </div>
+    </div>
+</div>
+<div class="page">
+    <div class="page-title">场景2：竞品挖墙脚，如何保住份额 🛡️</div>
+
+    <div class="section-title">【场景背景】</div>
+    <div class="quote-box">
+        <strong>情境：</strong>已合作客户，竞品（瑞萨/NXP）用低价或优惠条件挖角，客户动摇<br><br>
+        <strong>典型对话：</strong><br>
+        客户："兄弟，不是我不想继续合作，瑞萨那边给了个很好的条件，价格比你们低15%，而且承诺优先配货。我这边压力也大，您理解一下。"<br>
+        销售："我理解您的压力。能具体说说瑞萨给了什么条件吗？"
+    </div>
+
+    <div class="section-title">【分析框架：情报收集与风险评估】</div>
+
+    <div class="subsection-title">🔍 步骤1：六大关键信息</div>
+    <div class="grid-2col">
+        <div>
+            <div class="bullet-point">竞品报价多少？（是否真的更低）</div>
+            <div class="bullet-point">竞品做了哪些承诺？（配货、技术支持）</div>
+            <div class="bullet-point">客户为什么动摇？（真需求还是筹码）</div>
+        </div>
+        <div>
+            <div class="bullet-point">客户对我们有什么不满？（价格、服务）</div>
+            <div class="bullet-point">客户切换成本多少？（迁移、验证周期）</div>
+            <div class="bullet-point">竞品接触了谁？（技术、采购、高层）</div>
+        </div>
+    </div>
+
+    <div class="subsection-title">📊 步骤2：风险评估（客户流失风险等级）</div>
+    <table class="data-table">
+        <thead>
+            <tr>
+                <th style="width: 18%;">风险等级</th>
+                <th style="width: 37%;">特征表现</th>
+                <th style="width: 45%;">应对行动</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td style="background: #ffebee;"><strong style="color: #dc3545;">🔴 高风险</strong><br>（立即行动）</td>
+                <td>已签竞品意向书、竞品报价确实更优、客户有明确不满</td>
+                <td>高层立即介入、价格匹配+额外补偿、48小时内给解决方案</td>
+            </tr>
+            <tr>
+                <td style="background: #fff3e0;"><strong style="color: #ff9800;">🟡 中风险</strong><br>（密切跟进）</td>
+                <td>客户在比较阶段、竞品有正式报价、客户犹豫未决定</td>
+                <td>强化差异化价值、情感维系+利益绑定、每周拜访1次</td>
+            </tr>
+            <tr>
+                <td style="background: #e8f5e9;"><strong style="color: #4caf50;">🟢 低风险</strong><br>（正常应对）</td>
+                <td>客户只是口头询问、无正式报价单、可能是谈判筹码</td>
+                <td>了解真实意图、强化合作关系、正常跟进即可</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <div class="subsection-title">⚠️ 判断竞品真伪的3个关键点</div>
+    <div class="grid-3col">
+        <div class="tip-box" style="background: #e6f7ff; border-color: #1890ff;">
+            <strong>是否有正式报价单？</strong><br>
+            <span class="small-text">真挖角 vs 谈判技巧</span>
+        </div>
+        <div class="tip-box" style="background: #e6f7ff; border-color: #1890ff;">
+            <strong>竞品条件是否可持续？</strong><br>
+            <span class="small-text">促销 vs 长期价格</span>
+        </div>
+        <div class="tip-box" style="background: #e6f7ff; border-color: #1890ff;">
+            <strong>客户态度如何？</strong><br>
+            <span class="small-text">坚决切换 vs 犹豫观望</span>
+        </div>
+    </div>
+</div>
+<div class="page">
+    <div class="page-title">场景2：四大应对策略与挽留矩阵</div>
+
+    <div class="strategy-box">
+        <div class="strategy-title">策略1：情感维系（强化关系）❤️</div>
+        <div class="quote-box">
+            "X总，咱们合作这么久了，您觉得我们哪里做得不好？我们一直把您当战略客户，从技术支持到供应保障，FAE常驻您那边，有问题4小时响应。这些瑞萨能做到吗？如果是我们哪里做得不到位，您直接说，我马上改。但如果只是因为价格，我觉得有些可惜。咱们不是简单的买卖关系，而是合作伙伴。"
+        </div>
+    </div>
+
+    <div class="strategy-box">
+        <div class="strategy-title">策略2：质疑竞品条件（拆解套路）🔎</div>
+        <div class="grid-3col">
+            <div style="background: #fff3cd; border: 2px solid #ffc107; padding: 10px; border-radius: 6px;">
+                <strong>可能1：促销价</strong>
+                <div class="small-text">短期有效，后面会涨回来。风险：切换过去，用了半年他们涨价，您又被动</div>
+            </div>
+            <div style="background: #fff3cd; border: 2px solid #ffc107; padding: 10px; border-radius: 6px;">
+                <strong>可能2：老款型号</strong>
+                <div class="small-text">低配产品低价格。风险：性能不够，您可能要重新设计</div>
+            </div>
+            <div style="background: #fff3cd; border: 2px solid #ffc107; padding: 10px; border-radius: 6px;">
+                <strong>可能3：口头承诺</strong>
+                <div class="small-text">说得好听，实际不兑现。风险：切换过去，发现被骗了</div>
+            </div>
+        </div>
+        <div class="tip-box">
+            <div class="tip-title">建议客户验证</div>
+            <span class="checkmark">让瑞萨给书面报价（合同价，不是意向价）</span><br>
+            <span class="checkmark">确认型号规格（和我们对标吗）</span><br>
+            <span class="checkmark">确认交期承诺（真能12周交货吗）</span><br>
+            <span class="checkmark">确认优先配货（有书面保证吗）</span>
+        </div>
+    </div>
+
+    <div class="strategy-box">
+        <div class="strategy-title">策略3：强化差异化价值（重塑认知）💎</div>
+        <div class="grid-2col">
+            <div>
+                <table class="data-table" style="font-size: 11.5px;">
+                    <thead>
+                        <tr><th colspan="3">供应保障对比（瑞萨做不到）</th></tr>
+                        <tr><th>对比项目</th><th>我们</th><th>瑞萨</th></tr>
+                    </thead>
+                    <tbody>
+                        <tr><td>交货周期</td><td style="color: green; font-weight: bold;">12周</td><td style="color: red;">26-52周</td></tr>
+                        <tr><td>安全库存</td><td style="color: green; font-weight: bold;">3个月</td><td style="color: red;">无库存</td></tr>
+                        <tr><td>生产地</td><td style="color: green; font-weight: bold;">本土生产</td><td style="color: red;">日本进口</td></tr>
+                        <tr><td>价格稳定性</td><td style="color: green; font-weight: bold;">3年锁定</td><td style="color: red;">频繁涨价</td></tr>
+                    </tbody>
+                </table>
+            </div>
+            <div>
+                <div style="padding: 12px; background: #fff1f0; border: 2px solid #ff4d4f; border-radius: 6px;">
+                    <strong style="color: #cf1322;">切换风险（您要考虑）</strong>
+                    <div class="small-text" style="margin-top: 8px;">
+                        • 技术迁移成本：2-3个月，¥100万+<br>
+                        • 重新认证成本：AEC-Q100测试，¥50万+<br>
+                        • 停产风险：切换过程可能影响生产<br>
+                        • 时间成本：错过市场窗口期
+                    </div>
+                </div>
+                <div class="quote-box" style="margin-top: 10px; background: #f6ffed; border-color: #52c41a;">
+                    <strong>核心话术：</strong>"瑞萨便宜15%，一年能省¥20万。但切换成本至少¥150万，而且还有供应风险、技术风险。值得吗？我们不是最便宜的，但一定是最可靠的。"
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="strategy-box">
+        <div class="strategy-title">策略4：反制措施（有保有攻）⚔️</div>
+        <div class="grid-2col">
+            <div style="background: #e6f7ff; border: 2px solid #1890ff; padding: 12px; border-radius: 6px;">
+                <strong style="color: #0050b3;">🛡️ 防守：价格匹配（有条件让步）</strong>
+                <div class="small-text" style="margin-top: 8px;">
+                    需要：①瑞萨正式报价单 ②承诺年采购量100万颗+ ③签3年独家协议 ④允许案例推广。这样去向总经理申请特批价格，保证不输瑞萨。
+                </div>
+            </div>
+            <div style="background: #fff7e6; border: 2px solid #fa8c16; padding: 12px; border-radius: 6px;">
+                <strong style="color: #d46b08;">⚔️ 进攻：高层关系激活</strong>
+                <div class="small-text" style="margin-top: 8px;">
+                    向我方高层汇报→总经理/VP介入→安排高层拜访客户高层→升级到战略合作层面（超越MCU采购）→联合PR案例宣传
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="section-title">【挽留策略矩阵】根据客户态度选择策略</div>
+    <table class="data-table">
+        <thead>
+            <tr>
+                <th style="width: 22%;">客户态度</th>
+                <th style="width: 28%;">策略组合</th>
+                <th style="width: 20%;">优先级</th>
+                <th style="width: 30%;">预期成功率</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td><strong>态度A：犹豫观望</strong><br><span class="small-text">（还没决定）</span></td>
+                <td>强化价值+情感维系</td>
+                <td><span style="color: #faad14;">⭐⭐⭐⭐⭐</span></td>
+                <td style="color: green; font-weight: bold;">70-80%</td>
+            </tr>
+            <tr>
+                <td><strong>态度B：倾向切换</strong><br><span class="small-text">（基本决定）</span></td>
+                <td>价格匹配+高层介入</td>
+                <td><span style="color: #faad14;">⭐⭐⭐⭐</span></td>
+                <td style="color: #ff9800; font-weight: bold;">40-60%</td>
+            </tr>
+            <tr>
+                <td><strong>态度C：已经决定</strong><br><span class="small-text">（签约竞品）</span></td>
+                <td>保持联系+等待回归</td>
+                <td><span style="color: #faad14;">⭐⭐⭐</span></td>
+                <td style="color: red; font-weight: bold;">20-30%（需竞品出问题）</td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+<div class="page">
+    <div class="page-title">场景3：大客户要求独家供应 🤝</div>
+
+    <div class="section-title">【场景背景】</div>
+    <div class="quote-box">
+        <strong>情境：</strong>大客户（年采购200万颗+）要求独家供应，但我们产能有限，需要平衡<br><br>
+        <strong>典型对话：</strong><br>
+        客户："我们明年新车型预计需要300万颗MCU。但有个条件，我们要独家供应，不能给我们竞争对手供货。"<br>
+        销售："能理解您的考虑。能说说为什么要独家吗？"<br>
+        客户："主要是担心供应保障。如果你们同时供我们和竞争对手，万一产能不足，你们优先保谁？"
+    </div>
+
+    <div class="section-title">【分析框架：评估独家代价】</div>
+
+    <div class="subsection-title">⚖️ 步骤1：独家成本收益分析</div>
+    <div class="grid-2col">
+        <div>
+            <strong style="color: #dc3545;">失去的机会：</strong>
+            <div class="bullet-point">其他客户订单：可能损失500万颗/年</div>
+            <div class="bullet-point">市场份额：集中在单一客户，风险高</div>
+            <div class="bullet-point">议价能力：依赖单一大客户，被动</div>
+        </div>
+        <div>
+            <strong style="color: #28a745;">获得的收益：</strong>
+            <div class="bullet-point">确定性订单：300万颗/年，稳定收入</div>
+            <div class="bullet-point">战略客户：行业标杆，案例价值</div>
+            <div class="bullet-point">规模效应：大批量，降低成本</div>
+        </div>
+    </div>
+
+    <div class="subsection-title">⚠️ 风险评估</div>
+    <div class="grid-3col">
+        <div class="warning-box">
+            <strong>客户流失风险</strong><br>
+            如果这个客户流失，影响巨大
+        </div>
+        <div class="warning-box">
+            <strong>产品锁定风险</strong><br>
+            专门为客户定制，难以复用
+        </div>
+        <div class="warning-box">
+            <strong>价格压力</strong><br>
+            独家后客户可能持续压价
+        </div>
+    </div>
+
+    <div class="section-title">【步骤2：谈判目标设定】</div>
+    <table class="data-table">
+        <thead>
+            <tr>
+                <th style="width: 22%;">目标层级</th>
+                <th style="width: 38%;">具体方案</th>
+                <th style="width: 40%;">关键条款</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr style="background: #e6ffe6;">
+                <td><strong>最佳结果（100分）</strong></td>
+                <td>不签独家协议、保留其他客户、给大客户优先供应承诺</td>
+                <td>VIP供应保障方案：产能优先+战略库存+长期协议</td>
+            </tr>
+            <tr style="background: #fff9e6;">
+                <td><strong>可接受（80分）</strong></td>
+                <td>签"有限独家"（特定领域/车型独家）、保留其他领域客户</td>
+                <td>大客户给更高价格/更长协议、领域独家（不是全面独家）</td>
+            </tr>
+            <tr style="background: #fff0f0;">
+                <td><strong>底线（60分）</strong></td>
+                <td>签全面独家协议</td>
+                <td>独家补偿（价格/预付款/长期协议）+保留退出条款</td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+<div class="page">
+    <div class="page-title">场景3：四大应对策略</div>
+
+    <div class="strategy-box">
+        <div class="strategy-title">策略1：重新定义"独家"（限定范围）📋</div>
+        <div class="quote-box">
+            <strong>话术模板：</strong>"X总，我理解您对供应保障的担心。但'独家'这个概念太宽泛了，我们需要明确一下..."
+        </div>
+        <div class="grid-2col">
+            <div>
+                <div class="subsection-title">🎯 四个维度限定范围</div>
+                <div class="bullet-point"><strong>1. 领域独家 vs 全面独家？</strong><br>建议：我们在'中高端轿车BCM'领域只供您</div>
+                <div class="bullet-point"><strong>2. 产品独家 vs 客户独家？</strong><br>建议：我们不把'同款MCU'卖给您竞争对手</div>
+            </div>
+            <div>
+                <div class="bullet-point"><strong>3. 区域独家 vs 全球独家？</strong><br>建议：我们在'中国市场'只供您</div>
+                <div class="bullet-point"><strong>4. 时效独家 vs 永久独家？</strong><br>建议：独家期3年，3年后重新评估</div>
+            </div>
+        </div>
+        <div class="tip-box">
+            <div class="tip-title">综合方案建议</div>
+            "我们可以给您'中高端轿车BCM领域、同款产品、中国市场、3年时效独家'。这样既保护您的核心竞争力，也给我们一定灵活度。"
+        </div>
+    </div>
+
+    <div class="strategy-box">
+        <div class="strategy-title">策略2：独家换独家（对等交易）⚖️</div>
+        <div class="grid-2col">
+            <div style="background: #e6f7ff; border: 2px solid #1890ff; padding: 12px; border-radius: 6px;">
+                <strong style="color: #0050b3;">💎 您给我们的：</strong>
+                <div class="small-text" style="margin-top: 8px;">
+                    • 您也给我们独家采购权（Sole Source）<br>
+                    • 长期协议（3-5年）+ 最小采购量承诺<br>
+                    • 承诺最小采购量（每年至少200万颗）<br>
+                    • 如果未达到，支付违约金
+                </div>
+            </div>
+            <div style="background: #fff7e6; border: 2px solid #fa8c16; padding: 12px; border-radius: 6px;">
+                <strong style="color: #d46b08;">💰 我们需要的补偿：</strong>
+                <div class="small-text" style="margin-top: 8px;">
+                    • 独家补偿：价格提升10%（独家溢价）<br>
+                    • 或预付30%货款（保障现金流）<br>
+                    • 联合开发：您提需求，我们定制<br>
+                    • 品牌背书：允许我们用作标杆案例宣传
+                </div>
+            </div>
+        </div>
+        <div class="quote-box">
+            "独家是双向的。如果您要我们独家供您，您也要给我们对等的回报。这样才是公平的合作。"
+        </div>
+    </div>
+
+    <div class="strategy-box">
+        <div class="strategy-title">策略3：供应保障替代方案（不签独家）🛡️</div>
+        <div class="subsection-title">VIP供应保障方案（不需要独家）</div>
+        <table class="data-table">
+            <thead>
+                <tr>
+                    <th style="width: 28%;">保障措施</th>
+                    <th>具体内容</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td><strong>1. 优先供应承诺</strong></td>
+                    <td>您是我们战略客户，产能优先分配给您。即使缺货，也优先保障您的订单</td>
+                </tr>
+                <tr>
+                    <td><strong>2. 专属产能预留</strong></td>
+                    <td>为您预留30%产能（月产150万颗）+ 专属产线，减少切换损失</td>
+                </tr>
+                <tr>
+                    <td><strong>3. 战略库存</strong></td>
+                    <td>为您维持3个月安全库存（900万颗）+ 应急响应：7天内可交付紧急订单</td>
+                </tr>
+                <tr>
+                    <td><strong>4. 长期协议保障</strong></td>
+                    <td>签3年供货协议，价格锁定 + 产能保障条款：我们扩产义务写入合同</td>
+                </tr>
+                <tr>
+                    <td><strong>5. 信息透明机制</strong></td>
+                    <td>月度产能规划会议 + 实时库存查询 + 风险预警：供应链异常提前30天通知</td>
+                </tr>
+            </tbody>
+        </table>
+        <div class="tip-box">
+            <div class="tip-title">核心观点</div>
+            "这些保障措施，比独家更实在。独家只是名义上的保护，但这些措施是实实在在的供应保障。而且不签独家，您也有好处：我们服务更多客户，产品迭代更快；我们规模更大，降本能力更强（您也受益）；您也保留第二供应商选择权（双保险）。"
+        </div>
+    </div>
+</div>
+<div class="page">
+    <div class="page-title">场景3：谈判技巧与底线守护</div>
+
+    <div class="section-title">【谈判技巧】</div>
+
+    <div class="grid-3col">
+        <div class="strategy-box">
+            <div class="strategy-title">技巧1：拖延战术</div>
+            <div class="quote-box">
+                "独家供应是重大决策，我需要向总经理汇报。能给我3天时间吗？我们内部评估一下可行性，然后给您一个正式答复。"
+            </div>
+        </div>
+        <div class="strategy-box">
+            <div class="strategy-title">技巧2：分拆条款</div>
+            <div class="quote-box">
+                "独家协议包括很多条款，我们一项一项谈：独家范围、独家期限、独家补偿、退出机制。每一项我们都要谈清楚。"
+            </div>
+        </div>
+        <div class="strategy-box">
+            <div class="strategy-title">技巧3：抬高门槛</div>
+            <div class="quote-box">
+                "独家意味着我们要放弃其他客户，代价很大。同行要求独家的客户，一般要给：价格溢价15-20%、最小采购量至少500万颗、至少5年协议。"
+            </div>
+        </div>
+    </div>
+
+    <div class="section-title">【谈判策略矩阵】根据客户价值选择策略</div>
+    <table class="data-table">
+        <thead>
+            <tr>
+                <th style="width: 20%;">客户价值</th>
+                <th style="width: 35%;">策略选择</th>
+                <th style="width: 45%;">谈判重点</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr style="background: #e6ffe6;">
+                <td><strong>超级大客户</strong><br>（500万颗+/年）</td>
+                <td>可以考虑有限独家</td>
+                <td>换取：价格溢价10%+ + 5年长期协议 + 最小采购量承诺 + 联合开发</td>
+            </tr>
+            <tr style="background: #fff9e6;">
+                <td><strong>大客户</strong><br>（200-500万颗/年）</td>
+                <td>优先供应保障方案</td>
+                <td>强调：专属产能预留 + 战略库存 + 信息透明机制，不签独家但给最高保障</td>
+            </tr>
+            <tr style="background: #ffebee;">
+                <td><strong>中小客户</strong><br>（<200万颗/年）</td>
+                <td>直接拒绝独家</td>
+                <td>话术："您的采购量不足以支撑独家协议，建议标准供应合作"</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <div class="section-title">【底线守护】关键原则</div>
+    <div class="grid-2col">
+        <div class="tip-box">
+            <div class="tip-title">必须坚守的3条底线</div>
+            <span class="checkmark">绝不签永久独家（最多5年，必须有退出条款）</span><br>
+            <span class="checkmark">绝不无补偿独家（必须有价格溢价或其他补偿）</span><br>
+            <span class="checkmark">绝不全面独家（必须限定领域/产品/区域）</span>
+        </div>
+        <div class="warning-box">
+            <strong>⚠️ 警惕信号：</strong><br>
+            • 客户只要求独家，不愿给任何回报<br>
+            • 客户要求永久独家，没有退出条款<br>
+            • 客户要求全面独家，包括所有产品线<br>
+            <br>
+            <strong style="color: #dc3545;">→ 遇到以上情况，建议直接拒绝或上报高层决策</strong>
+        </div>
+    </div>
+</div>
+<div class="page">
+    <div class="page-title">场景4：技术测试不通过 ⚠️</div>
+
+    <div class="section-title">【场景背景】</div>
+    <div class="quote-box">
+        <strong>情境：</strong>客户在技术验证阶段发现我们的MCU测试不通过（性能、EMC、可靠性等问题）<br><br>
+        <strong>典型对话：</strong><br>
+        客户："你们的MCU在EMC测试中失败了，辐射抗扰度只有120V/m，达不到我们150V/m的要求。这个问题怎么解决？"<br>
+        销售："能详细说说测试情况吗？用的什么测试条件？"<br>
+        客户："我们按照ISO 11452标准测试的，频率80MHz-1GHz扫描，120V/m就开始误动作了。"
+    </div>
+
+    <div class="section-title">【快速诊断清单（问题定位）】</div>
+
+    <div class="subsection-title">🔍 四大维度快速排查</div>
+    <table class="data-table">
+        <thead>
+            <tr>
+                <th style="width: 25%;">排查维度</th>
+                <th>具体检查项</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td><strong>1. 测试条件是否正确？</strong></td>
+                <td>测试标准（ISO 11452 / ISO 7637等）、测试环境（温度、湿度、供电）、测试设备（是否校准）、测试方法（是否符合标准）</td>
+            </tr>
+            <tr>
+                <td><strong>2. 硬件设计是否合理？</strong></td>
+                <td>PCB布局（电源、地线、信号线）、去耦电容（数量、位置、容值）、晶振电路（频率、负载电容）、接口保护（ESD、过压、过流）</td>
+            </tr>
+            <tr>
+                <td><strong>3. 软件配置是否正确？</strong></td>
+                <td>时钟配置（PLL、分频、源选择）、外设配置（CAN、ADC、PWM等）、中断优先级（是否合理）、看门狗设置（超时时间）</td>
+            </tr>
+            <tr>
+                <td><strong>4. 测试样本是否代表？</strong></td>
+                <td>样片批次（是否工程样）、样片数量（单片 vs 批量）、样片状态（新片 vs 返工片）</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <div class="section-title">【问题分类与处理方式】</div>
+    <table class="data-table">
+        <thead>
+            <tr>
+                <th style="width: 18%;">问题类型</th>
+                <th style="width: 12%;">严重程度</th>
+                <th style="width: 35%;">处理方式</th>
+                <th style="width: 35%;">预计周期</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr style="background: #ffebee;">
+                <td><strong>类型A：芯片本身问题</strong></td>
+                <td style="color: red;">⭐⭐⭐⭐⭐</td>
+                <td>需要芯片改版（EMC设计缺陷）</td>
+                <td><strong>短期：</strong>1个月内提供workaround方案<br><strong>长期：</strong>6个月芯片改版</td>
+            </tr>
+            <tr style="background: #fff9e6;">
+                <td><strong>类型B：客户设计问题</strong></td>
+                <td style="color: #ff9800;">⭐⭐⭐</td>
+                <td>FAE指导优化（PCB布局/元件选型）</td>
+                <td>2-4周改版，FAE现场支持</td>
+            </tr>
+            <tr style="background: #e8f5e9;">
+                <td><strong>类型C：测试方法问题</strong></td>
+                <td style="color: green;">⭐⭐</td>
+                <td>重新测试（测试条件不当）</td>
+                <td>1周内重新测试</td>
+            </tr>
+            <tr style="background: #e3f2fd;">
+                <td><strong>类型D：软件配置问题</strong></td>
+                <td style="color: blue;">⭐</td>
+                <td>更新代码（寄存器设置）</td>
+                <td>1-2周更新固件</td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+<div class="page">
+    <div class="page-title">场景4：24小时标准响应流程</div>
+
+    <div class="section-title">【快速响应（24小时内给方案）】</div>
+
+    <div class="strategy-box">
+        <div class="strategy-title">标准响应流程（分阶段执行）⏱️</div>
+        <table class="data-table">
+            <thead>
+                <tr>
+                    <th style="width: 18%;">时间节点</th>
+                    <th style="width: 32%;">行动内容</th>
+                    <th style="width: 50%;">输出成果</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td><strong>第1小时</strong><br>接到通知</td>
+                    <td>立即联系客户，确认问题详情</td>
+                    <td><strong>话术：</strong>"非常抱歉听到这个问题。能否把测试报告和原理图发给我？我马上组织FAE团队分析。"</td>
+                </tr>
+                <tr>
+                    <td><strong>第2-4小时</strong><br>问题诊断</td>
+                    <td>FAE团队分析测试报告、原理图、PCB layout</td>
+                    <td><strong>输出：</strong>初步诊断报告（问题分类、可能原因、3个疑似点）</td>
+                </tr>
+                <tr>
+                    <td><strong>第4-8小时</strong><br>实验室复现</td>
+                    <td>我方实验室复现问题（如果有条件）</td>
+                    <td><strong>输出：</strong>复现结果、对比测试数据、确认问题根因</td>
+                </tr>
+                <tr>
+                    <td><strong>第8-24小时</strong><br>解决方案</td>
+                    <td>制定解决方案（硬件优化/软件调整/测试方法）</td>
+                    <td><strong>输出：</strong>正式解决方案文档（Word/PDF）+ 具体整改指导</td>
+                </tr>
+                <tr style="background: #e6ffe6;">
+                    <td><strong>第24-48小时</strong><br>现场支持</td>
+                    <td>FAE现场指导客户整改、重新测试</td>
+                    <td><strong>输出：</strong>测试通过报告 + 现场支持总结</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <div class="section-title">【应对策略：按问题类型分类处理】</div>
+
+    <div class="strategy-box">
+        <div class="strategy-title">类型A：芯片本身问题（最严重）🔴</div>
+        <div class="quote-box">
+            <strong>话术模板：</strong>"经过我们实验室分析，确实是芯片在某个频段的抗干扰能力不足。这是我们的责任，我代表公司向您致歉。"
+        </div>
+        <div class="grid-2col">
+            <div>
+                <div class="subsection-title">短期方案（1个月内）</div>
+                <div class="bullet-point">提供workaround方案：增加外部EMC滤波器（我们提供设计）</div>
+                <div class="bullet-point">软件：优化抗干扰算法（我们提供代码）</div>
+                <div class="bullet-point">免费FAE驻场支持，直到问题解决</div>
+            </div>
+            <div>
+                <div class="subsection-title">长期方案（3-6个月）</div>
+                <div class="bullet-point">芯片改版：优化EMC设计（增强抗干扰能力）</div>
+                <div class="bullet-point">重新流片（6个月交付新版本）</div>
+                <div class="bullet-point">客户补偿：6个月额外折扣（10%）+ 免费更换新版本芯片</div>
+            </div>
+        </div>
+    </div>
+
+    <div class="strategy-box">
+        <div class="strategy-title">类型B：客户设计问题（常见）🟡</div>
+        <div class="quote-box">
+            <strong>话术模板：</strong>"经过我们FAE分析，问题主要出在PCB布局和元件选型上。我给您具体指出来..."
+        </div>
+        <div class="grid-3col">
+            <div class="tip-box" style="background: #fff3cd;">
+                <strong>问题1：电源去耦不足</strong><br>
+                <span class="small-text">现状：只放2个0.1μF电容<br>建议：增加到4个，尽量靠近芯片VDD引脚（<5mm）</span>
+            </div>
+            <div class="tip-box" style="background: #fff3cd;">
+                <strong>问题2：晶振布局不合理</strong><br>
+                <span class="small-text">现状：晶振离芯片10mm，走线很长<br>建议：晶振紧贴芯片（<3mm），走线最短</span>
+            </div>
+            <div class="tip-box" style="background: #fff3cd;">
+                <strong>问题3：地线分割</strong><br>
+                <span class="small-text">现状：数字地和模拟地分开，中间有缝隙<br>建议：地平面统一，不要分割</span>
+            </div>
+        </div>
+        <div class="bullet-point">我们提供：FAE现场指导改版（免费）+ EMC优化指南（文档）+ 参考设计（已通过EMC测试的PCB）</div>
+    </div>
+
+    <div class="strategy-box">
+        <div class="strategy-title">类型C：测试方法问题 🟢</div>
+        <div class="grid-2col">
+            <div class="warning-box">
+                <strong>问题1：测试电压设置不当</strong><br>
+                您的测试：供电电压3.0V<br>
+                标准要求：3.3V±10%（3.0-3.6V）<br>
+                影响：低电压导致抗干扰能力下降20-30%
+            </div>
+            <div class="warning-box">
+                <strong>问题2：测试样本数不足</strong><br>
+                您的测试：只测了1片样片<br>
+                标准要求：至少3片（取最差值）<br>
+                影响：单片测试结果可能不具代表性
+            </div>
+        </div>
+        <div class="tip-box">
+            <div class="tip-title">我们建议</div>
+            按照标准测试条件重新测试 + 我们提供技术指导（测试方法、测试设置）+ 我们陪同您去测试实验室（现场支持）+ 我们提供已通过测试的样片（对比测试）
+        </div>
+    </div>
+</div>
+<div class="page">
+    <div class="page-title">场景4：补救措施与客户保障</div>
+
+    <div class="section-title">【补救方案矩阵】</div>
+    <table class="data-table">
+        <thead>
+            <tr>
+                <th style="width: 22%;">补救方案</th>
+                <th style="width: 18%;">适用场景</th>
+                <th style="width: 15%;">周期</th>
+                <th style="width: 25%;">成本</th>
+                <th style="width: 20%;">成功率</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td><strong>方案A：硬件优化</strong><br>（PCB改版）</td>
+                <td>客户设计问题</td>
+                <td>2-4周</td>
+                <td>¥10-30万<br>（客户承担）</td>
+                <td style="color: green; font-weight: bold;">90%+</td>
+            </tr>
+            <tr>
+                <td><strong>方案B：软件调整</strong><br>（固件优化）</td>
+                <td>软件配置问题</td>
+                <td>1-2周</td>
+                <td>免费</td>
+                <td style="color: green; font-weight: bold;">70-80%</td>
+            </tr>
+            <tr>
+                <td><strong>方案C：外加EMC器件</strong></td>
+                <td>芯片EMC能力不足</td>
+                <td>1周</td>
+                <td>增加BOM成本¥2-5/套<br>（客户承担）</td>
+                <td style="color: green; font-weight: bold;">85%+</td>
+            </tr>
+            <tr>
+                <td><strong>方案D：芯片改版</strong><br>（重新流片）</td>
+                <td>芯片本身缺陷</td>
+                <td>6个月</td>
+                <td>¥500万+<br>（我们承担）</td>
+                <td style="color: green; font-weight: bold;">100%</td>
+            </tr>
+            <tr>
+                <td><strong>方案E：更换芯片型号</strong></td>
+                <td>现有型号确实不合适</td>
+                <td>2-3个月<br>（重新验证）</td>
+                <td>客户承担开发成本</td>
+                <td style="color: green; font-weight: bold;">100%</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <div class="section-title">【客户保障承诺】</div>
+
+    <div class="grid-2col">
+        <div class="strategy-box">
+            <div class="strategy-title">我们的承诺（核心3条）✅</div>
+            <div class="bullet-point"><strong>承诺1：快速响应</strong><br>24小时内给出初步解决方案，48小时内FAE到达现场</div>
+            <div class="bullet-point"><strong>承诺2：费用承担</strong><br>如果是我们芯片问题，所有费用我们承担（EMC器件、FAE、测试）</div>
+            <div class="bullet-point"><strong>承诺3：不影响量产</strong><br>短期方案1个月内解决，不影响您的量产计划</div>
+        </div>
+        <div class="strategy-box">
+            <div class="strategy-title">额外补偿（如果是我方问题）💰</div>
+            <div class="bullet-point"><strong>补偿1：价格折扣</strong><br>给您6个月的额外折扣（10%）</div>
+            <div class="bullet-point"><strong>补偿2：优先升级</strong><br>免费更换新版本芯片（如果您愿意），您是第一批客户</div>
+            <div class="bullet-point"><strong>补偿3：延长质保</strong><br>质保期从1年延长到2年</div>
+        </div>
+    </div>
+
+    <div class="section-title">【关键成功因素】</div>
+    <div class="grid-3col">
+        <div class="tip-box">
+            <div class="tip-title">成功因素1：速度</div>
+            越快响应，客户越满意。24小时内给方案是及格线，12小时内是优秀。
+        </div>
+        <div class="tip-box">
+            <div class="tip-title">成功因素2：态度</div>
+            先道歉，再分析。即使不是我们的问题，也要展现积极解决的态度。
+        </div>
+        <div class="tip-box">
+            <div class="tip-title">成功因素3：专业</div>
+            FAE团队要有真本事，能快速定位问题、给出可行方案。专业能力是信任基础。
+        </div>
+    </div>
+
+    <div class="section-title">【危机转化为机会】</div>
+    <div class="quote-box" style="background: #e6ffe6; border-color: #52c41a;">
+        <strong style="color: #389e0d;">💡 关键洞察：</strong><br>
+        技术问题处理得好，反而能加深客户信任。客户不怕遇到问题，怕的是遇到问题后你不管。如果我们能24小时响应、48小时解决、而且态度诚恳、方案专业，客户会觉得"这家供应商靠谱，有问题能解决"。这比从来不出问题的供应商更有价值，因为客户知道"万一出问题，你会负责到底"。
+    </div>
+</div>
+<div class="page">
+    <div class="page-title">场景5：客户投诉质量问题 ⚠️</div>
+
+    <div class="section-title">【场景背景】</div>
+    <div class="quote-box">
+        <strong>客户：</strong>"你们这批货有问题！上周装了5000台车，已经有30台出现死机，故障率0.6%。我们要求立即停止供货，并索赔¥200万损失！"<br><br>
+        <strong>销售（内心OS）：</strong>完了，质量事故！<br>
+        <strong>销售：</strong>"非常抱歉！能详细说说故障情况吗？什么时候发现的？故障现象是什么？"<br><br>
+        <strong>客户：</strong>"就是系统突然死机，重启后又正常。现在经销商投诉电话爆了，我们品牌形象都受损了！"
+    </div>
+
+    <div class="section-title">【危机响应流程】</div>
+
+    <div class="subsection-title">第一阶段：紧急响应（0-2小时）⚡</div>
+
+    <table class="data-table">
+        <thead>
+            <tr>
+                <th style="width: 15%;">序号</th>
+                <th style="width: 22%;">行动项</th>
+                <th style="width: 48%;">具体内容</th>
+                <th style="width: 15%;">时限</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td><strong>1</strong></td>
+                <td><strong>立即致歉</strong></td>
+                <td>"非常抱歉给您造成困扰！我立即向公司汇报，启动质量应急机制。请您放心，我们会负责到底。"</td>
+                <td>立即</td>
+            </tr>
+            <tr>
+                <td><strong>2</strong></td>
+                <td><strong>成立应急小组</strong></td>
+                <td>• 质量工程师×2<br>• FAE工程师×2<br>• 销售负责人×1<br>• 公司高层（总监/VP）×1</td>
+                <td>2小时内</td>
+            </tr>
+            <tr>
+                <td><strong>3</strong></td>
+                <td><strong>前往客户现场</strong></td>
+                <td>• 调查故障现象<br>• 收集故障样品<br>• 安抚客户情绪<br>• 承诺解决时限</td>
+                <td>当天</td>
+            </tr>
+            <tr>
+                <td><strong>4</strong></td>
+                <td><strong>暂停发货</strong></td>
+                <td>• 立即暂停该批次发货<br>• 库存全检（如有必要）<br>• 通知其他客户（如使用同批次）</td>
+                <td>立即</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <div class="warning-box">
+        <strong>⚠️ 关键原则：</strong><br>
+        ✓ 快速响应（2小时内到现场）<br>
+        ✓ 诚恳态度（先道歉，再分析）<br>
+        ✓ 主动担责（不推诿，不扯皮）<br>
+        ✓ 过度补偿（宁可多赔，不要少赔）
+    </div>
+
+    <div class="page-number">第1页 | 场景5：质量投诉危机响应</div>
+</div>
+<div class="page">
+    <div class="page-title">场景5：客户投诉质量问题 - 问题定位 🔍</div>
+
+    <div class="section-title">第二阶段：问题定位（2-24小时）</div>
+
+    <div class="subsection-title">步骤1：收集信息</div>
+
+    <table class="data-table">
+        <thead>
+            <tr>
+                <th style="width: 30%;">信息项</th>
+                <th style="width: 70%;">内容</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td><strong>批次号</strong></td>
+                <td>_______________________</td>
+            </tr>
+            <tr>
+                <td><strong>生产日期</strong></td>
+                <td>_______________________</td>
+            </tr>
+            <tr>
+                <td><strong>故障数量</strong></td>
+                <td>30台/5000台 = <strong style="color: #f44336;">0.6%</strong></td>
+            </tr>
+            <tr>
+                <td><strong>故障现象</strong></td>
+                <td>死机、重启后恢复</td>
+            </tr>
+            <tr>
+                <td><strong>使用环境</strong></td>
+                <td>温度___ 湿度___ 震动___</td>
+            </tr>
+            <tr>
+                <td><strong>使用时长</strong></td>
+                <td>装车___天后出现</td>
+            </tr>
+            <tr>
+                <td><strong>故障规律</strong></td>
+                <td>偶发 / 必现 / 条件触发</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <div class="subsection-title">步骤2：初步判断（4种可能原因）</div>
+
+    <table class="data-table">
+        <thead>
+            <tr>
+                <th style="width: 28%;">可能原因</th>
+                <th style="width: 25%;">判断依据</th>
+                <th style="width: 27%;">验证方法</th>
+                <th style="width: 20%;">责任归属</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr style="background: #ffebee;">
+                <td><strong>A：芯片质量问题</strong><br>（批次不良）</td>
+                <td>特定批次集中出现</td>
+                <td>对比其他批次是否有问题</td>
+                <td><strong style="color: #f44336;">我方责任</strong></td>
+            </tr>
+            <tr style="background: #fff9e6;">
+                <td><strong>B：客户使用不当</strong><br>（软件Bug）</td>
+                <td>只在特定条件下出现</td>
+                <td>检查客户软件版本</td>
+                <td><strong style="color: #ff9800;">客户责任</strong></td>
+            </tr>
+            <tr style="background: #e3f2fd;">
+                <td><strong>C：外部干扰</strong><br>（EMC问题）</td>
+                <td>偶发，无规律</td>
+                <td>检查使用环境</td>
+                <td><strong style="color: #2196f3;">需进一步分析</strong></td>
+            </tr>
+            <tr style="background: #f3e5f5;">
+                <td><strong>D：硬件设计缺陷</strong><br>（PCB/元件）</td>
+                <td>特定车型/配置出现</td>
+                <td>检查硬件设计</td>
+                <td><strong style="color: #9c27b0;">客户责任</strong></td>
+            </tr>
+        </tbody>
+    </table>
+
+    <div class="subsection-title">步骤3-4：实验室复现 + 结论报告</div>
+
+    <div class="steps-container">
+        <div class="step-item">
+            <div class="step-number">3</div>
+            <div class="step-content">
+                <strong>实验室复现</strong><br>
+                • 将故障样品带回实验室<br>
+                • 搭建测试环境（模拟实车）<br>
+                • 尝试复现故障<br>
+                • 定位根本原因
+            </div>
+        </div>
+        <div class="step-item">
+            <div class="step-number">4</div>
+            <div class="step-content">
+                <strong>结论报告（24小时内）</strong><br>
+                • 明确故障原因<br>
+                • 提出解决方案<br>
+                • 责任归属判定<br>
+                • 预防措施规划
+            </div>
+        </div>
+    </div>
+
+    <div class="page-number">第2页 | 场景5：问题定位分析</div>
+</div>
+<div class="page">
+    <div class="page-title">场景5：解决方案A - 芯片问题（我方责任）💰</div>
+
+    <div class="section-title">第三阶段：解决方案（24-72小时）</div>
+
+    <div class="subsection-title">情况A：确认是芯片问题（我方责任）</div>
+
+    <div class="quote-box">
+        <strong>话术模板：</strong><br><br>
+        "X总，经过我们实验室分析，确认是我们这个批次的芯片有质量问题。这是我们的责任，我代表公司向您郑重道歉。<br><br>
+        <strong>问题原因：</strong><br>
+        • 该批次在生产过程中，某个参数控制偏差<br>
+        • 导致在高温（>80℃）环境下，芯片稳定性下降<br>
+        • 批次范围：XX批次，数量50000颗<br>
+        • 影响范围：已发货5000颗，您这边都是"
+    </div>
+
+    <div class="subsection-title">📋 我们的解决方案（4大措施）</div>
+
+    <table class="data-table">
+        <thead>
+            <tr>
+                <th style="width: 25%;">措施类别</th>
+                <th style="width: 75%;">具体内容</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr style="background: #e8f5e9;">
+                <td><strong>1️⃣ 立即召回</strong><br>（7天内完成）</td>
+                <td>
+                    • 免费更换良品芯片<br>
+                    • 我们承担更换费用（人工+物流）<br>
+                    • 派驻工程师现场支持
+                </td>
+            </tr>
+            <tr style="background: #fff3e0;">
+                <td><strong>2️⃣ 客户损失赔偿</strong></td>
+                <td>
+                    • <strong>直接损失：</strong>已装车30台，每台赔偿¥5000 = <strong>¥15万</strong><br>
+                    • <strong>检测费用：</strong>全部5000台检测，赔偿<strong>¥50万</strong><br>
+                    • <strong>商誉损失：</strong>品牌影响，赔偿<strong>¥50万</strong><br>
+                    • <strong>总计赔偿：¥115万</strong>（低于客户要求的¥200万）
+                </td>
+            </tr>
+            <tr style="background: #f3e5f5;">
+                <td><strong>3️⃣ 额外补偿</strong></td>
+                <td>
+                    • 下一年度全部订单给予<strong>10%折扣</strong><br>
+                    • 免费技术支持1年（驻场FAE）<br>
+                    • 优先供应权（产能紧张时优先保障）
+                </td>
+            </tr>
+            <tr style="background: #e3f2fd;">
+                <td><strong>4️⃣ 预防措施</strong></td>
+                <td>
+                    • 加强生产过程管控（<strong>100%全检</strong>）<br>
+                    • 引入第三方检测（SGS/TÜV）<br>
+                    • 建立质量追溯系统（每颗芯片可追溯）<br>
+                    • 增加出厂测试项目（模拟实车环境）
+                </td>
+            </tr>
+        </tbody>
+    </table>
+
+    <div class="success-box">
+        <strong>✓ 我们的承诺：</strong><br>
+        • 7天内完成召回和更换<br>
+        • 赔偿款15天内支付<br>
+        • 确保此类问题不再发生<br>
+        • 我们CEO会亲自拜访您，表达歉意<br><br>
+        <strong>"这次是我们的错，我们会承担所有责任。希望您能给我们一次改正的机会，让我们继续为您服务。"</strong>
+    </div>
+
+    <div class="page-number">第3页 | 场景5：解决方案A（我方责任）</div>
+</div>
+<div class="page">
+    <div class="page-title">场景5：解决方案B - 客户使用问题 🔧</div>
+
+    <div class="subsection-title">情况B：客户使用问题（客户责任）</div>
+
+    <div class="quote-box">
+        <strong>话术模板（委婉但坚定）：</strong><br><br>
+        "X总，经过我们技术团队的详细分析，发现故障原因主要是软件配置问题，不是芯片质量问题。<br><br>
+        <strong>问题原因：</strong><br>
+        • 您的软件中，看门狗超时设置为1秒<br>
+        • 但某个任务偶尔会超过1秒（1.2-1.5秒）<br>
+        • 导致看门狗复位，系统重启<br>
+        • 这不是芯片故障，是软件Bug"
+    </div>
+
+    <div class="subsection-title">📊 证据链（4条证据）</div>
+
+    <div class="grid-2col">
+        <div class="highlight-box">
+            <strong>证据1：</strong><br>
+            我们用同批次芯片测试，<strong style="color: #4caf50;">无法复现故障</strong>
+        </div>
+        <div class="highlight-box">
+            <strong>证据2：</strong><br>
+            我们用您的软件测试，<strong style="color: #f44336;">100%复现故障</strong>
+        </div>
+        <div class="highlight-box">
+            <strong>证据3：</strong><br>
+            我们修改看门狗设置后，<strong style="color: #4caf50;">故障消失</strong>
+        </div>
+        <div class="highlight-box">
+            <strong>证据4：</strong><br>
+            其他客户使用同批次芯片，<strong style="color: #4caf50;">无故障报告</strong>
+        </div>
+    </div>
+
+    <div class="subsection-title">🛠️ 解决方案（2种方案）</div>
+
+    <table class="data-table">
+        <thead>
+            <tr>
+                <th style="width: 22%;">方案</th>
+                <th style="width: 48%;">具体措施</th>
+                <th style="width: 18%;">优点</th>
+                <th style="width: 12%;">时间</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr style="background: #e8f5e9;">
+                <td><strong>方案A：修改软件</strong><br>（推荐✓）</td>
+                <td>
+                    • 将看门狗超时改为2秒<br>
+                    • 优化任务调度（避免超时）<br>
+                    • 我们提供参考代码
+                </td>
+                <td>根本解决问题</td>
+                <td>1周</td>
+            </tr>
+            <tr style="background: #e3f2fd;">
+                <td><strong>方案B：优化芯片配置</strong></td>
+                <td>
+                    • 调整芯片性能参数<br>
+                    • 提升任务处理速度<br>
+                    • 我们提供优化方案
+                </td>
+                <td>无需改软件</td>
+                <td>2周</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <div class="subsection-title">🤝 我们的支持（虽非我方责任，但全力协助）</div>
+
+    <div class="success-box">
+        <strong>✓ 技术支持：</strong><br>
+        • 虽然不是我们芯片问题，但我们愿意协助解决<br>
+        • FAE团队免费驻场支持（1个月）<br>
+        • 提供软件优化方案和参考代码<br>
+        • 协助完成OTA升级（远程修复已售车辆）
+    </div>
+
+    <div class="highlight-box">
+        <strong>💰 关于赔偿：</strong><br>
+        由于不是芯片质量问题，按照合同约定，我们不承担赔偿责任。但考虑到我们的合作关系，我们愿意：<br><br>
+        • 免费提供技术支持（价值¥30万）<br>
+        • 给予下批订单5%折扣（价值¥50万）<br>
+        • 协助您向经销商解释（技术背书）<br><br>
+        <strong>"这样既解决了问题，也维护了我们的合作关系。您看可以吗？"</strong>
+    </div>
+
+    <div class="page-number">第4页 | 场景5：解决方案B（客户责任）</div>
+</div>
+<div class="page">
+    <div class="page-title">场景5：解决方案C - 原因不明（需要时间）⏱️</div>
+
+    <div class="subsection-title">情况C：原因不明（需要时间）</div>
+
+    <div class="quote-box">
+        <strong>话术模板（诚恳+诚意）：</strong><br><br>
+        "X总，我们技术团队已经分析了3天，但故障原因还不够明确。目前有几个可能：<br>
+        • 可能1：芯片在极端条件下的小概率失效<br>
+        • 可能2：软硬件配合问题（边界条件触发）<br>
+        • 可能3：外部干扰（EMC、电源波动）"
+    </div>
+
+    <div class="subsection-title">📅 我们的计划（3步走）</div>
+
+    <div class="steps-container">
+        <div class="step-item">
+            <div class="step-number">1</div>
+            <div class="step-content">
+                <strong>深度分析（再给我们7天）</strong><br>
+                • 扩大样本数（再收集50个故障样品）<br>
+                • 长期测试（模拟实车环境，连续运行1000小时）<br>
+                • 引入第三方检测机构（客观评估）
+            </div>
+        </div>
+        <div class="step-item">
+            <div class="step-number">2</div>
+            <div class="step-content">
+                <strong>临时措施（先止损）</strong><br>
+                • 暂停该批次发货（避免扩大影响）<br>
+                • 对已发货产品进行跟踪（监控是否还有故障）<br>
+                • 提供备用芯片（如您需要应急替换）
+            </div>
+        </div>
+        <div class="step-item">
+            <div class="step-number">3</div>
+            <div class="step-content">
+                <strong>客户保障（无论结果如何）</strong><br>
+                • 如最终确认是芯片问题，我们全额赔偿<br>
+                • 如不是芯片问题，我们协助您解决（免费技术支持）<br>
+                • 无论如何，我们不会让您承担损失
+            </div>
+        </div>
+    </div>
+
+    <div class="subsection-title">💰 我们的诚意（先支付诚意金）</div>
+
+    <div class="success-box">
+        <strong>诚意金方案：</strong><br>
+        • 先支付您<strong style="font-size: 20px;">¥50万诚意金</strong>（体现我们的责任感）<br>
+        • 这笔钱不影响后续赔偿金额<br>
+        • 如最终确认不是我们问题，这笔钱算我们的支持费用<br><br>
+        <strong>"X总，给我们7天时间彻底查清原因。我们比您更着急解决这个问题，因为这关系到我们的品牌和口碑。请您相信我们的诚意。"</strong>
+    </div>
+
+    <div class="section-title">【危机公关策略】</div>
+
+    <div class="grid-2col">
+        <div class="strategy-box">
+            <div class="strategy-title">对内沟通</div>
+            1. 立即向公司高层汇报（CEO/VP）<br>
+            2. 评估影响范围（其他客户是否受影响）<br>
+            3. 准备预案（如事态扩大如何应对）<br>
+            4. 财务准备（赔偿资金、应急资金）
+        </div>
+        <div class="strategy-box">
+            <div class="strategy-title">对外沟通</div>
+            <strong>客户层面：</strong>高层拜访、技术交流、定期通报<br>
+            <strong>行业层面：</strong>主动通报、技术说明会、第三方背书<br>
+            <strong>媒体层面：</strong>控制信息源、准备应对话术
+        </div>
+    </div>
+
+    <div class="warning-box">
+        <strong>⚠️ 关键原则（再次强调）：</strong><br>
+        ✓ 快速响应（2小时内到现场） | ✓ 诚恳态度（先道歉，再分析） | ✓ 主动担责（不推诿，不扯皮） | ✓ 过度补偿（宁可多赔，不要少赔） | ✓ 举一反三（预防类似问题）
+    </div>
+
+    <div class="page-number">第5页 | 场景5：解决方案C + 危机公关</div>
+</div>
+<div class="page">
+    <div class="page-title">场景6：新客户冷启动（0→1突破）🚀</div>
+
+    <div class="section-title">【场景背景】</div>
+    <div class="quote-box">
+        <strong>目标客户：</strong>小米汽车、华为问界等新势力<br>
+        <strong>困境：</strong>完全陌生，需要从0开始建立联系
+    </div>
+
+    <div class="subsection-title">典型困境（4大挑战）</div>
+
+    <table class="data-table">
+        <thead>
+            <tr>
+                <th style="width: 30%;">困境类型</th>
+                <th style="width: 70%;">具体表现</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td><strong>❌ 没有联系人</strong></td>
+                <td>不知道找谁，没有切入点</td>
+            </tr>
+            <tr>
+                <td><strong>❌ 没有信任基础</strong></td>
+                <td>客户不认识我们，品牌认知度低</td>
+            </tr>
+            <tr>
+                <td><strong>❌ 已有供应商</strong></td>
+                <td>瑞萨/NXP占据主力，关系稳固</td>
+            </tr>
+            <tr>
+                <td><strong>❌ 竞争激烈</strong></td>
+                <td>10+家供应商竞争，红海市场</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <div class="section-title">【破冰策略总览】</div>
+
+    <div class="grid-2col">
+        <div class="strategy-box">
+            <div class="strategy-title">策略1：高维度切入（高层关系）🎯</div>
+            <strong>核心思路：</strong>利用比亚迪集团背书，从高层打开局面<br><br>
+            <strong>3种方法：</strong><br>
+            • 方法A：利用比亚迪集团背书<br>
+            • 方法B：行业活动/论坛接触<br>
+            • 方法C：第三方引荐（Tier 1/投资机构）
+        </div>
+        <div class="strategy-box">
+            <div class="strategy-title">策略2：价值前置（先给价值）🎁</div>
+            <strong>核心思路：</strong>不求回报先提供价值，建立专业形象<br><br>
+            <strong>3种方法：</strong><br>
+            • 方法A：免费技术咨询（优化方案）<br>
+            • 方法B：提供测试样片（免费送样）<br>
+            • 方法C：分享行业报告（知识价值）
+        </div>
+        <div class="strategy-box">
+            <div class="strategy-title">策略3：从边缘切入（避开强敌）🔄</div>
+            <strong>核心思路：</strong>不正面竞争，从边缘应用逐步渗透<br><br>
+            <strong>3种方法：</strong><br>
+            • 方法A：从非核心应用切入（BCM/灯光）<br>
+            • 方法B：从新项目切入（新平台立项）<br>
+            • 方法C：从第二供应商切入（分散风险）
+        </div>
+        <div class="strategy-box">
+            <div class="strategy-title">策略4：长期耕耘（不急于求成）⏳</div>
+            <strong>核心思路：</strong>6个月培养计划，持续投入建立信任<br><br>
+            <strong>4个阶段：</strong><br>
+            • 第1个月：建立联系（找到关键人）<br>
+            • 第2-3个月：建立信任（定期拜访）<br>
+            • 第4-5个月：寻找机会（新项目规划）<br>
+            • 第6个月：突破签约（小批量订单）
+        </div>
+    </div>
+
+    <div class="highlight-box">
+        <strong>💡 关键洞察：</strong><br>
+        新客户开发不是"一次性冲锋"，而是"持久战"。要有耐心，循序渐进。成功率：<strong>10个新客户，能拿下2-3个就算成功</strong>。
+    </div>
+
+    <div class="page-number">第6页 | 场景6：新客户冷启动策略总览</div>
+</div>
+<div class="page">
+    <div class="page-title">场景6：破冰策略1-2详解 🎯🎁</div>
+
+    <div class="section-title">策略1：高维度切入（高层关系）</div>
+
+    <div class="subsection-title">方法A：利用比亚迪集团背书</div>
+
+    <div class="steps-container">
+        <div class="step-item">
+            <div class="step-number">1</div>
+            <div class="step-content">
+                <strong>找到比亚迪汽车和目标客户的业务联系</strong><br>
+                • 比亚迪是小米的供应商（电池）<br>
+                • 比亚迪是华为的合作伙伴（问界代工）
+            </div>
+        </div>
+        <div class="step-item">
+            <div class="step-number">2</div>
+            <div class="step-content">
+                <strong>通过比亚迪集团高层引荐</strong><br>
+                • 比亚迪汽车CEO介绍→小米汽车CEO<br>
+                • 比亚迪半导体CEO→小米汽车CTO/供应链VP
+            </div>
+        </div>
+        <div class="step-item">
+            <div class="step-number">3</div>
+            <div class="step-content">
+                <strong>战略合作框架协议</strong><br>
+                • 不只谈MCU，谈整体合作<br>
+                • 产业链协同（比亚迪汽车也是小米的客户）<br>
+                • 国产替代大局（政策层面）
+            </div>
+        </div>
+    </div>
+
+    <div class="quote-box">
+        <strong>话术模板：</strong><br><br>
+        "X总您好，我是比亚迪半导体的XX。我们王总（比亚迪汽车CEO）和您是老朋友了，他让我来和您聊聊半导体合作的事情。<br><br>
+        我们不只是MCU供应商，更希望能在更大层面合作。比如比亚迪汽车每年采购您们的XXX产品，我们半导体供应您们MCU，这是双向的产业链协同。<br><br>
+        能否约个时间，我们两家高层坐下来聊聊战略合作？"
+    </div>
+
+    <div class="subsection-title">方法B：行业活动/论坛接触</div>
+
+    <div class="grid-2col">
+        <div class="highlight-box">
+            <strong>参加活动：</strong><br>
+            • 中国汽车供应链峰会<br>
+            • 新能源汽车论坛<br>
+            • 汽车半导体技术研讨会
+        </div>
+        <div class="highlight-box">
+            <strong>主动演讲：</strong><br>
+            • 展示技术实力<br>
+            • 分享500万台实车验证案例<br>
+            • 吸引目标客户关注
+        </div>
+    </div>
+
+    <div class="subsection-title">方法C：第三方引荐（借力打力）</div>
+
+    <table class="data-table">
+        <thead>
+            <tr>
+                <th style="width: 30%;">引荐方</th>
+                <th style="width: 70%;">操作方法</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td><strong>共同的Tier 1</strong></td>
+                <td>"X总（德赛西威），我们想开发小米汽车这个客户，您和小米关系很好，能否帮忙引荐一下？对您也有好处：如果小米用了我们的MCU，您的成本能降20%，您在小米那边的竞争力也更强。"</td>
+            </tr>
+            <tr>
+                <td><strong>投资机构</strong></td>
+                <td>红杉资本既投资了比亚迪半导体，也投资了小米 → 通过红杉引荐</td>
+            </tr>
+            <tr>
+                <td><strong>行业协会</strong></td>
+                <td>中国汽车工程学会、中国汽车芯片产业创新联盟</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <div class="section-title">策略2：价值前置（先给价值）</div>
+
+    <div class="grid-3col">
+        <div class="strategy-box">
+            <div class="strategy-title">方法A：免费技术咨询</div>
+            • 研究客户技术方案<br>
+            • 制作优化方案PPT<br>
+            • 提出降本方案（节省¥50-100/车）<br>
+            • 主动发送，不要求回报
+        </div>
+        <div class="strategy-box">
+            <div class="strategy-title">方法B：提供测试样片</div>
+            • 主动提供免费样片（100片）<br>
+            • 附赠完整技术资料<br>
+            • 附赠开发板和调试工具<br>
+            • 完全免费，无附加条件
+        </div>
+        <div class="strategy-box">
+            <div class="strategy-title">方法C：分享行业报告</div>
+            • 制作MCU行业趋势报告<br>
+            • 定期发送行业资讯<br>
+            • 建立"专业顾问"形象<br>
+            • 邀请参加技术沙龙
+        </div>
+    </div>
+
+    <div class="page-number">第7页 | 场景6：策略1-2详解</div>
+</div>
+<div class="page">
+    <div class="page-title">场景6：策略3-4详解 + 长期耕耘计划 🔄⏳</div>
+
+    <div class="section-title">策略3：从边缘切入（避开强敌）</div>
+
+    <div class="grid-3col">
+        <div class="strategy-box">
+            <div class="strategy-title">方法A：从非核心应用切入</div>
+            <strong>策略：</strong>不和瑞萨/NXP在核心应用正面竞争<br><br>
+            <strong>话术：</strong>"X总，我知道您的动力总成用的是瑞萨，我们不动这块。我们想从车身控制BCM开始合作。<br><br>
+            BCM技术门槛相对低，风险小，而且我们价格有优势。您可以先试试我们的产品，如果合作顺利，后面再扩大到其他应用。"
+        </div>
+        <div class="strategy-box">
+            <div class="strategy-title">方法B：从新项目切入</div>
+            <strong>策略：</strong>不碰存量项目，聚焦新项目/新平台<br><br>
+            <strong>话术：</strong>"X总，您现有车型的供应商我们不动。但听说您明年有新平台立项，我们能不能参与新平台的开发？<br><br>
+            新平台从设计开始就用我们的MCU，这样切换成本低，而且我们可以根据您的需求定制开发。"
+        </div>
+        <div class="strategy-box">
+            <div class="strategy-title">方法C：从第二供应商切入</div>
+            <strong>策略：</strong>不要求主供应商，申请成为第二供应商<br><br>
+            <strong>话术：</strong>"X总，我们不要求做您的主供应商，那个位置给瑞萨/NXP。我们能不能做您的第二供应商？<br><br>
+            您也知道，单一供应商风险很大。我们做第二供应商，既分散风险，又能给瑞萨压价。我们只要20-30%份额就行。"
+        </div>
+    </div>
+
+    <div class="section-title">策略4：长期耕耘（6个月计划）</div>
+
+    <table class="data-table">
+        <thead>
+            <tr>
+                <th style="width: 18%;">阶段</th>
+                <th style="width: 10%;">时间</th>
+                <th style="width: 52%;">关键行动</th>
+                <th style="width: 20%;">目标</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr style="background: #e3f2fd;">
+                <td><strong>第1个月</strong><br>建立联系</td>
+                <td>月1</td>
+                <td>
+                    • 找到关键决策人（技术总监、采购总监）<br>
+                    • 发送自我介绍邮件<br>
+                    • 邀请参观比亚迪工厂<br>
+                    • 寄送样片和技术资料
+                </td>
+                <td><strong>拜访3次以上</strong></td>
+            </tr>
+            <tr style="background: #fff3e0;">
+                <td><strong>第2-3个月</strong><br>建立信任</td>
+                <td>月2-3</td>
+                <td>
+                    • 定期拜访（每2周一次）<br>
+                    • 分享行业资讯<br>
+                    • 提供免费技术咨询<br>
+                    • 参加客户的技术交流会
+                </td>
+                <td><strong>建立信任</strong><br>（客户愿意聊天）</td>
+            </tr>
+            <tr style="background: #f3e5f5;">
+                <td><strong>第4-5个月</strong><br>寻找机会</td>
+                <td>月4-5</td>
+                <td>
+                    • 了解客户新项目规划<br>
+                    • 提出联合开发方案<br>
+                    • 申请参与技术评审<br>
+                    • 争取试用机会
+                </td>
+                <td><strong>获得样片测试机会</strong><br>参与技术评审<br>进入商务谈判</td>
+            </tr>
+            <tr style="background: #e8f5e9;">
+                <td><strong>第6个月</strong><br>突破签约</td>
+                <td>月6</td>
+                <td>
+                    • 正式报价<br>
+                    • 商务谈判<br>
+                    • 签订小批量订单<br>
+                    • 开始供货
+                </td>
+                <td><strong>签约</strong><br>（哪怕只有小批量）</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <div class="highlight-box">
+        <strong>💡 关键成功因素（KSF）：</strong><br>
+        1️⃣ <strong>耐心：</strong>不能急于求成，6个月只是起点<br>
+        2️⃣ <strong>持续：</strong>定期拜访不间断，即使没有订单也要保持联系<br>
+        3️⃣ <strong>价值：</strong>每次拜访都带去价值（技术方案、行业资讯、样片等）<br>
+        4️⃣ <strong>关系：</strong>不只是商务关系，要建立个人信任关系<br>
+        5️⃣ <strong>时机：</strong>抓住新项目立项、竞品出问题等关键时机
+    </div>
+
+    <div class="success-box">
+        <strong>✓ 现实预期：</strong><br>
+        • <strong>成功率：</strong>10个新客户，能拿下2-3个（20-30%）<br>
+        • <strong>时间：</strong>从第一次接触到签约，平均6-12个月<br>
+        • <strong>投入：</strong>每个客户投入FAE时间、样片成本、差旅费用约¥5-10万<br>
+        • <strong>回报：</strong>一旦签约，客户生命周期价值（LTV）可达¥500-1000万
+    </div>
+
+    <div class="page-number">第8页 | 场景6：策略3-4 + 6个月耕耘计划</div>
+</div>
+<div class="page">
+    <div class="page-title">场景7：商务谈判僵局 🤝⚔️</div>
+
+    <div class="section-title">【场景背景】</div>
+    <div class="quote-box">
+        技术评审通过，但商务谈判卡住（价格、账期、独家、最小采购量等分歧）。<br><br>
+        <strong>客户：</strong>"价格必须降到¥10，账期要90天，而且我们要求独家供应。这是我们的底线，不能妥协。"<br><br>
+        <strong>销售：</strong>"X总，这三个条件，我真的很难答应..."<br><br>
+        <strong>客户：</strong>"那就没得谈了。我们还有其他供应商在谈。"<br><br>
+        <strong>销售（内心OS）：</strong>怎么办？让步还是坚持？
+    </div>
+
+    <div class="section-title">【破局策略】</div>
+
+    <div class="subsection-title">策略1：拆分议题（逐个击破）🎯</div>
+
+    <div class="highlight-box">
+        <strong>核心原则：</strong>不要同时谈多个议题，容易陷入僵局。一项一项谈，逐个击破。
+    </div>
+
+    <div class="steps-container">
+        <div class="step-item">
+            <div class="step-number">1</div>
+            <div class="step-content">
+                <strong>议题排序</strong><br>
+                <strong>话术：</strong>"X总，我们一项一项谈，不要混在一起。我们先谈最重要的，谈妥了再谈下一个。您觉得价格、账期、独家，哪个对您最重要？"
+            </div>
+        </div>
+        <div class="step-item">
+            <div class="step-number">2</div>
+            <div class="step-content">
+                <strong>先易后难</strong><br>
+                <strong>策略：</strong>先谈容易达成一致的议题，建立谈判势头<br>
+                <strong>话术：</strong>"账期这个问题，我们可以商量。行业标准是60天，您要90天，我们可以考虑。但需要您在其他条件上有所让步。"
+            </div>
+        </div>
+        <div class="step-item">
+            <div class="step-number">3</div>
+            <div class="step-content">
+                <strong>以退为进</strong><br>
+                <strong>策略：</strong>在次要议题上让步，换取主要议题坚守<br>
+                <strong>话术：</strong>"账期我们可以给90天，但价格¥10真的做不到。我们可以给¥10.5，这是我们的成本底线。您看这样可以吗？"
+            </div>
+        </div>
+        <div class="step-item">
+            <div class="step-number">4</div>
+            <div class="step-content">
+                <strong>打包交易</strong><br>
+                <strong>策略：</strong>将多个议题打包，整体谈判<br>
+                <strong>话术：</strong>"这样吧，我们做一个整体方案：
+                <ul style="margin-top: 10px; padding-left: 20px;">
+                    <li>价格：¥10.5（您要求¥10，我们让步¥0.5）</li>
+                    <li>账期：90天（您的要求，我们满足）</li>
+                    <li>独家：有限独家（只在中高端轿车BCM领域）</li>
+                    <li>最小采购量：每年150万颗（您承诺）</li>
+                </ul>
+                这是一个平衡方案，您看可以吗？"
+            </div>
+        </div>
+    </div>
+
+    <div class="success-box">
+        <strong>💡 关键技巧：</strong><br>
+        • <strong>不要一次性让步太多</strong> - 每次让一点，让客户觉得是"谈"出来的<br>
+        • <strong>每次让步都要有条件</strong> - "如果...那么..." 的交换逻辑<br>
+        • <strong>保留后续筹码</strong> - 不要一开始就把底牌亮完
+    </div>
+
+    <div class="page-number">第1页 | 场景7：谈判僵局 - 策略1</div>
+</div>
+<div class="page">
+    <div class="page-title">场景7：谈判僵局 - 策略2-3 🎭🏔️</div>
+
+    <div class="section-title">策略2：引入第三方（外部压力）</div>
+
+    <div class="grid-3col">
+        <div class="strategy-box">
+            <div class="strategy-title">方法A：竞争对手威胁</div>
+            <strong>话术：</strong><br><br>
+            "X总，我刚接到通知，零跑汽车那边要追加100万颗订单，我们产能有限。<br><br>
+            如果您这边迟迟定不下来，我可能要先保证零跑的订单。<br><br>
+            不是说不和您合作，而是我们产能确实紧张。您能否尽快决策？如果这周能签约，我优先保证您的产能。"
+        </div>
+        <div class="strategy-box">
+            <div class="strategy-title">方法B：高层施压</div>
+            <strong>话术：</strong><br><br>
+            "X总，这个条件我真的批不了。这样吧，我向我们总经理汇报一下，看他能否特批。<br><br>
+            但我需要您给我一个采购意向书，证明您是认真想合作的。我拿着意向书去申请，成功率更高。您看可以吗？"
+        </div>
+        <div class="strategy-box">
+            <div class="strategy-title">方法C：时间期限</div>
+            <strong>话术：</strong><br><br>
+            "X总，我们这个特价只到月底。因为我们每个季度有销售目标，月底前签约我可以给更优惠的价格。<br><br>
+            如果拖到下个月，价格可能要涨回去了。您看能否在月底前决定？我保证给您最优惠的条件。"
+        </div>
+    </div>
+
+    <div class="section-title">策略3：改变谈判场景（换个环境）</div>
+
+    <div class="grid-2col">
+        <div class="strategy-box">
+            <div class="strategy-title">方法A：高层会谈</div>
+            <strong>策略：</strong>谈判僵局时，升级到高层谈判<br><br>
+            <strong>行动：</strong><br>
+            • 我方：总经理/VP出面<br>
+            • 对方：CEO/CTO/供应链VP<br>
+            • 场景：正式商务会谈（会议室）<br>
+            • 议题：战略合作，超越MCU采购<br><br>
+            <strong>话术：</strong>"X总，我们在执行层面可能很难达成一致。我建议我们两家高层见个面，聊聊战略合作的事情。不只是MCU采购，可能在更多领域有合作机会。您看什么时候方便，我安排我们总经理过来？"
+        </div>
+        <div class="strategy-box">
+            <div class="strategy-title">方法B：非正式场合</div>
+            <strong>策略：</strong>正式谈判太紧张，换个轻松场合<br><br>
+            <strong>场景：</strong><br>
+            • 饭局（晚餐）<br>
+            • 茶话会（下午茶）<br>
+            • 高尔夫/爬山（户外活动）<br>
+            • 参观考察（工厂/实验室）<br><br>
+            <strong>话术：</strong>"X总，我们谈了这么久，大家都有点累了。不如晚上一起吃个饭，放松一下？我们边吃边聊，不谈合同细节，就聊聊行业趋势、未来规划。"
+        </div>
+    </div>
+
+    <div class="strategy-box">
+        <div class="strategy-title">方法C：引入第三方调解</div>
+        <strong>策略：</strong>找一个双方都信任的第三方<br><br>
+        <strong>人选：</strong><br>
+        • 共同的合作伙伴（Tier 1供应商）<br>
+        • 投资机构（红杉、IDG等）<br>
+        • 行业协会（中汽协、芯片联盟）<br>
+        • 咨询公司（麦肯锡、德勤）<br><br>
+        <strong>话术：</strong>"X总，我们谈了这么久，双方都有些疲劳了。不如我们找个第三方机构，帮我们评估一下这个合作的合理性？比如找麦肯锡做个分析，看看价格、账期、独家这些条件是否合理。第三方的建议，我们双方都接受。您看怎么样？"
+    </div>
+
+    <div class="page-number">第2页 | 场景7：谈判僵局 - 策略2-3</div>
+</div>
+<div class="page">
+    <div class="page-title">场景7：谈判僵局 - 策略4（创造性方案）💡</div>
+
+    <div class="section-title">策略4：创造性解决方案（跳出框架）</div>
+
+    <div class="subsection-title">方法A：阶梯式定价</div>
+
+    <table class="data-table">
+        <thead>
+            <tr>
+                <th style="width: 25%;">问题</th>
+                <th style="width: 75%;">创造性方案</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>
+                    <strong>客户要求：</strong>¥10<br>
+                    <strong>我们成本：</strong>¥10.5<br>
+                    <strong>僵局：</strong>降不下来
+                </td>
+                <td>
+                    <strong>话术：</strong>"X总，¥10我真的做不了。但我们可以这样：<br><br>
+                    • <strong>第一年：¥10.8</strong>（我们让步，但不亏本）<br>
+                    • <strong>第二年：¥10.5</strong>（随着量产规模扩大，成本下降）<br>
+                    • <strong>第三年：¥10.2</strong>（进一步降本）<br>
+                    • <strong>第四年：¥10</strong>（达到您的目标价格）<br><br>
+                    这样我们都有时间适应。您看可以吗？"
+                </td>
+            </tr>
+        </tbody>
+    </table>
+
+    <div class="subsection-title">方法B：捆绑销售</div>
+
+    <table class="data-table">
+        <thead>
+            <tr>
+                <th style="width: 25%;">问题</th>
+                <th style="width: 75%;">创造性方案</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>
+                    <strong>客户要求：</strong>只买MCU，要求最低价<br>
+                    <strong>我们困境：</strong>MCU利润薄，很难再降价
+                </td>
+                <td>
+                    <strong>话术：</strong>"X总，单独卖MCU，利润确实很薄，很难再降价。但如果您除了MCU，还采购我们的其他产品，我们可以打包优惠：<br><br>
+                    • <strong>MCU：¥10.5</strong>（单独卖¥11）<br>
+                    • <strong>IGBT：¥80</strong>（单独卖¥85）<br>
+                    • <strong>电流传感器：¥150</strong>（单独卖¥160）<br><br>
+                    打包购买，总价优惠10%。您看这样可以吗？"
+                </td>
+            </tr>
+        </tbody>
+    </table>
+
+    <div class="subsection-title">方法C：股权合作</div>
+
+    <table class="data-table">
+        <thead>
+            <tr>
+                <th style="width: 25%;">问题</th>
+                <th style="width: 75%;">创造性方案</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>
+                    <strong>客户要求：</strong>价格、独家、各种优惠条件<br>
+                    <strong>我们困境：</strong>条件太苛刻，无法满足
+                </td>
+                <td>
+                    <strong>话术：</strong>"X总，我有一个大胆的想法：与其我们天天在价格上扯皮，不如考虑股权合作？<br><br>
+                    比如您投资我们比亚迪半导体，成为我们的战略股东。这样：<br>
+                    • 您拿到<strong>股东价格</strong>（更优惠）<br>
+                    • 您有<strong>优先供应权</strong>（战略股东）<br>
+                    • 您分享我们的成长收益（<strong>股权增值</strong>）<br><br>
+                    我们不只是买卖关系，而是<strong>利益共同体</strong>。您觉得这个想法怎么样？"
+                </td>
+            </tr>
+        </tbody>
+    </table>
+
+    <div class="success-box">
+        <strong>💡 创造性谈判的精髓：</strong><br><br>
+        1️⃣ <strong>跳出零和博弈</strong> - 不是"你多我少"，而是"做大蛋糕"<br>
+        2️⃣ <strong>多维度思考</strong> - 不只是价格，还有账期、服务、股权、战略合作等<br>
+        3️⃣ <strong>长期视角</strong> - 不追求一次性利润最大化，而是长期合作共赢<br>
+        4️⃣ <strong>超越交易</strong> - 从"买卖关系"升级到"战略伙伴关系"
+    </div>
+
+    <div class="warning-box">
+        <strong>⚠️ 谈判僵局的底线原则：</strong><br>
+        • 知道自己的底线（价格、账期、独家的最低可接受条件）<br>
+        • 敢于说"不"（有些单子，宁可不做，也不能亏本）<br>
+        • 保留退出选项（"这次谈不拢，下次再谈"，不要死磕）<br>
+        • 10个谈判，能成8个就算成功（不要追求100%成功率）
+    </div>
+
+    <div class="page-number">第3页 | 场景7：谈判僵局 - 创造性方案</div>
+</div>
+<div class="page">
+    <div class="page-title">场景8：丢单后复盘与二次进攻 🔄</div>
+
+    <div class="section-title">【场景背景】</div>
+    <div class="quote-box">
+        经过3-6个月跟进，最终客户选择了竞品（瑞萨/NXP/兆易），我们丢单了。<br><br>
+        <strong>客户：</strong>"不好意思，经过评估，我们决定用瑞萨的方案。感谢你们这段时间的支持。"<br><br>
+        <strong>销售（内心OS）：</strong>完了，白忙活了...<br>
+        <strong>销售：</strong>"能问一下为什么选择瑞萨吗？"<br><br>
+        <strong>客户：</strong>"主要是我们技术团队更熟悉瑞萨，切换成本比较高。价格虽然你们有优势，但不是最主要考虑因素。"
+    </div>
+
+    <div class="section-title">【复盘框架】</div>
+
+    <div class="subsection-title">步骤1：快速复盘（24小时内）⚡</div>
+
+    <div class="highlight-box">
+        <strong>复盘目的：</strong>总结经验教训，为二次进攻做准备，避免重复犯错
+    </div>
+
+    <div class="subsection-title">📋 复盘问题清单（5大问题）</div>
+
+    <table class="data-table">
+        <thead>
+            <tr>
+                <th style="width: 30%;">关键问题</th>
+                <th style="width: 70%;">分析要点</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr style="background: #ffebee;">
+                <td><strong>1. 为什么丢单？</strong><br>（真实原因）</td>
+                <td>
+                    • 价格问题？（我们报价太高？）<br>
+                    • 技术问题？（性能不满足？测试不通过？）<br>
+                    • 服务问题？（响应慢？支持不到位？）<br>
+                    • 关系问题？（没有搞定关键人？）<br>
+                    • 时机问题？（介入太晚？）
+                </td>
+            </tr>
+            <tr style="background: #fff9e6;">
+                <td><strong>2. 竞争对手为什么赢？</strong></td>
+                <td>
+                    • 价格更低？（低多少？）<br>
+                    • 技术更强？（哪方面更强？）<br>
+                    • 关系更好？（和谁关系好？）<br>
+                    • 品牌更响？（客户更信任？）
+                </td>
+            </tr>
+            <tr style="background: #e8f5e9;">
+                <td><strong>3. 我们做得好的地方？</strong></td>
+                <td>
+                    • 技术交流充分<br>
+                    • FAE支持到位<br>
+                    • 价格有竞争力<br>
+                    • 响应及时
+                </td>
+            </tr>
+            <tr style="background: #e3f2fd;">
+                <td><strong>4. 我们做得不好的地方？</strong></td>
+                <td>
+                    • 介入太晚（项目已经定型）<br>
+                    • 没搞定关键人（技术总监不认可）<br>
+                    • 价格让步不够（最后关头没敢降价）<br>
+                    • 高层关系薄弱（没有CEO层面支持）
+                </td>
+            </tr>
+            <tr style="background: #f3e5f5;">
+                <td><strong>5. 还有机会吗？</strong></td>
+                <td>
+                    • 客户真的满意竞品吗？<br>
+                    • 后续有新项目吗？<br>
+                    • 做第二供应商可能性？<br>
+                    • 2-3年后重新评估可能性？
+                </td>
+            </tr>
+        </tbody>
+    </table>
+
+    <div class="subsection-title">📝 复盘输出（4份文档）</div>
+
+    <div class="grid-2col">
+        <div class="highlight-box">
+            <strong>1. 丢单原因分析报告</strong><br>
+            （1页纸，简明扼要）
+        </div>
+        <div class="highlight-box">
+            <strong>2. 改进措施</strong><br>
+            （3-5条具体行动）
+        </div>
+        <div class="highlight-box">
+            <strong>3. 二次进攻计划</strong><br>
+            （如果还有机会）
+        </div>
+        <div class="highlight-box">
+            <strong>4. 经验教训</strong><br>
+            （分享给团队）
+        </div>
+    </div>
+
+    <div class="page-number">第4页 | 场景8：丢单复盘框架</div>
+</div>
+<div class="page">
+    <div class="page-title">场景8：优雅退场 + 二次进攻时机 👋🎯</div>
+
+    <div class="section-title">步骤2：优雅退场（保留后路）</div>
+
+    <div class="quote-box">
+        <strong>话术模板（格局很重要）：</strong><br><br>
+        "X总，虽然这次没能合作成功，但我还是要感谢您给我们机会。<br><br>
+        我理解您的选择，瑞萨确实是优秀的供应商。我们在技术实力和经验上确实还有差距，这也是我们需要提升的地方。<br><br>
+        不过有几句话我还是想说：<br><br>
+        <strong>1️⃣ 我们会持续改进</strong><br>
+        • 这次丢单对我们是个教训<br>
+        • 我们会针对您提出的问题改进<br>
+        • 希望将来有机会再合作<br><br>
+        <strong>2️⃣ 保持联系</strong><br>
+        • 虽然这次没合作，但希望我们还是朋友<br>
+        • 如果瑞萨那边有任何问题，随时联系我<br>
+        • 我们愿意做您的备用方案<br><br>
+        <strong>3️⃣ 后续项目</strong><br>
+        • 听说您明年有新车型规划<br>
+        • 新项目立项时，能否再给我们一次机会？<br>
+        • 我们会准备得更充分<br><br>
+        最后，祝您项目顺利！如果需要任何技术支持（哪怕不是用我们的产品），随时找我。"
+    </div>
+
+    <div class="warning-box">
+        <strong>⚠️ 优雅退场的关键原则：</strong><br>
+        ✓ 不抱怨（不说"竞品哪里不好"）<br>
+        ✓ 不纠缠（不继续推销）<br>
+        ✓ 不翻脸（不因丢单而态度变差）<br>
+        ✓ 留后路（保持联系，等待机会）
+    </div>
+
+    <div class="section-title">步骤3：埋伏二次进攻</div>
+
+    <div class="subsection-title">📅 二次进攻时机（3个时间窗口）</div>
+
+    <table class="data-table">
+        <thead>
+            <tr>
+                <th style="width: 22%;">时机</th>
+                <th style="width: 38%;">触发条件</th>
+                <th style="width: 40%;">我们的行动</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr style="background: #ffebee;">
+                <td><strong>时机A：竞品出问题</strong><br>（3-12个月内）</td>
+                <td>
+                    • 瑞萨缺货，交期延长<br>
+                    • 瑞萨涨价，成本增加<br>
+                    • 瑞萨质量问题，批次不良<br>
+                    • 瑞萨服务不到位，客户不满
+                </td>
+                <td>
+                    • 保持关注（定期拜访客户）<br>
+                    • 提前预警（"我听说瑞萨最近缺货，您那边还好吗？"）<br>
+                    • 及时补位（"如果瑞萨供不上，我们随时可以支持"）<br>
+                    • 提供备用方案（Pin-to-Pin替代，快速切换）
+                </td>
+            </tr>
+            <tr style="background: #e3f2fd;">
+                <td><strong>时机B：新项目立项</strong><br>（12-24个月）</td>
+                <td>
+                    • 客户新车型/新平台立项<br>
+                    • 供应商选择重新评估<br>
+                    • 我们有机会参与
+                </td>
+                <td>
+                    • 提前介入（比上次早6个月）<br>
+                    • 联合开发（参与前期设计）<br>
+                    • 展示进步（"我们针对上次问题改进了"）<br>
+                    • 价格优势（"这次我们报价更有竞争力"）
+                </td>
+            </tr>
+            <tr style="background: #f3e5f5;">
+                <td><strong>时机C：第二供应商机会</strong><br>（6-18个月）</td>
+                <td>
+                    • 客户认识到单一供应商风险<br>
+                    • 主动寻找第二供应商<br>
+                    • 我们有机会补位
+                </td>
+                <td>
+                    • 不要求主供应商地位<br>
+                    • 接受20-30%份额<br>
+                    • 价格更优惠（"第二供应商价格可以更低"）<br>
+                    • 服务更好（"我们更珍惜这个机会"）
+                </td>
+            </tr>
+        </tbody>
+    </table>
+
+    <div class="success-box">
+        <strong>💡 关键洞察：</strong><br>
+        丢单不是结束，而是二次进攻的开始。<strong>10个丢单客户，1-2个会回来</strong>。关键是保持联系，等待时机。
+    </div>
+
+    <div class="page-number">第5页 | 场景8：优雅退场 + 二次进攻时机</div>
+</div>
+<div class="page">
+    <div class="page-title">场景8：二次进攻策略 + 经验总结 🚀📚</div>
+
+    <div class="section-title">二次进攻策略（4种策略）</div>
+
+    <div class="grid-2col">
+        <div class="strategy-box">
+            <div class="strategy-title">策略A：展示进步</div>
+            <strong>话术：</strong>"X总，距离上次我们谈项目已经1年了。这1年里，我们针对您当时提出的问题做了很多改进：<br><br>
+            • <strong>技术问题：</strong>我们优化了EMC设计，现在能达到200V/m<br>
+            • <strong>价格问题：</strong>我们降低了成本，现在价格比瑞萨低35%<br>
+            • <strong>服务问题：</strong>我们FAE团队扩大到20人，响应更快<br><br>
+            能否给我们一次机会，重新评估一下我们的产品？"
+        </div>
+        <div class="strategy-box">
+            <div class="strategy-title">策略B：借力打力</div>
+            <strong>话术：</strong>"X总，我听说最近瑞萨缺货，交期延长到6个月了。您那边还好吗？<br><br>
+            如果影响到您的生产计划，我们可以紧急支持。我们现在库存充足，1周就能交货。而且我们产品Pin-to-Pin兼容瑞萨，切换成本很低。<br><br>
+            要不要我们先给您备一些货，以防万一？"
+        </div>
+        <div class="strategy-box">
+            <div class="strategy-title">策略C：降维打击</div>
+            <strong>话术：</strong>"X总，我知道您现在用瑞萨，我们不动。但您那边有没有一些边缘应用，可以试试我们的产品？<br><br>
+            比如车窗控制、座椅调节这些非核心应用，就算有问题，影响也不大。您可以当作试点，验证一下我们的产品。<br><br>
+            如果试点成功，后面再扩大到核心应用。您看怎么样？"
+        </div>
+        <div class="strategy-box">
+            <div class="strategy-title">策略D：合纵连横</div>
+            <strong>话术：</strong>"X总，虽然您这个项目用的是瑞萨，但您的供应商（比如德赛西威）有用我们的产品。<br><br>
+            如果德赛用我们的MCU，成本能降20%，他们给您的报价也能更优惠。这样您也受益。<br><br>
+            要不要我们一起去拜访德赛，聊聊合作的事情？"
+        </div>
+    </div>
+
+    <div class="section-title">【经验教训总结】</div>
+
+    <div class="subsection-title">📊 建立丢单案例库（结构化管理）</div>
+
+    <table class="data-table">
+        <thead>
+            <tr>
+                <th style="width: 20%;">字段</th>
+                <th style="width: 80%;">案例示例</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td><strong>丢单客户</strong></td>
+                <td>小米汽车</td>
+            </tr>
+            <tr>
+                <td><strong>丢单产品</strong></td>
+                <td>BCM主控MCU</td>
+            </tr>
+            <tr>
+                <td><strong>竞争对手</strong></td>
+                <td>瑞萨RH850</td>
+            </tr>
+            <tr style="background: #ffebee;">
+                <td><strong>丢单原因</strong></td>
+                <td>技术团队更熟悉瑞萨，切换成本高</td>
+            </tr>
+            <tr style="background: #fff9e6;">
+                <td><strong>关键失误</strong></td>
+                <td>介入太晚（项目已定型）</td>
+            </tr>
+            <tr style="background: #e8f5e9;">
+                <td><strong>改进措施</strong></td>
+                <td>提前6-12个月介入新项目</td>
+            </tr>
+            <tr style="background: #e3f2fd;">
+                <td><strong>二次机会</strong></td>
+                <td>明年新平台立项</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <div class="subsection-title">🔄 定期回访机制</div>
+
+    <div class="highlight-box">
+        <strong>回访频率：</strong>每季度拜访一次（不推销，只叙旧）<br>
+        <strong>回访目的：</strong>了解项目进展、等待二次进攻时机<br>
+        <strong>成功率：</strong>10个丢单客户，1-2个会回来（10-20%）
+    </div>
+
+    <div class="subsection-title">📢 团队分享（内部会议）</div>
+
+    <div class="steps-container">
+        <div class="step-item">
+            <div class="step-number">1</div>
+            <div class="step-content">
+                <strong>这次丢单的关键原因</strong> - 深度剖析，不回避问题
+            </div>
+        </div>
+        <div class="step-item">
+            <div class="step-number">2</div>
+            <div class="step-content">
+                <strong>竞争对手的成功之处</strong> - 学习对手的优点
+            </div>
+        </div>
+        <div class="step-item">
+            <div class="step-number">3</div>
+            <div class="step-content">
+                <strong>我们的改进措施</strong> - 制定具体行动计划
+            </div>
+        </div>
+        <div class="step-item">
+            <div class="step-number">4</div>
+            <div class="step-content">
+                <strong>对其他项目的启示</strong> - 避免重复犯错
+            </div>
+        </div>
+    </div>
+
+    <div class="success-box">
+        <strong>✓ 丢单复盘的价值：</strong><br>
+        • <strong>成长</strong> - 每次丢单都是学习机会<br>
+        • <strong>改进</strong> - 针对性提升短板<br>
+        • <strong>机会</strong> - 为二次进攻做准备<br>
+        • <strong>文化</strong> - 建立学习型组织，不怕失败，从失败中成长
+    </div>
+
+    <div class="warning-box">
+        <strong>⚠️ 重要提醒：</strong><br>
+        不要因为丢单而灰心丧气。销售就是"概率游戏"，不可能100%成功。关键是：<br>
+        • <strong>每次丢单都复盘</strong><br>
+        • <strong>每次复盘都改进</strong><br>
+        • <strong>每次改进都成长</strong><br>
+        • <strong>成功率从30%提升到50%，就是巨大进步</strong>
+    </div>
+
+    <div class="page-number">第6页 | 场景8：二次进攻策略 + 经验总结</div>
+</div>
+<div class="page">
+    <div class="page-title">第三部分：快速响应机制 ⚡</div>
+
+    <div class="section-title">一、销售-市场协同SOP</div>
+
+    <div class="highlight-box">
+        <strong>核心理念：</strong>市场部 = 销售部的"情报参谋部"和"火力支援部"
+    </div>
+
+    <div class="grid-2col">
+        <div class="strategy-box">
+            <div class="strategy-title">市场部职责</div>
+            ✓ 提供市场情报（竞品、客户、行业趋势）<br>
+            ✓ 制作销售工具（PPT、方案、案例）<br>
+            ✓ 支持大客户攻坚（高端材料、定制方案）<br>
+            ✓ 品牌宣传（案例推广、展会、公关）
+        </div>
+        <div class="strategy-box">
+            <div class="strategy-title">销售部职责</div>
+            ✓ 反馈一线情报（客户需求、竞品动态）<br>
+            ✓ 提出支持需求（需要什么材料、什么数据）<br>
+            ✓ 验证市场策略（市场部的方案是否有效）
+        </div>
+    </div>
+
+    <div class="subsection-title">协同场景1：新客户开发支持</div>
+
+    <table class="data-table">
+        <thead>
+            <tr>
+                <th style="width: 25%;">支持项</th>
+                <th style="width: 15%;">时限</th>
+                <th style="width: 60%;">具体内容</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr style="background: #e3f2fd;">
+                <td><strong>1. 客户情报包</strong></td>
+                <td>4小时内</td>
+                <td>公司概况、车型规划、MCU需求预估、现有供应商、决策链、痛点分析、切入点</td>
+            </tr>
+            <tr style="background: #fff3e0;">
+                <td><strong>2. 定制化方案PPT</strong></td>
+                <td>24小时内</td>
+                <td>6部分：客户行业地位分析 + MCU趋势 + 产品矩阵 + 定制方案（BCM/BMS） + 成功案例 + 合作路线图（18个月）</td>
+            </tr>
+            <tr style="background: #e8f5e9;">
+                <td><strong>3. 技术白皮书</strong></td>
+                <td>48小时内</td>
+                <td>车规MCU技术趋势报告、技术优势详解、500万台实车验证数据</td>
+            </tr>
+            <tr style="background: #f3e5f5;">
+                <td><strong>4. 竞品对比表</strong></td>
+                <td>24小时内</td>
+                <td>比亚迪 vs 瑞萨 vs NXP（性能、价格、交期、服务对比）</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <div class="subsection-title">协同场景2：商务谈判支持</div>
+
+    <div class="steps-container">
+        <div class="step-item">
+            <div class="step-number">1</div>
+            <div class="step-content">
+                <strong>竞品价格真实性分析</strong>（4小时内）<br>
+                官方价格、大批量折扣、最低可能价格、结论（是否合理）
+            </div>
+        </div>
+        <div class="step-item">
+            <div class="step-number">2</div>
+            <div class="step-content">
+                <strong>TCO总拥有成本对比表</strong>（Excel）<br>
+                采购成本 + 开发成本 + 风险成本 = 我们比瑞萨低¥320万/年
+            </div>
+        </div>
+        <div class="step-item">
+            <div class="step-number">3</div>
+            <div class="step-content">
+                <strong>谈判话术库</strong><br>
+                应对"竞品更便宜"的10种话术 + 阶梯式让步策略 + 守住底线的5个技巧
+            </div>
+        </div>
+        <div class="step-item">
+            <div class="step-number">4</div>
+            <div class="step-content">
+                <strong>紧急授权</strong><br>
+                销售总监→市场VP→CEO（24小时）
+            </div>
+        </div>
+    </div>
+
+    <div class="page-number">第1页 | 快速响应机制 - 销售市场协同</div>
+</div>
+<div class="page">
+    <div class="page-title">销售-市场协同工具 + 获客渠道开发 🛠️📡</div>
+
+    <div class="section-title">【协同工具】</div>
+
+    <div class="subsection-title">工具1：销售-市场协同工作台（在线系统）</div>
+
+    <table class="data-table">
+        <thead>
+            <tr>
+                <th style="width: 20%;">模块</th>
+                <th style="width: 50%;">功能</th>
+                <th style="width: 30%;">响应时限SLA</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td><strong>1. 需求提交</strong></td>
+                <td>销售填写支持需求单、选择类型（客户开发/商务谈判/技术支持/市场活动）、填写紧急程度</td>
+                <td rowspan="4">
+                    <strong>紧急需求：</strong><br>2h响应，24h交付<br><br>
+                    <strong>重要需求：</strong><br>4h响应，48h交付<br><br>
+                    <strong>一般需求：</strong><br>8h响应，72h交付
+                </td>
+            </tr>
+            <tr>
+                <td><strong>2. 任务分配</strong></td>
+                <td>市场部接收需求、自动分配负责人、设定完成时限</td>
+            </tr>
+            <tr>
+                <td><strong>3. 进度跟踪</strong></td>
+                <td>实时查看任务进展、阶段性成果展示、延期预警</td>
+            </tr>
+            <tr>
+                <td><strong>4. 成果交付</strong></td>
+                <td>文件在线共享、销售反馈评价、归档知识库</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <div class="subsection-title">工具2：周例会机制（每周五下午）</div>
+
+    <div class="grid-2col">
+        <div class="highlight-box">
+            <strong>1. 上周重点项目进展</strong>（15分钟）<br>
+            销售：汇报关键客户进展<br>
+            市场：汇报支持效果
+        </div>
+        <div class="highlight-box">
+            <strong>2. 竞品动态分享</strong>（10分钟）<br>
+            销售：一线竞品情报<br>
+            市场：公开渠道竞品信息
+        </div>
+        <div class="highlight-box">
+            <strong>3. 下周重点客户攻坚</strong>（20分钟）<br>
+            销售：列出下周重点客户<br>
+            市场：承诺支持方案
+        </div>
+        <div class="highlight-box">
+            <strong>4. 问题与改进</strong>（15分钟）<br>
+            双方：反馈不足、讨论解决方案
+        </div>
+    </div>
+
+    <div class="section-title">二、获客渠道开发指南</div>
+
+    <div class="subsection-title">线上渠道（3大渠道）</div>
+
+    <div class="grid-3col">
+        <div class="strategy-box">
+            <div class="strategy-title">渠道1：官网SEO优化</div>
+            <strong>目标：</strong>"车规MCU"搜索排名前3<br><br>
+            <strong>关键词：</strong><br>
+            车规级MCU、国产车规MCU、新能源汽车MCU<br><br>
+            <strong>内容营销（每月）：</strong><br>
+            • 技术博客×4<br>
+            • 白皮书×1<br>
+            • 成功案例×2<br><br>
+            <strong>预期效果：</strong><br>
+            ✓ 3个月进入百度前10<br>
+            ✓ 6个月月访问50000+<br>
+            ✓ 每月获客10-20个
+        </div>
+        <div class="strategy-box">
+            <div class="strategy-title">渠道2：行业垂直媒体</div>
+            <strong>目标媒体：</strong><br>
+            • 半导体：芯智讯、集微网<br>
+            • 汽车：盖世汽车、车云网<br>
+            • 科技：36氪、钛媒体<br><br>
+            <strong>合作方式：</strong><br>
+            • 每月1-2篇专业文章<br>
+            • 每季度1次深度专访<br>
+            • 每半年1次重大新闻<br><br>
+            <strong>内容方向：</strong><br>
+            技术科普、趋势分析、案例分享、高管观点
+        </div>
+        <div class="strategy-box">
+            <div class="strategy-title">渠道3：社交媒体运营</div>
+            <strong>微信公众号：</strong>主阵地<br>
+            每周2-3篇（技术干货+行业洞察+公司动态）<br><br>
+            <strong>知乎：</strong>技术影响力<br>
+            回答车规MCU问题、发布专栏文章<br><br>
+            <strong>LinkedIn：</strong>国际化<br>
+            英文内容、面向海外客户<br><br>
+            <strong>要点：</strong>专业有价值、定期更新、互动回复
+        </div>
+    </div>
+
+    <div class="page-number">第2页 | 协同工具 + 获客渠道（线上）</div>
+</div>
+<div class="page">
+    <div class="page-title">线下渠道 + 30分钟紧急响应机制 🏢⚡</div>
+
+    <div class="section-title">线下渠道（3大渠道）</div>
+
+    <div class="subsection-title">渠道4：行业展会</div>
+
+    <table class="data-table">
+        <thead>
+            <tr>
+                <th style="width: 25%;">展会</th>
+                <th style="width: 15%;">时间</th>
+                <th style="width: 30%;">规模</th>
+                <th style="width: 30%;">ROI目标</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td><strong>慕尼黑上海电子展</strong></td>
+                <td>每年3月</td>
+                <td>10万+专业观众</td>
+                <td rowspan="3">
+                    <strong>获客数量：</strong>200+潜在客户<br>
+                    <strong>转化率：</strong>10%（20个意向）<br>
+                    <strong>成交率：</strong>20%（4个签约）<br>
+                    <strong>投入产出比：</strong>1:5<br>
+                    （投入¥50万，产出¥250万订单）
+                </td>
+            </tr>
+            <tr>
+                <td><strong>中国汽车供应链峰会</strong></td>
+                <td>每年6月</td>
+                <td>5000+汽车专业人士</td>
+            </tr>
+            <tr>
+                <td><strong>中国国际半导体博览会</strong></td>
+                <td>每年10月</td>
+                <td>5万+专业观众</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <div class="grid-3col">
+        <div class="highlight-box">
+            <strong>展前（1个月）：</strong><br>
+            ✓ 邀请重点客户参观<br>
+            ✓ 媒体预热<br>
+            ✓ 准备物料
+        </div>
+        <div class="highlight-box">
+            <strong>展中（3天）：</strong><br>
+            ✓ 收集名片（目标200+）<br>
+            ✓ 产品演示<br>
+            ✓ 媒体采访<br>
+            ✓ 商务洽谈
+        </div>
+        <div class="highlight-box">
+            <strong>展后（2周内）：</strong><br>
+            ✓ 线索分类（A/B/C级）<br>
+            ✓ 48h内联系A级<br>
+            ✓ 1周内联系B级<br>
+            ✓ 2周内群发C级
+        </div>
+    </div>
+
+    <div class="subsection-title">渠道5：行业协会/联盟</div>
+
+    <div class="grid-2col">
+        <div class="strategy-box">
+            <div class="strategy-title">重点加入组织</div>
+            • <strong>中国汽车芯片产业创新联盟</strong> - 理事单位<br>
+            • <strong>中国汽车工程学会</strong> - 企业会员<br>
+            • <strong>中国半导体行业协会</strong> - 常务理事
+        </div>
+        <div class="strategy-box">
+            <div class="strategy-title">参与策略</div>
+            ✓ 积极参与标准制定（体现技术实力）<br>
+            ✓ 主动承办活动（扩大影响力）<br>
+            ✓ 高管担任职务（理事、副秘书长）<br>
+            ✓ 发布行业报告（建立thought leadership）
+        </div>
+    </div>
+
+    <div class="subsection-title">渠道6：客户推荐（老客户转介绍）</div>
+
+    <div class="success-box">
+        <strong>激励政策：</strong>推荐成功（签约）后，推荐人获得：<br>
+        • <strong>现金奖励：</strong>新客户首年采购额的2%<br>
+        • <strong>或价格折扣：</strong>本人下批订单额外5%折扣<br>
+        • <strong>或优先权：</strong>产能紧张时优先供应<br><br>
+        <strong>预期效果：</strong>✓ 每季度推荐2-3个新客户 | ✓ 转化率高（有推荐人背书） | ✓ 成本低（ROI高）
+    </div>
+
+    <div class="section-title">三、30分钟紧急响应机制</div>
+
+    <div class="subsection-title">紧急情况定义（3级分类）</div>
+
+    <table class="data-table">
+        <thead>
+            <tr>
+                <th style="width: 15%;">级别</th>
+                <th style="width: 20%;">响应时间</th>
+                <th style="width: 65%;">情况</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr style="background: #ffebee;">
+                <td><strong>🔴 超级紧急</strong></td>
+                <td><strong style="font-size: 16px;">立即响应<br>30分钟内</strong></td>
+                <td>• 大客户质量投诉（批次不良、安全隐患）<br>• 重大商机（短时间内需要决策支持）<br>• 竞品恶性竞争（抹黑、不正当手段）<br>• 媒体负面报道（需要紧急公关）</td>
+            </tr>
+            <tr style="background: #fff9e6;">
+                <td><strong>🟡 紧急</strong></td>
+                <td>2小时内响应</td>
+                <td>• 客户技术问题（影响生产）<br>• 商务谈判支持（需要数据、材料）<br>• 竞品价格战（需要应对策略）<br>• 重要客户拜访支持</td>
+            </tr>
+            <tr style="background: #e8f5e9;">
+                <td><strong>🟢 重要</strong></td>
+                <td>24小时内响应</td>
+                <td>• 常规技术咨询<br>• 销售材料需求<br>• 客户背景调研<br>• 行业信息查询</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <div class="page-number">第3页 | 线下渠道 + 紧急响应机制定义</div>
+</div>
+<div class="page">
+    <div class="page-title">30分钟超级紧急响应流程 + 应急资源库 🚨🛡️</div>
+
+    <div class="section-title">超级紧急情况响应流程（30分钟）</div>
+
+    <div class="steps-container">
+        <div class="step-item">
+            <div class="step-number">1</div>
+            <div class="step-content">
+                <strong>销售发现并上报（5分钟内）</strong><br>
+                <strong>行动：</strong><br>
+                • 立即电话通知市场总监（不是微信，是电话！）<br>
+                • 简要说明情况（谁、什么问题、多紧急）<br>
+                • 发送书面情况说明（微信/邮件，附照片/录音）<br><br>
+                <strong>话术：</strong>"王总您好！我是XX，有紧急情况向您汇报。客户YY刚才反馈我们MCU有批次质量问题，已经影响到他们生产线，情况非常紧急。我需要技术支持和高层协调。"
+            </div>
+        </div>
+        <div class="step-item">
+            <div class="step-number">2</div>
+            <div class="step-content">
+                <strong>市场总监评估（10分钟内）</strong><br>
+                <strong>行动：</strong><br>
+                • 判断紧急程度（是否真的超级紧急）<br>
+                • 决定响应级别（是否启动应急机制）<br>
+                • 通知相关人员（FAE、质量、高层）<br><br>
+                <strong>决策树：</strong><br>
+                • 如果是质量问题 → 启动质量应急预案<br>
+                • 如果是商务问题 → 高层介入谈判<br>
+                • 如果是公关危机 → 启动危机公关预案
+            </div>
+        </div>
+        <div class="step-item">
+            <div class="step-number">3</div>
+            <div class="step-content">
+                <strong>组建应急小组（15分钟内）</strong><br>
+                <strong>人员配置：</strong><br>
+                • 销售负责人×1（一线协调）<br>
+                • FAE工程师×2（技术支持）<br>
+                • 质量工程师×1（质量问题分析）<br>
+                • 市场总监×1（资源协调）<br>
+                • 高层×1（CEO/VP，必要时）<br><br>
+                <strong>任务分工：</strong>销售→客户沟通 | FAE→技术诊断 | 质量→问题调查 | 市场→资源调配 | 高层→高层沟通
+            </div>
+        </div>
+        <div class="step-item">
+            <div class="step-number">4</div>
+            <div class="step-content">
+                <strong>现场支持（30分钟内出发）</strong><br>
+                <strong>行动：</strong><br>
+                • 最近的FAE立即出发（自驾/打车/包车）<br>
+                • 准备应急物资（测试设备、备品备件）<br>
+                • 预订最快交通（飞机/高铁）<br>
+                • <strong>目标：6小时内到达客户现场（国内）</strong><br><br>
+                <strong>同步行动：</strong><br>
+                • 电话安抚客户（"我们非常重视，团队正在路上"）<br>
+                • 准备应急方案（在路上就开始分析问题）<br>
+                • 准备赔偿方案（预估损失，准备补偿）
+            </div>
+        </div>
+    </div>
+
+    <div class="section-title">【应急资源库】</div>
+
+    <table class="data-table">
+        <thead>
+            <tr>
+                <th style="width: 25%;">资源类别</th>
+                <th style="width: 75%;">内容</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr style="background: #e3f2fd;">
+                <td><strong>1. 标准材料库</strong><br>（随时可调用）</td>
+                <td>
+                    • 产品介绍PPT（6个产品）<br>
+                    • 竞品对比表（vs 瑞萨/NXP/英飞凌等）<br>
+                    • 成功案例（10+案例，Word/PDF）<br>
+                    • 技术白皮书（5份）<br>
+                    • 公司介绍视频（3分钟/10分钟版本）
+                </td>
+            </tr>
+            <tr style="background: #fff3e0;">
+                <td><strong>2. FAE资源池</strong><br>（24小时on-call）</td>
+                <td>
+                    • 华东FAE：8人（上海、苏州、杭州）<br>
+                    • 华南FAE：7人（深圳、广州、东莞）<br>
+                    • 华北FAE：5人（北京、天津、西安）<br>
+                    • 24小时on-call（轮班制）
+                </td>
+            </tr>
+            <tr style="background: #e8f5e9;">
+                <td><strong>3. 实物资源</strong></td>
+                <td>
+                    • 样片库存：每个型号1000片（深圳/上海仓）<br>
+                    • 开发板：50套（可快递）<br>
+                    • 演示设备：10套（可携带）
+                </td>
+            </tr>
+            <tr style="background: #f3e5f5;">
+                <td><strong>4. 资金授权</strong><br>（应急先执行后补审批）</td>
+                <td>
+                    • 市场总监授权：单笔¥10万以内<br>
+                    • VP授权：单笔¥50万以内<br>
+                    • CEO授权：¥50万以上<br>
+                    • <strong style="color: #f44336;">应急情况：先执行后补审批</strong>
+                </td>
+            </tr>
+            <tr style="background: #fff9e6;">
+                <td><strong>5. 合作伙伴资源</strong></td>
+                <td>
+                    • 第三方测试实验室（EMC、可靠性）<br>
+                    • 物流合作伙伴（紧急配送）<br>
+                    • 媒体资源（危机公关）
+                </td>
+            </tr>
+        </tbody>
+    </table>
+
+    <div class="warning-box">
+        <strong>⚠️ 关键成功因素：</strong><br>
+        1️⃣ <strong>速度第一</strong> - 30分钟响应是底线，越快越好<br>
+        2️⃣ <strong>资源保障</strong> - 人员、物资、资金随时待命<br>
+        3️⃣ <strong>授权清晰</strong> - 紧急情况下，先执行后审批<br>
+        4️⃣ <strong>客户至上</strong> - 第一时间安抚客户，体现重视
+    </div>
+
+    <div class="page-number">第4页 | 超级紧急响应流程 + 应急资源库</div>
+</div>
+<div class="page">
+    <div class="page-title">第四部分：情报工具箱 📊🔍</div>
+
+    <div class="section-title">一、麦肯锡式分析模板</div>
+
+    <div class="subsection-title">模板1：MECE框架（客户分析）</div>
+
+    <div class="highlight-box">
+        <strong>MECE = Mutually Exclusive, Collectively Exhaustive = 相互独立，完全穷尽</strong><br>
+        <strong>应用：</strong>客户分类与优先级排序
+    </div>
+
+    <div class="grid-2col">
+        <div class="strategy-box">
+            <div class="strategy-title">维度1：客户类型</div>
+            <strong>整车厂：</strong><br>
+            • 新势力（理想、小鹏、蔚来）<br>
+            • 传统转型（吉利、长安）<br>
+            • 商用车（宇通、福田）<br><br>
+            <strong>Tier 1供应商：</strong><br>
+            • 座舱（德赛、华阳）<br>
+            • 底盘（博世、采埃孚）<br>
+            • 电池（宁德、比克）
+        </div>
+        <div class="strategy-box">
+            <div class="strategy-title">维度2-4：量/难度/阶段</div>
+            <strong>采购量（年度）：</strong><br>
+            • 大客户：200万颗+<br>
+            • 中客户：50-200万颗<br>
+            • 小客户：<50万颗<br><br>
+            <strong>成交难度：</strong><br>
+            • 容易：已有国产MCU使用经验<br>
+            • 中等：在评估国产替代<br>
+            • 困难：固守国际品牌<br><br>
+            <strong>合作阶段：</strong><br>
+            潜在→意向→合作→流失
+        </div>
+    </div>
+
+    <div class="subsection-title">分析矩阵：客户价值 vs 成交难度（2×2矩阵）</div>
+
+    <div class="matrix">
+        <div class="matrix-cell matrix-cell-1">
+            <strong style="font-size: 18px; margin-bottom: 10px;">① 优先客户</strong><br>
+            <strong style="color: #4caf50;">又容易又大</strong><br><br>
+            <strong>策略：</strong>投入80%资源<br>
+            全力攻坚，快速成交
+        </div>
+        <div class="matrix-cell matrix-cell-3">
+            <strong style="font-size: 18px; margin-bottom: 10px;">③ 重点攻坚</strong><br>
+            <strong style="color: #ff9800;">难但值得</strong><br><br>
+            <strong>策略：</strong>高层介入<br>
+            长期耕耘，战略合作
+        </div>
+        <div class="matrix-cell matrix-cell-2">
+            <strong style="font-size: 18px; margin-bottom: 10px;">② 快速成交</strong><br>
+            <strong style="color: #ffc107;">容易但小</strong><br><br>
+            <strong>策略：</strong>标准化流程<br>
+            快速签约，批量复制
+        </div>
+        <div class="matrix-cell matrix-cell-4">
+            <strong style="font-size: 18px; margin-bottom: 10px;">④ 暂缓</strong><br>
+            <strong style="color: #f44336;">难又小</strong><br><br>
+            <strong>策略：</strong>标准服务<br>
+            不主动投入资源
+        </div>
+    </div>
+
+    <div class="subsection-title">模板2：5C分析框架（市场环境）</div>
+
+    <div class="highlight-box">
+        <strong>5C = Company, Customer, Competitor, Collaborator, Context</strong><br>
+        <strong>应用：</strong>新产品上市前的市场分析
+    </div>
+
+    <table class="data-table">
+        <thead>
+            <tr>
+                <th style="width: 20%;">维度</th>
+                <th style="width: 80%;">分析内容</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr style="background: #e8f5e9;">
+                <td><strong>Company<br>（我方）</strong></td>
+                <td>
+                    <strong>优势：</strong>500万台实车验证、价格低30%、交期快（12周）<br>
+                    <strong>劣势：</strong>品牌认知度低、高端产品线不全、国际化不足
+                </td>
+            </tr>
+            <tr style="background: #e3f2fd;">
+                <td><strong>Customer<br>（客户）</strong></td>
+                <td>
+                    <strong>需求：</strong>供应链安全、成本控制<br>
+                    <strong>痛点：</strong>国际品牌缺货、涨价<br>
+                    <strong>决策：</strong>技术评审→商务谈判→高层决策
+                </td>
+            </tr>
+            <tr style="background: #fff3e0;">
+                <td><strong>Competitor<br>（竞品）</strong></td>
+                <td>
+                    <strong>国际：</strong>瑞萨/NXP/英飞凌 - 技术强、品牌响 | 价格高、缺货<br>
+                    <strong>国产：</strong>兆易创新/中颖电子 - 价格低 | 车规经验少
+                </td>
+            </tr>
+            <tr style="background: #f3e5f5;">
+                <td><strong>Collaborator<br>（合作伙伴）</strong></td>
+                <td>
+                    <strong>上游：</strong>晶圆厂（自有）、设备商<br>
+                    <strong>下游：</strong>Tier 1供应商（渠道）<br>
+                    <strong>横向：</strong>行业协会、研究机构
+                </td>
+            </tr>
+            <tr style="background: #fff9e6;">
+                <td><strong>Context<br>（外部环境）</strong></td>
+                <td>
+                    <strong>政策：</strong>国产替代、新能源补贴<br>
+                    <strong>经济：</strong>电动车高速增长<br>
+                    <strong>技术：</strong>MCU向高性能、低功耗发展<br>
+                    <strong>社会：</strong>供应链安全意识提升
+                </td>
+            </tr>
+        </tbody>
+    </table>
+
+    <div class="success-box">
+        <strong>结论与策略：</strong><br>
+        <strong>机会：</strong>国产替代 + 供应链安全 + 成本压力<br>
+        <strong>策略：</strong>差异化定位（性价比 + 供应保障）<br>
+        <strong>路径：</strong>从中低端切入，逐步向上突破
+    </div>
+
+    <div class="page-number">第1页 | 麦肯锡式分析模板（MECE + 5C）</div>
+</div>
+<div class="page">
+    <div class="page-title">Excel工具包：客户情报 + 竞品对标 + TCO计算 📊</div>
+
+    <div class="section-title">二、Excel工具包</div>
+
+    <div class="subsection-title">工具1：客户情报数据库.xlsx</div>
+
+    <div class="grid-2col">
+        <div class="strategy-box">
+            <div class="strategy-title">工作表1：客户基本信息</div>
+            • 客户名称、类型（整车厂/Tier 1）<br>
+            • 年产量/产值、主营业务<br>
+            • 联系人（姓名、职位、电话、邮箱）<br>
+            • 决策链（技术/采购/高层）
+        </div>
+        <div class="strategy-box">
+            <div class="strategy-title">工作表2：MCU使用现状</div>
+            • 现有供应商、使用型号<br>
+            • 年采购量（万颗）、单价（¥）<br>
+            • 年度采购额（万元）<br>
+            • 应用场景、合同到期时间<br>
+            • 客户满意度（1-5分）
+        </div>
+        <div class="strategy-box">
+            <div class="strategy-title">工作表3：商机跟踪</div>
+            • 客户名称、项目名称<br>
+            • 项目阶段（立项/评审/验证/谈判/签约）<br>
+            • 预计采购量、单价、年度价值<br>
+            • 竞争对手、成交概率（%）<br>
+            • 预计签约时间、责任销售<br>
+            • 下次跟进时间
+        </div>
+        <div class="strategy-box">
+            <div class="strategy-title">工作表4：拜访记录</div>
+            • 日期、客户名称<br>
+            • 拜访人、接待人<br>
+            • 沟通内容摘要、客户反馈<br>
+            • 下一步行动、下次拜访时间
+        </div>
+    </div>
+
+    <div class="highlight-box">
+        <strong>使用技巧：</strong><br>
+        ✓ 数据透视表分析（客户分布、商机统计）<br>
+        ✓ 条件格式（高亮重点客户、逾期跟进）<br>
+        ✓ 下拉菜单（标准化输入）<br>
+        ✓ 公式自动计算（年度价值=采购量×单价）
+    </div>
+
+    <div class="subsection-title">工具2：竞品对标分析.xlsx</div>
+
+    <table class="data-table">
+        <thead>
+            <tr>
+                <th style="width: 20%;">对比类别</th>
+                <th style="width: 80%;">对比维度</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td><strong>基本参数</strong></td>
+                <td>内核、主频（MHz）、Flash大小（KB）、RAM大小（KB）、封装形式、工作温度（℃）</td>
+            </tr>
+            <tr>
+                <td><strong>性能指标</strong></td>
+                <td>DMIPS（性能）、运行功耗（mA）、待机功耗（μA）、ADC精度（bit）、CAN通道数</td>
+            </tr>
+            <tr>
+                <td><strong>认证与质量</strong></td>
+                <td>AEC-Q100、ISO 26262（ASIL等级）、MTBF（小时）、PPM</td>
+            </tr>
+            <tr>
+                <td><strong>商务条件</strong></td>
+                <td>单价（¥）、MOQ（最小起订量）、交期（周）、付款条件</td>
+            </tr>
+            <tr>
+                <td><strong>支持与服务</strong></td>
+                <td>FAE响应时间、开发工具、技术文档、培训支持</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <div class="grid-3col">
+        <div class="highlight-box">
+            <strong>视觉化展示：</strong><br>
+            雷达图：多维度对比
+        </div>
+        <div class="highlight-box">
+            <strong>柱状图：</strong><br>
+            价格对比
+        </div>
+        <div class="highlight-box">
+            <strong>表格热力图：</strong><br>
+            优势绿色，劣势红色
+        </div>
+    </div>
+
+    <div class="subsection-title">工具3：TCO总拥有成本计算器.xlsx</div>
+
+    <table class="data-table">
+        <thead>
+            <tr>
+                <th style="width: 30%;">成本维度</th>
+                <th style="width: 25%;">方案A（竞品）</th>
+                <th style="width: 25%;">方案B（我们）</th>
+                <th style="width: 20%;">差异</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr style="background: #fff3e0;">
+                <td><strong>1. 采购成本</strong></td>
+                <td>单价×年度用量</td>
+                <td>单价×年度用量</td>
+                <td>▼节省</td>
+            </tr>
+            <tr style="background: #e3f2fd;">
+                <td><strong>2. 开发成本</strong></td>
+                <td>人力+工具+认证</td>
+                <td>人力+工具+认证</td>
+                <td>▼节省</td>
+            </tr>
+            <tr style="background: #f3e5f5;">
+                <td><strong>3. 风险成本</strong></td>
+                <td>缺货+质量+涨价</td>
+                <td>缺货+质量+涨价</td>
+                <td>▼节省</td>
+            </tr>
+            <tr style="background: #e8f5e9;">
+                <td><strong>TCO总成本</strong></td>
+                <td>¥___万</td>
+                <td>¥___万</td>
+                <td><strong style="color: #4caf50;">节省__%</strong></td>
+            </tr>
+        </tbody>
+    </table>
+
+    <div class="success-box">
+        <strong>使用场景：</strong><br>
+        ✓ 客户砍价时展示TCO | ✓ 商务谈判支持 | ✓ 项目立项评估<br><br>
+        <strong>输出：</strong>对比柱状图（直观展示成本差异）+ 饼图（成本构成分析）+ 结论报告（自动生成文字说明）
+    </div>
+
+    <div class="page-number">第2页 | Excel工具包（3大工具）</div>
+</div>
+<div class="page">
+    <div class="page-title">信息源清单 + 情报收集SOP 📰🔍</div>
+
+    <div class="section-title">三、信息源清单</div>
+
+    <div class="subsection-title">类型1：行业媒体</div>
+
+    <div class="grid-2col">
+        <div class="strategy-box">
+            <div class="strategy-title">半导体行业</div>
+            • <strong>芯智讯</strong> - 半导体行业新闻、深度分析（每日）<br>
+            • <strong>集微网</strong> - 半导体供应链、市场数据（每日）<br>
+            • <strong>半导体行业观察</strong> - 行业评论、趋势分析（每日）
+        </div>
+        <div class="strategy-box">
+            <div class="strategy-title">汽车行业</div>
+            • <strong>盖世汽车</strong> - 汽车供应链、新车动态（每日）<br>
+            • <strong>车云网</strong> - 智能汽车、技术趋势（每日）<br>
+            • <strong>电动汽车资源网</strong> - 新能源汽车政策、市场（每日）
+        </div>
+    </div>
+
+    <div class="subsection-title">类型2：市场研究报告</div>
+
+    <div class="grid-2col">
+        <div class="strategy-box">
+            <div class="strategy-title">付费数据库（⭐⭐⭐⭐⭐价值）</div>
+            • <strong>IC Insights</strong> - MCU市场规模、预测（$5000/年）<br>
+            • <strong>IHS Markit</strong> - 汽车半导体市场分析（$10000/年）<br>
+            • <strong>Gartner</strong> - 半导体行业趋势（$15000/年）
+        </div>
+        <div class="strategy-box">
+            <div class="strategy-title">免费资源</div>
+            • <strong>中国汽车工业协会</strong> - 汽车产销数据（月度）<br>
+            • <strong>中国半导体行业协会</strong> - 半导体产业报告（年度）<br>
+            • <strong>艾瑞咨询</strong> - 行业研究报告（部分免费）
+        </div>
+    </div>
+
+    <div class="subsection-title">类型3：竞品信息</div>
+
+    <table class="data-table">
+        <thead>
+            <tr>
+                <th style="width: 20%;">渠道</th>
+                <th style="width: 40%;">来源</th>
+                <th style="width: 40%;">内容</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr style="background: #e8f5e9;">
+                <td><strong>竞品官网</strong></td>
+                <td>瑞萨、NXP、英飞凌、兆易创新官网</td>
+                <td>产品参数、新闻、白皮书</td>
+            </tr>
+            <tr style="background: #e3f2fd;">
+                <td><strong>竞品财报</strong></td>
+                <td>公司投资者关系网站</td>
+                <td>营收、产品线、战略（季度/年度）</td>
+            </tr>
+            <tr style="background: #fff3e0;">
+                <td><strong>竞品专利</strong></td>
+                <td>国家知识产权局、Google Patents</td>
+                <td>技术方向、研发投入</td>
+            </tr>
+            <tr style="background: #f3e5f5;">
+                <td><strong>客户反馈</strong></td>
+                <td>一线销售收集</td>
+                <td>竞品价格、服务、问题</td>
+            </tr>
+            <tr style="background: #fff9e6;">
+                <td><strong>行业展会</strong></td>
+                <td>现场观摩、展位交流</td>
+                <td>竞品新产品、市场策略</td>
+            </tr>
+            <tr style="background: #ffebee;">
+                <td><strong>第三方评测</strong></td>
+                <td>电子工程专辑、EDN China</td>
+                <td>产品性能对比</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <div class="subsection-title">类型4：客户信息</div>
+
+    <div class="grid-2col">
+        <div class="strategy-box">
+            <div class="strategy-title">公开信息</div>
+            • <strong>企业官网</strong> - 公司介绍、产品、新闻<br>
+            • <strong>天眼查/企查查</strong> - 工商信息、股权结构、诉讼<br>
+            • <strong>招聘网站</strong> - 组织架构、人员规模、项目（Boss直聘、拉勾）<br>
+            • <strong>社交媒体</strong> - 公司动态、高管观点（微信、微博、LinkedIn）
+        </div>
+        <div class="strategy-box">
+            <div class="strategy-title">内部渠道</div>
+            • 销售拜访记录<br>
+            • 技术交流会纪要<br>
+            • 客户投诉/反馈记录<br>
+            • 合同/订单记录
+        </div>
+    </div>
+
+    <div class="section-title">【情报收集SOP】</div>
+
+    <div class="grid-3col">
+        <div class="strategy-box">
+            <div class="strategy-title">日常情报收集（每日）</div>
+            <strong>时间：</strong>每天9:00-10:00<br>
+            <strong>负责人：</strong>市场专员×1<br><br>
+            <strong>任务：</strong><br>
+            ✓ 浏览5个核心媒体<br>
+            ✓ 搜索关键词新闻<br>
+            ✓ 整理当日要闻（3-5条）<br>
+            ✓ 发送到销售团队群
+        </div>
+        <div class="strategy-box">
+            <div class="strategy-title">周度情报汇总（每周）</div>
+            <strong>时间：</strong>每周五下午<br>
+            <strong>负责人：</strong>市场经理×1<br><br>
+            <strong>输出：</strong>周度情报简报（PPT,5-10页）<br><br>
+            <strong>内容：</strong><br>
+            • 行业动态<br>
+            • 竞品动态<br>
+            • 客户动态<br>
+            • 下周重点关注
+        </div>
+        <div class="strategy-box">
+            <div class="strategy-title">月度深度分析（每月）</div>
+            <strong>时间：</strong>每月第一周<br>
+            <strong>负责人：</strong>市场总监×1<br><br>
+            <strong>输出：</strong>月度市场分析报告（Word,20-30页）<br><br>
+            <strong>内容：</strong><br>
+            • 市场规模与增长趋势<br>
+            • 竞争格局变化<br>
+            • 客户需求变化<br>
+            • 我方市场份额<br>
+            • 下月策略建议
+        </div>
+    </div>
+
+    <div class="page-number">第3页 | 信息源清单 + 情报收集SOP</div>
+</div>
+<div class="page">
+    <div class="page-title">快速查询索引 + 手册使用检查清单 ✅</div>
+
+    <div class="section-title">📚 附录：快速查询索引</div>
+
+    <div class="grid-2col">
+        <div class="strategy-box">
+            <div class="strategy-title">销售场景速查</div>
+            <table class="data-table">
+                <thead>
+                    <tr>
+                        <th>场景</th>
+                        <th>位置</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr><td>客户砍价</td><td>场景1</td></tr>
+                    <tr><td>竞品挖墙脚</td><td>场景2</td></tr>
+                    <tr><td>独家供应要求</td><td>场景3</td></tr>
+                    <tr><td>技术测试不通过</td><td>场景4</td></tr>
+                    <tr><td>质量投诉</td><td>场景5</td></tr>
+                    <tr><td>新客户开发</td><td>场景6</td></tr>
+                    <tr><td>商务谈判僵局</td><td>场景7</td></tr>
+                    <tr><td>丢单复盘</td><td>场景8</td></tr>
+                </tbody>
+            </table>
+        </div>
+        <div class="strategy-box">
+            <div class="strategy-title">产品情报速查</div>
+            <table class="data-table">
+                <thead>
+                    <tr>
+                        <th>产品</th>
+                        <th>位置</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr><td>IGBT模块</td><td>产品线情报库</td></tr>
+                    <tr><td>SiC功率器件</td><td>产品线情报库</td></tr>
+                    <tr><td>摄像头模组</td><td>产品线情报库</td></tr>
+                    <tr><td>车规LED</td><td>产品线情报库</td></tr>
+                    <tr><td>电流传感器</td><td>产品线情报库</td></tr>
+                    <tr><td>MCU微控制器</td><td>产品线情报库</td></tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <div class="section-title">✅ 手册使用检查清单</div>
+
+    <div class="subsection-title">新销售入职（第1周）</div>
+
+    <div class="grid-4col">
+        <div class="highlight-box">
+            □ 通读手册一遍<br>（了解框架）
+        </div>
+        <div class="highlight-box">
+            □ 熟记6大产品<br>核心优势
+        </div>
+        <div class="highlight-box">
+            □ 背诵3个典型<br>客户案例
+        </div>
+        <div class="highlight-box">
+            □ 练习5个标准<br>销售话术
+        </div>
+    </div>
+
+    <div class="subsection-title">客户拜访前（每次）</div>
+
+    <div class="grid-4col">
+        <div class="success-box">
+            □ 查询客户<br>情报卡片
+        </div>
+        <div class="success-box">
+            □ 准备对应<br>产品材料
+        </div>
+        <div class="success-box">
+            □ 准备竞品<br>对比表
+        </div>
+        <div class="success-box">
+            □ 预演销售话术<br>确认FAE支持
+        </div>
+    </div>
+
+    <div class="subsection-title">商务谈判前（每次）</div>
+
+    <div class="grid-4col">
+        <div class="warning-box">
+            □ 制作TCO<br>对比表
+        </div>
+        <div class="warning-box">
+            □ 准备阶梯式<br>让步方案
+        </div>
+        <div class="warning-box">
+            □ 确认价格<br>授权范围
+        </div>
+        <div class="warning-box">
+            □ 准备成功案例<br>演练谈判话术
+        </div>
+    </div>
+
+    <div class="subsection-title">月度复盘（每月）</div>
+
+    <div class="grid-4col">
+        <div class="highlight-box">
+            □ 更新客户情报<br>数据库
+        </div>
+        <div class="highlight-box">
+            □ 总结本月<br>成功/失败案例
+        </div>
+        <div class="highlight-box">
+            □ 分享竞品<br>最新动态
+        </div>
+        <div class="highlight-box">
+            □ 提出手册改进<br>学习新增工具
+        </div>
+    </div>
+
+    <div class="section-title">📞 紧急联系方式</div>
+
+    <div class="grid-2col">
+        <div class="strategy-box">
+            <div class="strategy-title">内部支持（24小时）</div>
+            <table class="data-table">
+                <thead>
+                    <tr>
+                        <th>部门</th>
+                        <th>电话</th>
+                        <th>服务时间</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr><td>市场部热线</td><td>XXX-XXXX-XXXX</td><td>24小时</td></tr>
+                    <tr><td>FAE紧急支持</td><td>XXX-XXXX-XXXX</td><td>24小时</td></tr>
+                    <tr><td>质量部应急</td><td>XXX-XXXX-XXXX</td><td>工作时间</td></tr>
+                    <tr><td>销售总监</td><td>XXX-XXXX-XXXX</td><td>工作时间</td></tr>
+                    <tr><td>市场VP</td><td>XXX-XXXX-XXXX</td><td>重大事项</td></tr>
+                </tbody>
+            </table>
+        </div>
+        <div class="strategy-box">
+            <div class="strategy-title">外部资源</div>
+            <table class="data-table">
+                <thead>
+                    <tr>
+                        <th>服务</th>
+                        <th>电话</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr><td>第三方测试实验室</td><td>XXX-XXXX-XXXX</td></tr>
+                    <tr><td>紧急物流</td><td>XXX-XXXX-XXXX</td></tr>
+                    <tr><td>媒体公关</td><td>XXX-XXXX-XXXX</td></tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <div class="success-box">
+        <strong>🎯 手册使用原则：</strong><br>
+        1️⃣ <strong>手册是工具，不是教条</strong> - 根据实际情况灵活调整<br>
+        2️⃣ <strong>持续更新</strong> - 每月总结新案例、新话术、新工具<br>
+        3️⃣ <strong>团队共创</strong> - 鼓励销售团队贡献经验、改进手册<br>
+        4️⃣ <strong>学以致用</strong> - 不只是读，要在实战中应用和验证
+    </div>
+
+    <div class="page-number">第4页 | 快速查询索引 + 使用检查清单</div>
+</div>
+
+</body>
+</html>

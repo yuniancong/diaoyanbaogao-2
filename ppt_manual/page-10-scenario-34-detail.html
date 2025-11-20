@@ -1,0 +1,727 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <title>比亚迪半导体销售手册 - 场景3-4详细剧本</title>
+    <style>
+        :root {
+            --color-primary-red: #e60012;
+            --color-primary-red-dark: #c50010;
+            --text-color-on-dark: #ffffff;
+            --bg-page: #ffffff;
+            --bg-table-stripe: #f2f2f2;
+            --border-color-table: #ddd;
+            --shadow-page: rgba(0, 0, 0, 0.1);
+        }
+
+        body {
+            font-family: "Microsoft YaHei", "SimHei", sans-serif;
+            background-color: #f0f0f0;
+            margin: 0;
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 20px;
+        }
+
+        .page {
+            width: 297mm;
+            min-height: 210mm;
+            background-color: var(--bg-page);
+            position: relative;
+            box-shadow: 0 0 10px var(--shadow-page);
+            padding: 40px;
+            box-sizing: border-box;
+        }
+
+        .page-title {
+            font-size: 26px;
+            font-weight: bold;
+            color: var(--text-color-on-dark);
+            background: linear-gradient(45deg, var(--color-primary-red), var(--color-primary-red-dark));
+            padding: 15px 30px;
+            margin: -40px -40px 30px -40px;
+            clip-path: polygon(0 0, calc(100% - 30px) 0, 100% 100%, 0 100%);
+        }
+
+        .section-title {
+            font-size: 18px;
+            font-weight: bold;
+            color: var(--color-primary-red);
+            margin: 20px 0 12px 0;
+            border-left: 4px solid var(--color-primary-red);
+            padding-left: 12px;
+        }
+
+        .subsection-title {
+            font-size: 16px;
+            font-weight: bold;
+            color: var(--color-primary-red-dark);
+            margin: 15px 0 10px 0;
+        }
+
+        .data-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-bottom: 18px;
+        }
+        .data-table th {
+            background-color: var(--color-primary-red);
+            color: white;
+            font-weight: normal;
+            font-size: 13px;
+            padding: 9px;
+            border: 1px solid var(--border-color-table);
+        }
+        .data-table td {
+            padding: 7px 9px;
+            text-align: left;
+            font-size: 12.5px;
+            border: 1px solid var(--border-color-table);
+            color: #333;
+        }
+        .data-table tr:nth-child(even) {
+            background-color: var(--bg-table-stripe);
+        }
+
+        .strategy-box {
+            background: linear-gradient(135deg, #fff5f5 0%, #ffffff 100%);
+            border-left: 4px solid var(--color-primary-red);
+            padding: 15px;
+            margin: 15px 0;
+            border-radius: 6px;
+        }
+
+        .strategy-title {
+            font-size: 17px;
+            font-weight: bold;
+            color: var(--color-primary-red-dark);
+            margin-bottom: 10px;
+        }
+
+        .quote-box {
+            background-color: #f5f5f5;
+            border-left: 4px solid #999;
+            padding: 12px 15px;
+            margin: 12px 0;
+            font-style: italic;
+            color: #555;
+            line-height: 1.6;
+            font-size: 13px;
+        }
+
+        .tip-box {
+            background-color: #fff9e6;
+            border-left: 4px solid #ffc107;
+            padding: 12px 15px;
+            margin: 12px 0;
+            font-size: 13px;
+            line-height: 1.6;
+        }
+
+        .tip-title {
+            font-weight: bold;
+            color: #cc9900;
+            margin-bottom: 8px;
+        }
+
+        .tip-title::before {
+            content: "💡 ";
+        }
+
+        .warning-box {
+            background-color: #fff0f0;
+            border: 2px solid #ff6b6b;
+            border-radius: 6px;
+            padding: 10px 12px;
+            margin: 10px 0;
+            font-size: 12.5px;
+        }
+
+        .bullet-point {
+            margin: 8px 0 8px 20px;
+            line-height: 1.6;
+            font-size: 13px;
+            position: relative;
+        }
+
+        .bullet-point::before {
+            content: "▸";
+            color: var(--color-primary-red);
+            font-weight: bold;
+            position: absolute;
+            left: -15px;
+        }
+
+        .grid-2col {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 15px;
+        }
+
+        .grid-3col {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 12px;
+        }
+
+        .highlight-red {
+            color: var(--color-primary-red);
+            font-weight: bold;
+        }
+
+        .highlight-green {
+            color: #28a745;
+            font-weight: bold;
+        }
+
+        .small-text {
+            font-size: 11.5px;
+            line-height: 1.5;
+        }
+
+        .checkmark::before {
+            content: "✓ ";
+            color: #28a745;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+
+<!-- 第1页：场景3 - 背景与分析框架 -->
+<div class="page">
+    <div class="page-title">场景3：大客户要求独家供应 🤝</div>
+
+    <div class="section-title">【场景背景】</div>
+    <div class="quote-box">
+        <strong>情境：</strong>大客户（年采购200万颗+）要求独家供应，但我们产能有限，需要平衡<br><br>
+        <strong>典型对话：</strong><br>
+        客户："我们明年新车型预计需要300万颗MCU。但有个条件，我们要独家供应，不能给我们竞争对手供货。"<br>
+        销售："能理解您的考虑。能说说为什么要独家吗？"<br>
+        客户："主要是担心供应保障。如果你们同时供我们和竞争对手，万一产能不足，你们优先保谁？"
+    </div>
+
+    <div class="section-title">【分析框架：评估独家代价】</div>
+
+    <div class="subsection-title">⚖️ 步骤1：独家成本收益分析</div>
+    <div class="grid-2col">
+        <div>
+            <strong style="color: #dc3545;">失去的机会：</strong>
+            <div class="bullet-point">其他客户订单：可能损失500万颗/年</div>
+            <div class="bullet-point">市场份额：集中在单一客户，风险高</div>
+            <div class="bullet-point">议价能力：依赖单一大客户，被动</div>
+        </div>
+        <div>
+            <strong style="color: #28a745;">获得的收益：</strong>
+            <div class="bullet-point">确定性订单：300万颗/年，稳定收入</div>
+            <div class="bullet-point">战略客户：行业标杆，案例价值</div>
+            <div class="bullet-point">规模效应：大批量，降低成本</div>
+        </div>
+    </div>
+
+    <div class="subsection-title">⚠️ 风险评估</div>
+    <div class="grid-3col">
+        <div class="warning-box">
+            <strong>客户流失风险</strong><br>
+            如果这个客户流失，影响巨大
+        </div>
+        <div class="warning-box">
+            <strong>产品锁定风险</strong><br>
+            专门为客户定制，难以复用
+        </div>
+        <div class="warning-box">
+            <strong>价格压力</strong><br>
+            独家后客户可能持续压价
+        </div>
+    </div>
+
+    <div class="section-title">【步骤2：谈判目标设定】</div>
+    <table class="data-table">
+        <thead>
+            <tr>
+                <th style="width: 22%;">目标层级</th>
+                <th style="width: 38%;">具体方案</th>
+                <th style="width: 40%;">关键条款</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr style="background: #e6ffe6;">
+                <td><strong>最佳结果（100分）</strong></td>
+                <td>不签独家协议、保留其他客户、给大客户优先供应承诺</td>
+                <td>VIP供应保障方案：产能优先+战略库存+长期协议</td>
+            </tr>
+            <tr style="background: #fff9e6;">
+                <td><strong>可接受（80分）</strong></td>
+                <td>签"有限独家"（特定领域/车型独家）、保留其他领域客户</td>
+                <td>大客户给更高价格/更长协议、领域独家（不是全面独家）</td>
+            </tr>
+            <tr style="background: #fff0f0;">
+                <td><strong>底线（60分）</strong></td>
+                <td>签全面独家协议</td>
+                <td>独家补偿（价格/预付款/长期协议）+保留退出条款</td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+
+<!-- 第2页：场景3 - 应对策略 -->
+<div class="page">
+    <div class="page-title">场景3：四大应对策略</div>
+
+    <div class="strategy-box">
+        <div class="strategy-title">策略1：重新定义"独家"（限定范围）📋</div>
+        <div class="quote-box">
+            <strong>话术模板：</strong>"X总，我理解您对供应保障的担心。但'独家'这个概念太宽泛了，我们需要明确一下..."
+        </div>
+        <div class="grid-2col">
+            <div>
+                <div class="subsection-title">🎯 四个维度限定范围</div>
+                <div class="bullet-point"><strong>1. 领域独家 vs 全面独家？</strong><br>建议：我们在'中高端轿车BCM'领域只供您</div>
+                <div class="bullet-point"><strong>2. 产品独家 vs 客户独家？</strong><br>建议：我们不把'同款MCU'卖给您竞争对手</div>
+            </div>
+            <div>
+                <div class="bullet-point"><strong>3. 区域独家 vs 全球独家？</strong><br>建议：我们在'中国市场'只供您</div>
+                <div class="bullet-point"><strong>4. 时效独家 vs 永久独家？</strong><br>建议：独家期3年，3年后重新评估</div>
+            </div>
+        </div>
+        <div class="tip-box">
+            <div class="tip-title">综合方案建议</div>
+            "我们可以给您'中高端轿车BCM领域、同款产品、中国市场、3年时效独家'。这样既保护您的核心竞争力，也给我们一定灵活度。"
+        </div>
+    </div>
+
+    <div class="strategy-box">
+        <div class="strategy-title">策略2：独家换独家（对等交易）⚖️</div>
+        <div class="grid-2col">
+            <div style="background: #e6f7ff; border: 2px solid #1890ff; padding: 12px; border-radius: 6px;">
+                <strong style="color: #0050b3;">💎 您给我们的：</strong>
+                <div class="small-text" style="margin-top: 8px;">
+                    • 您也给我们独家采购权（Sole Source）<br>
+                    • 长期协议（3-5年）+ 最小采购量承诺<br>
+                    • 承诺最小采购量（每年至少200万颗）<br>
+                    • 如果未达到，支付违约金
+                </div>
+            </div>
+            <div style="background: #fff7e6; border: 2px solid #fa8c16; padding: 12px; border-radius: 6px;">
+                <strong style="color: #d46b08;">💰 我们需要的补偿：</strong>
+                <div class="small-text" style="margin-top: 8px;">
+                    • 独家补偿：价格提升10%（独家溢价）<br>
+                    • 或预付30%货款（保障现金流）<br>
+                    • 联合开发：您提需求，我们定制<br>
+                    • 品牌背书：允许我们用作标杆案例宣传
+                </div>
+            </div>
+        </div>
+        <div class="quote-box">
+            "独家是双向的。如果您要我们独家供您，您也要给我们对等的回报。这样才是公平的合作。"
+        </div>
+    </div>
+
+    <div class="strategy-box">
+        <div class="strategy-title">策略3：供应保障替代方案（不签独家）🛡️</div>
+        <div class="subsection-title">VIP供应保障方案（不需要独家）</div>
+        <table class="data-table">
+            <thead>
+                <tr>
+                    <th style="width: 28%;">保障措施</th>
+                    <th>具体内容</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td><strong>1. 优先供应承诺</strong></td>
+                    <td>您是我们战略客户，产能优先分配给您。即使缺货，也优先保障您的订单</td>
+                </tr>
+                <tr>
+                    <td><strong>2. 专属产能预留</strong></td>
+                    <td>为您预留30%产能（月产150万颗）+ 专属产线，减少切换损失</td>
+                </tr>
+                <tr>
+                    <td><strong>3. 战略库存</strong></td>
+                    <td>为您维持3个月安全库存（900万颗）+ 应急响应：7天内可交付紧急订单</td>
+                </tr>
+                <tr>
+                    <td><strong>4. 长期协议保障</strong></td>
+                    <td>签3年供货协议，价格锁定 + 产能保障条款：我们扩产义务写入合同</td>
+                </tr>
+                <tr>
+                    <td><strong>5. 信息透明机制</strong></td>
+                    <td>月度产能规划会议 + 实时库存查询 + 风险预警：供应链异常提前30天通知</td>
+                </tr>
+            </tbody>
+        </table>
+        <div class="tip-box">
+            <div class="tip-title">核心观点</div>
+            "这些保障措施，比独家更实在。独家只是名义上的保护，但这些措施是实实在在的供应保障。而且不签独家，您也有好处：我们服务更多客户，产品迭代更快；我们规模更大，降本能力更强（您也受益）；您也保留第二供应商选择权（双保险）。"
+        </div>
+    </div>
+</div>
+
+<!-- 第3页：场景3 - 谈判技巧 -->
+<div class="page">
+    <div class="page-title">场景3：谈判技巧与底线守护</div>
+
+    <div class="section-title">【谈判技巧】</div>
+
+    <div class="grid-3col">
+        <div class="strategy-box">
+            <div class="strategy-title">技巧1：拖延战术</div>
+            <div class="quote-box">
+                "独家供应是重大决策，我需要向总经理汇报。能给我3天时间吗？我们内部评估一下可行性，然后给您一个正式答复。"
+            </div>
+        </div>
+        <div class="strategy-box">
+            <div class="strategy-title">技巧2：分拆条款</div>
+            <div class="quote-box">
+                "独家协议包括很多条款，我们一项一项谈：独家范围、独家期限、独家补偿、退出机制。每一项我们都要谈清楚。"
+            </div>
+        </div>
+        <div class="strategy-box">
+            <div class="strategy-title">技巧3：抬高门槛</div>
+            <div class="quote-box">
+                "独家意味着我们要放弃其他客户，代价很大。同行要求独家的客户，一般要给：价格溢价15-20%、最小采购量至少500万颗、至少5年协议。"
+            </div>
+        </div>
+    </div>
+
+    <div class="section-title">【谈判策略矩阵】根据客户价值选择策略</div>
+    <table class="data-table">
+        <thead>
+            <tr>
+                <th style="width: 20%;">客户价值</th>
+                <th style="width: 35%;">策略选择</th>
+                <th style="width: 45%;">谈判重点</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr style="background: #e6ffe6;">
+                <td><strong>超级大客户</strong><br>（500万颗+/年）</td>
+                <td>可以考虑有限独家</td>
+                <td>换取：价格溢价10%+ + 5年长期协议 + 最小采购量承诺 + 联合开发</td>
+            </tr>
+            <tr style="background: #fff9e6;">
+                <td><strong>大客户</strong><br>（200-500万颗/年）</td>
+                <td>优先供应保障方案</td>
+                <td>强调：专属产能预留 + 战略库存 + 信息透明机制，不签独家但给最高保障</td>
+            </tr>
+            <tr style="background: #ffebee;">
+                <td><strong>中小客户</strong><br>（<200万颗/年）</td>
+                <td>直接拒绝独家</td>
+                <td>话术："您的采购量不足以支撑独家协议，建议标准供应合作"</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <div class="section-title">【底线守护】关键原则</div>
+    <div class="grid-2col">
+        <div class="tip-box">
+            <div class="tip-title">必须坚守的3条底线</div>
+            <span class="checkmark">绝不签永久独家（最多5年，必须有退出条款）</span><br>
+            <span class="checkmark">绝不无补偿独家（必须有价格溢价或其他补偿）</span><br>
+            <span class="checkmark">绝不全面独家（必须限定领域/产品/区域）</span>
+        </div>
+        <div class="warning-box">
+            <strong>⚠️ 警惕信号：</strong><br>
+            • 客户只要求独家，不愿给任何回报<br>
+            • 客户要求永久独家，没有退出条款<br>
+            • 客户要求全面独家，包括所有产品线<br>
+            <br>
+            <strong style="color: #dc3545;">→ 遇到以上情况，建议直接拒绝或上报高层决策</strong>
+        </div>
+    </div>
+</div>
+
+<!-- 第4页：场景4 - 背景与快速响应 -->
+<div class="page">
+    <div class="page-title">场景4：技术测试不通过 ⚠️</div>
+
+    <div class="section-title">【场景背景】</div>
+    <div class="quote-box">
+        <strong>情境：</strong>客户在技术验证阶段发现我们的MCU测试不通过（性能、EMC、可靠性等问题）<br><br>
+        <strong>典型对话：</strong><br>
+        客户："你们的MCU在EMC测试中失败了，辐射抗扰度只有120V/m，达不到我们150V/m的要求。这个问题怎么解决？"<br>
+        销售："能详细说说测试情况吗？用的什么测试条件？"<br>
+        客户："我们按照ISO 11452标准测试的，频率80MHz-1GHz扫描，120V/m就开始误动作了。"
+    </div>
+
+    <div class="section-title">【快速诊断清单（问题定位）】</div>
+
+    <div class="subsection-title">🔍 四大维度快速排查</div>
+    <table class="data-table">
+        <thead>
+            <tr>
+                <th style="width: 25%;">排查维度</th>
+                <th>具体检查项</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td><strong>1. 测试条件是否正确？</strong></td>
+                <td>测试标准（ISO 11452 / ISO 7637等）、测试环境（温度、湿度、供电）、测试设备（是否校准）、测试方法（是否符合标准）</td>
+            </tr>
+            <tr>
+                <td><strong>2. 硬件设计是否合理？</strong></td>
+                <td>PCB布局（电源、地线、信号线）、去耦电容（数量、位置、容值）、晶振电路（频率、负载电容）、接口保护（ESD、过压、过流）</td>
+            </tr>
+            <tr>
+                <td><strong>3. 软件配置是否正确？</strong></td>
+                <td>时钟配置（PLL、分频、源选择）、外设配置（CAN、ADC、PWM等）、中断优先级（是否合理）、看门狗设置（超时时间）</td>
+            </tr>
+            <tr>
+                <td><strong>4. 测试样本是否代表？</strong></td>
+                <td>样片批次（是否工程样）、样片数量（单片 vs 批量）、样片状态（新片 vs 返工片）</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <div class="section-title">【问题分类与处理方式】</div>
+    <table class="data-table">
+        <thead>
+            <tr>
+                <th style="width: 18%;">问题类型</th>
+                <th style="width: 12%;">严重程度</th>
+                <th style="width: 35%;">处理方式</th>
+                <th style="width: 35%;">预计周期</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr style="background: #ffebee;">
+                <td><strong>类型A：芯片本身问题</strong></td>
+                <td style="color: red;">⭐⭐⭐⭐⭐</td>
+                <td>需要芯片改版（EMC设计缺陷）</td>
+                <td><strong>短期：</strong>1个月内提供workaround方案<br><strong>长期：</strong>6个月芯片改版</td>
+            </tr>
+            <tr style="background: #fff9e6;">
+                <td><strong>类型B：客户设计问题</strong></td>
+                <td style="color: #ff9800;">⭐⭐⭐</td>
+                <td>FAE指导优化（PCB布局/元件选型）</td>
+                <td>2-4周改版，FAE现场支持</td>
+            </tr>
+            <tr style="background: #e8f5e9;">
+                <td><strong>类型C：测试方法问题</strong></td>
+                <td style="color: green;">⭐⭐</td>
+                <td>重新测试（测试条件不当）</td>
+                <td>1周内重新测试</td>
+            </tr>
+            <tr style="background: #e3f2fd;">
+                <td><strong>类型D：软件配置问题</strong></td>
+                <td style="color: blue;">⭐</td>
+                <td>更新代码（寄存器设置）</td>
+                <td>1-2周更新固件</td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+
+<!-- 第5页：场景4 - 标准响应流程 -->
+<div class="page">
+    <div class="page-title">场景4：24小时标准响应流程</div>
+
+    <div class="section-title">【快速响应（24小时内给方案）】</div>
+
+    <div class="strategy-box">
+        <div class="strategy-title">标准响应流程（分阶段执行）⏱️</div>
+        <table class="data-table">
+            <thead>
+                <tr>
+                    <th style="width: 18%;">时间节点</th>
+                    <th style="width: 32%;">行动内容</th>
+                    <th style="width: 50%;">输出成果</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td><strong>第1小时</strong><br>接到通知</td>
+                    <td>立即联系客户，确认问题详情</td>
+                    <td><strong>话术：</strong>"非常抱歉听到这个问题。能否把测试报告和原理图发给我？我马上组织FAE团队分析。"</td>
+                </tr>
+                <tr>
+                    <td><strong>第2-4小时</strong><br>问题诊断</td>
+                    <td>FAE团队分析测试报告、原理图、PCB layout</td>
+                    <td><strong>输出：</strong>初步诊断报告（问题分类、可能原因、3个疑似点）</td>
+                </tr>
+                <tr>
+                    <td><strong>第4-8小时</strong><br>实验室复现</td>
+                    <td>我方实验室复现问题（如果有条件）</td>
+                    <td><strong>输出：</strong>复现结果、对比测试数据、确认问题根因</td>
+                </tr>
+                <tr>
+                    <td><strong>第8-24小时</strong><br>解决方案</td>
+                    <td>制定解决方案（硬件优化/软件调整/测试方法）</td>
+                    <td><strong>输出：</strong>正式解决方案文档（Word/PDF）+ 具体整改指导</td>
+                </tr>
+                <tr style="background: #e6ffe6;">
+                    <td><strong>第24-48小时</strong><br>现场支持</td>
+                    <td>FAE现场指导客户整改、重新测试</td>
+                    <td><strong>输出：</strong>测试通过报告 + 现场支持总结</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <div class="section-title">【应对策略：按问题类型分类处理】</div>
+
+    <div class="strategy-box">
+        <div class="strategy-title">类型A：芯片本身问题（最严重）🔴</div>
+        <div class="quote-box">
+            <strong>话术模板：</strong>"经过我们实验室分析，确实是芯片在某个频段的抗干扰能力不足。这是我们的责任，我代表公司向您致歉。"
+        </div>
+        <div class="grid-2col">
+            <div>
+                <div class="subsection-title">短期方案（1个月内）</div>
+                <div class="bullet-point">提供workaround方案：增加外部EMC滤波器（我们提供设计）</div>
+                <div class="bullet-point">软件：优化抗干扰算法（我们提供代码）</div>
+                <div class="bullet-point">免费FAE驻场支持，直到问题解决</div>
+            </div>
+            <div>
+                <div class="subsection-title">长期方案（3-6个月）</div>
+                <div class="bullet-point">芯片改版：优化EMC设计（增强抗干扰能力）</div>
+                <div class="bullet-point">重新流片（6个月交付新版本）</div>
+                <div class="bullet-point">客户补偿：6个月额外折扣（10%）+ 免费更换新版本芯片</div>
+            </div>
+        </div>
+    </div>
+
+    <div class="strategy-box">
+        <div class="strategy-title">类型B：客户设计问题（常见）🟡</div>
+        <div class="quote-box">
+            <strong>话术模板：</strong>"经过我们FAE分析，问题主要出在PCB布局和元件选型上。我给您具体指出来..."
+        </div>
+        <div class="grid-3col">
+            <div class="tip-box" style="background: #fff3cd;">
+                <strong>问题1：电源去耦不足</strong><br>
+                <span class="small-text">现状：只放2个0.1μF电容<br>建议：增加到4个，尽量靠近芯片VDD引脚（<5mm）</span>
+            </div>
+            <div class="tip-box" style="background: #fff3cd;">
+                <strong>问题2：晶振布局不合理</strong><br>
+                <span class="small-text">现状：晶振离芯片10mm，走线很长<br>建议：晶振紧贴芯片（<3mm），走线最短</span>
+            </div>
+            <div class="tip-box" style="background: #fff3cd;">
+                <strong>问题3：地线分割</strong><br>
+                <span class="small-text">现状：数字地和模拟地分开，中间有缝隙<br>建议：地平面统一，不要分割</span>
+            </div>
+        </div>
+        <div class="bullet-point">我们提供：FAE现场指导改版（免费）+ EMC优化指南（文档）+ 参考设计（已通过EMC测试的PCB）</div>
+    </div>
+
+    <div class="strategy-box">
+        <div class="strategy-title">类型C：测试方法问题 🟢</div>
+        <div class="grid-2col">
+            <div class="warning-box">
+                <strong>问题1：测试电压设置不当</strong><br>
+                您的测试：供电电压3.0V<br>
+                标准要求：3.3V±10%（3.0-3.6V）<br>
+                影响：低电压导致抗干扰能力下降20-30%
+            </div>
+            <div class="warning-box">
+                <strong>问题2：测试样本数不足</strong><br>
+                您的测试：只测了1片样片<br>
+                标准要求：至少3片（取最差值）<br>
+                影响：单片测试结果可能不具代表性
+            </div>
+        </div>
+        <div class="tip-box">
+            <div class="tip-title">我们建议</div>
+            按照标准测试条件重新测试 + 我们提供技术指导（测试方法、测试设置）+ 我们陪同您去测试实验室（现场支持）+ 我们提供已通过测试的样片（对比测试）
+        </div>
+    </div>
+</div>
+
+<!-- 第6页：场景4 - 补救措施矩阵 -->
+<div class="page">
+    <div class="page-title">场景4：补救措施与客户保障</div>
+
+    <div class="section-title">【补救方案矩阵】</div>
+    <table class="data-table">
+        <thead>
+            <tr>
+                <th style="width: 22%;">补救方案</th>
+                <th style="width: 18%;">适用场景</th>
+                <th style="width: 15%;">周期</th>
+                <th style="width: 25%;">成本</th>
+                <th style="width: 20%;">成功率</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td><strong>方案A：硬件优化</strong><br>（PCB改版）</td>
+                <td>客户设计问题</td>
+                <td>2-4周</td>
+                <td>¥10-30万<br>（客户承担）</td>
+                <td style="color: green; font-weight: bold;">90%+</td>
+            </tr>
+            <tr>
+                <td><strong>方案B：软件调整</strong><br>（固件优化）</td>
+                <td>软件配置问题</td>
+                <td>1-2周</td>
+                <td>免费</td>
+                <td style="color: green; font-weight: bold;">70-80%</td>
+            </tr>
+            <tr>
+                <td><strong>方案C：外加EMC器件</strong></td>
+                <td>芯片EMC能力不足</td>
+                <td>1周</td>
+                <td>增加BOM成本¥2-5/套<br>（客户承担）</td>
+                <td style="color: green; font-weight: bold;">85%+</td>
+            </tr>
+            <tr>
+                <td><strong>方案D：芯片改版</strong><br>（重新流片）</td>
+                <td>芯片本身缺陷</td>
+                <td>6个月</td>
+                <td>¥500万+<br>（我们承担）</td>
+                <td style="color: green; font-weight: bold;">100%</td>
+            </tr>
+            <tr>
+                <td><strong>方案E：更换芯片型号</strong></td>
+                <td>现有型号确实不合适</td>
+                <td>2-3个月<br>（重新验证）</td>
+                <td>客户承担开发成本</td>
+                <td style="color: green; font-weight: bold;">100%</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <div class="section-title">【客户保障承诺】</div>
+
+    <div class="grid-2col">
+        <div class="strategy-box">
+            <div class="strategy-title">我们的承诺（核心3条）✅</div>
+            <div class="bullet-point"><strong>承诺1：快速响应</strong><br>24小时内给出初步解决方案，48小时内FAE到达现场</div>
+            <div class="bullet-point"><strong>承诺2：费用承担</strong><br>如果是我们芯片问题，所有费用我们承担（EMC器件、FAE、测试）</div>
+            <div class="bullet-point"><strong>承诺3：不影响量产</strong><br>短期方案1个月内解决，不影响您的量产计划</div>
+        </div>
+        <div class="strategy-box">
+            <div class="strategy-title">额外补偿（如果是我方问题）💰</div>
+            <div class="bullet-point"><strong>补偿1：价格折扣</strong><br>给您6个月的额外折扣（10%）</div>
+            <div class="bullet-point"><strong>补偿2：优先升级</strong><br>免费更换新版本芯片（如果您愿意），您是第一批客户</div>
+            <div class="bullet-point"><strong>补偿3：延长质保</strong><br>质保期从1年延长到2年</div>
+        </div>
+    </div>
+
+    <div class="section-title">【关键成功因素】</div>
+    <div class="grid-3col">
+        <div class="tip-box">
+            <div class="tip-title">成功因素1：速度</div>
+            越快响应，客户越满意。24小时内给方案是及格线，12小时内是优秀。
+        </div>
+        <div class="tip-box">
+            <div class="tip-title">成功因素2：态度</div>
+            先道歉，再分析。即使不是我们的问题，也要展现积极解决的态度。
+        </div>
+        <div class="tip-box">
+            <div class="tip-title">成功因素3：专业</div>
+            FAE团队要有真本事，能快速定位问题、给出可行方案。专业能力是信任基础。
+        </div>
+    </div>
+
+    <div class="section-title">【危机转化为机会】</div>
+    <div class="quote-box" style="background: #e6ffe6; border-color: #52c41a;">
+        <strong style="color: #389e0d;">💡 关键洞察：</strong><br>
+        技术问题处理得好，反而能加深客户信任。客户不怕遇到问题，怕的是遇到问题后你不管。如果我们能24小时响应、48小时解决、而且态度诚恳、方案专业，客户会觉得"这家供应商靠谱，有问题能解决"。这比从来不出问题的供应商更有价值，因为客户知道"万一出问题，你会负责到底"。
+    </div>
+</div>
+
+</body>
+</html>

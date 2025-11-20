@@ -1,0 +1,497 @@
+/**
+ * BYD半导体销售手册 - 网页PPT主题样式
+ * 品牌色：比亚迪红 (#C8102E)
+ * 设计风格：现代、专业、数据驱动
+ */
+
+/* ==================== CSS变量定义 ==================== */
+:root {
+  /* 品牌主色 */
+  --byd-red: #C8102E;
+  --byd-red-dark: #A00D24;
+  --byd-red-light: #E6153A;
+  --byd-red-pale: #FFE5E9;
+
+  /* 辅助色 */
+  --primary-black: #1A1A1A;
+  --text-primary: #2C2C2C;
+  --text-secondary: #666666;
+  --text-light: #999999;
+
+  /* 背景色 */
+  --bg-white: #FFFFFF;
+  --bg-light: #F8F9FA;
+  --bg-gray: #E5E5E5;
+  --bg-dark: #2C2C2C;
+
+  /* 强调色 */
+  --accent-blue: #1E88E5;
+  --accent-green: #43A047;
+  --accent-orange: #FB8C00;
+  --accent-yellow: #FDD835;
+
+  /* 阴影 */
+  --shadow-sm: 0 2px 4px rgba(0, 0, 0, 0.1);
+  --shadow-md: 0 4px 12px rgba(0, 0, 0, 0.15);
+  --shadow-lg: 0 8px 24px rgba(0, 0, 0, 0.2);
+
+  /* 间距 */
+  --space-xs: 8px;
+  --space-sm: 16px;
+  --space-md: 24px;
+  --space-lg: 32px;
+  --space-xl: 48px;
+
+  /* 字体 */
+  --font-main: -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang SC", "Microsoft YaHei", sans-serif;
+  --font-mono: "SF Mono", Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+}
+
+/* ==================== 全局基础样式 ==================== */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: var(--font-main);
+  color: var(--text-primary);
+  background: var(--bg-light);
+  line-height: 1.6;
+  overflow-x: hidden;
+}
+
+/* ==================== PPT页面容器 ==================== */
+.ppt-container {
+  width: 100%;
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: var(--space-md);
+}
+
+.page {
+  background: var(--bg-white);
+  border-radius: 12px;
+  box-shadow: var(--shadow-md);
+  padding: var(--space-xl);
+  margin-bottom: var(--space-lg);
+  min-height: 600px;
+  position: relative;
+  overflow: hidden;
+}
+
+/* 页面装饰元素 */
+.page::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 6px;
+  height: 100%;
+  background: linear-gradient(180deg, var(--byd-red) 0%, var(--byd-red-dark) 100%);
+}
+
+/* ==================== 标题系统 ==================== */
+.page-title {
+  font-size: 2.5rem;
+  font-weight: 700;
+  color: var(--byd-red);
+  margin-bottom: var(--space-lg);
+  padding-bottom: var(--space-sm);
+  border-bottom: 3px solid var(--byd-red);
+  position: relative;
+}
+
+.page-title::after {
+  content: '';
+  position: absolute;
+  bottom: -3px;
+  left: 0;
+  width: 80px;
+  height: 3px;
+  background: var(--byd-red-dark);
+}
+
+.section-title {
+  font-size: 1.8rem;
+  font-weight: 600;
+  color: var(--primary-black);
+  margin-top: var(--space-lg);
+  margin-bottom: var(--space-md);
+  padding-left: var(--space-sm);
+  border-left: 4px solid var(--byd-red);
+}
+
+.subsection-title {
+  font-size: 1.3rem;
+  font-weight: 600;
+  color: var(--text-primary);
+  margin-top: var(--space-md);
+  margin-bottom: var(--space-sm);
+}
+
+h4 {
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: var(--text-secondary);
+  margin-top: var(--space-sm);
+  margin-bottom: var(--space-xs);
+}
+
+/* ==================== 数据表格 ==================== */
+.data-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: var(--space-md) 0;
+  background: var(--bg-white);
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: var(--shadow-sm);
+}
+
+.data-table thead {
+  background: linear-gradient(135deg, var(--byd-red) 0%, var(--byd-red-dark) 100%);
+  color: var(--bg-white);
+}
+
+.data-table th {
+  padding: var(--space-sm) var(--space-md);
+  text-align: left;
+  font-weight: 600;
+  font-size: 0.95rem;
+  letter-spacing: 0.5px;
+}
+
+.data-table td {
+  padding: var(--space-sm) var(--space-md);
+  border-bottom: 1px solid var(--bg-gray);
+  font-size: 0.9rem;
+}
+
+.data-table tbody tr:hover {
+  background: var(--byd-red-pale);
+  transition: background 0.2s ease;
+}
+
+.data-table tbody tr:last-child td {
+  border-bottom: none;
+}
+
+/* 表格样式变体 */
+.data-table.compact td {
+  padding: var(--space-xs) var(--space-sm);
+}
+
+.data-table.striped tbody tr:nth-child(even) {
+  background: var(--bg-light);
+}
+
+/* ==================== 卡片组件 ==================== */
+.info-card {
+  background: var(--bg-white);
+  border-radius: 8px;
+  padding: var(--space-md);
+  margin: var(--space-sm) 0;
+  border: 1px solid var(--bg-gray);
+  box-shadow: var(--shadow-sm);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.info-card:hover {
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-md);
+}
+
+.info-card-title {
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: var(--byd-red);
+  margin-bottom: var(--space-sm);
+}
+
+/* ==================== 强调框 ==================== */
+.highlight-box {
+  background: var(--byd-red-pale);
+  border-left: 4px solid var(--byd-red);
+  padding: var(--space-md);
+  margin: var(--space-md) 0;
+  border-radius: 4px;
+}
+
+.highlight-box.success {
+  background: #E8F5E9;
+  border-left-color: var(--accent-green);
+}
+
+.highlight-box.warning {
+  background: #FFF3E0;
+  border-left-color: var(--accent-orange);
+}
+
+.highlight-box.info {
+  background: #E3F2FD;
+  border-left-color: var(--accent-blue);
+}
+
+.highlight-box strong {
+  color: var(--byd-red);
+  font-weight: 600;
+}
+
+/* ==================== 列表样式 ==================== */
+ul, ol {
+  margin: var(--space-sm) 0;
+  padding-left: var(--space-lg);
+}
+
+li {
+  margin: var(--space-xs) 0;
+  line-height: 1.8;
+}
+
+ul.bullet-list {
+  list-style: none;
+  padding-left: 0;
+}
+
+ul.bullet-list li {
+  padding-left: var(--space-md);
+  position: relative;
+}
+
+ul.bullet-list li::before {
+  content: '▪';
+  color: var(--byd-red);
+  font-weight: bold;
+  position: absolute;
+  left: 0;
+}
+
+/* ==================== 网格布局 ==================== */
+.grid-2 {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--space-md);
+  margin: var(--space-md) 0;
+}
+
+.grid-3 {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: var(--space-md);
+  margin: var(--space-md) 0;
+}
+
+.grid-4 {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: var(--space-md);
+  margin: var(--space-md) 0;
+}
+
+/* ==================== 数据可视化辅助 ==================== */
+.metric-card {
+  text-align: center;
+  padding: var(--space-md);
+  background: var(--bg-white);
+  border-radius: 8px;
+  box-shadow: var(--shadow-sm);
+  border-top: 3px solid var(--byd-red);
+}
+
+.metric-value {
+  font-size: 2.5rem;
+  font-weight: 700;
+  color: var(--byd-red);
+  display: block;
+  margin-bottom: var(--space-xs);
+}
+
+.metric-label {
+  font-size: 0.9rem;
+  color: var(--text-secondary);
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+/* ==================== 引用和代码 ==================== */
+blockquote {
+  border-left: 4px solid var(--byd-red);
+  padding: var(--space-sm) var(--space-md);
+  margin: var(--space-md) 0;
+  background: var(--bg-light);
+  font-style: italic;
+  color: var(--text-secondary);
+}
+
+code {
+  font-family: var(--font-mono);
+  background: var(--bg-light);
+  padding: 2px 6px;
+  border-radius: 3px;
+  font-size: 0.9em;
+  color: var(--byd-red-dark);
+}
+
+pre {
+  background: var(--bg-dark);
+  color: #E0E0E0;
+  padding: var(--space-md);
+  border-radius: 8px;
+  overflow-x: auto;
+  margin: var(--space-md) 0;
+}
+
+pre code {
+  background: transparent;
+  color: inherit;
+  padding: 0;
+}
+
+/* ==================== 徽章和标签 ==================== */
+.badge {
+  display: inline-block;
+  padding: 4px 12px;
+  border-radius: 12px;
+  font-size: 0.85rem;
+  font-weight: 600;
+  margin: 0 4px;
+}
+
+.badge.primary {
+  background: var(--byd-red);
+  color: var(--bg-white);
+}
+
+.badge.success {
+  background: var(--accent-green);
+  color: var(--bg-white);
+}
+
+.badge.warning {
+  background: var(--accent-orange);
+  color: var(--bg-white);
+}
+
+.badge.info {
+  background: var(--accent-blue);
+  color: var(--bg-white);
+}
+
+/* ==================== 分割线 ==================== */
+hr {
+  border: none;
+  height: 2px;
+  background: linear-gradient(90deg, transparent 0%, var(--byd-red) 50%, transparent 100%);
+  margin: var(--space-lg) 0;
+}
+
+/* ==================== 响应式设计 ==================== */
+@media (max-width: 1200px) {
+  .grid-4 {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 768px) {
+  .ppt-container {
+    padding: var(--space-sm);
+  }
+
+  .page {
+    padding: var(--space-md);
+  }
+
+  .page-title {
+    font-size: 2rem;
+  }
+
+  .section-title {
+    font-size: 1.5rem;
+  }
+
+  .grid-2,
+  .grid-3,
+  .grid-4 {
+    grid-template-columns: 1fr;
+  }
+
+  .data-table {
+    font-size: 0.85rem;
+  }
+
+  .data-table th,
+  .data-table td {
+    padding: var(--space-xs) var(--space-sm);
+  }
+}
+
+/* ==================== 打印样式 ==================== */
+@media print {
+  .page {
+    page-break-after: always;
+    box-shadow: none;
+    border: 1px solid var(--bg-gray);
+  }
+
+  .page:last-child {
+    page-break-after: auto;
+  }
+}
+
+/* ==================== 动画效果 ==================== */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-fade-in {
+  animation: fadeIn 0.6s ease-out;
+}
+
+/* ==================== 工具类 ==================== */
+.text-center {
+  text-align: center;
+}
+
+.text-right {
+  text-align: right;
+}
+
+.text-red {
+  color: var(--byd-red);
+}
+
+.text-bold {
+  font-weight: 700;
+}
+
+.mt-0 { margin-top: 0; }
+.mt-1 { margin-top: var(--space-xs); }
+.mt-2 { margin-top: var(--space-sm); }
+.mt-3 { margin-top: var(--space-md); }
+.mt-4 { margin-top: var(--space-lg); }
+
+.mb-0 { margin-bottom: 0; }
+.mb-1 { margin-bottom: var(--space-xs); }
+.mb-2 { margin-bottom: var(--space-sm); }
+.mb-3 { margin-bottom: var(--space-md); }
+.mb-4 { margin-bottom: var(--space-lg); }
+
+/* ==================== Mermaid图表样式覆盖 ==================== */
+.mermaid {
+  text-align: center;
+  margin: var(--space-lg) 0;
+}
+
+.mermaid svg {
+  max-width: 100%;
+  height: auto;
+}

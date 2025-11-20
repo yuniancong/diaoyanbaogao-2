@@ -1,0 +1,885 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>场景7-8详解：谈判僵局 + 丢单复盘 | 比亚迪半导体销售手册</title>
+    <style>
+        :root {
+            --color-primary-red: #e60012;
+            --color-primary-red-dark: #c50010;
+            --bg-page: #ffffff;
+            --bg-body: #f0f0f0;
+            --text-color-primary: #333333;
+            --text-color-on-dark: #ffffff;
+            --shadow-page: rgba(0, 0, 0, 0.1);
+            --border-light: #e0e0e0;
+
+            /* 4C颜色体系 */
+            --color-context: #2196F3;
+            --color-customer: #4CAF50;
+            --color-competitor: #FF9800;
+            --color-company: #9C27B0;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: "Microsoft YaHei", "SimHei", sans-serif;
+            background-color: var(--bg-body);
+            color: var(--text-color-primary);
+            line-height: 1.6;
+            padding: 20px 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 20px;
+        }
+
+        .page {
+            width: 297mm;
+            min-height: 210mm;
+            background-color: var(--bg-page);
+            position: relative;
+            box-shadow: 0 0 10px var(--shadow-page);
+            padding: 40px;
+            box-sizing: border-box;
+        }
+
+        .page-title {
+            font-size: 26px;
+            font-weight: bold;
+            color: var(--text-color-on-dark);
+            background: linear-gradient(45deg, var(--color-primary-red), var(--color-primary-red-dark));
+            padding: 15px 30px;
+            margin: -40px -40px 30px -40px;
+            clip-path: polygon(0 0, calc(100% - 30px) 0, 100% 100%, 0 100%);
+        }
+
+        .section-title {
+            font-size: 20px;
+            font-weight: bold;
+            color: var(--color-primary-red);
+            margin: 25px 0 15px 0;
+            padding-bottom: 8px;
+            border-bottom: 3px solid var(--color-primary-red);
+        }
+
+        .subsection-title {
+            font-size: 17px;
+            font-weight: bold;
+            color: var(--text-color-primary);
+            margin: 18px 0 10px 0;
+            padding-left: 12px;
+            border-left: 4px solid var(--color-primary-red);
+        }
+
+        .quote-box {
+            background: linear-gradient(135deg, #fff5f5 0%, #ffe8e8 100%);
+            border-left: 5px solid var(--color-primary-red);
+            padding: 20px;
+            margin: 15px 0;
+            font-style: italic;
+            line-height: 1.8;
+            box-shadow: 0 2px 8px rgba(230, 0, 18, 0.1);
+        }
+
+        .strategy-box {
+            background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+            border-radius: 8px;
+            padding: 20px;
+            margin: 15px 0;
+            border: 2px solid var(--border-light);
+        }
+
+        .strategy-title {
+            font-size: 16px;
+            font-weight: bold;
+            color: var(--color-primary-red);
+            margin-bottom: 12px;
+            padding-left: 25px;
+            position: relative;
+        }
+
+        .strategy-title::before {
+            content: "▶";
+            position: absolute;
+            left: 0;
+            color: var(--color-primary-red);
+        }
+
+        .data-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 12px 0;
+            font-size: 13px;
+        }
+
+        .data-table thead {
+            background: linear-gradient(135deg, var(--color-primary-red), var(--color-primary-red-dark));
+            color: white;
+        }
+
+        .data-table th {
+            padding: 10px;
+            text-align: left;
+            font-weight: bold;
+            border: 1px solid #ccc;
+        }
+
+        .data-table td {
+            padding: 10px;
+            border: 1px solid #ddd;
+            vertical-align: top;
+        }
+
+        .data-table tbody tr:nth-child(even) {
+            background-color: #f9f9f9;
+        }
+
+        .data-table tbody tr:hover {
+            background-color: #fff8f8;
+        }
+
+        .grid-2col {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+            margin: 15px 0;
+        }
+
+        .grid-3col {
+            display: grid;
+            grid-template-columns: 1fr 1fr 1fr;
+            gap: 15px;
+            margin: 15px 0;
+        }
+
+        .highlight-box {
+            background: #fff9e6;
+            border-left: 4px solid #ffc107;
+            padding: 15px;
+            margin: 12px 0;
+            font-size: 14px;
+        }
+
+        .success-box {
+            background: #e8f5e9;
+            border-left: 4px solid #4caf50;
+            padding: 15px;
+            margin: 12px 0;
+            font-size: 14px;
+        }
+
+        .warning-box {
+            background: #ffebee;
+            border-left: 4px solid #f44336;
+            padding: 15px;
+            margin: 12px 0;
+            font-size: 14px;
+        }
+
+        .action-list {
+            list-style: none;
+            padding-left: 0;
+        }
+
+        .action-list li {
+            padding: 8px 0 8px 30px;
+            position: relative;
+            line-height: 1.6;
+        }
+
+        .action-list li::before {
+            content: "✓";
+            position: absolute;
+            left: 8px;
+            color: var(--color-primary-red);
+            font-weight: bold;
+        }
+
+        .steps-container {
+            background: #f8f9fa;
+            border-radius: 8px;
+            padding: 20px;
+            margin: 15px 0;
+        }
+
+        .step-item {
+            display: flex;
+            align-items: flex-start;
+            margin: 12px 0;
+            padding: 12px;
+            background: white;
+            border-radius: 6px;
+            border-left: 4px solid var(--color-primary-red);
+        }
+
+        .step-number {
+            background: var(--color-primary-red);
+            color: white;
+            width: 30px;
+            height: 30px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            margin-right: 15px;
+            flex-shrink: 0;
+        }
+
+        .step-content {
+            flex: 1;
+        }
+
+        .timeline-container {
+            position: relative;
+            padding-left: 30px;
+            margin: 20px 0;
+        }
+
+        .timeline-container::before {
+            content: "";
+            position: absolute;
+            left: 10px;
+            top: 0;
+            bottom: 0;
+            width: 3px;
+            background: var(--color-primary-red);
+        }
+
+        .timeline-item {
+            position: relative;
+            margin: 15px 0;
+            padding-left: 20px;
+        }
+
+        .timeline-item::before {
+            content: "";
+            position: absolute;
+            left: -23px;
+            top: 5px;
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            background: var(--color-primary-red);
+            border: 3px solid white;
+            box-shadow: 0 0 0 2px var(--color-primary-red);
+        }
+
+        strong {
+            color: var(--color-primary-red);
+        }
+
+        .page-number {
+            position: absolute;
+            bottom: 20px;
+            right: 40px;
+            font-size: 12px;
+            color: #999;
+        }
+
+        code {
+            background: #f5f5f5;
+            padding: 2px 6px;
+            border-radius: 3px;
+            font-family: "Consolas", "Monaco", monospace;
+            font-size: 12px;
+            color: #d63384;
+        }
+    </style>
+</head>
+<body>
+
+<!-- 第1页：场景7 - 谈判僵局背景与策略1 -->
+<div class="page">
+    <div class="page-title">场景7：商务谈判僵局 🤝⚔️</div>
+
+    <div class="section-title">【场景背景】</div>
+    <div class="quote-box">
+        技术评审通过，但商务谈判卡住（价格、账期、独家、最小采购量等分歧）。<br><br>
+        <strong>客户：</strong>"价格必须降到¥10，账期要90天，而且我们要求独家供应。这是我们的底线，不能妥协。"<br><br>
+        <strong>销售：</strong>"X总，这三个条件，我真的很难答应..."<br><br>
+        <strong>客户：</strong>"那就没得谈了。我们还有其他供应商在谈。"<br><br>
+        <strong>销售（内心OS）：</strong>怎么办？让步还是坚持？
+    </div>
+
+    <div class="section-title">【破局策略】</div>
+
+    <div class="subsection-title">策略1：拆分议题（逐个击破）🎯</div>
+
+    <div class="highlight-box">
+        <strong>核心原则：</strong>不要同时谈多个议题，容易陷入僵局。一项一项谈，逐个击破。
+    </div>
+
+    <div class="steps-container">
+        <div class="step-item">
+            <div class="step-number">1</div>
+            <div class="step-content">
+                <strong>议题排序</strong><br>
+                <strong>话术：</strong>"X总，我们一项一项谈，不要混在一起。我们先谈最重要的，谈妥了再谈下一个。您觉得价格、账期、独家，哪个对您最重要？"
+            </div>
+        </div>
+        <div class="step-item">
+            <div class="step-number">2</div>
+            <div class="step-content">
+                <strong>先易后难</strong><br>
+                <strong>策略：</strong>先谈容易达成一致的议题，建立谈判势头<br>
+                <strong>话术：</strong>"账期这个问题，我们可以商量。行业标准是60天，您要90天，我们可以考虑。但需要您在其他条件上有所让步。"
+            </div>
+        </div>
+        <div class="step-item">
+            <div class="step-number">3</div>
+            <div class="step-content">
+                <strong>以退为进</strong><br>
+                <strong>策略：</strong>在次要议题上让步，换取主要议题坚守<br>
+                <strong>话术：</strong>"账期我们可以给90天，但价格¥10真的做不到。我们可以给¥10.5，这是我们的成本底线。您看这样可以吗？"
+            </div>
+        </div>
+        <div class="step-item">
+            <div class="step-number">4</div>
+            <div class="step-content">
+                <strong>打包交易</strong><br>
+                <strong>策略：</strong>将多个议题打包，整体谈判<br>
+                <strong>话术：</strong>"这样吧，我们做一个整体方案：
+                <ul style="margin-top: 10px; padding-left: 20px;">
+                    <li>价格：¥10.5（您要求¥10，我们让步¥0.5）</li>
+                    <li>账期：90天（您的要求，我们满足）</li>
+                    <li>独家：有限独家（只在中高端轿车BCM领域）</li>
+                    <li>最小采购量：每年150万颗（您承诺）</li>
+                </ul>
+                这是一个平衡方案，您看可以吗？"
+            </div>
+        </div>
+    </div>
+
+    <div class="success-box">
+        <strong>💡 关键技巧：</strong><br>
+        • <strong>不要一次性让步太多</strong> - 每次让一点，让客户觉得是"谈"出来的<br>
+        • <strong>每次让步都要有条件</strong> - "如果...那么..." 的交换逻辑<br>
+        • <strong>保留后续筹码</strong> - 不要一开始就把底牌亮完
+    </div>
+
+    <div class="page-number">第1页 | 场景7：谈判僵局 - 策略1</div>
+</div>
+
+<!-- 第2页：场景7 - 策略2-3 -->
+<div class="page">
+    <div class="page-title">场景7：谈判僵局 - 策略2-3 🎭🏔️</div>
+
+    <div class="section-title">策略2：引入第三方（外部压力）</div>
+
+    <div class="grid-3col">
+        <div class="strategy-box">
+            <div class="strategy-title">方法A：竞争对手威胁</div>
+            <strong>话术：</strong><br><br>
+            "X总，我刚接到通知，零跑汽车那边要追加100万颗订单，我们产能有限。<br><br>
+            如果您这边迟迟定不下来，我可能要先保证零跑的订单。<br><br>
+            不是说不和您合作，而是我们产能确实紧张。您能否尽快决策？如果这周能签约，我优先保证您的产能。"
+        </div>
+        <div class="strategy-box">
+            <div class="strategy-title">方法B：高层施压</div>
+            <strong>话术：</strong><br><br>
+            "X总，这个条件我真的批不了。这样吧，我向我们总经理汇报一下，看他能否特批。<br><br>
+            但我需要您给我一个采购意向书，证明您是认真想合作的。我拿着意向书去申请，成功率更高。您看可以吗？"
+        </div>
+        <div class="strategy-box">
+            <div class="strategy-title">方法C：时间期限</div>
+            <strong>话术：</strong><br><br>
+            "X总，我们这个特价只到月底。因为我们每个季度有销售目标，月底前签约我可以给更优惠的价格。<br><br>
+            如果拖到下个月，价格可能要涨回去了。您看能否在月底前决定？我保证给您最优惠的条件。"
+        </div>
+    </div>
+
+    <div class="section-title">策略3：改变谈判场景（换个环境）</div>
+
+    <div class="grid-2col">
+        <div class="strategy-box">
+            <div class="strategy-title">方法A：高层会谈</div>
+            <strong>策略：</strong>谈判僵局时，升级到高层谈判<br><br>
+            <strong>行动：</strong><br>
+            • 我方：总经理/VP出面<br>
+            • 对方：CEO/CTO/供应链VP<br>
+            • 场景：正式商务会谈（会议室）<br>
+            • 议题：战略合作，超越MCU采购<br><br>
+            <strong>话术：</strong>"X总，我们在执行层面可能很难达成一致。我建议我们两家高层见个面，聊聊战略合作的事情。不只是MCU采购，可能在更多领域有合作机会。您看什么时候方便，我安排我们总经理过来？"
+        </div>
+        <div class="strategy-box">
+            <div class="strategy-title">方法B：非正式场合</div>
+            <strong>策略：</strong>正式谈判太紧张，换个轻松场合<br><br>
+            <strong>场景：</strong><br>
+            • 饭局（晚餐）<br>
+            • 茶话会（下午茶）<br>
+            • 高尔夫/爬山（户外活动）<br>
+            • 参观考察（工厂/实验室）<br><br>
+            <strong>话术：</strong>"X总，我们谈了这么久，大家都有点累了。不如晚上一起吃个饭，放松一下？我们边吃边聊，不谈合同细节，就聊聊行业趋势、未来规划。"
+        </div>
+    </div>
+
+    <div class="strategy-box">
+        <div class="strategy-title">方法C：引入第三方调解</div>
+        <strong>策略：</strong>找一个双方都信任的第三方<br><br>
+        <strong>人选：</strong><br>
+        • 共同的合作伙伴（Tier 1供应商）<br>
+        • 投资机构（红杉、IDG等）<br>
+        • 行业协会（中汽协、芯片联盟）<br>
+        • 咨询公司（麦肯锡、德勤）<br><br>
+        <strong>话术：</strong>"X总，我们谈了这么久，双方都有些疲劳了。不如我们找个第三方机构，帮我们评估一下这个合作的合理性？比如找麦肯锡做个分析，看看价格、账期、独家这些条件是否合理。第三方的建议，我们双方都接受。您看怎么样？"
+    </div>
+
+    <div class="page-number">第2页 | 场景7：谈判僵局 - 策略2-3</div>
+</div>
+
+<!-- 第3页：场景7 - 策略4（创造性解决方案） -->
+<div class="page">
+    <div class="page-title">场景7：谈判僵局 - 策略4（创造性方案）💡</div>
+
+    <div class="section-title">策略4：创造性解决方案（跳出框架）</div>
+
+    <div class="subsection-title">方法A：阶梯式定价</div>
+
+    <table class="data-table">
+        <thead>
+            <tr>
+                <th style="width: 25%;">问题</th>
+                <th style="width: 75%;">创造性方案</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>
+                    <strong>客户要求：</strong>¥10<br>
+                    <strong>我们成本：</strong>¥10.5<br>
+                    <strong>僵局：</strong>降不下来
+                </td>
+                <td>
+                    <strong>话术：</strong>"X总，¥10我真的做不了。但我们可以这样：<br><br>
+                    • <strong>第一年：¥10.8</strong>（我们让步，但不亏本）<br>
+                    • <strong>第二年：¥10.5</strong>（随着量产规模扩大，成本下降）<br>
+                    • <strong>第三年：¥10.2</strong>（进一步降本）<br>
+                    • <strong>第四年：¥10</strong>（达到您的目标价格）<br><br>
+                    这样我们都有时间适应。您看可以吗？"
+                </td>
+            </tr>
+        </tbody>
+    </table>
+
+    <div class="subsection-title">方法B：捆绑销售</div>
+
+    <table class="data-table">
+        <thead>
+            <tr>
+                <th style="width: 25%;">问题</th>
+                <th style="width: 75%;">创造性方案</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>
+                    <strong>客户要求：</strong>只买MCU，要求最低价<br>
+                    <strong>我们困境：</strong>MCU利润薄，很难再降价
+                </td>
+                <td>
+                    <strong>话术：</strong>"X总，单独卖MCU，利润确实很薄，很难再降价。但如果您除了MCU，还采购我们的其他产品，我们可以打包优惠：<br><br>
+                    • <strong>MCU：¥10.5</strong>（单独卖¥11）<br>
+                    • <strong>IGBT：¥80</strong>（单独卖¥85）<br>
+                    • <strong>电流传感器：¥150</strong>（单独卖¥160）<br><br>
+                    打包购买，总价优惠10%。您看这样可以吗？"
+                </td>
+            </tr>
+        </tbody>
+    </table>
+
+    <div class="subsection-title">方法C：股权合作</div>
+
+    <table class="data-table">
+        <thead>
+            <tr>
+                <th style="width: 25%;">问题</th>
+                <th style="width: 75%;">创造性方案</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>
+                    <strong>客户要求：</strong>价格、独家、各种优惠条件<br>
+                    <strong>我们困境：</strong>条件太苛刻，无法满足
+                </td>
+                <td>
+                    <strong>话术：</strong>"X总，我有一个大胆的想法：与其我们天天在价格上扯皮，不如考虑股权合作？<br><br>
+                    比如您投资我们比亚迪半导体，成为我们的战略股东。这样：<br>
+                    • 您拿到<strong>股东价格</strong>（更优惠）<br>
+                    • 您有<strong>优先供应权</strong>（战略股东）<br>
+                    • 您分享我们的成长收益（<strong>股权增值</strong>）<br><br>
+                    我们不只是买卖关系，而是<strong>利益共同体</strong>。您觉得这个想法怎么样？"
+                </td>
+            </tr>
+        </tbody>
+    </table>
+
+    <div class="success-box">
+        <strong>💡 创造性谈判的精髓：</strong><br><br>
+        1️⃣ <strong>跳出零和博弈</strong> - 不是"你多我少"，而是"做大蛋糕"<br>
+        2️⃣ <strong>多维度思考</strong> - 不只是价格，还有账期、服务、股权、战略合作等<br>
+        3️⃣ <strong>长期视角</strong> - 不追求一次性利润最大化，而是长期合作共赢<br>
+        4️⃣ <strong>超越交易</strong> - 从"买卖关系"升级到"战略伙伴关系"
+    </div>
+
+    <div class="warning-box">
+        <strong>⚠️ 谈判僵局的底线原则：</strong><br>
+        • 知道自己的底线（价格、账期、独家的最低可接受条件）<br>
+        • 敢于说"不"（有些单子，宁可不做，也不能亏本）<br>
+        • 保留退出选项（"这次谈不拢，下次再谈"，不要死磕）<br>
+        • 10个谈判，能成8个就算成功（不要追求100%成功率）
+    </div>
+
+    <div class="page-number">第3页 | 场景7：谈判僵局 - 创造性方案</div>
+</div>
+
+<!-- 第4页：场景8 - 丢单复盘背景与快速复盘 -->
+<div class="page">
+    <div class="page-title">场景8：丢单后复盘与二次进攻 🔄</div>
+
+    <div class="section-title">【场景背景】</div>
+    <div class="quote-box">
+        经过3-6个月跟进，最终客户选择了竞品（瑞萨/NXP/兆易），我们丢单了。<br><br>
+        <strong>客户：</strong>"不好意思，经过评估，我们决定用瑞萨的方案。感谢你们这段时间的支持。"<br><br>
+        <strong>销售（内心OS）：</strong>完了，白忙活了...<br>
+        <strong>销售：</strong>"能问一下为什么选择瑞萨吗？"<br><br>
+        <strong>客户：</strong>"主要是我们技术团队更熟悉瑞萨，切换成本比较高。价格虽然你们有优势，但不是最主要考虑因素。"
+    </div>
+
+    <div class="section-title">【复盘框架】</div>
+
+    <div class="subsection-title">步骤1：快速复盘（24小时内）⚡</div>
+
+    <div class="highlight-box">
+        <strong>复盘目的：</strong>总结经验教训，为二次进攻做准备，避免重复犯错
+    </div>
+
+    <div class="subsection-title">📋 复盘问题清单（5大问题）</div>
+
+    <table class="data-table">
+        <thead>
+            <tr>
+                <th style="width: 30%;">关键问题</th>
+                <th style="width: 70%;">分析要点</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr style="background: #ffebee;">
+                <td><strong>1. 为什么丢单？</strong><br>（真实原因）</td>
+                <td>
+                    • 价格问题？（我们报价太高？）<br>
+                    • 技术问题？（性能不满足？测试不通过？）<br>
+                    • 服务问题？（响应慢？支持不到位？）<br>
+                    • 关系问题？（没有搞定关键人？）<br>
+                    • 时机问题？（介入太晚？）
+                </td>
+            </tr>
+            <tr style="background: #fff9e6;">
+                <td><strong>2. 竞争对手为什么赢？</strong></td>
+                <td>
+                    • 价格更低？（低多少？）<br>
+                    • 技术更强？（哪方面更强？）<br>
+                    • 关系更好？（和谁关系好？）<br>
+                    • 品牌更响？（客户更信任？）
+                </td>
+            </tr>
+            <tr style="background: #e8f5e9;">
+                <td><strong>3. 我们做得好的地方？</strong></td>
+                <td>
+                    • 技术交流充分<br>
+                    • FAE支持到位<br>
+                    • 价格有竞争力<br>
+                    • 响应及时
+                </td>
+            </tr>
+            <tr style="background: #e3f2fd;">
+                <td><strong>4. 我们做得不好的地方？</strong></td>
+                <td>
+                    • 介入太晚（项目已经定型）<br>
+                    • 没搞定关键人（技术总监不认可）<br>
+                    • 价格让步不够（最后关头没敢降价）<br>
+                    • 高层关系薄弱（没有CEO层面支持）
+                </td>
+            </tr>
+            <tr style="background: #f3e5f5;">
+                <td><strong>5. 还有机会吗？</strong></td>
+                <td>
+                    • 客户真的满意竞品吗？<br>
+                    • 后续有新项目吗？<br>
+                    • 做第二供应商可能性？<br>
+                    • 2-3年后重新评估可能性？
+                </td>
+            </tr>
+        </tbody>
+    </table>
+
+    <div class="subsection-title">📝 复盘输出（4份文档）</div>
+
+    <div class="grid-2col">
+        <div class="highlight-box">
+            <strong>1. 丢单原因分析报告</strong><br>
+            （1页纸，简明扼要）
+        </div>
+        <div class="highlight-box">
+            <strong>2. 改进措施</strong><br>
+            （3-5条具体行动）
+        </div>
+        <div class="highlight-box">
+            <strong>3. 二次进攻计划</strong><br>
+            （如果还有机会）
+        </div>
+        <div class="highlight-box">
+            <strong>4. 经验教训</strong><br>
+            （分享给团队）
+        </div>
+    </div>
+
+    <div class="page-number">第4页 | 场景8：丢单复盘框架</div>
+</div>
+
+<!-- 第5页：场景8 - 优雅退场与二次进攻时机 -->
+<div class="page">
+    <div class="page-title">场景8：优雅退场 + 二次进攻时机 👋🎯</div>
+
+    <div class="section-title">步骤2：优雅退场（保留后路）</div>
+
+    <div class="quote-box">
+        <strong>话术模板（格局很重要）：</strong><br><br>
+        "X总，虽然这次没能合作成功，但我还是要感谢您给我们机会。<br><br>
+        我理解您的选择，瑞萨确实是优秀的供应商。我们在技术实力和经验上确实还有差距，这也是我们需要提升的地方。<br><br>
+        不过有几句话我还是想说：<br><br>
+        <strong>1️⃣ 我们会持续改进</strong><br>
+        • 这次丢单对我们是个教训<br>
+        • 我们会针对您提出的问题改进<br>
+        • 希望将来有机会再合作<br><br>
+        <strong>2️⃣ 保持联系</strong><br>
+        • 虽然这次没合作，但希望我们还是朋友<br>
+        • 如果瑞萨那边有任何问题，随时联系我<br>
+        • 我们愿意做您的备用方案<br><br>
+        <strong>3️⃣ 后续项目</strong><br>
+        • 听说您明年有新车型规划<br>
+        • 新项目立项时，能否再给我们一次机会？<br>
+        • 我们会准备得更充分<br><br>
+        最后，祝您项目顺利！如果需要任何技术支持（哪怕不是用我们的产品），随时找我。"
+    </div>
+
+    <div class="warning-box">
+        <strong>⚠️ 优雅退场的关键原则：</strong><br>
+        ✓ 不抱怨（不说"竞品哪里不好"）<br>
+        ✓ 不纠缠（不继续推销）<br>
+        ✓ 不翻脸（不因丢单而态度变差）<br>
+        ✓ 留后路（保持联系，等待机会）
+    </div>
+
+    <div class="section-title">步骤3：埋伏二次进攻</div>
+
+    <div class="subsection-title">📅 二次进攻时机（3个时间窗口）</div>
+
+    <table class="data-table">
+        <thead>
+            <tr>
+                <th style="width: 22%;">时机</th>
+                <th style="width: 38%;">触发条件</th>
+                <th style="width: 40%;">我们的行动</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr style="background: #ffebee;">
+                <td><strong>时机A：竞品出问题</strong><br>（3-12个月内）</td>
+                <td>
+                    • 瑞萨缺货，交期延长<br>
+                    • 瑞萨涨价，成本增加<br>
+                    • 瑞萨质量问题，批次不良<br>
+                    • 瑞萨服务不到位，客户不满
+                </td>
+                <td>
+                    • 保持关注（定期拜访客户）<br>
+                    • 提前预警（"我听说瑞萨最近缺货，您那边还好吗？"）<br>
+                    • 及时补位（"如果瑞萨供不上，我们随时可以支持"）<br>
+                    • 提供备用方案（Pin-to-Pin替代，快速切换）
+                </td>
+            </tr>
+            <tr style="background: #e3f2fd;">
+                <td><strong>时机B：新项目立项</strong><br>（12-24个月）</td>
+                <td>
+                    • 客户新车型/新平台立项<br>
+                    • 供应商选择重新评估<br>
+                    • 我们有机会参与
+                </td>
+                <td>
+                    • 提前介入（比上次早6个月）<br>
+                    • 联合开发（参与前期设计）<br>
+                    • 展示进步（"我们针对上次问题改进了"）<br>
+                    • 价格优势（"这次我们报价更有竞争力"）
+                </td>
+            </tr>
+            <tr style="background: #f3e5f5;">
+                <td><strong>时机C：第二供应商机会</strong><br>（6-18个月）</td>
+                <td>
+                    • 客户认识到单一供应商风险<br>
+                    • 主动寻找第二供应商<br>
+                    • 我们有机会补位
+                </td>
+                <td>
+                    • 不要求主供应商地位<br>
+                    • 接受20-30%份额<br>
+                    • 价格更优惠（"第二供应商价格可以更低"）<br>
+                    • 服务更好（"我们更珍惜这个机会"）
+                </td>
+            </tr>
+        </tbody>
+    </table>
+
+    <div class="success-box">
+        <strong>💡 关键洞察：</strong><br>
+        丢单不是结束，而是二次进攻的开始。<strong>10个丢单客户，1-2个会回来</strong>。关键是保持联系，等待时机。
+    </div>
+
+    <div class="page-number">第5页 | 场景8：优雅退场 + 二次进攻时机</div>
+</div>
+
+<!-- 第6页：场景8 - 二次进攻策略与经验总结 -->
+<div class="page">
+    <div class="page-title">场景8：二次进攻策略 + 经验总结 🚀📚</div>
+
+    <div class="section-title">二次进攻策略（4种策略）</div>
+
+    <div class="grid-2col">
+        <div class="strategy-box">
+            <div class="strategy-title">策略A：展示进步</div>
+            <strong>话术：</strong>"X总，距离上次我们谈项目已经1年了。这1年里，我们针对您当时提出的问题做了很多改进：<br><br>
+            • <strong>技术问题：</strong>我们优化了EMC设计，现在能达到200V/m<br>
+            • <strong>价格问题：</strong>我们降低了成本，现在价格比瑞萨低35%<br>
+            • <strong>服务问题：</strong>我们FAE团队扩大到20人，响应更快<br><br>
+            能否给我们一次机会，重新评估一下我们的产品？"
+        </div>
+        <div class="strategy-box">
+            <div class="strategy-title">策略B：借力打力</div>
+            <strong>话术：</strong>"X总，我听说最近瑞萨缺货，交期延长到6个月了。您那边还好吗？<br><br>
+            如果影响到您的生产计划，我们可以紧急支持。我们现在库存充足，1周就能交货。而且我们产品Pin-to-Pin兼容瑞萨，切换成本很低。<br><br>
+            要不要我们先给您备一些货，以防万一？"
+        </div>
+        <div class="strategy-box">
+            <div class="strategy-title">策略C：降维打击</div>
+            <strong>话术：</strong>"X总，我知道您现在用瑞萨，我们不动。但您那边有没有一些边缘应用，可以试试我们的产品？<br><br>
+            比如车窗控制、座椅调节这些非核心应用，就算有问题，影响也不大。您可以当作试点，验证一下我们的产品。<br><br>
+            如果试点成功，后面再扩大到核心应用。您看怎么样？"
+        </div>
+        <div class="strategy-box">
+            <div class="strategy-title">策略D：合纵连横</div>
+            <strong>话术：</strong>"X总，虽然您这个项目用的是瑞萨，但您的供应商（比如德赛西威）有用我们的产品。<br><br>
+            如果德赛用我们的MCU，成本能降20%，他们给您的报价也能更优惠。这样您也受益。<br><br>
+            要不要我们一起去拜访德赛，聊聊合作的事情？"
+        </div>
+    </div>
+
+    <div class="section-title">【经验教训总结】</div>
+
+    <div class="subsection-title">📊 建立丢单案例库（结构化管理）</div>
+
+    <table class="data-table">
+        <thead>
+            <tr>
+                <th style="width: 20%;">字段</th>
+                <th style="width: 80%;">案例示例</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td><strong>丢单客户</strong></td>
+                <td>小米汽车</td>
+            </tr>
+            <tr>
+                <td><strong>丢单产品</strong></td>
+                <td>BCM主控MCU</td>
+            </tr>
+            <tr>
+                <td><strong>竞争对手</strong></td>
+                <td>瑞萨RH850</td>
+            </tr>
+            <tr style="background: #ffebee;">
+                <td><strong>丢单原因</strong></td>
+                <td>技术团队更熟悉瑞萨，切换成本高</td>
+            </tr>
+            <tr style="background: #fff9e6;">
+                <td><strong>关键失误</strong></td>
+                <td>介入太晚（项目已定型）</td>
+            </tr>
+            <tr style="background: #e8f5e9;">
+                <td><strong>改进措施</strong></td>
+                <td>提前6-12个月介入新项目</td>
+            </tr>
+            <tr style="background: #e3f2fd;">
+                <td><strong>二次机会</strong></td>
+                <td>明年新平台立项</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <div class="subsection-title">🔄 定期回访机制</div>
+
+    <div class="highlight-box">
+        <strong>回访频率：</strong>每季度拜访一次（不推销，只叙旧）<br>
+        <strong>回访目的：</strong>了解项目进展、等待二次进攻时机<br>
+        <strong>成功率：</strong>10个丢单客户，1-2个会回来（10-20%）
+    </div>
+
+    <div class="subsection-title">📢 团队分享（内部会议）</div>
+
+    <div class="steps-container">
+        <div class="step-item">
+            <div class="step-number">1</div>
+            <div class="step-content">
+                <strong>这次丢单的关键原因</strong> - 深度剖析，不回避问题
+            </div>
+        </div>
+        <div class="step-item">
+            <div class="step-number">2</div>
+            <div class="step-content">
+                <strong>竞争对手的成功之处</strong> - 学习对手的优点
+            </div>
+        </div>
+        <div class="step-item">
+            <div class="step-number">3</div>
+            <div class="step-content">
+                <strong>我们的改进措施</strong> - 制定具体行动计划
+            </div>
+        </div>
+        <div class="step-item">
+            <div class="step-number">4</div>
+            <div class="step-content">
+                <strong>对其他项目的启示</strong> - 避免重复犯错
+            </div>
+        </div>
+    </div>
+
+    <div class="success-box">
+        <strong>✓ 丢单复盘的价值：</strong><br>
+        • <strong>成长</strong> - 每次丢单都是学习机会<br>
+        • <strong>改进</strong> - 针对性提升短板<br>
+        • <strong>机会</strong> - 为二次进攻做准备<br>
+        • <strong>文化</strong> - 建立学习型组织，不怕失败，从失败中成长
+    </div>
+
+    <div class="warning-box">
+        <strong>⚠️ 重要提醒：</strong><br>
+        不要因为丢单而灰心丧气。销售就是"概率游戏"，不可能100%成功。关键是：<br>
+        • <strong>每次丢单都复盘</strong><br>
+        • <strong>每次复盘都改进</strong><br>
+        • <strong>每次改进都成长</strong><br>
+        • <strong>成功率从30%提升到50%，就是巨大进步</strong>
+    </div>
+
+    <div class="page-number">第6页 | 场景8：二次进攻策略 + 经验总结</div>
+</div>
+
+</body>
+</html>

@@ -3,14 +3,20 @@
 <head>
 
     <meta charset="UTF-8">
-    <title>比亚迪半导体销售手册 - 场景1-2详细剧本</title>
+    <title>比亚迪半导体销售手册 - 概览与框架篇</title>
     <style>
+        /* === 1. 调色板与全局定义 === */
         :root {
             --color-primary-red: #e60012;
             --color-primary-red-dark: #c50010;
             --text-color-on-dark: #ffffff;
+            --text-color-body: #000000;
+            --text-color-light: #666666;
+            --text-color-highlight-green: #008000;
+            --text-color-highlight-red: #e60012;
             --bg-page: #ffffff;
             --bg-table-stripe: #f2f2f2;
+            --bg-table-total: #f9f9f9;
             --border-color-table: #ddd;
             --shadow-page: rgba(0, 0, 0, 0.1);
         }
@@ -26,6 +32,7 @@
             gap: 20px;
         }
 
+        /* === 2. 页面容器 (A4横向) === */
         .page {
             width: 297mm;
             min-height: 210mm;
@@ -34,158 +41,153 @@
             box-shadow: 0 0 10px var(--shadow-page);
             padding: 40px;
             box-sizing: border-box;
+            overflow: hidden;
         }
 
+        /* === 3. 标题样式 === */
         .page-title {
-            font-size: 26px;
+            font-size: 28px;
             font-weight: bold;
             color: var(--text-color-on-dark);
             background: linear-gradient(45deg, var(--color-primary-red), var(--color-primary-red-dark));
             padding: 15px 30px;
             margin: -40px -40px 30px -40px;
             clip-path: polygon(0 0, calc(100% - 30px) 0, 100% 100%, 0 100%);
+            display: flex;
+            align-items: center;
         }
 
         .section-title {
-            font-size: 18px;
+            font-size: 20px;
             font-weight: bold;
             color: var(--color-primary-red);
-            margin: 20px 0 12px 0;
-            border-left: 4px solid var(--color-primary-red);
-            padding-left: 12px;
+            margin: 25px 0 15px 0;
+            border-bottom: 2px solid #eee;
+            padding-bottom: 5px;
         }
 
-        .subsection-title {
-            font-size: 16px;
-            font-weight: bold;
-            color: var(--color-primary-red-dark);
-            margin: 15px 0 10px 0;
-        }
+        h3 { font-size: 16px; margin-top: 20px; color: #333; }
 
+        /* === 4. 表格样式 === */
         .data-table {
             width: 100%;
             border-collapse: collapse;
-            margin-bottom: 18px;
+            margin-bottom: 20px;
         }
         .data-table th {
             background-color: var(--color-primary-red);
-            color: white;
+            color: var(--text-color-on-dark);
             font-weight: normal;
-            font-size: 13px;
-            padding: 9px;
+            font-size: 14px;
+            padding: 10px;
             border: 1px solid var(--border-color-table);
+            white-space: nowrap;
         }
         .data-table td {
-            padding: 7px 9px;
+            padding: 8px 10px;
             text-align: left;
-            font-size: 12.5px;
+            font-size: 13px;
             border: 1px solid var(--border-color-table);
             color: #333;
         }
-        .data-table tr:nth-child(even) {
-            background-color: var(--bg-table-stripe);
+        .data-table tr:nth-child(even) { background-color: var(--bg-table-stripe); }
+        .data-table tr:nth-child(odd) { background-color: var(--bg-page); }
+
+        /* === 5. 封面样式 === */
+        .cover-style {
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+        .cover-style .red-bottom {
+            background-color: var(--color-primary-red);
+            height: 45%;
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            z-index: 1;
+        }
+        .cover-top-content {
+            position: absolute;
+            top: 15%;
+            left: 60px;
+            z-index: 2;
+        }
+        .cover-title-en {
+            font-size: 24px;
+            color: #999;
+            margin-bottom: 10px;
+        }
+        .cover-title-cn {
+            font-size: 48px;
+            font-weight: bold;
+            color: var(--color-primary-red);
+            line-height: 1.2;
+        }
+        .logo-circle {
+            position: absolute;
+            left: 60px;
+            bottom: 60px;
+            width: 80px;
+            height: 80px;
+            border: 8px solid #fff;
+            border-radius: 50%;
+            z-index: 3;
+            background-color: var(--color-primary-red);
+        }
+        .slogan {
+            position: absolute;
+            right: 60px;
+            bottom: 60px;
+            color: #fff;
+            font-size: 24px;
+            font-style: italic;
+            z-index: 3;
+            text-align: right;
+        }
+        .cover-info {
+            position: absolute;
+            right: 60px;
+            bottom: 120px;
+            color: #fff;
+            text-align: right;
+            z-index: 3;
+            font-size: 14px;
+            line-height: 1.8;
         }
 
-        .strategy-box {
-            background: linear-gradient(135deg, #fff5f5 0%, #ffffff 100%);
+        /* === 6. 其他元素 === */
+        .bullet-point { color: var(--color-primary-red); font-weight: bold; margin-right: 5px; }
+        .quote-box {
+            background-color: #fff0f0;
             border-left: 4px solid var(--color-primary-red);
             padding: 15px;
             margin: 15px 0;
-            border-radius: 6px;
-        }
-
-        .strategy-title {
-            font-size: 17px;
-            font-weight: bold;
-            color: var(--color-primary-red-dark);
-            margin-bottom: 10px;
-        }
-
-        .quote-box {
-            background-color: #f5f5f5;
-            border-left: 4px solid #999;
-            padding: 12px 15px;
-            margin: 12px 0;
-            font-style: italic;
             color: #555;
-            line-height: 1.6;
-            font-size: 13px;
+            font-style: italic;
         }
-
-        .tip-box {
-            background-color: #fff9e6;
-            border-left: 4px solid #ffc107;
-            padding: 12px 15px;
-            margin: 12px 0;
-            font-size: 13px;
-            line-height: 1.6;
+        .diagram-box {
+            border: 1px dashed #ccc;
+            background: #fafafa;
+            padding: 20px;
+            text-align: center;
+            margin: 20px 0;
+            color: #666;
+            font-size: 14px;
         }
-
-        .tip-title {
-            font-weight: bold;
-            color: #cc9900;
-            margin-bottom: 8px;
+        .framework-box {
+            background: linear-gradient(135deg, #fff5f5 0%, #ffffff 100%);
+            border: 2px solid var(--color-primary-red);
+            border-radius: 8px;
+            padding: 20px;
+            margin: 15px 0;
         }
-
-        .tip-title::before {
-            content: "💡 ";
-        }
-
-        .warning-box {
-            background-color: #fff0f0;
-            border: 2px solid #ff6b6b;
-            border-radius: 6px;
-            padding: 10px 12px;
-            margin: 10px 0;
-            font-size: 12.5px;
-        }
-
-        .bullet-point {
-            margin: 8px 0 8px 20px;
-            line-height: 1.6;
-            font-size: 13px;
-            position: relative;
-        }
-
-        .bullet-point::before {
-            content: "▸";
+        .framework-box h4 {
             color: var(--color-primary-red);
-            font-weight: bold;
-            position: absolute;
-            left: -15px;
-        }
-
-        .grid-2col {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 15px;
-        }
-
-        .grid-3col {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 12px;
-        }
-
-        .highlight-red {
-            color: var(--color-primary-red);
-            font-weight: bold;
-        }
-
-        .highlight-green {
-            color: #28a745;
-            font-weight: bold;
-        }
-
-        .small-text {
-            font-size: 11.5px;
-            line-height: 1.5;
-        }
-
-        .checkmark::before {
-            content: "✓ ";
-            color: #28a745;
-            font-weight: bold;
+            margin-top: 0;
+            font-size: 16px;
         }
     </style>
 
@@ -193,6 +195,2132 @@
 </head>
 <body>
 
+<div class="page">
+    <div class="page-title">手册定位与4C分析框架</div>
+
+    <div class="section-title">📋 手册核心价值</div>
+    <div class="quote-box">
+        <strong>定位：</strong>销售团队的"战前准备清单" + "实战工具箱"
+    </div>
+
+    <table class="data-table">
+        <thead>
+            <tr>
+                <th width="25%">使用场景</th>
+                <th width="75%">使用方式</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>客户拜访前</td>
+                <td>查阅目标客户的情报卡片（决策链、痛点、竞争态势）</td>
+            </tr>
+            <tr>
+                <td>竞标准备</td>
+                <td>使用竞品对标表和标准话术</td>
+            </tr>
+            <tr>
+                <td>商机跟进</td>
+                <td>参考采购周期地图，制定阶段性策略</td>
+            </tr>
+            <tr>
+                <td>异议处理</td>
+                <td>查找对应场景的应对话术和证据材料</td>
+            </tr>
+            <tr>
+                <td>紧急求助</td>
+                <td>按照快速响应流程联系市场部获取支持（30分钟响应）</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <div class="section-title">🏗️ 手册四层结构</div>
+    <table class="data-table">
+        <thead>
+            <tr>
+                <th width="22%">层级</th>
+                <th width="23%">核心问题</th>
+                <th width="28%">方法论</th>
+                <th width="27%">输出物</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td><strong>第一层</strong><br/>产品线情报库</td>
+                <td>我们卖什么，市场在哪，对手是谁</td>
+                <td>4C框架<br/>(Context/Customer/<br/>Competitor/Company)</td>
+                <td>每个产品的完整情报卡片</td>
+            </tr>
+            <tr>
+                <td><strong>第二层</strong><br/>销售场景剧本</td>
+                <td>遇到XX情况怎么办</td>
+                <td>场景分类 + STAR案例 + 标准话术</td>
+                <td>8大典型场景的应对指南</td>
+            </tr>
+            <tr>
+                <td><strong>第三层</strong><br/>快速响应机制</td>
+                <td>需要帮助找谁，多快能拿到</td>
+                <td>销售-市场协同SOP</td>
+                <td>30分钟紧急响应流程</td>
+            </tr>
+            <tr>
+                <td><strong>第四层</strong><br/>情报工具箱</td>
+                <td>用什么工具提升效率</td>
+                <td>麦肯锡分析框架 + Excel模板</td>
+                <td>可直接使用的工具包</td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+<div class="page">
+    <div class="page-title">📊 4C情报分析框架（麦肯锡方法论）</div>
+
+    <p style="font-size: 15px; color: #555; margin-bottom: 25px;">
+        本手册采用麦肯锡4C竞争分析框架，对每个产品进行结构化情报梳理。通过Context（市场环境）、Customer（客户情报）、Competitor（竞争分析）、Company（自身能力）四个维度，帮助销售团队全面掌握产品竞争态势。
+    </p>
+
+    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 25px; margin-top: 20px;">
+        <!-- C1: Context -->
+        <div class="framework-box">
+            <h4>🌍 C1: Context - 市场环境</h4>
+            <p style="font-size: 14px; line-height: 1.6; margin: 10px 0;">
+                <strong>核心内容：</strong>
+            </p>
+            <ul style="font-size: 13px; line-height: 1.7; margin: 5px 0;">
+                <li>市场规模与增速（用数据说话）</li>
+                <li>技术演进路线图（未来3年趋势）</li>
+                <li>应用场景拆解（价值链分析）</li>
+            </ul>
+            <p style="font-size: 13px; color: #666; margin-top: 10px;">
+                <strong>分析工具：</strong>市场规模数据、技术路线图、价值链分析
+            </p>
+        </div>
+
+        <!-- C2: Customer -->
+        <div class="framework-box">
+            <h4>👥 C2: Customer - 客户情报</h4>
+            <p style="font-size: 14px; line-height: 1.6; margin: 10px 0;">
+                <strong>核心内容：</strong>
+            </p>
+            <ul style="font-size: 13px; line-height: 1.7; margin: 5px 0;">
+                <li>目标客户分级矩阵（优先级排序）</li>
+                <li>客户决策链分析（找到关键人）</li>
+                <li>客户采购周期地图（把握节奏）</li>
+            </ul>
+            <p style="font-size: 13px; color: #666; margin-top: 10px;">
+                <strong>分析工具：</strong>客户分级矩阵、决策链图谱、采购周期地图
+            </p>
+        </div>
+
+        <!-- C3: Competitor -->
+        <div class="framework-box">
+            <h4>⚔️ C3: Competitor - 竞争分析</h4>
+            <p style="font-size: 14px; line-height: 1.6; margin: 10px 0;">
+                <strong>核心内容：</strong>
+            </p>
+            <ul style="font-size: 13px; line-height: 1.7; margin: 5px 0;">
+                <li>竞争格局与市场份额</li>
+                <li>竞品深度对标（参数/价格/服务）</li>
+                <li>竞争策略与应对话术</li>
+            </ul>
+            <p style="font-size: 13px; color: #666; margin-top: 10px;">
+                <strong>分析工具：</strong>市场份额图、竞品对标表、应对话术库
+            </p>
+        </div>
+
+        <!-- C4: Company -->
+        <div class="framework-box">
+            <h4>🏢 C4: Company - 自身能力</h4>
+            <p style="font-size: 14px; line-height: 1.6; margin: 10px 0;">
+                <strong>核心内容：</strong>
+            </p>
+            <ul style="font-size: 13px; line-height: 1.7; margin: 5px 0;">
+                <li>差异化价值主张（3句话说清优势）</li>
+                <li>标杆案例库（STAR格式）</li>
+                <li>能力证明材料清单（随身携带）</li>
+            </ul>
+            <p style="font-size: 13px; color: #666; margin-top: 10px;">
+                <strong>分析工具：</strong>价值主张卡片、STAR案例库、证明材料清单
+            </p>
+        </div>
+    </div>
+
+    <div class="diagram-box" style="margin-top: 25px;">
+        <strong>框架应用逻辑：</strong><br/>
+        C1市场环境 → 确定目标市场 → C2客户分析 → 锁定优先客户 → C3竞争分析 → 制定差异化策略 → C4能力匹配 → 形成完整销售方案
+    </div>
+</div>
+<div class="page">
+    <div class="page-title">六大销售关键产品线版图</div>
+
+    <div class="section-title">产品线总览</div>
+    <table class="data-table">
+        <thead>
+            <tr>
+                <th width="8%">序号</th>
+                <th width="20%">产品线</th>
+                <th width="35%">核心定位</th>
+                <th width="37%">关键应用场景</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>1</td>
+                <td><strong>碳化硅 SiC</strong></td>
+                <td>高性能/800V平台，兵家必争之地</td>
+                <td>800V主驱逆变器、高功率OBC、超充桩</td>
+            </tr>
+            <tr>
+                <td>2</td>
+                <td><strong>IGBT</strong></td>
+                <td>功率主力，400V平台核心</td>
+                <td>主驱逆变器、OBC、DC-DC、空调压缩机</td>
+            </tr>
+            <tr>
+                <td>3</td>
+                <td><strong>摄像头模组/CMOS</strong></td>
+                <td>智能驾驶/座舱的"眼睛"</td>
+                <td>前视ADAS、环视AVM、座舱DMS/OMS</td>
+            </tr>
+            <tr>
+                <td>4</td>
+                <td><strong>车规级LED</strong></td>
+                <td>车载照明与显示</td>
+                <td>头灯、尾灯、氛围灯、交互灯</td>
+            </tr>
+            <tr>
+                <td>5</td>
+                <td><strong>电流传感器</strong></td>
+                <td>电控系统的"血压计"</td>
+                <td>BMS、主驱相电流、OBC输入输出</td>
+            </tr>
+            <tr>
+                <td>6</td>
+                <td><strong>MCU</strong></td>
+                <td>感知、决策、执行的控制核心</td>
+                <td>动力控制、车身域、网关、座舱控制</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <div class="section-title">销售关键记忆点</div>
+    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px;">
+        <div>
+            <h3>⚡ 功率器件（SiC/IGBT）</h3>
+            <ul style="font-size: 13px; line-height: 1.7;">
+                <li><span class="bullet-point">●</span> 单车价值量高，对整车效率影响大</li>
+                <li><span class="bullet-point">●</span> SiC与800V强相关，IGBT与400V强相关</li>
+                <li><span class="bullet-point">●</span> 降低损耗、提升充电速度是核心卖点</li>
+                <li><span class="bullet-point">●</span> 高端车必争，中端车快速渗透中</li>
+            </ul>
+        </div>
+        <div>
+            <h3>📷 感知器件（摄像头/LED）</h3>
+            <ul style="font-size: 13px; line-height: 1.7;">
+                <li><span class="bullet-point">●</span> 摄像头数量与智驾等级(L2/L3)强相关</li>
+                <li><span class="bullet-point">●</span> 产业链长，需关注Tier1关系</li>
+                <li><span class="bullet-point">●</span> LED注重设计权，单车价值差异大</li>
+                <li><span class="bullet-point">●</span> 矩阵大灯vs普通灯具价值差10倍</li>
+            </ul>
+        </div>
+    </div>
+
+    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px; margin-top: 20px;">
+        <div>
+            <h3>📊 传感器件（电流传感器）</h3>
+            <ul style="font-size: 13px; line-height: 1.7;">
+                <li><span class="bullet-point">●</span> 精度-成本-安全的平衡艺术</li>
+                <li><span class="bullet-point">●</span> 技术路线多样（霍尔/分流器/磁通门）</li>
+                <li><span class="bullet-point">●</span> BMS应用要求高精度（SOC估算）</li>
+                <li><span class="bullet-point">●</span> 主驱应用要求高响应（保护）</li>
+            </ul>
+        </div>
+        <div>
+            <h3>🖥️ 控制器件（MCU）</h3>
+            <ul style="font-size: 13px; line-height: 1.7;">
+                <li><span class="bullet-point">●</span> 架构演进：分布式→域控→中央计算</li>
+                <li><span class="bullet-point">●</span> 功能安全等级（ASIL B/C/D）是门槛</li>
+                <li><span class="bullet-point">●</span> 生态依赖重（工具链、AUTOSAR）</li>
+                <li><span class="bullet-point">●</span> 非安全关键节点适合国产替代</li>
+            </ul>
+        </div>
+    </div>
+
+    <div class="quote-box" style="margin-top: 20px;">
+        <strong>💡 销售策略提示：</strong>功率器件看平台电压（400V/800V）、感知器件看智能化等级（L2/L3）、控制器件看架构演进（分布式/域控）。这是客户决策的核心逻辑。
+    </div>
+</div>
+<div class="page">
+    <div class="page-title">产品1：碳化硅(SiC)功率器件 - <span class="c1-tag">C1 Context 市场环境</span></div>
+
+    <div class="section-title">📊 市场规模与增速</div>
+
+    <div class="metric-grid">
+        <div class="metric-card">
+            <div class="metric-label">2024年全球市场规模</div>
+            <div class="metric-value">$2.3B</div>
+            <div class="metric-label">约160亿人民币</div>
+        </div>
+        <div class="metric-card">
+            <div class="metric-label">2027年预测规模</div>
+            <div class="metric-value">$5.8B</div>
+            <div class="metric-label">年复合增长率 35%</div>
+        </div>
+        <div class="metric-card">
+            <div class="metric-label">中国市场占比</div>
+            <div class="metric-value">40%</div>
+            <div class="metric-label">约64亿人民币（2024）</div>
+        </div>
+    </div>
+
+    <div class="insight-box">
+        <strong>💡 销售洞察：</strong>SiC是增速最快的功率器件赛道，窗口期2024-2026年。需要在这3年内快速抢占市场份额。这是一个高增长、高竞争的"兵家必争之地"。
+    </div>
+
+    <div class="section-title">📈 技术演进路线图（未来3年趋势）</div>
+    <table class="data-table">
+        <thead>
+            <tr>
+                <th width="18%">时间节点</th>
+                <th width="35%">技术趋势</th>
+                <th width="27%">对销售的影响</th>
+                <th width="20%">销售策略</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td><strong>2024-2025</strong></td>
+                <td>800V平台渗透率：15%→30%</td>
+                <td>SiC成为高端车标配<br/>需求爆发期</td>
+                <td>重点攻坚<br/>蔚小理等新势力</td>
+            </tr>
+            <tr>
+                <td><strong>2026-2027</strong></td>
+                <td>SiC模块功率密度提升50%</td>
+                <td>客户关注散热设计<br/>技术支持需求增加</td>
+                <td>提供整套<br/>热管理方案</td>
+            </tr>
+            <tr>
+                <td><strong>2028+</strong></td>
+                <td>1200V SiC进入商用车领域</td>
+                <td>新市场打开（重卡/客车）</td>
+                <td>提前布局<br/>商用车市场</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <div class="section-title">🎯 应用场景拆解（价值链分析）</div>
+    <div style="display: grid; grid-template-columns: 70% 30%; gap: 20px;">
+        <div>
+            <h4 style="color: var(--color-primary-red); font-size: 15px; margin: 10px 0;">主驱逆变器（70%需求量）- 核心战场</h4>
+            <table class="data-table" style="font-size: 12px;">
+                <thead>
+                    <tr>
+                        <th>车型级别</th>
+                        <th>SiC渗透率</th>
+                        <th>单车价值</th>
+                        <th>代表车型</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>高端车型<br/>(>30万元)</td>
+                        <td><strong>80%</strong><br/>(基本标配)</td>
+                        <td>¥2,000-3,500</td>
+                        <td>理想L9、蔚来ET7<br/>比亚迪仰望</td>
+                    </tr>
+                    <tr>
+                        <td>中端车型<br/>(15-30万元)</td>
+                        <td><strong>35%</strong><br/>(快速增长中)</td>
+                        <td>¥1,500-2,200</td>
+                        <td>小鹏P7、比亚迪海豹<br/>零跑C11</td>
+                    </tr>
+                    <tr>
+                        <td>经济车型<br/>(<15万元)</td>
+                        <td><5%<br/>(仍以IGBT为主)</td>
+                        <td>-</td>
+                        <td>短期内不是<br/>SiC目标市场</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        <div>
+            <div class="trend-box">
+                <h4 style="color: #2196f3; font-size: 14px; margin-top: 0;">车载充电OBC</h4>
+                <p style="font-size: 12px; margin: 8px 0;"><strong>需求占比：</strong>20%</p>
+                <p style="font-size: 12px; margin: 8px 0;"><strong>应用：</strong>22kW+大功率快充</p>
+                <p style="font-size: 12px; margin: 8px 0;"><strong>单车价值：</strong>¥800-1,500</p>
+                <p style="font-size: 12px; margin: 8px 0;"><strong>优势：</strong>充电效率提升、体积减小40%</p>
+            </div>
+            <div class="trend-box" style="margin-top: 15px;">
+                <h4 style="color: #2196f3; font-size: 14px; margin-top: 0;">DC-DC转换器</h4>
+                <p style="font-size: 12px; margin: 8px 0;"><strong>需求占比：</strong>10%</p>
+                <p style="font-size: 12px; margin: 8px 0;"><strong>应用：</strong>800V→12V降压</p>
+                <p style="font-size: 12px; margin: 8px 0;"><strong>单车价值：</strong>¥300-600</p>
+            </div>
+        </div>
+    </div>
+
+    <div class="insight-box" style="margin-top: 20px;">
+        <strong>💡 销售策略建议：</strong><br/>
+        1. <strong>主攻方向：</strong>主驱逆变器（利润率高+技术门槛高，占总需求70%）<br/>
+        2. <strong>突破路径：</strong>先高端车型建立品牌→再向中端车型渗透（价格敏感度低→高）<br/>
+        3. <strong>打包销售：</strong>主驱+OBC+DC-DC整套方案（提升客单价，增强客户粘性）
+    </div>
+</div>
+<div class="page">
+    <div class="page-title">产品1：SiC功率器件 - 数据速查与定位策略</div>
+
+    <div class="section-title">📋 一句话销售定位</div>
+    <div style="background: linear-gradient(135deg, #ffebee 0%, #ffffff 100%); border: 3px solid var(--color-primary-red); border-radius: 10px; padding: 20px; text-align: center; margin: 20px 0;">
+        <p style="font-size: 18px; color: var(--color-primary-red); font-weight: bold; margin: 0; line-height: 1.6;">
+            "SiC是800V高端车型的必选项，单车价值¥2,000-4,000，<br/>
+            我们用成本优势（低20%）+比亚迪背书+快速响应（10周交期）打市场"
+        </p>
+    </div>
+
+    <div class="section-title">🎯 目标市场与应用矩阵</div>
+    <table class="data-table">
+        <thead>
+            <tr style="background-color: var(--color-c1-blue);">
+                <th width="20%">应用场景</th>
+                <th width="15%">需求占比</th>
+                <th width="20%">技术要求</th>
+                <th width="18%">单车价值量</th>
+                <th width="27%">客户关注点</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td><strong>主驱逆变器</strong><br/>(核心战场)</td>
+                <td style="text-align: center; font-size: 18px; font-weight: bold; color: var(--color-primary-red);">70%</td>
+                <td>• 650V/750V<br/>• 150-400A<br/>• 低Rdson</td>
+                <td style="text-align: center; font-weight: bold;">¥2,000-3,500</td>
+                <td>• 损耗与效率<br/>• 热管理方案<br/>• 可靠性证明</td>
+            </tr>
+            <tr>
+                <td><strong>车载充电OBC</strong><br/>(增量市场)</td>
+                <td style="text-align: center; font-size: 18px; font-weight: bold;">20%</td>
+                <td>• 22kW+<br/>• 高频开关<br/>• EMC设计</td>
+                <td style="text-align: center; font-weight: bold;">¥800-1,500</td>
+                <td>• 充电速度<br/>• 体积重量<br/>• 成本控制</td>
+            </tr>
+            <tr>
+                <td><strong>DC-DC转换</strong><br/>(补充市场)</td>
+                <td style="text-align: center; font-size: 18px; font-weight: bold;">10%</td>
+                <td>• 800V→12V<br/>• SiC二极管<br/>• 高可靠性</td>
+                <td style="text-align: center; font-weight: bold;">¥300-600</td>
+                <td>• 转换效率<br/>• 集成度<br/>• 性价比</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <div class="section-title">🔥 市场热点与窗口期</div>
+    <div style="display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 15px; margin: 20px 0;">
+        <div style="background: #fff3e0; border-left: 4px solid #ff9800; padding: 15px;">
+            <h4 style="color: #ff9800; font-size: 14px; margin: 0 0 10px 0;">2024-2025 窗口期</h4>
+            <p style="font-size: 12px; line-height: 1.6; margin: 5px 0;">• 800V平台快速渗透<br/>• 新势力新车型集中上市<br/>• 供应商定点窗口期<br/>• <strong>行动：抢占定点</strong></p>
+        </div>
+        <div style="background: #e8f5e9; border-left: 4px solid #4caf50; padding: 15px;">
+            <h4 style="color: #4caf50; font-size: 14px; margin: 0 0 10px 0;">2026-2027 量产期</h4>
+            <p style="font-size: 12px; line-height: 1.6; margin: 5px 0;">• 定点项目批量交付<br/>• 技术迭代（功率密度↑）<br/>• 二供机会释放<br/>• <strong>行动：规模放量</strong></p>
+        </div>
+        <div style="background: #e1f5fe; border-left: 4px solid #03a9f4; padding: 15px;">
+            <h4 style="color: #03a9f4; font-size: 14px; margin: 0 0 10px 0;">2028+ 拓展期</h4>
+            <p style="font-size: 12px; line-height: 1.6; margin: 5px 0;">• 商用车市场开启<br/>• 1200V产品进入<br/>• 成本持续下降<br/>• <strong>行动：新市场布局</strong></p>
+        </div>
+    </div>
+
+    <div class="section-title">💰 价值量分析（为什么值得打？）</div>
+    <table class="data-table">
+        <thead>
+            <tr>
+                <th width="25%">维度</th>
+                <th width="35%">数据</th>
+                <th width="40%">销售意义</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td><strong>单车平均价值</strong></td>
+                <td style="font-size: 16px; font-weight: bold; color: var(--color-primary-red);">¥2,000-4,000</td>
+                <td>高端车型单车价值可达¥4,000+<br/>（主驱+OBC+DCDC打包）</td>
+            </tr>
+            <tr>
+                <td><strong>目标车型年销量</strong></td>
+                <td>• 理想：30-40万辆<br/>• 小鹏：20-30万辆<br/>• 蔚来：25-35万辆</td>
+                <td>单个头部客户年采购额<br/>可达¥6-16亿</td>
+            </tr>
+            <tr>
+                <td><strong>项目生命周期</strong></td>
+                <td>3-5年（平台周期）</td>
+                <td>定点成功后，稳定供货3-5年<br/>总价值¥18-80亿/客户</td>
+            </tr>
+            <tr>
+                <td><strong>利润率水平</strong></td>
+                <td>毛利率：25-35%<br/>（高于IGBT的20-25%）</td>
+                <td>技术门槛高，议价能力强<br/>利润质量好</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <div class="insight-box" style="margin-top: 20px;">
+        <strong>💡 为什么SiC值得销售全力以赴？</strong><br/>
+        1. <strong>市场增速快：</strong>35%年复合增长，3年市场翻2.5倍<br/>
+        2. <strong>单车价值高：</strong>¥2,000-4,000，是IGBT的1.5-2倍<br/>
+        3. <strong>利润率高：</strong>毛利25-35%，技术门槛带来议价权<br/>
+        4. <strong>窗口期紧迫：</strong>2024-2026是黄金窗口，错过要等下一代平台（3-5年后）<br/>
+        5. <strong>战略意义：</strong>800V是未来趋势，SiC是敲门砖，带动其他产品线（IGBT/MCU/传感器）
+    </div>
+</div>
+<div class="page">
+    <div class="page-title">产品1：SiC功率器件 - <span class="c2-tag">C2 Customer 客户情报</span></div>
+
+    <div class="section-title">👥 目标客户分级矩阵（波士顿BCG矩阵应用）</div>
+
+    <div style="text-align: center; background: #f5f5f5; padding: 15px; border-radius: 8px; margin-bottom: 20px;">
+        <svg width="100%" height="200" viewBox="0 0 600 200">
+            <!-- 坐标轴 -->
+            <line x1="300" y1="0" x2="300" y2="200" stroke="#ccc" stroke-width="2"/>
+            <line x1="0" y1="100" x2="600" y2="100" stroke="#ccc" stroke-width="2"/>
+
+            <!-- 象限标签 -->
+            <text x="150" y="50" text-anchor="middle" font-size="16" fill="#f44336" font-weight="bold">问题客户 ⭐⭐⭐</text>
+            <text x="150" y="70" text-anchor="middle" font-size="12" fill="#666">(高增长+低份额)</text>
+
+            <text x="450" y="50" text-anchor="middle" font-size="16" fill="#ff9800" font-weight="bold">明星客户 ⭐⭐</text>
+            <text x="450" y="70" text-anchor="middle" font-size="12" fill="#666">(高增长+高份额)</text>
+
+            <text x="150" y="150" text-anchor="middle" font-size="16" fill="#9e9e9e" font-weight="bold">其他客户 🔽</text>
+            <text x="150" y="170" text-anchor="middle" font-size="12" fill="#666">(低增长+低份额)</text>
+
+            <text x="450" y="150" text-anchor="middle" font-size="16" fill="#4caf50" font-weight="bold">金牛客户 ⭐</text>
+            <text x="450" y="170" text-anchor="middle" font-size="12" fill="#666">(低增长+高份额)</text>
+
+            <!-- 轴标签 -->
+            <text x="30" y="15" font-size="12" fill="#333">增长率高</text>
+            <text x="30" y="195" font-size="12" fill="#333">增长率低</text>
+            <text x="10" y="105" font-size="12" fill="#333">份额低</text>
+            <text x="560" y="105" font-size="12" fill="#333">份额高</text>
+        </svg>
+    </div>
+
+    <div class="customer-matrix">
+        <!-- 问题客户 -->
+        <div class="customer-card question">
+            <h3>
+                ❓ 问题客户（Question Marks）
+                <span class="priority-badge priority-high">优先级最高</span>
+            </h3>
+            <table style="width: 100%; font-size: 12px; margin: 10px 0;">
+                <tr><td style="width: 25%; font-weight: bold;">代表客户</td><td>小米汽车、华为问界、智己汽车</td></tr>
+                <tr><td style="font-weight: bold;">特征</td><td>高增长潜力，但当前份额低或为零</td></tr>
+                <tr><td style="font-weight: bold;">机会</td><td>新车型窗口期，供应商尚未锁定</td></tr>
+                <tr><td style="font-weight: bold;">年需求量</td><td>单客户3-8万套</td></tr>
+                <tr><td style="font-weight: bold;">预期收益</td><td>3年累计营收¥3-8亿元</td></tr>
+            </table>
+            <div style="background: #fff; padding: 10px; border-radius: 4px; margin-top: 10px;">
+                <strong style="color: #f44336;">策略：</strong><br/>
+                • 初期让利（前5K台按成本价）<br/>
+                • 快速响应（2周送样，行业通常4周）<br/>
+                • 高层公关（利用比亚迪品牌背书）
+            </div>
+        </div>
+
+        <!-- 明星客户 -->
+        <div class="customer-card star">
+            <h3>
+                ⭐ 明星客户（Stars）
+                <span class="priority-badge priority-medium">持续投入</span>
+            </h3>
+            <table style="width: 100%; font-size: 12px; margin: 10px 0;">
+                <tr><td style="width: 25%; font-weight: bold;">代表客户</td><td>理想、小鹏、蔚来</td></tr>
+                <tr><td style="font-weight: bold;">特征</td><td>已有一定份额，需求持续增长</td></tr>
+                <tr><td style="font-weight: bold;">机会</td><td>新平台定点、二供机会</td></tr>
+                <tr><td style="font-weight: bold;">年需求量</td><td>单客户5-15万套</td></tr>
+                <tr><td style="font-weight: bold;">预期收益</td><td>稳定增长，长期价值高</td></tr>
+            </table>
+            <div style="background: #fff; padding: 10px; border-radius: 4px; margin-top: 10px;">
+                <strong style="color: #ff9800;">策略：</strong><br/>
+                • 联合开发（投入研发资源绑定）<br/>
+                • 技术升级（提供下一代SiC方案）<br/>
+                • 服务深化（驻场FAE、专属产线）
+            </div>
+        </div>
+
+        <!-- 金牛客户 -->
+        <div class="customer-card cash">
+            <h3>
+                💰 金牛客户（Cash Cows）
+                <span class="priority-badge priority-low">稳定维护</span>
+            </h3>
+            <table style="width: 100%; font-size: 12px; margin: 10px 0;">
+                <tr><td style="width: 25%; font-weight: bold;">代表客户</td><td>比亚迪集团内部</td></tr>
+                <tr><td style="font-weight: bold;">特征</td><td>份额稳定，增长放缓</td></tr>
+                <tr><td style="font-weight: bold;">机会</td><td>新车型拓展、产品升级</td></tr>
+                <tr><td style="font-weight: bold;">年需求量</td><td>集团内部年100万套+</td></tr>
+                <tr><td style="font-weight: bold;">预期收益</td><td>稳定现金流，利润率中等</td></tr>
+            </table>
+            <div style="background: #fff; padding: 10px; border-radius: 4px; margin-top: 10px;">
+                <strong style="color: #4caf50;">策略：</strong><br/>
+                • 确保交付（优先级保障）<br/>
+                • 持续降本（年降5-8%）<br/>
+                • 挖掘新需求（商用车、混动等）
+            </div>
+        </div>
+
+        <!-- 其他客户 -->
+        <div class="customer-card dog">
+            <h3>
+                🐕 其他客户（Dogs）
+                <span class="priority-badge priority-minimal">选择性放弃</span>
+            </h3>
+            <table style="width: 100%; font-size: 12px; margin: 10px 0;">
+                <tr><td style="width: 25%; font-weight: bold;">代表客户</td><td>一汽、东风等传统国企</td></tr>
+                <tr><td style="font-weight: bold;">特征</td><td>增长慢、份额低、决策周期长</td></tr>
+                <tr><td style="font-weight: bold;">机会</td><td>有限（技术路线保守、供应商关系固化）</td></tr>
+                <tr><td style="font-weight: bold;">年需求量</td><td>不确定，且周期漫长</td></tr>
+                <tr><td style="font-weight: bold;">预期收益</td><td>投入产出比低</td></tr>
+            </table>
+            <div style="background: #fff; padding: 10px; border-radius: 4px; margin-top: 10px;">
+                <strong style="color: #9e9e9e;">策略：</strong><br/>
+                • 不主动投入资源<br/>
+                • 等待新平台窗口（每3-5年一次）<br/>
+                • 或完全放弃（聚焦优质客户）
+            </div>
+        </div>
+    </div>
+
+    <div class="insight-box">
+        <strong>💡 客户优先级排序逻辑：</strong><br/>
+        <strong>第一优先：问题客户</strong>（小米/华为）→ 窗口期短，定点即大单<br/>
+        <strong>第二优先：明星客户</strong>（蔚小理）→ 份额提升空间大，长期价值高<br/>
+        <strong>第三优先：金牛客户</strong>（比亚迪内部）→ 稳定现金流，保障底盘<br/>
+        <strong>战略性放弃：其他客户</strong>（传统国企）→ 决策慢、份额难提升，性价比低
+    </div>
+</div>
+<div class="page">
+    <div class="page-title">产品1：SiC功率器件 - 客户决策链分析（DMU模型）</div>
+
+    <div class="section-title">🎯 案例：理想汽车的SiC采购决策链</div>
+
+    <div class="decision-flow">
+        <!-- 第一层：技术准入 -->
+        <div class="decision-layer">
+            <div class="layer-number">1</div>
+            <div class="layer-content">
+                <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 8px;">
+                    <h4 style="margin: 0; font-size: 15px; color: var(--color-primary-red);">技术准入层（门槛决策）</h4>
+                    <span class="layer-weight">权重: 40%</span>
+                </div>
+                <div style="display: grid; grid-template-columns: 30% 70%; gap: 10px; margin-top: 10px;">
+                    <div>
+                        <strong style="font-size: 12px;">关键角色：</strong><br/>
+                        <span style="font-size: 12px;">动力系统总工程师<br/>电控部门技术负责人</span>
+                    </div>
+                    <div>
+                        <strong style="font-size: 12px;">决策逻辑（一票否决权）：</strong><br/>
+                        <span style="font-size: 12px;">
+                        ✓ 性能参数是否满足（Rdson、开关损耗、热阻）<br/>
+                        ✓ 可靠性如何保证（车规认证、实车验证里程）<br/>
+                        ✓ 技术支持能力（仿真模型、应用指导）
+                        </span>
+                    </div>
+                </div>
+                <div style="background: #e3f2fd; padding: 10px; border-radius: 4px; margin-top: 10px;">
+                    <strong style="font-size: 12px; color: #1976d2;">渗透策略：</strong><br/>
+                    <span style="font-size: 11px;">
+                    • 提供详细技术白皮书（对标英飞凌同等级产品，参数差异<5%）<br/>
+                    • 邀请参观比亚迪应用案例（仰望U8实车演示，800V平台）<br/>
+                    • 免费技术支持（送测样品10套 + 应用工程师驻场3个月）
+                    </span>
+                </div>
+            </div>
+        </div>
+
+        <!-- 第二层：商务决策 -->
+        <div class="decision-layer">
+            <div class="layer-number">2</div>
+            <div class="layer-content">
+                <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 8px;">
+                    <h4 style="margin: 0; font-size: 15px; color: var(--color-primary-red);">商务决策层（核心决策）</h4>
+                    <span class="layer-weight">权重: 40%</span>
+                </div>
+                <div style="display: grid; grid-template-columns: 30% 70%; gap: 10px; margin-top: 10px;">
+                    <div>
+                        <strong style="font-size: 12px;">关键角色：</strong><br/>
+                        <span style="font-size: 12px;">采购部品类经理<br/>采购总监</span>
+                    </div>
+                    <div>
+                        <strong style="font-size: 12px;">决策逻辑（最终决策权）：</strong><br/>
+                        <span style="font-size: 12px;">
+                        ✓ 价格是否有竞争力（需比现有供应商低10%+）<br/>
+                        ✓ 供应稳定性（产能、交期、备货能力）<br/>
+                        ✓ 商务条款（账期、VMI、年降承诺）
+                        </span>
+                    </div>
+                </div>
+                <div style="background: #fff3e0; padding: 10px; border-radius: 4px; margin-top: 10px;">
+                    <strong style="font-size: 12px; color: #f57c00;">渗透策略：</strong><br/>
+                    <span style="font-size: 11px;">
+                    • 初期报价激进（比英飞凌低20-25%，前期甚至零利润）<br/>
+                    • 供应保障承诺（深圳+长沙双基地背书，理想专属安全库存2周用量）<br/>
+                    • 灵活商务条款（账期Net 60天vs行业30天，小批量起订5K vs 10K）
+                    </span>
+                </div>
+            </div>
+        </div>
+
+        <!-- 第三层：高层背书 -->
+        <div class="decision-layer">
+            <div class="layer-number">3</div>
+            <div class="layer-content">
+                <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 8px;">
+                    <h4 style="margin: 0; font-size: 15px; color: var(--color-primary-red);">高层背书层（战略决策）</h4>
+                    <span class="layer-weight">权重: 20%</span>
+                </div>
+                <div style="display: grid; grid-template-columns: 30% 70%; gap: 10px; margin-top: 10px;">
+                    <div>
+                        <strong style="font-size: 12px;">关键角色：</strong><br/>
+                        <span style="font-size: 12px;">采购VP/供应链VP<br/>分管副总裁</span>
+                    </div>
+                    <div>
+                        <strong style="font-size: 12px;">决策逻辑（战略背书）：</strong><br/>
+                        <span style="font-size: 12px;">
+                        ✓ 供应商战略安全性（不能断供）<br/>
+                        ✓ 品牌背书（比亚迪集团是加分项）<br/>
+                        ✓ 长期合作价值（生态合作，非单一交易）
+                        </span>
+                    </div>
+                </div>
+                <div style="background: #e8f5e9; padding: 10px; border-radius: 4px; margin-top: 10px;">
+                    <strong style="font-size: 12px; color: #388e3c;">渗透策略：</strong><br/>
+                    <span style="font-size: 11px;">
+                    • 强调比亚迪集团背景（王传福支持国产半导体，全球最大新能源车企背书）<br/>
+                    • 提出生态合作（联合开发下一代产品，技术共享：比亚迪800V应用经验开放）<br/>
+                    • 邀请高层互访（理想高层参观深圳/长沙工厂，比亚迪高层拜访理想）
+                    </span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="section-title">📋 标准话术模板库</div>
+    <div style="display: grid; grid-template-columns: 1fr; gap: 15px;">
+        <div style="background: #f5f5f5; border-left: 4px solid #2196f3; padding: 15px; border-radius: 4px;">
+            <strong style="color: #2196f3;">技术层话术模板：</strong><br/>
+            <p style="font-size: 12px; font-style: italic; margin: 8px 0; line-height: 1.6;">
+            "理想在开发新一代800V平台对吧？我们在比亚迪仰望U8（也是800V）上已经量产2年，累计装车5万辆，可靠性数据完全可以共享。您的性能指标是Rdson<3mΩ对吧？我们这款BYD-SiC-650V-300A完全满足，而且热设计余量更大。这是仿真对比报告..."
+            </p>
+        </div>
+        <div style="background: #f5f5f5; border-left: 4px solid #ff9800; padding: 15px; border-radius: 4px;">
+            <strong style="color: #ff9800;">商务层话术模板：</strong><br/>
+            <p style="font-size: 12px; font-style: italic; margin: 8px 0; line-height: 1.6;">
+            "X总，我理解理想对成本的要求。您现在用英飞凌的价格大概¥420/套对吧？我们初期可以给到¥336（低20%），后续3年每年降5%。为什么我们能做到？1）自有晶圆厂，少一层加价；2）规模效应，比亚迪集团年需求100万套；3）本土化运营，没有进口成本。这不是倾销，是商业模式优势。您可以看我们给吉利的报价历史，连续3年兑现了年降承诺..."
+            </p>
+        </div>
+        <div style="background: #f5f5f5; border-left: 4px solid #4caf50; padding: 15px; border-radius: 4px;">
+            <strong style="color: #4caf50;">高层话术模板：</strong><br/>
+            <p style="font-size: 12px; font-style: italic; margin: 8px 0; line-height: 1.6;">
+            "X总您好，我们不仅是供应商，更希望成为理想的战略合作伙伴。比亚迪集团在新能源领域的积累，可以对理想开放。比如我们的800V SiC应用经验，是基于50万辆车的实际数据优化的，这些know-how可以共享给理想团队。另外，我们在IGBT、MCU、传感器都有布局，未来可以提供'one-stop'方案..."
+            </p>
+        </div>
+    </div>
+
+    <div class="insight-box" style="margin-top: 20px;">
+        <strong>💡 决策链渗透要点：</strong><br/>
+        1. <strong>三层同步推进</strong>，不能只攻商务层，技术层不通过则前功尽弃<br/>
+        2. <strong>技术层是门槛</strong>（40%权重），必须先通过技术认可，才有商务谈判机会<br/>
+        3. <strong>商务层是关键</strong>（40%权重），价格需有竞争力，但不能只靠价格（需配合供应保障）<br/>
+        4. <strong>高层是催化剂</strong>（20%权重），战略合作、品牌背书能加速决策，缩短周期<br/>
+        5. <strong>时间窗口紧迫</strong>，从接触到定点通常需12-18个月，需提前布局
+    </div>
+</div>
+<div class="page">
+    <div class="page-title">产品1：SiC功率器件 - <span class="c3-tag">C3 Competitor 竞争分析</span></div>
+
+    <div class="section-title">📊 市场份额与竞争格局（2024年全球车规SiC市场）</div>
+
+    <div style="display: grid; grid-template-columns: 55% 45%; gap: 20px; margin-bottom: 20px;">
+        <div>
+            <h4 style="color: #2196f3; font-size: 14px; margin: 10px 0;">Tier 1 - 国际巨头（技术领先，份额下降中）</h4>
+            <table class="data-table" style="font-size: 12px;">
+                <thead>
+                    <tr>
+                        <th>厂商</th>
+                        <th>市场份额</th>
+                        <th>年度变化</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><strong>英飞凌 Infineon</strong></td>
+                        <td style="font-size: 16px; font-weight: bold; color: #2196f3;">38%</td>
+                        <td style="color: #f44336;">-2% YoY</td>
+                    </tr>
+                    <tr>
+                        <td><strong>安森美 Onsemi</strong></td>
+                        <td style="font-size: 16px; font-weight: bold;">16%</td>
+                        <td style="color: #f44336;">-1% YoY</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Wolfspeed</strong></td>
+                        <td style="font-size: 16px; font-weight: bold;">12%</td>
+                        <td style="color: #666;">持平</td>
+                    </tr>
+                    <tr>
+                        <td><strong>罗姆 ROHM</strong></td>
+                        <td style="font-size: 16px; font-weight: bold;">9%</td>
+                        <td style="color: #666;">持平</td>
+                    </tr>
+                    <tr style="background: #e3f2fd;">
+                        <td><strong>小计</strong></td>
+                        <td style="font-size: 18px; font-weight: bold; color: #1976d2;">75%</td>
+                        <td></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        <div>
+            <h4 style="color: #4caf50; font-size: 14px; margin: 10px 0;">Tier 2 - 本土挑战者（快速增长中）</h4>
+            <table class="data-table" style="font-size: 12px;">
+                <thead>
+                    <tr>
+                        <th>厂商</th>
+                        <th>市场份额</th>
+                        <th>年度变化</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr style="background: #ffebee;">
+                        <td><strong>比亚迪半导体 ★</strong></td>
+                        <td style="font-size: 16px; font-weight: bold; color: var(--color-primary-red);">8%</td>
+                        <td style="color: #4caf50; font-weight: bold;">+3% YoY</td>
+                    </tr>
+                    <tr>
+                        <td><strong>斯达半导</strong></td>
+                        <td style="font-size: 16px; font-weight: bold;">6%</td>
+                        <td style="color: #4caf50;">+2% YoY</td>
+                    </tr>
+                    <tr>
+                        <td><strong>三安光电</strong></td>
+                        <td style="font-size: 16px; font-weight: bold;">4%</td>
+                        <td style="color: #4caf50;">+1% YoY</td>
+                    </tr>
+                    <tr>
+                        <td><strong>其他国产</strong></td>
+                        <td style="font-size: 16px; font-weight: bold;">7%</td>
+                        <td style="color: #4caf50;">+1% YoY</td>
+                    </tr>
+                    <tr style="background: #e8f5e9;">
+                        <td><strong>小计</strong></td>
+                        <td style="font-size: 18px; font-weight: bold; color: #388e3c;">25%</td>
+                        <td></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <div class="insight-box">
+        <strong>💡 市场洞察：</strong><br/>
+        <strong>1️⃣ 国产替代窗口期：2024-2026年</strong> - 国际品牌份额下降（地缘政治+成本劣势），本土品牌份额上升（性价比+供应安全）<br/>
+        <strong>2️⃣ 我们的机会：</strong>3年内目标市占率从8%→15%（翻倍），重点市场：中国（全球40%需求），重点客户：新势力+自主品牌高端车型<br/>
+        <strong>3️⃣ 竞争策略：</strong>vs 国际巨头：打"性价比+本土化服务" | vs 本土对手：打"比亚迪品牌背书+规模优势"
+    </div>
+
+    <div class="section-title">⚔️ 主要竞品深度对标：英飞凌 vs 比亚迪</div>
+
+    <table class="data-table">
+        <thead>
+            <tr>
+                <th width="18%">维度</th>
+                <th width="18%">英飞凌</th>
+                <th width="18%">比亚迪</th>
+                <th width="46%">差距分析与应对策略</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td><strong>品牌力</strong></td>
+                <td><span class="star-rating">⭐⭐⭐⭐⭐</span></td>
+                <td><span class="star-rating">⭐⭐⭐</span></td>
+                <td>他们领先2分 → <strong>借比亚迪集团背书缩小差距</strong></td>
+            </tr>
+            <tr>
+                <td><strong>技术成熟度</strong></td>
+                <td><span class="star-rating">⭐⭐⭐⭐⭐</span></td>
+                <td><span class="star-rating">⭐⭐⭐⭐</span></td>
+                <td>差距缩小到5%以内 → <strong>性能已达可用水平</strong></td>
+            </tr>
+            <tr>
+                <td><strong>产品线宽度</strong></td>
+                <td><span class="star-rating">⭐⭐⭐⭐⭐</span><br/><span style="font-size: 11px;">全系列</span></td>
+                <td><span class="star-rating">⭐⭐⭐⭐</span><br/><span style="font-size: 11px;">主流产品</span></td>
+                <td>覆盖90%需求 → <strong>聚焦高价值产品</strong></td>
+            </tr>
+            <tr style="background: #e8f5e9;">
+                <td><strong>价格竞争力</strong></td>
+                <td><span class="star-rating">⭐⭐</span><br/><span style="font-size: 11px;">基准价</span></td>
+                <td><span class="star-rating">⭐⭐⭐⭐⭐</span><br/><span style="font-size: 11px; color: #4caf50; font-weight: bold;">低20-30%</span></td>
+                <td class="advantage">核心优势 → 规模效应+垂直整合</td>
+            </tr>
+            <tr style="background: #e8f5e9;">
+                <td><strong>交期保证</strong></td>
+                <td><span class="star-rating">⭐⭐⭐</span><br/><span style="font-size: 11px;">16周</span></td>
+                <td><span class="star-rating">⭐⭐⭐⭐⭐</span><br/><span style="font-size: 11px; color: #4caf50; font-weight: bold;">10周</span></td>
+                <td class="advantage">核心优势（快6周） → 本土供应链优势</td>
+            </tr>
+            <tr style="background: #e8f5e9;">
+                <td><strong>本土化服务</strong></td>
+                <td><span class="star-rating">⭐⭐⭐</span><br/><span style="font-size: 11px;">标准化</span></td>
+                <td><span class="star-rating">⭐⭐⭐⭐⭐</span><br/><span style="font-size: 11px; color: #4caf50; font-weight: bold;">灵活定制</span></td>
+                <td class="advantage">核心优势 → FAE驻场+快速响应</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <div class="section-title">📋 具体产品参数对标（650V/300A SiC模块）</div>
+    <table class="data-table">
+        <thead>
+            <tr>
+                <th>参数</th>
+                <th>英飞凌 HybridPACK</th>
+                <th>比亚迪 BYD-SiC-650</th>
+                <th>差异分析</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr><td>额定电压</td><td>650V</td><td>650V</td><td style="color: #666;">持平</td></tr>
+            <tr><td>额定电流</td><td>300A</td><td>300A</td><td style="color: #666;">持平</td></tr>
+            <tr><td>Rdson</td><td>3.0mΩ</td><td>3.1mΩ</td><td style="color: #ff9800;">+3.3% (可接受)</td></tr>
+            <tr><td>开关损耗</td><td>2.1mJ</td><td>2.3mJ</td><td style="color: #ff9800;">+9.5% (可接受)</td></tr>
+            <tr><td>热阻Rth</td><td>0.18℃/W</td><td>0.19℃/W</td><td style="color: #ff9800;">+5.6% (可接受)</td></tr>
+            <tr style="background: #e8f5e9;"><td><strong>批量价格(5K+)</strong></td><td><strong>¥420</strong></td><td style="font-weight: bold; color: #4caf50; font-size: 16px;"><strong>¥336</strong></td><td class="advantage"><strong>-20% 核心优势</strong></td></tr>
+            <tr style="background: #e8f5e9;"><td><strong>交期</strong></td><td>16周</td><td style="font-weight: bold; color: #4caf50; font-size: 16px;">10周</td><td class="advantage"><strong>快6周</strong></td></tr>
+            <tr><td>MOQ</td><td>1000片</td><td>500片</td><td style="color: #4caf50;">更灵活</td></tr>
+        </tbody>
+    </table>
+
+    <div class="insight-box">
+        <strong>💡 竞品对标结论：</strong><br/>
+        1. <strong>技术差距可控</strong>：关键参数差距<10%，对客户实际应用影响小<br/>
+        2. <strong>价格优势明显</strong>：低20%是巨大优势，可支撑市场快速渗透<br/>
+        3. <strong>交期优势突出</strong>：快6周在行业中是显著优势，尤其缺货时期<br/>
+        4. <strong>服务灵活性强</strong>：小批量起订+本土FAE支持，中小客户更愿意尝试
+    </div>
+</div>
+<div class="page">
+    <div class="page-title">产品1：SiC功率器件 - 竞争策略与价值主张</div>
+
+    <div class="section-title"><span class="c3-tag">C3</span> 竞争应对话术库</div>
+
+    <div class="vs-grid">
+        <div class="vs-card international">
+            <h4 style="color: #2196f3; margin: 0 0 10px 0;">🌍 VS 国际大厂（英飞凌/安森美）</h4>
+            <div style="font-size: 12px; line-height: 1.6;">
+                <p style="margin: 5px 0;"><strong>竞争维度：</strong>性能足够 + 成本优势 + 供应安全</p>
+                <p style="margin: 5px 0;"><strong>需要证明的事实：</strong></p>
+                <ul style="margin: 5px 0; padding-left: 20px;">
+                    <li>关键指标（损耗/结温）"不比他差"（<5%差距）</li>
+                    <li>交期更稳（10周 vs 16周，且无断供风险）</li>
+                    <li>价格更优（低20-30%，且能持续供应）</li>
+                </ul>
+                <div style="background: #e3f2fd; padding: 10px; border-radius: 4px; margin-top: 10px;">
+                    <strong style="color: #1976d2;">标准话术：</strong><br/>
+                    <em style="font-size: 11px;">
+                    "我们理解您对英飞凌的信任。但您知道吗？他们的供应链在疫情期间交期延长到24周，而且价格每年上涨5-8%。我们的产品在性能上已经达到他们95%的水平（这是实测数据），但价格只有他们的80%，交期快6周。更重要的是，我们是中国本土企业，供应链完全可控，不会受到国际政治影响。"
+                    </em>
+                </div>
+            </div>
+        </div>
+
+        <div class="vs-card domestic">
+            <h4 style="color: #4caf50; margin: 0 0 10px 0;">🏠 VS 本土友商（斯达/三安）</h4>
+            <div style="font-size: 12px; line-height: 1.6;">
+                <p style="margin: 5px 0;"><strong>竞争维度：</strong>系统级经验 + 车规可靠性 + 规模优势</p>
+                <p style="margin: 5px 0;"><strong>需要证明的事实：</strong></p>
+                <ul style="margin: 5px 0; padding-left: 20px;">
+                    <li>已有海量量产装车案例（BYD自家车辆验证）</li>
+                    <li>比亚迪集团背书（全球最大新能源车企）</li>
+                    <li>规模效应带来的成本优势（集团年需100万套+）</li>
+                </ul>
+                <div style="background: #e8f5e9; padding: 10px; border-radius: 4px; margin-top: 10px;">
+                    <strong style="color: #388e3c;">标准话术：</strong><br/>
+                    <em style="font-size: 11px;">
+                    "和其他国产品牌比，我们最大的优势是什么？比亚迪集团每年需要100万套以上的SiC模块，这意味着我们的产品已经经过了海量实车验证。我们在仰望U8、海豹、汉EV上累计装车超过50万辆，可靠性数据是真实的、经过验证的。而且我们的规模效应带来的成本优势，是其他友商无法比拟的。"
+                    </em>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="section-title"><span class="c4-tag">C4</span> 自身能力 - 差异化价值主张</div>
+
+    <div class="value-prop-box">
+        <h3>💎 比亚迪SiC的"3句话"价值主张</h3>
+        <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; margin-top: 15px;">
+            <div style="background: white; padding: 15px; border-radius: 8px; border: 2px solid var(--color-primary-red);">
+                <div style="font-size: 32px; margin-bottom: 10px;">💰</div>
+                <strong style="color: var(--color-primary-red); font-size: 14px;">成本领先</strong>
+                <p style="font-size: 12px; margin: 8px 0; line-height: 1.5;">
+                比英飞凌低20-30%<br/>
+                规模效应+垂直整合<br/>
+                <em style="color: #666;">（集团年需100万套+）</em>
+                </p>
+            </div>
+            <div style="background: white; padding: 15px; border-radius: 8px; border: 2px solid var(--color-primary-red);">
+                <div style="font-size: 32px; margin-bottom: 10px;">🔧</div>
+                <strong style="color: var(--color-primary-red); font-size: 14px;">可靠性验证</strong>
+                <p style="font-size: 12px; margin: 8px 0; line-height: 1.5;">
+                50万辆实车验证<br/>
+                比亚迪集团背书<br/>
+                <em style="color: #666;">（仰望/海豹/汉EV）</em>
+                </p>
+            </div>
+            <div style="background: white; padding: 15px; border-radius: 8px; border: 2px solid var(--color-primary-red);">
+                <div style="font-size: 32px; margin-bottom: 10px;">⚡</div>
+                <strong style="color: var(--color-primary-red); font-size: 14px;">快速响应</strong>
+                <p style="font-size: 12px; margin: 8px 0; line-height: 1.5;">
+                交期10周 vs 行业16周<br/>
+                本土FAE驻场支持<br/>
+                <em style="color: #666;">（2周送样 vs 4周）</em>
+                </p>
+            </div>
+        </div>
+    </div>
+
+    <div class="section-title">📚 标杆案例库（STAR格式）</div>
+
+    <div style="background: #f5f5f5; border: 2px solid #2196f3; border-radius: 8px; padding: 18px; margin: 15px 0;">
+        <h4 style="color: #2196f3; margin: 0 0 12px 0;">案例1：理想汽车L9项目 - 零到定点的突破</h4>
+        <div style="display: grid; grid-template-columns: 1fr 3fr; gap: 10px; font-size: 12px;">
+            <div style="font-weight: bold; color: #1976d2;">Situation<br/>(情境)</div>
+            <div>理想汽车开发新一代800V平台（L9车型），主驱SiC模块原定点英飞凌，我们是零份额。客户对国产SiC有疑虑（可靠性未验证）。</div>
+
+            <div style="font-weight: bold; color: #1976d2;">Task<br/>(任务)</div>
+            <div>目标：在6个月内完成技术认可，获得二供定点。挑战：需证明可靠性，且价格需有吸引力。</div>
+
+            <div style="font-weight: bold; color: #1976d2;">Action<br/>(行动)</div>
+            <div>
+                <strong>第1步：</strong>邀请理想技术团队参观比亚迪仰望U8（同为800V平台），现场演示实车性能数据<br/>
+                <strong>第2步：</strong>免费提供20套样品+FAE驻场3个月，协助完成装车测试<br/>
+                <strong>第3步：</strong>报价¥336（比英飞凌低20%），承诺3年年降5%/年<br/>
+                <strong>第4步：</strong>高层互访（比亚迪副总裁拜访理想，释放战略合作信号）
+            </div>
+
+            <div style="font-weight: bold; color: #1976d2;">Result<br/>(结果)</div>
+            <div style="background: #e8f5e9; padding: 10px; border-radius: 4px;">
+                <strong style="color: #4caf50;">✅ 成功获得二供定点（30%份额）</strong><br/>
+                • 首批订单5万套，年采购额¥1.68亿<br/>
+                • 测试周期缩短至4个月（原计划6个月）<br/>
+                • 客户评价："技术性能达标，价格有竞争力，服务响应快"
+            </div>
+        </div>
+    </div>
+
+    <div class="section-title">🎯 能力证明材料清单（随身携带）</div>
+    <table class="data-table">
+        <thead>
+            <tr>
+                <th width="10%">序号</th>
+                <th width="30%">材料名称</th>
+                <th width="40%">内容摘要</th>
+                <th width="20%">使用场景</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>1</td>
+                <td><strong>技术白皮书</strong></td>
+                <td>650V SiC模块参数对标、应用指导、仿真模型</td>
+                <td>技术交流会</td>
+            </tr>
+            <tr>
+                <td>2</td>
+                <td><strong>装车验证报告</strong></td>
+                <td>50万辆实车数据、可靠性测试、第三方认证</td>
+                <td>可靠性答疑</td>
+            </tr>
+            <tr>
+                <td>3</td>
+                <td><strong>价格竞争力分析</strong></td>
+                <td>成本结构拆解、价格对比、年降承诺历史兑现证明</td>
+                <td>商务谈判</td>
+            </tr>
+            <tr>
+                <td>4</td>
+                <td><strong>产能承诺函</strong></td>
+                <td>深圳+长沙双基地产能数据、扩产计划、安全库存方案</td>
+                <td>供应保障答疑</td>
+            </tr>
+            <tr>
+                <td>5</td>
+                <td><strong>客户案例集</strong></td>
+                <td>理想/吉利/长安等标杆案例（STAR格式），含客户评价</td>
+                <td>客户拜访</td>
+            </tr>
+            <tr>
+                <td>6</td>
+                <td><strong>比亚迪集团背书材料</strong></td>
+                <td>集团简介、新能源领先地位、半导体战略规划</td>
+                <td>高层拜访</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <div class="insight-box" style="margin-top: 20px;">
+        <strong>💡 销售实战要点总结：</strong><br/>
+        <strong>1. 明确价值主张：</strong>"性价比（低20%） + 可靠性（50万辆验证） + 快速响应（10周交期）"是我们的三大核心优势<br/>
+        <strong>2. 分层对标策略：</strong>vs国际大厂打性价比，vs本土友商打规模与验证<br/>
+        <strong>3. 证据链完整：</strong>技术白皮书 + 装车数据 + 客户案例 + 产能承诺，四位一体<br/>
+        <strong>4. 差异化服务：</strong>FAE驻场、快速送样、灵活MOQ，打"服务牌"补齐品牌差距<br/>
+        <strong>5. 比亚迪背书：</strong>充分利用集团品牌，"全球最大新能源车企的芯片供应商"是强有力的背书
+    </div>
+</div>
+<div class="page">
+    <div class="page-title">产品2：IGBT（绝缘栅双极型晶体管）- 功率主力 / 400V平台核心</div>
+
+    <div class="section-title">📊 市场规模与定位</div>
+
+    <div class="metric-grid">
+        <div class="metric-card">
+            <div class="metric-label">2024年中国市场规模</div>
+            <div class="metric-value">¥148亿</div>
+            <div class="metric-label">全球占比42%</div>
+        </div>
+        <div class="metric-card">
+            <div class="metric-label">2027年预测规模</div>
+            <div class="metric-value">¥195亿</div>
+            <div class="metric-label">年复合增长率 9.6%</div>
+        </div>
+        <div class="metric-card">
+            <div class="metric-label">生命周期定位</div>
+            <div class="metric-value" style="font-size: 24px;">成熟期</div>
+            <div class="metric-label">进入饱和前期</div>
+        </div>
+    </div>
+
+    <div style="background: linear-gradient(135deg, #ffebee 0%, #ffffff 100%); border: 3px solid var(--color-primary-red); border-radius: 10px; padding: 20px; text-align: center; margin: 20px 0;">
+        <p style="font-size: 18px; color: var(--color-primary-red); font-weight: bold; margin: 0; line-height: 1.6;">
+            "IGBT是可以用成本+国产安全性来打开局面的产品，<br/>
+            但必须拿得出可靠性的'铁证据'。"
+        </p>
+    </div>
+
+    <div class="section-title">🎯 应用场景与价值量</div>
+    <table class="data-table">
+        <thead>
+            <tr>
+                <th width="20%">应用场景</th>
+                <th width="15%">需求占比</th>
+                <th width="20%">单车价值</th>
+                <th width="25%">代表车型</th>
+                <th width="20%">市场特征</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr style="background: #fff3e0;">
+                <td><strong>主驱逆变器</strong><br/>(核心战场)</td>
+                <td style="text-align: center; font-size: 18px; font-weight: bold; color: var(--color-primary-red);">60%</td>
+                <td>¥600-1,500</td>
+                <td>比亚迪秦PLUS<br/>埃安S、几何A</td>
+                <td>400V平台主力<br/>价格竞争激烈</td>
+            </tr>
+            <tr>
+                <td><strong>插电混动PHEV</strong><br/>(高增长)</td>
+                <td style="text-align: center; font-size: 16px; font-weight: bold;">25%</td>
+                <td>¥400-1,000</td>
+                <td>宋PLUS DM-i<br/>理想L系列</td>
+                <td>增速快（CAGR 25%）<br/>价格敏感</td>
+            </tr>
+            <tr>
+                <td><strong>辅助系统</strong><br/>(OBC/DC-DC/空调/EPS)</td>
+                <td style="text-align: center; font-size: 16px; font-weight: bold;">15%</td>
+                <td>¥300-650<br/>(总和)</td>
+                <td>各类车型<br/>标配系统</td>
+                <td>切入点市场<br/>验证可靠性后攻主驱</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <div class="insight-box">
+        <strong>💡 IGBT vs SiC战略定位差异：</strong><br/>
+        <strong>SiC：</strong>高端市场（>30万元），800V平台，技术驱动，利润率高<br/>
+        <strong>IGBT：</strong>中低端市场（<25万元），400V平台，成本驱动，走量为主<br/>
+        <strong>策略：</strong>避免与SiC正面竞争，聚焦混动市场（增速快）和辅助系统（切入点）
+    </div>
+
+    <div class="section-title">🎯 目标客户分级（IGBT特有矩阵）</div>
+
+    <div class="customer-grid">
+        <div class="customer-card priority1">
+            <h3 style="margin: 0 0 12px 0; font-size: 16px; color: #f44336;">⭐⭐⭐⭐⭐ 进攻型客户（优先级最高）</h3>
+            <table style="width: 100%; font-size: 12px;">
+                <tr><td style="width: 25%; font-weight: bold;">代表客户</td><td>长城、吉利、奇瑞、长安</td></tr>
+                <tr><td style="font-weight: bold;">特征</td><td>国产替代目标，年产能>20万辆</td></tr>
+                <tr><td style="font-weight: bold;">机会</td><td>二供切入，或新平台定点</td></tr>
+                <tr><td style="font-weight: bold;">策略</td><td>价格+交期打国产替代战</td></tr>
+                <tr><td style="font-weight: bold;">年需求</td><td>单客户10-25万套</td></tr>
+            </table>
+        </div>
+
+        <div class="customer-card priority2">
+            <h3 style="margin: 0 0 12px 0; font-size: 16px; color: #ff9800;">⭐⭐⭐⭐ 机会型客户（重点培育）</h3>
+            <table style="width: 100%; font-size: 12px;">
+                <tr><td style="width: 25%; font-weight: bold;">代表客户</td><td>零跑、哪吒、合众、枫叶</td></tr>
+                <tr><td style="font-weight: bold;">特征</td><td>新势力第二梯队，成长期</td></tr>
+                <tr><td style="font-weight: bold;">机会</td><td>主供机会，成长期绑定</td></tr>
+                <tr><td style="font-weight: bold;">策略</td><td>快速响应、小批量起订</td></tr>
+                <tr><td style="font-weight: bold;">年需求</td><td>单客户5-15万套</td></tr>
+            </table>
+        </div>
+
+        <div class="customer-card priority3">
+            <h3 style="margin: 0 0 12px 0; font-size: 16px; color: #4caf50;">⭐⭐⭐ 战略级客户（稳定基盘）</h3>
+            <table style="width: 100%; font-size: 12px;">
+                <tr><td style="width: 25%; font-weight: bold;">代表客户</td><td>比亚迪集团各品牌</td></tr>
+                <tr><td style="font-weight: bold;">特征</td><td>内部客户，份额稳定</td></tr>
+                <tr><td style="font-weight: bold;">机会</td><td>新车型拓展、产品升级</td></tr>
+                <tr><td style="font-weight: bold;">策略</td><td>内部协同、确保交付</td></tr>
+                <tr><td style="font-weight: bold;">年需求</td><td>集团年80-120万套</td></tr>
+            </table>
+        </div>
+
+        <div class="customer-card priority2" style="border-color: #9e9e9e; background: #f5f5f5;">
+            <h3 style="margin: 0 0 12px 0; font-size: 16px; color: #666;">🛡️ 防御型客户（维持交流）</h3>
+            <table style="width: 100%; font-size: 12px;">
+                <tr><td style="width: 25%; font-weight: bold;">代表客户</td><td>蔚小理（已选用英飞凌/安森美）</td></tr>
+                <tr><td style="font-weight: bold;">特征</td><td>高端定位，技术驱动，已丢失</td></tr>
+                <tr><td style="font-weight: bold;">机会</td><td>新平台窗口（每3-5年）</td></tr>
+                <tr><td style="font-weight: bold;">策略</td><td>等待窗口、维持交流、不强攻</td></tr>
+                <tr><td style="font-weight: bold;">备注</td><td>资源聚焦进攻型客户</td></tr>
+            </table>
+        </div>
+    </div>
+
+    <div class="section-title">🔑 竞争策略与价值主张</div>
+
+    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px;">
+        <div style="background: #e3f2fd; border-left: 4px solid #2196f3; padding: 15px; border-radius: 4px;">
+            <h4 style="color: #2196f3; margin: 0 0 10px 0;">VS 国际大厂（英飞凌/安森美）</h4>
+            <p style="font-size: 12px; margin: 5px 0;"><strong>核心话术方向：</strong></p>
+            <ul style="font-size: 12px; line-height: 1.6; margin: 5px 0;">
+                <li>性能足够 + 成本优势 + 供应安全</li>
+                <li>关键指标（损耗/结温）"不比他差"</li>
+                <li>交期更稳（本土供应链）</li>
+                <li>价格低15-20%（规模效应）</li>
+            </ul>
+            <div style="background: white; padding: 8px; border-radius: 4px; margin-top: 8px; font-size: 11px; font-style: italic;">
+                "我们的IGBT已在比亚迪集团装车超过500万辆，可靠性经过充分验证。性能上与英飞凌差距<3%，但价格低20%，交期快4周。"
+            </div>
+        </div>
+
+        <div style="background: #e8f5e9; border-left: 4px solid #4caf50; padding: 15px; border-radius: 4px;">
+            <h4 style="color: #4caf50; margin: 0 0 10px 0;">VS 本土友商（斯达/时代电气）</h4>
+            <p style="font-size: 12px; margin: 5px 0;"><strong>核心话术方向：</strong></p>
+            <ul style="font-size: 12px; line-height: 1.6; margin: 5px 0;">
+                <li>系统级经验 + 车规可靠性</li>
+                <li>比亚迪集团背书（全球最大新能源车企）</li>
+                <li>海量装车案例（500万辆+）</li>
+                <li>规模优势带来的成本竞争力</li>
+            </ul>
+            <div style="background: white; padding: 8px; border-radius: 4px; margin-top: 8px; font-size: 11px; font-style: italic;">
+                "比亚迪集团每年IGBT用量超过100万套，这个规模效应是其他本土品牌无法比拟的。我们的成本优势可以转化为价格优势给到您。"
+            </div>
+        </div>
+    </div>
+
+    <div class="insight-box" style="margin-top: 20px;">
+        <strong>💡 IGBT销售实战要点：</strong><br/>
+        <strong>1. 市场定位清晰：</strong>中低端车型（<25万元）+ 混动市场（高增长） + 辅助系统（切入点）<br/>
+        <strong>2. 客户优先级：</strong>进攻型（长城吉利）>机会型（零跑哪吒）>战略级（比亚迪内部）>防御型（蔚小理-战略性放弃）<br/>
+        <strong>3. 竞争策略：</strong>vs国际大厂打性价比+供应安全，vs本土友商打规模+验证<br/>
+        <strong>4. 核心优势：</strong>500万辆装车验证 + 价格低15-20% + 交期快4周 + 比亚迪背书<br/>
+        <strong>5. 增长点：</strong>混动市场（CAGR 25%）是IGBT的第二春，重点攻坚
+    </div>
+</div>
+<div class="page">
+    <div class="page-title">产品3：摄像头模组 - 智能驾驶/座舱的"眼睛"</div>
+
+    <div class="section-title">📊 市场规模与增速</div>
+    <div class="metric-grid">
+        <div class="metric-card">
+            <div class="metric-label">2024年全球市场规模</div>
+            <div class="metric-value">$14.5B</div>
+            <div class="metric-label">约¥1,050亿，中国占40%</div>
+        </div>
+        <div class="metric-card">
+            <div class="metric-label">2027年预测规模</div>
+            <div class="metric-value">$28.2B</div>
+            <div class="metric-label">年复合增长率 24.8%</div>
+        </div>
+        <div class="metric-card">
+            <div class="metric-label">增速定位</div>
+            <div class="metric-value" style="font-size: 22px;">最快赛道</div>
+            <div class="metric-label">智驾渗透率30%→65%</div>
+        </div>
+    </div>
+
+    <div class="section-title">🎯 单车摄像头配置与价值量（按智驾等级）</div>
+    <table class="data-table">
+        <thead>
+            <tr>
+                <th width="15%">智驾等级</th>
+                <th width="20%">摄像头数量</th>
+                <th width="35%">典型配置</th>
+                <th width="15%">单车价值</th>
+                <th width="15%">代表车型</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td><strong>L2级</strong><br/>(主流)</td>
+                <td style="text-align: center; font-size: 18px; font-weight: bold; color: #2196f3;">5-7个</td>
+                <td>环视4+前视1-3+倒车1</td>
+                <td style="font-weight: bold;">¥800-1,500</td>
+                <td>比亚迪海豹<br/>小鹏P5</td>
+            </tr>
+            <tr style="background: #fff8e1;">
+                <td><strong>L2+级</strong><br/>(增长快)</td>
+                <td style="text-align: center; font-size: 18px; font-weight: bold; color: var(--color-primary-red);">8-11个</td>
+                <td>L2配置+DMS+OMS+侧视盲区+行车记录</td>
+                <td style="font-weight: bold;">¥1,800-3,500</td>
+                <td>理想L系列<br/>蔚来ET5</td>
+            </tr>
+            <tr>
+                <td><strong>L3级</strong><br/>(高端)</td>
+                <td style="text-align: center; font-size: 18px; font-weight: bold;">11-13个</td>
+                <td>三目前视+全套座舱+冗余摄像头</td>
+                <td style="font-weight: bold;">¥4,000-6,000</td>
+                <td>奔驰S级<br/>宝马iX</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <div class="insight-box">
+        <strong>💡 市场洞察：</strong>2025-2026是黄金窗口期，L2+普及带来新增需求爆发。单车从5-7个→8-11个，价值量翻倍。<strong>DMS（驾驶员监测）因法规强制（2024年新车必配L2+），短期爆发式增长。</strong>
+    </div>
+
+    <div class="section-title">🎯 应用场景拆解（价值链分析）</div>
+    <div class="product-split">
+        <div>
+            <h4 style="color: #2196f3; font-size: 15px; margin: 0 0 10px 0;">智能驾驶类（70%需求）- 核心战场</h4>
+            <table class="data-table" style="font-size: 12px;">
+                <tr>
+                    <th width="40%">类型</th>
+                    <th width="30%">价格带</th>
+                    <th width="30%">单车价值</th>
+                </tr>
+                <tr>
+                    <td><strong>环视摄像头</strong><br/>(4个必配)</td>
+                    <td>¥80-150/个</td>
+                    <td>¥320-600</td>
+                </tr>
+                <tr style="background: #e3f2fd;">
+                    <td><strong>前视主摄</strong><br/>(利润高地)</td>
+                    <td>¥250-1,200/套</td>
+                    <td>¥250-1,200</td>
+                </tr>
+                <tr>
+                    <td><strong>侧视盲区</strong><br/>(2个)</td>
+                    <td>¥120-180/个</td>
+                    <td>¥240-360</td>
+                </tr>
+                <tr>
+                    <td><strong>后视倒车</strong><br/>(1个)</td>
+                    <td>¥100-150/个</td>
+                    <td>¥100-150</td>
+                </tr>
+            </table>
+        </div>
+        <div>
+            <h4 style="color: #ff9800; font-size: 15px; margin: 0 0 10px 0;">智能座舱类（20%需求）- 增长最快</h4>
+            <table class="data-table" style="font-size: 12px;">
+                <tr>
+                    <th width="40%">类型</th>
+                    <th width="30%">价格带</th>
+                    <th width="30%">驱动因素</th>
+                </tr>
+                <tr style="background: #fff3e0;">
+                    <td><strong>DMS驾驶员监测</strong><br/>(1个)</td>
+                    <td>¥180-280/个</td>
+                    <td><strong>法规强制</strong><br/>2024必配</td>
+                </tr>
+                <tr>
+                    <td><strong>OMS乘员监测</strong><br/>(1-2个)</td>
+                    <td>¥150-220/个</td>
+                    <td>手势交互<br/>儿童遗留</td>
+                </tr>
+                <tr>
+                    <td><strong>行车记录</strong><br/>(1-2个)</td>
+                    <td>¥200-350/个</td>
+                    <td>渗透率<br/>30%→60%</td>
+                </tr>
+            </table>
+        </div>
+    </div>
+
+    <div class="section-title">🔑 产业链结构与销售策略</div>
+    <div style="background: #f5f5f5; border: 2px solid #2196f3; border-radius: 8px; padding: 15px;">
+        <h4 style="color: #2196f3; margin: 0 0 10px 0;">产业链：Sensor → Lens → 模组 → ECU → OEM</h4>
+        <div class="product-split" style="gap: 15px;">
+            <div style="font-size: 12px;">
+                <p style="margin: 5px 0;"><strong>关键决策点：</strong></p>
+                <ul style="margin: 5px 0; padding-left: 20px; line-height: 1.7;">
+                    <li>Sensor选型：影响图像质量（HDR、低照度、SNR）</li>
+                    <li>模组封装：影响可靠性与成本</li>
+                    <li>ECU集成：与智驾算法磨合度</li>
+                </ul>
+            </div>
+            <div style="font-size: 12px;">
+                <p style="margin: 5px 0;"><strong>销售策略：</strong></p>
+                <ul style="margin: 5px 0; padding-left: 20px; line-height: 1.7;">
+                    <li>切入点：从环视（价格敏感）→前视（技术壁垒）</li>
+                    <li>绑定策略：与Tier1模组厂合作，提供整套方案</li>
+                    <li>法规红利：抓住DMS强制配置窗口期（2024-2025）</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <div class="insight-box" style="margin-top: 15px;">
+        <strong>💡 销售实战要点：</strong><br/>
+        <strong>1. 智驾等级是核心：</strong>L2→L2+带来3-4个新增摄像头，单车价值翻倍<br/>
+        <strong>2. 法规红利：</strong>DMS强制配置（2024年新车），短期爆发式增长<br/>
+        <strong>3. 产业链长：</strong>需关注Tier1模组厂关系，Sensor/模组/ECU决策权在不同环节<br/>
+        <strong>4. 技术门槛：</strong>前视主摄（利润高地）需要算法适配能力，环视（价格战）门槛低
+    </div>
+</div>
+<div class="page">
+    <div class="page-title">产品4：车规级LED - 车载照明与显示</div>
+
+    <div class="section-title">📊 市场规模与增速</div>
+    <div class="metric-grid">
+        <div class="metric-card">
+            <div class="metric-label">2024年全球市场规模</div>
+            <div class="metric-value">$7.8B</div>
+            <div class="metric-label">约¥565亿，中国占34.5%</div>
+        </div>
+        <div class="metric-card">
+            <div class="metric-label">2027年预测规模</div>
+            <div class="metric-value">$11.2B</div>
+            <div class="metric-label">年复合增长率 12.8%</div>
+        </div>
+        <div class="metric-card">
+            <div class="metric-label">增速定位</div>
+            <div class="metric-value" style="font-size: 22px;">稳定增长</div>
+            <div class="metric-label">智能照明35%→68%</div>
+        </div>
+    </div>
+
+    <div class="section-title">🎯 应用场景与价值量分层</div>
+    <table class="data-table">
+        <thead>
+            <tr>
+                <th width="20%">大灯类型</th>
+                <th width="20%">配置</th>
+                <th width="18%">单侧价值</th>
+                <th width="22%">应用车型</th>
+                <th width="20%">渗透率趋势</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td><strong>传统LED大灯</strong><br/>(基础型)</td>
+                <td>8-12颗LED<br/>远近光共用</td>
+                <td>¥120-300</td>
+                <td>15万以下<br/>主流市场</td>
+                <td>维持稳定<br/>价格战激烈</td>
+            </tr>
+            <tr style="background: #fff8e1;">
+                <td><strong>矩阵式LED大灯</strong><br/>(中高端)</td>
+                <td>24-84颗<br/>独立控制</td>
+                <td style="font-weight: bold; color: var(--color-primary-red);">¥480-2,940</td>
+                <td>20-35万<br/>快速增长</td>
+                <td><strong>2024: 18%<br/>→ 2027: 45%</strong></td>
+            </tr>
+            <tr>
+                <td><strong>像素/Mini LED</strong><br/>(旗舰)</td>
+                <td>100-200+颗<br/>微型阵列</td>
+                <td style="font-weight: bold;">¥2,500-10,000</td>
+                <td>35万以上<br/>旗舰车型</td>
+                <td>2024: 3%<br/>→ 2027: 12%</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <div class="insight-box">
+        <strong>💡 市场洞察：</strong>矩阵式LED大灯是黄金赛道（18%→45%，3年翻2.5倍）。单侧价值¥480-2,940，是传统LED的4-10倍。<strong>智能大灯（自适应远光、弯道补光）成为20万以上车型标配。</strong>
+    </div>
+
+    <div class="section-title">🎯 LED应用全景图（按部位分类）</div>
+    <div class="product-split">
+        <div class="product-box camera" style="border-color: #ff9800;">
+            <h4 style="color: #ff9800; margin: 0 0 10px 0;">外部照明类（65%需求）- 核心战场</h4>
+            <table style="width: 100%; font-size: 11.5px; border-collapse: collapse;">
+                <tr><td style="padding: 4px 0;"><strong>前大灯：</strong></td><td>传统/矩阵/像素，¥120-10,000/侧</td></tr>
+                <tr><td style="padding: 4px 0;"><strong>尾灯：</strong></td><td>传统/贯穿式/交互式，¥96-6,000</td></tr>
+                <tr><td style="padding: 4px 0;"><strong>日间行车灯DRL：</strong></td><td>12-24颗，¥288-480（法规强制100%）</td></tr>
+                <tr><td style="padding: 4px 0;"><strong>转向/雾灯：</strong></td><td>6-18颗，¥112-216</td></tr>
+            </table>
+            <div style="background: #fff3e0; padding: 8px; border-radius: 4px; margin-top: 8px; font-size: 11px;">
+                <strong>贯穿式尾灯</strong>（高端标配）：80-150颗灯带，动态点亮效果，单车¥800-3,000。渗透率：25%→55%（3年翻倍）
+            </div>
+        </div>
+        <div class="product-box led">
+            <h4 style="color: #2196f3; margin: 0 0 10px 0;">内部照明类（35%需求）- 差异化竞争</h4>
+            <table style="width: 100%; font-size: 11.5px; border-collapse: collapse;">
+                <tr><td style="padding: 4px 0;"><strong>氛围灯：</strong></td><td>64色RGB，200-300颗，¥800-2,500</td></tr>
+                <tr><td style="padding: 4px 0;"><strong>仪表背光：</strong></td><td>全数字化LCD背光，¥150-400</td></tr>
+                <tr><td style="padding: 4px 0;"><strong>中控屏背光：</strong></td><td>Mini LED背光，¥200-600</td></tr>
+                <tr><td style="padding: 4px 0;"><strong>阅读灯/迎宾灯：</strong></td><td>智能感应，¥100-300</td></tr>
+            </table>
+            <div style="background: #e3f2fd; padding: 8px; border-radius: 4px; margin-top: 8px; font-size: 11px;">
+                <strong>氛围灯</strong>（增长快）：64色RGB可编程，音乐律动同步，单车¥800-2,500。智能座舱带动，渗透率从30%→70%
+            </div>
+        </div>
+    </div>
+
+    <div class="section-title">🔑 销售策略与关键决策点</div>
+    <div style="display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 15px;">
+        <div style="background: #e3f2fd; border-left: 4px solid #2196f3; padding: 12px; border-radius: 4px;">
+            <h4 style="color: #2196f3; font-size: 13px; margin: 0 0 8px 0;">关注设计权</h4>
+            <p style="font-size: 11.5px; line-height: 1.6; margin: 0;">
+            灯具设计由OEM主导，Tier1（华域视觉、星宇股份）执行。需提前介入设计阶段，绑定灯具厂。
+            </p>
+        </div>
+        <div style="background: #fff3e0; border-left: 4px solid #ff9800; padding: 12px; border-radius: 4px;">
+            <h4 style="color: #ff9800; font-size: 13px; margin: 0 0 8px 0;">单车价值差异大</h4>
+            <p style="font-size: 11.5px; line-height: 1.6; margin: 0;">
+            矩阵大灯vs普通大灯，价值差10倍（¥120 vs ¥2,940/侧）。需针对不同车型定位，提供差异化方案。
+            </p>
+        </div>
+        <div style="background: #e8f5e9; border-left: 4px solid #4caf50; padding: 12px; border-radius: 4px;">
+            <h4 style="color: #4caf50; font-size: 13px; margin: 0 0 8px 0;">技术要求</h4>
+            <p style="font-size: 11.5px; line-height: 1.6; margin: 0;">
+            光效≥150lm/W，色温一致性±150K，车规可靠性AEC-Q102，耐高温-40℃~+125℃。
+            </p>
+        </div>
+    </div>
+
+    <div class="insight-box" style="margin-top: 15px;">
+        <strong>💡 销售实战要点：</strong><br/>
+        <strong>1. 价值分层清晰：</strong>传统LED（薄利多销）→矩阵LED（利润高地）→像素LED（旗舰展示）<br/>
+        <strong>2. 设计权是关键：</strong>灯具由OEM主导设计，需提前介入（新车型立项期），绑定Tier1灯具厂<br/>
+        <strong>3. 智能化趋势：</strong>可编程灯语（贯穿式尾灯显示"谢谢"、距离提示）成为差异化卖点<br/>
+        <strong>4. 切入策略：</strong>从DRL/氛围灯（标准品）切入→矩阵大灯（技术合作）→像素大灯（高端定制）
+    </div>
+</div>
+<div class="page">
+    <div class="page-title">产品5：电流传感器 - 电控系统的"血压计"</div>
+
+    <div class="section-title">📊 市场规模与定位</div>
+    <div class="metric-grid">
+        <div class="metric-card">
+            <div class="metric-label">2024年全球市场规模</div>
+            <div class="metric-value">$2.8B</div>
+            <div class="metric-label">约¥203亿，中国占42%</div>
+        </div>
+        <div class="metric-card">
+            <div class="metric-label">2027年预测规模</div>
+            <div class="metric-value">$4.5B</div>
+            <div class="metric-label">年复合增长率 17.2%</div>
+        </div>
+        <div class="metric-card">
+            <div class="metric-label">核心驱动</div>
+            <div class="metric-value" style="font-size: 20px;">800V平台</div>
+            <div class="metric-label">精细化管理需求</div>
+        </div>
+    </div>
+
+    <div style="background: linear-gradient(135deg, #ffebee 0%, #ffffff 100%); border: 3px solid var(--color-primary-red); border-radius: 10px; padding: 18px; text-align: center; margin: 20px 0;">
+        <p style="font-size: 17px; color: var(--color-primary-red); font-weight: bold; margin: 0; line-height: 1.6;">
+            "精度-成本-安全的平衡艺术"<br/>
+            <span style="font-size: 14px; color: #666;">BMS要高精度（±0.5%），主驱要高响应（<1ms），OBC要低成本</span>
+        </p>
+    </div>
+
+    <div class="section-title">🎯 应用场景与技术路线（按功能域分类）</div>
+    <table class="data-table">
+        <thead>
+            <tr>
+                <th width="18%">应用位置</th>
+                <th width="22%">核心诉求</th>
+                <th width="22%">技术路线</th>
+                <th width="18%">单车用量</th>
+                <th width="20%">单车价值</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr style="background: #fff3e0;">
+                <td><strong>BMS电池管理</strong><br/>(Pack级)</td>
+                <td>高精度（±0.5%）<br/>SOC估算准确</td>
+                <td><strong>霍尔效应</strong>（70%）<br/>磁阻AMR/GMR（5%）</td>
+                <td>2-8个<br/>(800V需求↑)</td>
+                <td style="font-weight: bold; color: var(--color-primary-red);">¥300-1,500</td>
+            </tr>
+            <tr style="background: #e3f2fd;">
+                <td><strong>主驱电机</strong><br/>(三相电流)</td>
+                <td>高响应（<1ms）<br/>大电流±1000A<br/>保护性能</td>
+                <td><strong>霍尔开环</strong>（主流）<br/>分流器（低成本）</td>
+                <td>3个<br/>(U/V/W三相)</td>
+                <td style="font-weight: bold; color: #2196f3;">¥450-900</td>
+            </tr>
+            <tr>
+                <td><strong>OBC/DCDC</strong><br/>(辅助系统)</td>
+                <td>成本控制<br/>体积小<br/>集成度高</td>
+                <td><strong>分流器</strong>（主流）<br/>霍尔（高端）</td>
+                <td>3-5个<br/>(输入+输出)</td>
+                <td>¥200-500</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <div class="insight-box">
+        <strong>💡 市场洞察：</strong>800V平台普及带来需求提升。单车从3-5个→8-12个（增加BMS分支监测），价值量翻倍。精细化电池管理（延长寿命、提升安全）成为刚需。
+    </div>
+
+    <div class="section-title">🔑 技术路线对比与选型策略</div>
+    <div class="product-split">
+        <div style="background: #e3f2fd; border: 2px solid #2196f3; border-radius: 8px; padding: 15px;">
+            <h4 style="color: #2196f3; margin: 0 0 10px 0;">霍尔效应式（主流，占比70%）</h4>
+            <table style="width: 100%; font-size: 12px;">
+                <tr><td style="padding: 4px 0;"><strong>优点：</strong></td><td>非接触测量、精度高（±0.5%）、响应快</td></tr>
+                <tr><td style="padding: 4px 0;"><strong>缺点：</strong></td><td>成本高、温漂大（需补偿）</td></tr>
+                <tr><td style="padding: 4px 0;"><strong>应用：</strong></td><td>BMS主传感器、主驱三相电流</td></tr>
+                <tr><td style="padding: 4px 0;"><strong>价格：</strong></td><td>¥150-300/个（Pack级）</td></tr>
+            </table>
+        </div>
+        <div style="background: #fff3e0; border: 2px solid #ff9800; border-radius: 8px; padding: 15px;">
+            <h4 style="color: #ff9800; margin: 0 0 10px 0;">分流器式（低成本，占比25%）</h4>
+            <table style="width: 100%; font-size: 12px;">
+                <tr><td style="padding: 4px 0;"><strong>优点：</strong></td><td>成本低（1/3）、温度稳定性好</td></tr>
+                <tr><td style="padding: 4px 0;"><strong>缺点：</strong></td><td>接触测量、功耗大、精度一般（±1%）</td></tr>
+                <tr><td style="padding: 4px 0;"><strong>应用：</strong></td><td>OBC/DCDC、BMS分支</td></tr>
+                <tr><td style="padding: 4px 0;"><strong>价格：</strong></td><td>¥50-100/个</td></tr>
+            </table>
+        </div>
+    </div>
+
+    <div class="section-title">📋 销售策略与关键决策点</div>
+    <div style="display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 15px;">
+        <div style="background: #e8f5e9; border-left: 4px solid #4caf50; padding: 12px; border-radius: 4px;">
+            <h4 style="color: #4caf50; font-size: 13px; margin: 0 0 8px 0;">应用分层策略</h4>
+            <p style="font-size: 11.5px; line-height: 1.6; margin: 0;">
+            BMS（霍尔，高精度）→主驱（霍尔，高响应）→OBC（分流器，低成本）。不同应用场景，技术路线不同。
+            </p>
+        </div>
+        <div style="background: #e3f2fd; border-left: 4px solid #2196f3; padding: 12px; border-radius: 4px;">
+            <h4 style="color: #2196f3; font-size: 13px; margin: 0 0 8px 0;">800V平台机会</h4>
+            <p style="font-size: 11.5px; line-height: 1.6; margin: 0;">
+            800V平台对电流传感器要求更高（大电流±1000A、高压隔离），单车用量增加，ASP提升20-30%。
+            </p>
+        </div>
+        <div style="background: #fff3e0; border-left: 4px solid #ff9800; padding: 12px; border-radius: 4px;">
+            <h4 style="color: #ff9800; font-size: 13px; margin: 0 0 8px 0;">产业链位置</h4>
+            <p style="font-size: 11.5px; line-height: 1.6; margin: 0;">
+            传感器嵌入BMS/电机控制器，需与Tier1（宁德时代、方正电机）合作，提供整套解决方案。
+            </p>
+        </div>
+    </div>
+
+    <div class="insight-box" style="margin-top: 15px;">
+        <strong>💡 销售实战要点：</strong><br/>
+        <strong>1. 技术路线选择：</strong>BMS用霍尔（精度±0.5%），OBC用分流器（成本1/3）<br/>
+        <strong>2. 800V红利：</strong>单车从3-5个→8-12个，价值量¥600→¥1,500（翻倍）<br/>
+        <strong>3. 精度是门槛：</strong>BMS传感器精度直接影响SOC估算，±0.5%是行业标准<br/>
+        <strong>4. 切入策略：</strong>从OBC/DCDC（低成本分流器）切入→BMS分支→BMS主传感器
+    </div>
+</div>
+<div class="page">
+    <div class="page-title">产品6：MCU（微控制单元）- 感知、决策、执行的控制核心</div>
+
+    <div class="section-title">📊 产品定位与核心优势</div>
+
+    <div style="background: linear-gradient(135deg, #ffebee 0%, #ffffff 100%); border: 3px solid var(--color-primary-red); border-radius: 10px; padding: 20px; margin: 20px 0;">
+        <h3 style="color: var(--color-primary-red); margin: 0 0 15px 0; font-size: 18px;">💎 四大核心优势</h3>
+        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 15px;">
+            <div style="background: white; padding: 12px; border-radius: 6px; border: 2px solid var(--color-primary-red);">
+                <div style="font-size: 24px; margin-bottom: 8px;">🔧</div>
+                <strong style="color: var(--color-primary-red); font-size: 13px;">500万台实车验证</strong>
+                <p style="font-size: 11.5px; margin: 6px 0 0 0; line-height: 1.5;">
+                2020-2024累计装车500万+台<br/>
+                覆盖汉/唐/海豹/元Plus全系<br/>
+                PPM<5（行业领先）
+                </p>
+            </div>
+            <div style="background: white; padding: 12px; border-radius: 6px; border: 2px solid var(--color-primary-red);">
+                <div style="font-size: 24px; margin-bottom: 8px;">✅</div>
+                <strong style="color: var(--color-primary-red); font-size: 13px;">车规级全认证</strong>
+                <p style="font-size: 11.5px; margin: 6px 0 0 0; line-height: 1.5;">
+                AEC-Q100、ISO 26262 ASIL-B/C<br/>
+                IATF 16949、EMC Class 5<br/>
+                -40℃~150℃工作温度
+                </p>
+            </div>
+            <div style="background: white; padding: 12px; border-radius: 6px; border: 2px solid var(--color-primary-red);">
+                <div style="font-size: 24px; margin-bottom: 8px;">⚡</div>
+                <strong style="color: var(--color-primary-red); font-size: 13px;">技术领先</strong>
+                <p style="font-size: 11.5px; margin: 6px 0 0 0; line-height: 1.5;">
+                低功耗：休眠<10μA（同类50μA+）<br/>
+                高EMC：抗干扰>200V/m<br/>
+                快速启动：冷启动<50ms
+                </p>
+            </div>
+            <div style="background: white; padding: 12px; border-radius: 6px; border: 2px solid var(--color-primary-red);">
+                <div style="font-size: 24px; margin-bottom: 8px;">💰</div>
+                <strong style="color: var(--color-primary-red); font-size: 13px;">成本优势</strong>
+                <p style="font-size: 11.5px; margin: 6px 0 0 0; line-height: 1.5;">
+                vs瑞萨：低25-35%<br/>
+                vs NXP：低20-30%<br/>
+                vs英飞凌：低15-25%
+                </p>
+            </div>
+        </div>
+    </div>
+
+    <div class="section-title">🎯 产品系列矩阵</div>
+    <table class="data-table">
+        <thead>
+            <tr>
+                <th width="15%">系列</th>
+                <th width="18%">内核/主频</th>
+                <th width="27%">典型应用场景</th>
+                <th width="20%">竞品对标</th>
+                <th width="20%">价格优势</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td><strong>8位通用</strong></td>
+                <td>8051<br/>16-48MHz</td>
+                <td>简单车身控制（灯光、车窗、雨刷）</td>
+                <td>瑞萨RL78</td>
+                <td style="color: #4caf50; font-weight: bold;">低30-40%</td>
+            </tr>
+            <tr style="background: #fff8e1;">
+                <td><strong>32位车规M3</strong></td>
+                <td>ARM M3<br/>80-120MHz</td>
+                <td><strong>BCM车身、BMS从站</strong></td>
+                <td>瑞萨RH850</td>
+                <td style="color: #4caf50; font-weight: bold;">低25-35%</td>
+            </tr>
+            <tr style="background: #e3f2fd;">
+                <td><strong>32位车规M4</strong></td>
+                <td>ARM M4F<br/>120-200MHz</td>
+                <td><strong>电机控制、域控</strong></td>
+                <td>NXP S32K</td>
+                <td style="color: #4caf50; font-weight: bold;">低20-30%</td>
+            </tr>
+            <tr>
+                <td><strong>高性能M7</strong></td>
+                <td>ARM M7<br/>300MHz+</td>
+                <td>ADAS辅助、智能座舱</td>
+                <td>英飞凌TC3xx</td>
+                <td style="color: #4caf50; font-weight: bold;">低15-25%</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <div class="insight-box">
+        <strong>💡 架构演进影响：</strong>分布式ECU→域控制器→中央计算。<strong>域控架构</strong>导致MCU需求结构性变化：<strong>高性能MCU（M4/M7）需求↑</strong>（域控需要），<strong>低端MCU（8位）需求↓</strong>（功能整合）。单车MCU数量从80-120个→20-40个（域控时代）。
+    </div>
+
+    <div class="section-title">🎯 应用场景与替代策略</div>
+    <div class="product-split">
+        <div style="background: #e8f5e9; border: 2px solid #4caf50; border-radius: 8px; padding: 15px;">
+            <h4 style="color: #4caf50; margin: 0 0 10px 0;">✅ 易替代场景（优先攻坚）</h4>
+            <table style="width: 100%; font-size: 12px;">
+                <tr style="background: #f5f5f5;"><td style="padding: 6px; font-weight: bold;" colspan="2">非安全关键节点（ASIL-A/QM）</td></tr>
+                <tr><td style="padding: 4px 8px; width: 35%;">车窗控制</td><td style="padding: 4px 8px;">技术门槛低，价格敏感</td></tr>
+                <tr><td style="padding: 4px 8px;">座椅调节</td><td style="padding: 4px 8px;">标准化程度高</td></tr>
+                <tr><td style="padding: 4px 8px;">灯光控制</td><td style="padding: 4px 8px;">BCM外围节点</td></tr>
+                <tr><td style="padding: 4px 8px;">雨刷控制</td><td style="padding: 4px 8px;">简单逻辑，8位MCU即可</td></tr>
+                <tr style="background: #e8f5e9;"><td style="padding: 6px; font-weight: bold;" colspan="2">替代策略：价格优势（低30%）+快速送样</td></tr>
+            </table>
+        </div>
+        <div style="background: #ffebee; border: 2px solid #f44336; border-radius: 8px; padding: 15px;">
+            <h4 style="color: #f44336; margin: 0 0 10px 0;">❌ 难替代场景（战略性放弃）</h4>
+            <table style="width: 100%; font-size: 12px;">
+                <tr style="background: #f5f5f5;"><td style="padding: 6px; font-weight: bold;" colspan="2">安全关键节点（ASIL-C/D）</td></tr>
+                <tr><td style="padding: 4px 8px; width: 35%;">ABS/ESC</td><td style="padding: 4px 8px;">博世/大陆垄断</td></tr>
+                <tr><td style="padding: 4px 8px;">EPS转向</td><td style="padding: 4px 8px;">功能安全要求高</td></tr>
+                <tr><td style="padding: 4px 8px;">ADAS主控</td><td style="padding: 4px; 8px;">生态依赖重（AUTOSAR）</td></tr>
+                <tr><td style="padding: 4px 8px;">气囊控制</td><td style="padding: 4px 8px;">认证周期长（3-5年）</td></tr>
+                <tr style="background: #ffebee;"><td style="padding: 6px; font-weight: bold;" colspan="2;">壁垒：历史代码迁移成本高+客户保守</td></tr>
+            </table>
+        </div>
+    </div>
+
+    <div class="section-title">📋 销售策略与竞争打法</div>
+    <div style="display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 15px;">
+        <div style="background: #e3f2fd; border-left: 4px solid #2196f3; padding: 12px; border-radius: 4px;">
+            <h4 style="color: #2196f3; font-size: 13px; margin: 0 0 8px 0;">从外围切入</h4>
+            <p style="font-size: 11.5px; line-height: 1.6; margin: 0;">
+            车窗/座椅/灯光（ASIL-A/QM）→BMS从站/热管理（ASIL-B）→域控边缘节点（ASIL-C）。逐步渗透。
+            </p>
+        </div>
+        <div style="background: #fff3e0; border-left: 4px solid #ff9800; padding: 12px; border-radius: 4px;">
+            <h4 style="color: #ff9800; font-size: 13px; margin: 0 0 8px 0;">比亚迪背书</h4>
+            <p style="font-size: 11.5px; line-height: 1.6; margin: 0;">
+            "500万台实车验证"是最强背书。覆盖10-30万价位全系车型，可靠性数据充分。
+            </p>
+        </div>
+        <div style="background: #e8f5e9; border-left: 4px solid #4caf50; padding: 12px; border-radius: 4px;">
+            <h4 style="color: #4caf50; font-size: 13px; margin: 0 0 8px 0;">新势力友好</h4>
+            <p style="font-size: 11.5px; line-height: 1.6; margin: 0;">
+            新势力（零跑/哪吒）技术包袱小，更愿意尝试国产MCU。价格敏感度高，是突破口。
+            </p>
+        </div>
+    </div>
+
+    <div class="insight-box" style="margin-top: 15px;">
+        <strong>💡 销售实战要点：</strong><br/>
+        <strong>1. 从外围突破：</strong>非安全关键节点（车窗/座椅）→安全关键节点（BMS/EPS），逐步渗透<br/>
+        <strong>2. 500万台验证：</strong>比亚迪集团背书是最强武器，PPM<5行业领先<br/>
+        <strong>3. 价格优势明显：</strong>vs瑞萨低25-35%，vs NXP低20-30%，成本驱动客户首选<br/>
+        <strong>4. 架构演进机会：</strong>域控时代，高性能MCU（M4/M7）需求↑，是切入高端市场的窗口<br/>
+        <strong>5. 目标客户：</strong>新势力（零跑/哪吒）>自主品牌（长城/吉利）>传统车企（一汽/东风-战略性放弃）
+    </div>
+</div>
+<div class="page">
+    <div class="page-title">第二部分：销售场景剧本 - Know How to Sell</div>
+
+    <div style="background: linear-gradient(135deg, #ffebee 0%, #ffffff 100%); border: 3px solid var(--color-primary-red); border-radius: 10px; padding: 18px; text-align: center; margin: 20px 0;">
+        <p style="font-size: 17px; color: var(--color-primary-red); font-weight: bold; margin: 0; line-height: 1.6;">
+            "遇到XX情况怎么办？"<br/>
+            <span style="font-size: 14px; color: #666;">场景分类 + STAR案例 + 标准话术 = 8大典型场景的应对指南</span>
+        </p>
+    </div>
+
+    <div class="section-title">🎯 六大销售场景总览</div>
+    <table class="data-table">
+        <thead>
+            <tr>
+                <th width="8%">场景</th>
+                <th width="25%">典型情况</th>
+                <th width="37%">核心应对策略</th>
+                <th width="30%">关键话术/工具</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td><strong>场景1</strong></td>
+                <td>客户砍价到底线以下</td>
+                <td>判断砍价真实性→识别客户意图→寻找降本方案（技术优化/批量折扣）</td>
+                <td>"让我们一起看TCO（总拥有成本）"</td>
+            </tr>
+            <tr>
+                <td><strong>场景2</strong></td>
+                <td>竞品挖墙脚，如何保住份额</td>
+                <td>情报收集→风险评估→快速响应（价格匹配/服务升级/高层公关）</td>
+                <td>"我们能提供竞品做不到的X"</td>
+            </tr>
+            <tr>
+                <td><strong>场景3</strong></td>
+                <td>大客户要求独家供应</td>
+                <td>评估风险收益→谈判条件（量价绑定/技术授权/排他补偿）</td>
+                <td>"独家供应需要年采购量保障"</td>
+            </tr>
+            <tr>
+                <td><strong>场景4</strong></td>
+                <td>技术测试不通过</td>
+                <td>快速定位问题→技术支持介入→迭代优化（2-3轮）→备用方案</td>
+                <td>"我们的FAE团队48h内给方案"</td>
+            </tr>
+            <tr>
+                <td><strong>场景5</strong></td>
+                <td>客户投诉质量问题</td>
+                <td>8小时响应→现场分析→根因分析（8D报告）→预防措施</td>
+                <td>"质量问题我们承担全部责任"</td>
+            </tr>
+            <tr>
+                <td><strong>场景6</strong></td>
+                <td>新客户冷启动（0→1突破）</td>
+                <td>建立信任→技术切入→小批量试错→成功复制</td>
+                <td>"免费送样+FAE驻场3个月"</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <div class="section-title">📋 场景详解（STAR格式）</div>
+
+    <div class="scenario-card s1">
+        <h4 style="color: #ff9800; margin: 0 0 10px 0; font-size: 15px;">场景1：客户砍价到底线以下 💰</h4>
+        <div style="display: grid; grid-template-columns: 1fr 2fr; gap: 10px; font-size: 12px;">
+            <div style="font-weight: bold;">背景（Situation）</div>
+            <div>技术评审已通过，商务谈判阶段客户持续压价，要求价格低于公司底线（例：报价¥12，客户要求¥9）</div>
+
+            <div style="font-weight: bold;">任务（Task）</div>
+            <div>在不损失利润的前提下，达成订单或保持客户关系</div>
+
+            <div style="font-weight: bold;">行动（Action）</div>
+            <div>
+                <strong>步骤1：</strong>判断砍价真实性（竞品报价是否真实？是否可持续？）<br/>
+                <strong>步骤2：</strong>识别客户意图（真预算有限 vs 谈判技巧 vs 确实有更低报价）<br/>
+                <strong>步骤3：</strong>差异化价值论证（TCO对比：¥12产品寿命长、故障率低，5年总成本更优）<br/>
+                <strong>步骤4：</strong>创造性降本（技术优化/批量折扣/延长账期/VMI库存）
+            </div>
+
+            <div style="font-weight: bold;">结果（Result）</div>
+            <div style="background: #fff3e0; padding: 8px; border-radius: 4px;">
+                <strong>案例：</strong>客户要求¥9，我们坚持¥11（底线¥10），最终通过"前3万套¥10.5 + 后续订单¥11"的阶梯价格达成。客户获得初期优惠，我们保住利润。
+            </div>
+        </div>
+    </div>
+
+    <div class="scenario-card s2">
+        <h4 style="color: #f44336; margin: 0 0 10px 0; font-size: 15px;">场景2：竞品挖墙脚，如何保住份额 🛡️</h4>
+        <div style="display: grid; grid-template-columns: 1fr 2fr; gap: 10px; font-size: 12px;">
+            <div style="font-weight: bold;">背景</div>
+            <div>客户已使用我们产品2年，竞品（瑞萨/英飞凌）开始挖墙脚，报价更低或承诺更多</div>
+
+            <div style="font-weight: bold;">任务</div>
+            <div>保住现有份额，防止客户流失</div>
+
+            <div style="font-weight: bold;">行动</div>
+            <div>
+                <strong>步骤1：</strong>情报收集（竞品报价多少？做了哪些承诺？客户为何动摇？）<br/>
+                <strong>步骤2：</strong>风险评估（客户流失风险：高/中/低？切换成本多大？）<br/>
+                <strong>步骤3：</strong>快速响应（价格匹配/服务升级/高层公关，48h内给方案）<br/>
+                <strong>步骤4：</strong>强化粘性（联合开发/技术绑定/长期协议）
+            </div>
+
+            <div style="font-weight: bold;">标准话术</div>
+            <div style="background: #ffebee; padding: 8px; border-radius: 4px;">
+                "我理解您的压力。但请注意，竞品的低价可能是促销价（不可持续），我们的价格是长期稳定的。而且我们提供的本地化服务（FAE驻场/48h响应），竞品做不到。"
+            </div>
+        </div>
+    </div>
+
+    <div class="scenario-card s3">
+        <h4 style="color: #2196f3; margin: 0 0 10px 0; font-size: 15px;">场景3：大客户要求独家供应 🤝</h4>
+        <div style="display: grid; grid-template-columns: 1fr 2fr; gap: 10px; font-size: 12px;">
+            <div style="font-weight: bold;">核心策略</div>
+            <div>
+                <strong>评估风险收益：</strong>客户年采购量>10万套？能否覆盖产能50%+？<br/>
+                <strong>谈判条件：</strong>量价绑定（年采购量保障）+ 排他补偿（提前支付/保证金）+ 技术授权（共同开发）
+            </div>
+
+            <div style="font-weight: bold;">标准话术</div>
+            <div style="background: #e3f2fd; padding: 8px; border-radius: 4px;">
+                "独家供应我们可以考虑，但需要双方深度绑定。我们需要您承诺年采购量≥10万套（占我们产能50%+），以及3年长期协议。这样我们才能为您预留专属产能和定制化服务。"
+            </div>
+        </div>
+    </div>
+
+    <div style="display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 15px; margin-top: 20px;">
+        <div class="scenario-card s4" style="margin: 0;">
+            <h4 style="color: #9c27b0; margin: 0 0 8px 0; font-size: 14px;">场景4：技术测试不通过 🔧</h4>
+            <p style="font-size: 11.5px; margin: 5px 0; line-height: 1.5;">
+                <strong>快速响应：</strong>48h定位问题→FAE驻场→迭代优化（2-3轮）→备用方案<br/>
+                <strong>话术：</strong>"测试不通过不代表产品不行，可能是应用场景匹配问题。我们FAE团队48h内给优化方案。"
+            </p>
+        </div>
+        <div class="scenario-card s5" style="margin: 0;">
+            <h4 style="color: #ff5722; margin: 0 0 8px 0; font-size: 14px;">场景5：客户投诉质量问题 ⚠️</h4>
+            <p style="font-size: 11.5px; margin: 5px 0; line-height: 1.5;">
+                <strong>8小时响应：</strong>质量问题立即启动紧急响应→现场分析→8D报告→预防措施<br/>
+                <strong>话术：</strong>"质量问题我们承担全部责任，8小时内到现场，3天内给根因分析报告。"
+            </p>
+        </div>
+        <div class="scenario-card s6" style="margin: 0;">
+            <h4 style="color: #4caf50; margin: 0 0 8px 0; font-size: 14px;">场景6：新客户冷启动（0→1） 🚀</h4>
+            <p style="font-size: 11.5px; margin: 5px 0; line-height: 1.5;">
+                <strong>信任建立：</strong>免费送样（10-20套）+FAE驻场3个月+比亚迪背书→小批量试错→成功复制<br/>
+                <strong>话术：</strong>"前5K台按成本价供货，让您zero risk试用。成功后再谈长期合作。"
+            </p>
+        </div>
+    </div>
+
+    <div class="insight-box" style="margin-top: 15px;">
+        <strong>💡 场景剧本使用要点：</strong><br/>
+        <strong>1. STAR格式：</strong>Situation（背景）→ Task（任务）→ Action（行动）→ Result（结果），结构化应对<br/>
+        <strong>2. 话术模板：</strong>每个场景都有标准话术，可直接使用或根据实际情况调整<br/>
+        <strong>3. 快速响应：</strong>质量问题8小时、技术问题48小时、商务问题周内，速度是竞争力<br/>
+        <strong>4. 证据链：</strong>所有承诺都要有证据支持（装车数据/认证报告/客户案例/成本分析）
+    </div>
+</div>
+<div class="page">
+    <div class="page-title">第三部分：快速响应机制 + 第四部分：情报工具箱</div>
+
+    <div class="section-title">⚡ 30分钟紧急情报支持流程</div>
+
+    <div style="background: #f5f5f5; border: 2px solid var(--color-primary-red); border-radius: 8px; padding: 20px;">
+        <h4 style="color: var(--color-primary-red); margin: 0 0 15px 0;">销售-市场协同SOP</h4>
+        <table class="data-table" style="margin-bottom: 15px;">
+            <thead>
+                <tr>
+                    <th width="15%">紧急程度</th>
+                    <th width="25%">典型场景</th>
+                    <th width="20%">响应时间</th>
+                    <th width="40%">支持内容</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr style="background: #ffebee;">
+                    <td><strong>紧急</strong><br/>(P0)</td>
+                    <td>质量投诉、客户流失风险、大单谈判</td>
+                    <td style="font-weight: bold; color: #f44336;">30分钟响应<br/>8小时到现场</td>
+                    <td>市场部总监直接对接<br/>调动全部资源</td>
+                </tr>
+                <tr style="background: #fff3e0;">
+                    <td><strong>重要</strong><br/>(P1)</td>
+                    <td>技术测试问题、竞品情报、新客户开拓</td>
+                    <td style="font-weight: bold; color: #ff9800;">4小时响应<br/>48小时给方案</td>
+                    <td>FAE技术支持<br/>竞品对标报告</td>
+                </tr>
+                <tr>
+                    <td><strong>常规</strong><br/>(P2)</td>
+                    <td>客户拜访准备、产品咨询、市场调研</td>
+                    <td>1个工作日</td>
+                    <td>情报卡片、技术白皮书<br/>客户画像</td>
+                </tr>
+            </tbody>
+        </table>
+        <div style="background: #fff8e1; padding: 12px; border-radius: 4px; border-left: 4px solid #ffc107;">
+            <strong>求助渠道：</strong><br/>
+            • 微信群：销售-市场协同群（@市场部总监）<br/>
+            • 钉钉：紧急情报支持工单（30分钟必回）<br/>
+            • 电话：市场部热线 400-XXX-XXXX（7×24小时）
+        </div>
+    </div>
+
+    <div class="section-title">🛠️ 情报工具箱（麦肯锡式分析模板）</div>
+
+    <table class="data-table">
+        <thead>
+            <tr>
+                <th width="8%">编号</th>
+                <th width="27%">工具名称</th>
+                <th width="45%">解决的关键问题</th>
+                <th width="20%">使用时机</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>S-01</td>
+                <td><strong>4C情报分析框架</strong></td>
+                <td>系统化梳理产品竞争态势（Context/Customer/Competitor/Company）</td>
+                <td>新产品学习</td>
+            </tr>
+            <tr>
+                <td>S-02</td>
+                <td><strong>重点客户/车型机会清单</strong></td>
+                <td>先追哪个客户？哪个平台？（优先级排序）</td>
+                <td>季度规划</td>
+            </tr>
+            <tr>
+                <td>S-03</td>
+                <td><strong>客户/车型作战手册</strong></td>
+                <td>去见某客户、谈某平台时怎么打？</td>
+                <td>大项目准备</td>
+            </tr>
+            <tr>
+                <td>S-04</td>
+                <td><strong>竞品作战卡 (Battle Card)</strong></td>
+                <td>对着竞品A/B，我方该说什么？（参数/价格/话术）</td>
+                <td>竞标前</td>
+            </tr>
+            <tr>
+                <td>S-05</td>
+                <td><strong>价格 & 商务情报月报</strong></td>
+                <td>现在行情偏紧还是偏松？报价策略如何调整？</td>
+                <td>月度回顾</td>
+            </tr>
+            <tr>
+                <td>S-06</td>
+                <td><strong>技术卖点 & 案例库</strong></td>
+                <td>把技术参数翻译成客户听得懂的价值语言</td>
+                <td>客户拜访</td>
+            </tr>
+            <tr>
+                <td>S-12</td>
+                <td><strong>项目复盘报告</strong></td>
+                <td>赢在哪里？输在哪里？如何复制成功？</td>
+                <td>重大项目后</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <div class="section-title">📊 竞品作战卡示例（Battle Card模板）</div>
+
+    <div style="background: white; border: 2px solid #2196f3; border-radius: 8px; padding: 18px; margin: 15px 0;">
+        <h4 style="color: #2196f3; margin: 0 0 12px 0;">作战卡：IGBT - 某客户主驱项目</h4>
+        <table class="data-table" style="font-size: 12px;">
+            <thead>
+                <tr>
+                    <th width="20%">指标</th>
+                    <th width="27%" style="background: var(--color-primary-red);">我方 (BYD)</th>
+                    <th width="27%">竞品 A (英飞凌)</th>
+                    <th width="26%">竞品 B (斯达)</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>损耗/效率</td>
+                    <td style="font-weight: bold; color: #4caf50;">降低 5% ✓</td>
+                    <td>基准</td>
+                    <td>持平</td>
+                </tr>
+                <tr>
+                    <td>结温 Tjmax</td>
+                    <td>175℃</td>
+                    <td>150℃</td>
+                    <td>175℃</td>
+                </tr>
+                <tr>
+                    <td>价格竞争力</td>
+                    <td style="font-weight: bold; color: #4caf50;">★★★★★<br/>低20%</td>
+                    <td>★★</td>
+                    <td>★★★★</td>
+                </tr>
+                <tr>
+                    <td>交期</td>
+                    <td style="font-weight: bold; color: #4caf50;">10周 ✓</td>
+                    <td>16周</td>
+                    <td>12周</td>
+                </tr>
+            </tbody>
+        </table>
+        <div style="background: #e8f5e9; padding: 10px; border-radius: 4px; margin-top: 10px; font-size: 12px;">
+            <strong>攻坚话术：</strong><br/>
+            • "在贵司的工况下，我们的低损耗特性可换算为整车续航增加X km。"<br/>
+            • "相比英飞凌，我们提供本地化24h技术支持，且无断供风险。交期快6周。"<br/>
+            • "500万台实车验证数据可以共享，可靠性有保障。"
+        </div>
+    </div>
+
+    <div class="insight-box">
+        <strong>💡 工具箱使用要点：</strong><br/>
+        <strong>1. 模板标准化：</strong>所有报告使用统一模板，方便快速查阅和知识沉淀<br/>
+        <strong>2. 证据ID编码：</strong>统一EID（Evidence ID）编码，方便溯源和三角校验<br/>
+        <strong>3. 战例库积累：</strong>复盘赢单/输单的关键要素，提炼可复制的成功经验<br/>
+        <strong>4. 快速检索：</strong>按产品线/客户/场景分类，5分钟内找到需要的材料
+    </div>
+
+    <div style="background: linear-gradient(135deg, #ffebee 0%, #ffffff 100%); border: 3px solid var(--color-primary-red); border-radius: 10px; padding: 20px; text-align: center; margin-top: 20px;">
+        <h3 style="color: var(--color-primary-red); margin: 0 0 10px 0;">🎯 销售成功三要素</h3>
+        <div style="display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 15px; margin-top: 15px;">
+            <div style="background: white; padding: 15px; border-radius: 8px;">
+                <div style="font-size: 32px; margin-bottom: 8px;">📚</div>
+                <strong style="color: var(--color-primary-red);">Know What to Sell</strong>
+                <p style="font-size: 12px; margin: 8px 0 0 0;">产品线情报库<br/>4C分析框架</p>
+            </div>
+            <div style="background: white; padding: 15px; border-radius: 8px;">
+                <div style="font-size: 32px; margin-bottom: 8px;">🎭</div>
+                <strong style="color: var(--color-primary-red);">Know How to Sell</strong>
+                <p style="font-size: 12px; margin: 8px 0 0 0;">销售场景剧本<br/>STAR案例+话术</p>
+            </div>
+            <div style="background: white; padding: 15px; border-radius: 8px;">
+                <div style="font-size: 32px; margin-bottom: 8px;">⚡</div>
+                <strong style="color: var(--color-primary-red);">Get Support Fast</strong>
+                <p style="font-size: 12px; margin: 8px 0 0 0;">快速响应机制<br/>30分钟支持</p>
+            </div>
+        </div>
+    </div>
+</div>
 <div class="page">
     <div class="page-title">场景1：客户砍价到底线以下 💰</div>
 

@@ -9,6 +9,14 @@ from pathlib import Path
 
 # 定义要合并的文件列表（按顺序）
 html_files = [
+    'page-01-overview.html',
+    'page-02-product-sic-context.html',
+    'page-03-product-sic-customer.html',
+    'page-04-product-sic-competitor-company.html',
+    'page-05-product-igbt-summary.html',
+    'page-06-products-camera-led.html',
+    'page-07-products-sensor-mcu.html',
+    'page-08-sales-scenarios.html',
     'page-09-scenario-12-detail.html',
     'page-10-scenario-34-detail.html',
     'page-11-scenario-56-detail.html',

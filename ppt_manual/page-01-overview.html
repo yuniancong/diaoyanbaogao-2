@@ -1,0 +1,477 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <title>比亚迪半导体销售手册 - 概览与框架篇</title>
+    <style>
+        /* === 1. 调色板与全局定义 === */
+        :root {
+            --color-primary-red: #e60012;
+            --color-primary-red-dark: #c50010;
+            --text-color-on-dark: #ffffff;
+            --text-color-body: #000000;
+            --text-color-light: #666666;
+            --text-color-highlight-green: #008000;
+            --text-color-highlight-red: #e60012;
+            --bg-page: #ffffff;
+            --bg-table-stripe: #f2f2f2;
+            --bg-table-total: #f9f9f9;
+            --border-color-table: #ddd;
+            --shadow-page: rgba(0, 0, 0, 0.1);
+        }
+
+        body {
+            font-family: "Microsoft YaHei", "SimHei", sans-serif;
+            background-color: #f0f0f0;
+            margin: 0;
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 20px;
+        }
+
+        /* === 2. 页面容器 (A4横向) === */
+        .page {
+            width: 297mm;
+            min-height: 210mm;
+            background-color: var(--bg-page);
+            position: relative;
+            box-shadow: 0 0 10px var(--shadow-page);
+            padding: 40px;
+            box-sizing: border-box;
+            overflow: hidden;
+        }
+
+        /* === 3. 标题样式 === */
+        .page-title {
+            font-size: 28px;
+            font-weight: bold;
+            color: var(--text-color-on-dark);
+            background: linear-gradient(45deg, var(--color-primary-red), var(--color-primary-red-dark));
+            padding: 15px 30px;
+            margin: -40px -40px 30px -40px;
+            clip-path: polygon(0 0, calc(100% - 30px) 0, 100% 100%, 0 100%);
+            display: flex;
+            align-items: center;
+        }
+
+        .section-title {
+            font-size: 20px;
+            font-weight: bold;
+            color: var(--color-primary-red);
+            margin: 25px 0 15px 0;
+            border-bottom: 2px solid #eee;
+            padding-bottom: 5px;
+        }
+
+        h3 { font-size: 16px; margin-top: 20px; color: #333; }
+
+        /* === 4. 表格样式 === */
+        .data-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-bottom: 20px;
+        }
+        .data-table th {
+            background-color: var(--color-primary-red);
+            color: var(--text-color-on-dark);
+            font-weight: normal;
+            font-size: 14px;
+            padding: 10px;
+            border: 1px solid var(--border-color-table);
+            white-space: nowrap;
+        }
+        .data-table td {
+            padding: 8px 10px;
+            text-align: left;
+            font-size: 13px;
+            border: 1px solid var(--border-color-table);
+            color: #333;
+        }
+        .data-table tr:nth-child(even) { background-color: var(--bg-table-stripe); }
+        .data-table tr:nth-child(odd) { background-color: var(--bg-page); }
+
+        /* === 5. 封面样式 === */
+        .cover-style {
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+        .cover-style .red-bottom {
+            background-color: var(--color-primary-red);
+            height: 45%;
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            z-index: 1;
+        }
+        .cover-top-content {
+            position: absolute;
+            top: 15%;
+            left: 60px;
+            z-index: 2;
+        }
+        .cover-title-en {
+            font-size: 24px;
+            color: #999;
+            margin-bottom: 10px;
+        }
+        .cover-title-cn {
+            font-size: 48px;
+            font-weight: bold;
+            color: var(--color-primary-red);
+            line-height: 1.2;
+        }
+        .logo-circle {
+            position: absolute;
+            left: 60px;
+            bottom: 60px;
+            width: 80px;
+            height: 80px;
+            border: 8px solid #fff;
+            border-radius: 50%;
+            z-index: 3;
+            background-color: var(--color-primary-red);
+        }
+        .slogan {
+            position: absolute;
+            right: 60px;
+            bottom: 60px;
+            color: #fff;
+            font-size: 24px;
+            font-style: italic;
+            z-index: 3;
+            text-align: right;
+        }
+        .cover-info {
+            position: absolute;
+            right: 60px;
+            bottom: 120px;
+            color: #fff;
+            text-align: right;
+            z-index: 3;
+            font-size: 14px;
+            line-height: 1.8;
+        }
+
+        /* === 6. 其他元素 === */
+        .bullet-point { color: var(--color-primary-red); font-weight: bold; margin-right: 5px; }
+        .quote-box {
+            background-color: #fff0f0;
+            border-left: 4px solid var(--color-primary-red);
+            padding: 15px;
+            margin: 15px 0;
+            color: #555;
+            font-style: italic;
+        }
+        .diagram-box {
+            border: 1px dashed #ccc;
+            background: #fafafa;
+            padding: 20px;
+            text-align: center;
+            margin: 20px 0;
+            color: #666;
+            font-size: 14px;
+        }
+        .framework-box {
+            background: linear-gradient(135deg, #fff5f5 0%, #ffffff 100%);
+            border: 2px solid var(--color-primary-red);
+            border-radius: 8px;
+            padding: 20px;
+            margin: 15px 0;
+        }
+        .framework-box h4 {
+            color: var(--color-primary-red);
+            margin-top: 0;
+            font-size: 16px;
+        }
+    </style>
+</head>
+<body>
+
+<!-- 封面页 -->
+<div class="page cover-style">
+    <div class="cover-top-content">
+        <div class="cover-title-en">BYD Semiconductor Market Intelligence & Sales Manual</div>
+        <div class="cover-title-cn">比亚迪半导体<br>销售情报支持手册</div>
+    </div>
+
+    <div class="red-bottom"></div>
+
+    <div class="logo-circle"></div>
+    <div class="cover-info">
+        <p>版本：V1.0 (2025)</p>
+        <p>编制目的：系统化市场情报与实战工具</p>
+        <p>适用对象：销售团队 / 市场部 / 技术支持</p>
+        <p>更新周期：季度更新</p>
+    </div>
+
+    <div class="slogan">Know What to Sell · Know How to Sell · Get Support Fast</div>
+</div>
+
+<!-- 内容页1：手册定位与框架 -->
+<div class="page">
+    <div class="page-title">手册定位与4C分析框架</div>
+
+    <div class="section-title">📋 手册核心价值</div>
+    <div class="quote-box">
+        <strong>定位：</strong>销售团队的"战前准备清单" + "实战工具箱"
+    </div>
+
+    <table class="data-table">
+        <thead>
+            <tr>
+                <th width="25%">使用场景</th>
+                <th width="75%">使用方式</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>客户拜访前</td>
+                <td>查阅目标客户的情报卡片（决策链、痛点、竞争态势）</td>
+            </tr>
+            <tr>
+                <td>竞标准备</td>
+                <td>使用竞品对标表和标准话术</td>
+            </tr>
+            <tr>
+                <td>商机跟进</td>
+                <td>参考采购周期地图，制定阶段性策略</td>
+            </tr>
+            <tr>
+                <td>异议处理</td>
+                <td>查找对应场景的应对话术和证据材料</td>
+            </tr>
+            <tr>
+                <td>紧急求助</td>
+                <td>按照快速响应流程联系市场部获取支持（30分钟响应）</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <div class="section-title">🏗️ 手册四层结构</div>
+    <table class="data-table">
+        <thead>
+            <tr>
+                <th width="22%">层级</th>
+                <th width="23%">核心问题</th>
+                <th width="28%">方法论</th>
+                <th width="27%">输出物</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td><strong>第一层</strong><br/>产品线情报库</td>
+                <td>我们卖什么，市场在哪，对手是谁</td>
+                <td>4C框架<br/>(Context/Customer/<br/>Competitor/Company)</td>
+                <td>每个产品的完整情报卡片</td>
+            </tr>
+            <tr>
+                <td><strong>第二层</strong><br/>销售场景剧本</td>
+                <td>遇到XX情况怎么办</td>
+                <td>场景分类 + STAR案例 + 标准话术</td>
+                <td>8大典型场景的应对指南</td>
+            </tr>
+            <tr>
+                <td><strong>第三层</strong><br/>快速响应机制</td>
+                <td>需要帮助找谁，多快能拿到</td>
+                <td>销售-市场协同SOP</td>
+                <td>30分钟紧急响应流程</td>
+            </tr>
+            <tr>
+                <td><strong>第四层</strong><br/>情报工具箱</td>
+                <td>用什么工具提升效率</td>
+                <td>麦肯锡分析框架 + Excel模板</td>
+                <td>可直接使用的工具包</td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+
+<!-- 内容页2：4C框架详解 -->
+<div class="page">
+    <div class="page-title">📊 4C情报分析框架（麦肯锡方法论）</div>
+
+    <p style="font-size: 15px; color: #555; margin-bottom: 25px;">
+        本手册采用麦肯锡4C竞争分析框架，对每个产品进行结构化情报梳理。通过Context（市场环境）、Customer（客户情报）、Competitor（竞争分析）、Company（自身能力）四个维度，帮助销售团队全面掌握产品竞争态势。
+    </p>
+
+    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 25px; margin-top: 20px;">
+        <!-- C1: Context -->
+        <div class="framework-box">
+            <h4>🌍 C1: Context - 市场环境</h4>
+            <p style="font-size: 14px; line-height: 1.6; margin: 10px 0;">
+                <strong>核心内容：</strong>
+            </p>
+            <ul style="font-size: 13px; line-height: 1.7; margin: 5px 0;">
+                <li>市场规模与增速（用数据说话）</li>
+                <li>技术演进路线图（未来3年趋势）</li>
+                <li>应用场景拆解（价值链分析）</li>
+            </ul>
+            <p style="font-size: 13px; color: #666; margin-top: 10px;">
+                <strong>分析工具：</strong>市场规模数据、技术路线图、价值链分析
+            </p>
+        </div>
+
+        <!-- C2: Customer -->
+        <div class="framework-box">
+            <h4>👥 C2: Customer - 客户情报</h4>
+            <p style="font-size: 14px; line-height: 1.6; margin: 10px 0;">
+                <strong>核心内容：</strong>
+            </p>
+            <ul style="font-size: 13px; line-height: 1.7; margin: 5px 0;">
+                <li>目标客户分级矩阵（优先级排序）</li>
+                <li>客户决策链分析（找到关键人）</li>
+                <li>客户采购周期地图（把握节奏）</li>
+            </ul>
+            <p style="font-size: 13px; color: #666; margin-top: 10px;">
+                <strong>分析工具：</strong>客户分级矩阵、决策链图谱、采购周期地图
+            </p>
+        </div>
+
+        <!-- C3: Competitor -->
+        <div class="framework-box">
+            <h4>⚔️ C3: Competitor - 竞争分析</h4>
+            <p style="font-size: 14px; line-height: 1.6; margin: 10px 0;">
+                <strong>核心内容：</strong>
+            </p>
+            <ul style="font-size: 13px; line-height: 1.7; margin: 5px 0;">
+                <li>竞争格局与市场份额</li>
+                <li>竞品深度对标（参数/价格/服务）</li>
+                <li>竞争策略与应对话术</li>
+            </ul>
+            <p style="font-size: 13px; color: #666; margin-top: 10px;">
+                <strong>分析工具：</strong>市场份额图、竞品对标表、应对话术库
+            </p>
+        </div>
+
+        <!-- C4: Company -->
+        <div class="framework-box">
+            <h4>🏢 C4: Company - 自身能力</h4>
+            <p style="font-size: 14px; line-height: 1.6; margin: 10px 0;">
+                <strong>核心内容：</strong>
+            </p>
+            <ul style="font-size: 13px; line-height: 1.7; margin: 5px 0;">
+                <li>差异化价值主张（3句话说清优势）</li>
+                <li>标杆案例库（STAR格式）</li>
+                <li>能力证明材料清单（随身携带）</li>
+            </ul>
+            <p style="font-size: 13px; color: #666; margin-top: 10px;">
+                <strong>分析工具：</strong>价值主张卡片、STAR案例库、证明材料清单
+            </p>
+        </div>
+    </div>
+
+    <div class="diagram-box" style="margin-top: 25px;">
+        <strong>框架应用逻辑：</strong><br/>
+        C1市场环境 → 确定目标市场 → C2客户分析 → 锁定优先客户 → C3竞争分析 → 制定差异化策略 → C4能力匹配 → 形成完整销售方案
+    </div>
+</div>
+
+<!-- 内容页3：产品线版图 -->
+<div class="page">
+    <div class="page-title">六大销售关键产品线版图</div>
+
+    <div class="section-title">产品线总览</div>
+    <table class="data-table">
+        <thead>
+            <tr>
+                <th width="8%">序号</th>
+                <th width="20%">产品线</th>
+                <th width="35%">核心定位</th>
+                <th width="37%">关键应用场景</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>1</td>
+                <td><strong>碳化硅 SiC</strong></td>
+                <td>高性能/800V平台，兵家必争之地</td>
+                <td>800V主驱逆变器、高功率OBC、超充桩</td>
+            </tr>
+            <tr>
+                <td>2</td>
+                <td><strong>IGBT</strong></td>
+                <td>功率主力，400V平台核心</td>
+                <td>主驱逆变器、OBC、DC-DC、空调压缩机</td>
+            </tr>
+            <tr>
+                <td>3</td>
+                <td><strong>摄像头模组/CMOS</strong></td>
+                <td>智能驾驶/座舱的"眼睛"</td>
+                <td>前视ADAS、环视AVM、座舱DMS/OMS</td>
+            </tr>
+            <tr>
+                <td>4</td>
+                <td><strong>车规级LED</strong></td>
+                <td>车载照明与显示</td>
+                <td>头灯、尾灯、氛围灯、交互灯</td>
+            </tr>
+            <tr>
+                <td>5</td>
+                <td><strong>电流传感器</strong></td>
+                <td>电控系统的"血压计"</td>
+                <td>BMS、主驱相电流、OBC输入输出</td>
+            </tr>
+            <tr>
+                <td>6</td>
+                <td><strong>MCU</strong></td>
+                <td>感知、决策、执行的控制核心</td>
+                <td>动力控制、车身域、网关、座舱控制</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <div class="section-title">销售关键记忆点</div>
+    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px;">
+        <div>
+            <h3>⚡ 功率器件（SiC/IGBT）</h3>
+            <ul style="font-size: 13px; line-height: 1.7;">
+                <li><span class="bullet-point">●</span> 单车价值量高，对整车效率影响大</li>
+                <li><span class="bullet-point">●</span> SiC与800V强相关，IGBT与400V强相关</li>
+                <li><span class="bullet-point">●</span> 降低损耗、提升充电速度是核心卖点</li>
+                <li><span class="bullet-point">●</span> 高端车必争，中端车快速渗透中</li>
+            </ul>
+        </div>
+        <div>
+            <h3>📷 感知器件（摄像头/LED）</h3>
+            <ul style="font-size: 13px; line-height: 1.7;">
+                <li><span class="bullet-point">●</span> 摄像头数量与智驾等级(L2/L3)强相关</li>
+                <li><span class="bullet-point">●</span> 产业链长，需关注Tier1关系</li>
+                <li><span class="bullet-point">●</span> LED注重设计权，单车价值差异大</li>
+                <li><span class="bullet-point">●</span> 矩阵大灯vs普通灯具价值差10倍</li>
+            </ul>
+        </div>
+    </div>
+
+    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px; margin-top: 20px;">
+        <div>
+            <h3>📊 传感器件（电流传感器）</h3>
+            <ul style="font-size: 13px; line-height: 1.7;">
+                <li><span class="bullet-point">●</span> 精度-成本-安全的平衡艺术</li>
+                <li><span class="bullet-point">●</span> 技术路线多样（霍尔/分流器/磁通门）</li>
+                <li><span class="bullet-point">●</span> BMS应用要求高精度（SOC估算）</li>
+                <li><span class="bullet-point">●</span> 主驱应用要求高响应（保护）</li>
+            </ul>
+        </div>
+        <div>
+            <h3>🖥️ 控制器件（MCU）</h3>
+            <ul style="font-size: 13px; line-height: 1.7;">
+                <li><span class="bullet-point">●</span> 架构演进：分布式→域控→中央计算</li>
+                <li><span class="bullet-point">●</span> 功能安全等级（ASIL B/C/D）是门槛</li>
+                <li><span class="bullet-point">●</span> 生态依赖重（工具链、AUTOSAR）</li>
+                <li><span class="bullet-point">●</span> 非安全关键节点适合国产替代</li>
+            </ul>
+        </div>
+    </div>
+
+    <div class="quote-box" style="margin-top: 20px;">
+        <strong>💡 销售策略提示：</strong>功率器件看平台电压（400V/800V）、感知器件看智能化等级（L2/L3）、控制器件看架构演进（分布式/域控）。这是客户决策的核心逻辑。
+    </div>
+</div>
+
+</body>
+</html>

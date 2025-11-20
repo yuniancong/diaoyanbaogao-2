@@ -1,0 +1,2220 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <title>比亚迪半导体销售情报支持手册 - 完整版</title>
+    <style>
+        body { 
+            margin: 0; 
+            padding: 8px; 
+            background-color: #f0f0f0; 
+        }
+        .merged-iframe { 
+            display: block; 
+            width: 100%; 
+            border: 1px solid #ccc; 
+            box-sizing: border-box; 
+            margin-bottom: 16px; 
+        }
+        .header {
+            background: linear-gradient(45deg, #e60012, #c50010);
+            color: white;
+            padding: 20px;
+            text-align: center;
+            margin-bottom: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+        }
+        .header h1 {
+            margin: 0;
+            font-size: 28px;
+        }
+        .header p {
+            margin: 10px 0 0 0;
+            font-size: 14px;
+            opacity: 0.9;
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <h1>📘 比亚迪半导体销售情报支持手册</h1>
+        <p>BYD Semiconductor Market Intelligence & Sales Manual</p>
+        <p style="margin-top: 5px;">手工制作 | 总结性内容 | 基于4C分析框架</p>
+    </div>
+
+    <iframe
+                        id="page-1"
+                        class="merged-iframe"
+                        srcdoc="&lt;!DOCTYPE html&gt;
+&lt;html lang=&quot;zh-CN&quot;&gt;
+&lt;head&gt;
+    &lt;meta charset=&quot;UTF-8&quot;&gt;
+    &lt;title&gt;比亚迪半导体销售手册 - 概览与框架篇&lt;/title&gt;
+    &lt;style&gt;
+        /* === 1. 调色板与全局定义 === */
+        :root {
+            --color-primary-red: #e60012;
+            --color-primary-red-dark: #c50010;
+            --text-color-on-dark: #ffffff;
+            --text-color-body: #000000;
+            --text-color-light: #666666;
+            --text-color-highlight-green: #008000;
+            --text-color-highlight-red: #e60012;
+            --bg-page: #ffffff;
+            --bg-table-stripe: #f2f2f2;
+            --bg-table-total: #f9f9f9;
+            --border-color-table: #ddd;
+            --shadow-page: rgba(0, 0, 0, 0.1);
+        }
+
+        body {
+            font-family: &quot;Microsoft YaHei&quot;, &quot;SimHei&quot;, sans-serif;
+            background-color: #f0f0f0;
+            margin: 0;
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 20px;
+        }
+
+        /* === 2. 页面容器 (A4横向) === */
+        .page {
+            width: 297mm;
+            min-height: 210mm;
+            background-color: var(--bg-page);
+            position: relative;
+            box-shadow: 0 0 10px var(--shadow-page);
+            padding: 40px;
+            box-sizing: border-box;
+            overflow: hidden;
+        }
+
+        /* === 3. 标题样式 === */
+        .page-title {
+            font-size: 28px;
+            font-weight: bold;
+            color: var(--text-color-on-dark);
+            background: linear-gradient(45deg, var(--color-primary-red), var(--color-primary-red-dark));
+            padding: 15px 30px;
+            margin: -40px -40px 30px -40px;
+            clip-path: polygon(0 0, calc(100% - 30px) 0, 100% 100%, 0 100%);
+            display: flex;
+            align-items: center;
+        }
+
+        .section-title {
+            font-size: 20px;
+            font-weight: bold;
+            color: var(--color-primary-red);
+            margin: 25px 0 15px 0;
+            border-bottom: 2px solid #eee;
+            padding-bottom: 5px;
+        }
+
+        h3 { font-size: 16px; margin-top: 20px; color: #333; }
+
+        /* === 4. 表格样式 === */
+        .data-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-bottom: 20px;
+        }
+        .data-table th {
+            background-color: var(--color-primary-red);
+            color: var(--text-color-on-dark);
+            font-weight: normal;
+            font-size: 14px;
+            padding: 10px;
+            border: 1px solid var(--border-color-table);
+            white-space: nowrap;
+        }
+        .data-table td {
+            padding: 8px 10px;
+            text-align: left;
+            font-size: 13px;
+            border: 1px solid var(--border-color-table);
+            color: #333;
+        }
+        .data-table tr:nth-child(even) { background-color: var(--bg-table-stripe); }
+        .data-table tr:nth-child(odd) { background-color: var(--bg-page); }
+
+        /* === 5. 封面样式 === */
+        .cover-style {
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+        .cover-style .red-bottom {
+            background-color: var(--color-primary-red);
+            height: 45%;
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            z-index: 1;
+        }
+        .cover-top-content {
+            position: absolute;
+            top: 15%;
+            left: 60px;
+            z-index: 2;
+        }
+        .cover-title-en {
+            font-size: 24px;
+            color: #999;
+            margin-bottom: 10px;
+        }
+        .cover-title-cn {
+            font-size: 48px;
+            font-weight: bold;
+            color: var(--color-primary-red);
+            line-height: 1.2;
+        }
+        .logo-circle {
+            position: absolute;
+            left: 60px;
+            bottom: 60px;
+            width: 80px;
+            height: 80px;
+            border: 8px solid #fff;
+            border-radius: 50%;
+            z-index: 3;
+            background-color: var(--color-primary-red);
+        }
+        .slogan {
+            position: absolute;
+            right: 60px;
+            bottom: 60px;
+            color: #fff;
+            font-size: 24px;
+            font-style: italic;
+            z-index: 3;
+            text-align: right;
+        }
+        .cover-info {
+            position: absolute;
+            right: 60px;
+            bottom: 120px;
+            color: #fff;
+            text-align: right;
+            z-index: 3;
+            font-size: 14px;
+            line-height: 1.8;
+        }
+
+        /* === 6. 其他元素 === */
+        .bullet-point { color: var(--color-primary-red); font-weight: bold; margin-right: 5px; }
+        .quote-box {
+            background-color: #fff0f0;
+            border-left: 4px solid var(--color-primary-red);
+            padding: 15px;
+            margin: 15px 0;
+            color: #555;
+            font-style: italic;
+        }
+        .diagram-box {
+            border: 1px dashed #ccc;
+            background: #fafafa;
+            padding: 20px;
+            text-align: center;
+            margin: 20px 0;
+            color: #666;
+            font-size: 14px;
+        }
+        .framework-box {
+            background: linear-gradient(135deg, #fff5f5 0%, #ffffff 100%);
+            border: 2px solid var(--color-primary-red);
+            border-radius: 8px;
+            padding: 20px;
+            margin: 15px 0;
+        }
+        .framework-box h4 {
+            color: var(--color-primary-red);
+            margin-top: 0;
+            font-size: 16px;
+        }
+    &lt;/style&gt;
+&lt;/head&gt;
+&lt;body&gt;
+
+&lt;!-- 封面页 --&gt;
+&lt;div class=&quot;page cover-style&quot;&gt;
+    &lt;div class=&quot;cover-top-content&quot;&gt;
+        &lt;div class=&quot;cover-title-en&quot;&gt;BYD Semiconductor Market Intelligence &amp; Sales Manual&lt;/div&gt;
+        &lt;div class=&quot;cover-title-cn&quot;&gt;比亚迪半导体&lt;br&gt;销售情报支持手册&lt;/div&gt;
+    &lt;/div&gt;
+
+    &lt;div class=&quot;red-bottom&quot;&gt;&lt;/div&gt;
+
+    &lt;div class=&quot;logo-circle&quot;&gt;&lt;/div&gt;
+    &lt;div class=&quot;cover-info&quot;&gt;
+        &lt;p&gt;版本：V1.0 (2025)&lt;/p&gt;
+        &lt;p&gt;编制目的：系统化市场情报与实战工具&lt;/p&gt;
+        &lt;p&gt;适用对象：销售团队 / 市场部 / 技术支持&lt;/p&gt;
+        &lt;p&gt;更新周期：季度更新&lt;/p&gt;
+    &lt;/div&gt;
+
+    &lt;div class=&quot;slogan&quot;&gt;Know What to Sell · Know How to Sell · Get Support Fast&lt;/div&gt;
+&lt;/div&gt;
+
+&lt;!-- 内容页1：手册定位与框架 --&gt;
+&lt;div class=&quot;page&quot;&gt;
+    &lt;div class=&quot;page-title&quot;&gt;手册定位与4C分析框架&lt;/div&gt;
+
+    &lt;div class=&quot;section-title&quot;&gt;📋 手册核心价值&lt;/div&gt;
+    &lt;div class=&quot;quote-box&quot;&gt;
+        &lt;strong&gt;定位：&lt;/strong&gt;销售团队的&quot;战前准备清单&quot; + &quot;实战工具箱&quot;
+    &lt;/div&gt;
+
+    &lt;table class=&quot;data-table&quot;&gt;
+        &lt;thead&gt;
+            &lt;tr&gt;
+                &lt;th width=&quot;25%&quot;&gt;使用场景&lt;/th&gt;
+                &lt;th width=&quot;75%&quot;&gt;使用方式&lt;/th&gt;
+            &lt;/tr&gt;
+        &lt;/thead&gt;
+        &lt;tbody&gt;
+            &lt;tr&gt;
+                &lt;td&gt;客户拜访前&lt;/td&gt;
+                &lt;td&gt;查阅目标客户的情报卡片（决策链、痛点、竞争态势）&lt;/td&gt;
+            &lt;/tr&gt;
+            &lt;tr&gt;
+                &lt;td&gt;竞标准备&lt;/td&gt;
+                &lt;td&gt;使用竞品对标表和标准话术&lt;/td&gt;
+            &lt;/tr&gt;
+            &lt;tr&gt;
+                &lt;td&gt;商机跟进&lt;/td&gt;
+                &lt;td&gt;参考采购周期地图，制定阶段性策略&lt;/td&gt;
+            &lt;/tr&gt;
+            &lt;tr&gt;
+                &lt;td&gt;异议处理&lt;/td&gt;
+                &lt;td&gt;查找对应场景的应对话术和证据材料&lt;/td&gt;
+            &lt;/tr&gt;
+            &lt;tr&gt;
+                &lt;td&gt;紧急求助&lt;/td&gt;
+                &lt;td&gt;按照快速响应流程联系市场部获取支持（30分钟响应）&lt;/td&gt;
+            &lt;/tr&gt;
+        &lt;/tbody&gt;
+    &lt;/table&gt;
+
+    &lt;div class=&quot;section-title&quot;&gt;🏗️ 手册四层结构&lt;/div&gt;
+    &lt;table class=&quot;data-table&quot;&gt;
+        &lt;thead&gt;
+            &lt;tr&gt;
+                &lt;th width=&quot;22%&quot;&gt;层级&lt;/th&gt;
+                &lt;th width=&quot;23%&quot;&gt;核心问题&lt;/th&gt;
+                &lt;th width=&quot;28%&quot;&gt;方法论&lt;/th&gt;
+                &lt;th width=&quot;27%&quot;&gt;输出物&lt;/th&gt;
+            &lt;/tr&gt;
+        &lt;/thead&gt;
+        &lt;tbody&gt;
+            &lt;tr&gt;
+                &lt;td&gt;&lt;strong&gt;第一层&lt;/strong&gt;&lt;br/&gt;产品线情报库&lt;/td&gt;
+                &lt;td&gt;我们卖什么，市场在哪，对手是谁&lt;/td&gt;
+                &lt;td&gt;4C框架&lt;br/&gt;(Context/Customer/&lt;br/&gt;Competitor/Company)&lt;/td&gt;
+                &lt;td&gt;每个产品的完整情报卡片&lt;/td&gt;
+            &lt;/tr&gt;
+            &lt;tr&gt;
+                &lt;td&gt;&lt;strong&gt;第二层&lt;/strong&gt;&lt;br/&gt;销售场景剧本&lt;/td&gt;
+                &lt;td&gt;遇到XX情况怎么办&lt;/td&gt;
+                &lt;td&gt;场景分类 + STAR案例 + 标准话术&lt;/td&gt;
+                &lt;td&gt;8大典型场景的应对指南&lt;/td&gt;
+            &lt;/tr&gt;
+            &lt;tr&gt;
+                &lt;td&gt;&lt;strong&gt;第三层&lt;/strong&gt;&lt;br/&gt;快速响应机制&lt;/td&gt;
+                &lt;td&gt;需要帮助找谁，多快能拿到&lt;/td&gt;
+                &lt;td&gt;销售-市场协同SOP&lt;/td&gt;
+                &lt;td&gt;30分钟紧急响应流程&lt;/td&gt;
+            &lt;/tr&gt;
+            &lt;tr&gt;
+                &lt;td&gt;&lt;strong&gt;第四层&lt;/strong&gt;&lt;br/&gt;情报工具箱&lt;/td&gt;
+                &lt;td&gt;用什么工具提升效率&lt;/td&gt;
+                &lt;td&gt;麦肯锡分析框架 + Excel模板&lt;/td&gt;
+                &lt;td&gt;可直接使用的工具包&lt;/td&gt;
+            &lt;/tr&gt;
+        &lt;/tbody&gt;
+    &lt;/table&gt;
+&lt;/div&gt;
+
+&lt;!-- 内容页2：4C框架详解 --&gt;
+&lt;div class=&quot;page&quot;&gt;
+    &lt;div class=&quot;page-title&quot;&gt;📊 4C情报分析框架（麦肯锡方法论）&lt;/div&gt;
+
+    &lt;p style=&quot;font-size: 15px; color: #555; margin-bottom: 25px;&quot;&gt;
+        本手册采用麦肯锡4C竞争分析框架，对每个产品进行结构化情报梳理。通过Context（市场环境）、Customer（客户情报）、Competitor（竞争分析）、Company（自身能力）四个维度，帮助销售团队全面掌握产品竞争态势。
+    &lt;/p&gt;
+
+    &lt;div style=&quot;display: grid; grid-template-columns: 1fr 1fr; gap: 25px; margin-top: 20px;&quot;&gt;
+        &lt;!-- C1: Context --&gt;
+        &lt;div class=&quot;framework-box&quot;&gt;
+            &lt;h4&gt;🌍 C1: Context - 市场环境&lt;/h4&gt;
+            &lt;p style=&quot;font-size: 14px; line-height: 1.6; margin: 10px 0;&quot;&gt;
+                &lt;strong&gt;核心内容：&lt;/strong&gt;
+            &lt;/p&gt;
+            &lt;ul style=&quot;font-size: 13px; line-height: 1.7; margin: 5px 0;&quot;&gt;
+                &lt;li&gt;市场规模与增速（用数据说话）&lt;/li&gt;
+                &lt;li&gt;技术演进路线图（未来3年趋势）&lt;/li&gt;
+                &lt;li&gt;应用场景拆解（价值链分析）&lt;/li&gt;
+            &lt;/ul&gt;
+            &lt;p style=&quot;font-size: 13px; color: #666; margin-top: 10px;&quot;&gt;
+                &lt;strong&gt;分析工具：&lt;/strong&gt;市场规模数据、技术路线图、价值链分析
+            &lt;/p&gt;
+        &lt;/div&gt;
+
+        &lt;!-- C2: Customer --&gt;
+        &lt;div class=&quot;framework-box&quot;&gt;
+            &lt;h4&gt;👥 C2: Customer - 客户情报&lt;/h4&gt;
+            &lt;p style=&quot;font-size: 14px; line-height: 1.6; margin: 10px 0;&quot;&gt;
+                &lt;strong&gt;核心内容：&lt;/strong&gt;
+            &lt;/p&gt;
+            &lt;ul style=&quot;font-size: 13px; line-height: 1.7; margin: 5px 0;&quot;&gt;
+                &lt;li&gt;目标客户分级矩阵（优先级排序）&lt;/li&gt;
+                &lt;li&gt;客户决策链分析（找到关键人）&lt;/li&gt;
+                &lt;li&gt;客户采购周期地图（把握节奏）&lt;/li&gt;
+            &lt;/ul&gt;
+            &lt;p style=&quot;font-size: 13px; color: #666; margin-top: 10px;&quot;&gt;
+                &lt;strong&gt;分析工具：&lt;/strong&gt;客户分级矩阵、决策链图谱、采购周期地图
+            &lt;/p&gt;
+        &lt;/div&gt;
+
+        &lt;!-- C3: Competitor --&gt;
+        &lt;div class=&quot;framework-box&quot;&gt;
+            &lt;h4&gt;⚔️ C3: Competitor - 竞争分析&lt;/h4&gt;
+            &lt;p style=&quot;font-size: 14px; line-height: 1.6; margin: 10px 0;&quot;&gt;
+                &lt;strong&gt;核心内容：&lt;/strong&gt;
+            &lt;/p&gt;
+            &lt;ul style=&quot;font-size: 13px; line-height: 1.7; margin: 5px 0;&quot;&gt;
+                &lt;li&gt;竞争格局与市场份额&lt;/li&gt;
+                &lt;li&gt;竞品深度对标（参数/价格/服务）&lt;/li&gt;
+                &lt;li&gt;竞争策略与应对话术&lt;/li&gt;
+            &lt;/ul&gt;
+            &lt;p style=&quot;font-size: 13px; color: #666; margin-top: 10px;&quot;&gt;
+                &lt;strong&gt;分析工具：&lt;/strong&gt;市场份额图、竞品对标表、应对话术库
+            &lt;/p&gt;
+        &lt;/div&gt;
+
+        &lt;!-- C4: Company --&gt;
+        &lt;div class=&quot;framework-box&quot;&gt;
+            &lt;h4&gt;🏢 C4: Company - 自身能力&lt;/h4&gt;
+            &lt;p style=&quot;font-size: 14px; line-height: 1.6; margin: 10px 0;&quot;&gt;
+                &lt;strong&gt;核心内容：&lt;/strong&gt;
+            &lt;/p&gt;
+            &lt;ul style=&quot;font-size: 13px; line-height: 1.7; margin: 5px 0;&quot;&gt;
+                &lt;li&gt;差异化价值主张（3句话说清优势）&lt;/li&gt;
+                &lt;li&gt;标杆案例库（STAR格式）&lt;/li&gt;
+                &lt;li&gt;能力证明材料清单（随身携带）&lt;/li&gt;
+            &lt;/ul&gt;
+            &lt;p style=&quot;font-size: 13px; color: #666; margin-top: 10px;&quot;&gt;
+                &lt;strong&gt;分析工具：&lt;/strong&gt;价值主张卡片、STAR案例库、证明材料清单
+            &lt;/p&gt;
+        &lt;/div&gt;
+    &lt;/div&gt;
+
+    &lt;div class=&quot;diagram-box&quot; style=&quot;margin-top: 25px;&quot;&gt;
+        &lt;strong&gt;框架应用逻辑：&lt;/strong&gt;&lt;br/&gt;
+        C1市场环境 → 确定目标市场 → C2客户分析 → 锁定优先客户 → C3竞争分析 → 制定差异化策略 → C4能力匹配 → 形成完整销售方案
+    &lt;/div&gt;
+&lt;/div&gt;
+
+&lt;!-- 内容页3：产品线版图 --&gt;
+&lt;div class=&quot;page&quot;&gt;
+    &lt;div class=&quot;page-title&quot;&gt;六大销售关键产品线版图&lt;/div&gt;
+
+    &lt;div class=&quot;section-title&quot;&gt;产品线总览&lt;/div&gt;
+    &lt;table class=&quot;data-table&quot;&gt;
+        &lt;thead&gt;
+            &lt;tr&gt;
+                &lt;th width=&quot;8%&quot;&gt;序号&lt;/th&gt;
+                &lt;th width=&quot;20%&quot;&gt;产品线&lt;/th&gt;
+                &lt;th width=&quot;35%&quot;&gt;核心定位&lt;/th&gt;
+                &lt;th width=&quot;37%&quot;&gt;关键应用场景&lt;/th&gt;
+            &lt;/tr&gt;
+        &lt;/thead&gt;
+        &lt;tbody&gt;
+            &lt;tr&gt;
+                &lt;td&gt;1&lt;/td&gt;
+                &lt;td&gt;&lt;strong&gt;碳化硅 SiC&lt;/strong&gt;&lt;/td&gt;
+                &lt;td&gt;高性能/800V平台，兵家必争之地&lt;/td&gt;
+                &lt;td&gt;800V主驱逆变器、高功率OBC、超充桩&lt;/td&gt;
+            &lt;/tr&gt;
+            &lt;tr&gt;
+                &lt;td&gt;2&lt;/td&gt;
+                &lt;td&gt;&lt;strong&gt;IGBT&lt;/strong&gt;&lt;/td&gt;
+                &lt;td&gt;功率主力，400V平台核心&lt;/td&gt;
+                &lt;td&gt;主驱逆变器、OBC、DC-DC、空调压缩机&lt;/td&gt;
+            &lt;/tr&gt;
+            &lt;tr&gt;
+                &lt;td&gt;3&lt;/td&gt;
+                &lt;td&gt;&lt;strong&gt;摄像头模组/CMOS&lt;/strong&gt;&lt;/td&gt;
+                &lt;td&gt;智能驾驶/座舱的&quot;眼睛&quot;&lt;/td&gt;
+                &lt;td&gt;前视ADAS、环视AVM、座舱DMS/OMS&lt;/td&gt;
+            &lt;/tr&gt;
+            &lt;tr&gt;
+                &lt;td&gt;4&lt;/td&gt;
+                &lt;td&gt;&lt;strong&gt;车规级LED&lt;/strong&gt;&lt;/td&gt;
+                &lt;td&gt;车载照明与显示&lt;/td&gt;
+                &lt;td&gt;头灯、尾灯、氛围灯、交互灯&lt;/td&gt;
+            &lt;/tr&gt;
+            &lt;tr&gt;
+                &lt;td&gt;5&lt;/td&gt;
+                &lt;td&gt;&lt;strong&gt;电流传感器&lt;/strong&gt;&lt;/td&gt;
+                &lt;td&gt;电控系统的&quot;血压计&quot;&lt;/td&gt;
+                &lt;td&gt;BMS、主驱相电流、OBC输入输出&lt;/td&gt;
+            &lt;/tr&gt;
+            &lt;tr&gt;
+                &lt;td&gt;6&lt;/td&gt;
+                &lt;td&gt;&lt;strong&gt;MCU&lt;/strong&gt;&lt;/td&gt;
+                &lt;td&gt;感知、决策、执行的控制核心&lt;/td&gt;
+                &lt;td&gt;动力控制、车身域、网关、座舱控制&lt;/td&gt;
+            &lt;/tr&gt;
+        &lt;/tbody&gt;
+    &lt;/table&gt;
+
+    &lt;div class=&quot;section-title&quot;&gt;销售关键记忆点&lt;/div&gt;
+    &lt;div style=&quot;display: grid; grid-template-columns: 1fr 1fr; gap: 20px;&quot;&gt;
+        &lt;div&gt;
+            &lt;h3&gt;⚡ 功率器件（SiC/IGBT）&lt;/h3&gt;
+            &lt;ul style=&quot;font-size: 13px; line-height: 1.7;&quot;&gt;
+                &lt;li&gt;&lt;span class=&quot;bullet-point&quot;&gt;●&lt;/span&gt; 单车价值量高，对整车效率影响大&lt;/li&gt;
+                &lt;li&gt;&lt;span class=&quot;bullet-point&quot;&gt;●&lt;/span&gt; SiC与800V强相关，IGBT与400V强相关&lt;/li&gt;
+                &lt;li&gt;&lt;span class=&quot;bullet-point&quot;&gt;●&lt;/span&gt; 降低损耗、提升充电速度是核心卖点&lt;/li&gt;
+                &lt;li&gt;&lt;span class=&quot;bullet-point&quot;&gt;●&lt;/span&gt; 高端车必争，中端车快速渗透中&lt;/li&gt;
+            &lt;/ul&gt;
+        &lt;/div&gt;
+        &lt;div&gt;
+            &lt;h3&gt;📷 感知器件（摄像头/LED）&lt;/h3&gt;
+            &lt;ul style=&quot;font-size: 13px; line-height: 1.7;&quot;&gt;
+                &lt;li&gt;&lt;span class=&quot;bullet-point&quot;&gt;●&lt;/span&gt; 摄像头数量与智驾等级(L2/L3)强相关&lt;/li&gt;
+                &lt;li&gt;&lt;span class=&quot;bullet-point&quot;&gt;●&lt;/span&gt; 产业链长，需关注Tier1关系&lt;/li&gt;
+                &lt;li&gt;&lt;span class=&quot;bullet-point&quot;&gt;●&lt;/span&gt; LED注重设计权，单车价值差异大&lt;/li&gt;
+                &lt;li&gt;&lt;span class=&quot;bullet-point&quot;&gt;●&lt;/span&gt; 矩阵大灯vs普通灯具价值差10倍&lt;/li&gt;
+            &lt;/ul&gt;
+        &lt;/div&gt;
+    &lt;/div&gt;
+
+    &lt;div style=&quot;display: grid; grid-template-columns: 1fr 1fr; gap: 20px; margin-top: 20px;&quot;&gt;
+        &lt;div&gt;
+            &lt;h3&gt;📊 传感器件（电流传感器）&lt;/h3&gt;
+            &lt;ul style=&quot;font-size: 13px; line-height: 1.7;&quot;&gt;
+                &lt;li&gt;&lt;span class=&quot;bullet-point&quot;&gt;●&lt;/span&gt; 精度-成本-安全的平衡艺术&lt;/li&gt;
+                &lt;li&gt;&lt;span class=&quot;bullet-point&quot;&gt;●&lt;/span&gt; 技术路线多样（霍尔/分流器/磁通门）&lt;/li&gt;
+                &lt;li&gt;&lt;span class=&quot;bullet-point&quot;&gt;●&lt;/span&gt; BMS应用要求高精度（SOC估算）&lt;/li&gt;
+                &lt;li&gt;&lt;span class=&quot;bullet-point&quot;&gt;●&lt;/span&gt; 主驱应用要求高响应（保护）&lt;/li&gt;
+            &lt;/ul&gt;
+        &lt;/div&gt;
+        &lt;div&gt;
+            &lt;h3&gt;🖥️ 控制器件（MCU）&lt;/h3&gt;
+            &lt;ul style=&quot;font-size: 13px; line-height: 1.7;&quot;&gt;
+                &lt;li&gt;&lt;span class=&quot;bullet-point&quot;&gt;●&lt;/span&gt; 架构演进：分布式→域控→中央计算&lt;/li&gt;
+                &lt;li&gt;&lt;span class=&quot;bullet-point&quot;&gt;●&lt;/span&gt; 功能安全等级（ASIL B/C/D）是门槛&lt;/li&gt;
+                &lt;li&gt;&lt;span class=&quot;bullet-point&quot;&gt;●&lt;/span&gt; 生态依赖重（工具链、AUTOSAR）&lt;/li&gt;
+                &lt;li&gt;&lt;span class=&quot;bullet-point&quot;&gt;●&lt;/span&gt; 非安全关键节点适合国产替代&lt;/li&gt;
+            &lt;/ul&gt;
+        &lt;/div&gt;
+    &lt;/div&gt;
+
+    &lt;div class=&quot;quote-box&quot; style=&quot;margin-top: 20px;&quot;&gt;
+        &lt;strong&gt;💡 销售策略提示：&lt;/strong&gt;功率器件看平台电压（400V/800V）、感知器件看智能化等级（L2/L3）、控制器件看架构演进（分布式/域控）。这是客户决策的核心逻辑。
+    &lt;/div&gt;
+&lt;/div&gt;
+
+&lt;/body&gt;
+&lt;/html&gt;
+"
+                        frameborder="0"
+                        scrolling="no"
+                        width="100%"
+                        onload="resizeIframe(this)">
+                    </iframe><iframe
+                        id="page-2"
+                        class="merged-iframe"
+                        srcdoc="&lt;!DOCTYPE html&gt;
+&lt;html lang=&quot;zh-CN&quot;&gt;
+&lt;head&gt;
+    &lt;meta charset=&quot;UTF-8&quot;&gt;
+    &lt;title&gt;比亚迪半导体销售手册 - 产品1: SiC功率器件 (C1 Context)&lt;/title&gt;
+    &lt;style&gt;
+        :root {
+            --color-primary-red: #e60012;
+            --color-primary-red-dark: #c50010;
+            --text-color-on-dark: #ffffff;
+            --text-color-body: #000000;
+            --text-color-light: #666666;
+            --text-color-highlight-green: #008000;
+            --bg-page: #ffffff;
+            --bg-table-stripe: #f2f2f2;
+            --border-color-table: #ddd;
+            --shadow-page: rgba(0, 0, 0, 0.1);
+            --color-c1-blue: #0066cc;
+        }
+
+        body {
+            font-family: &quot;Microsoft YaHei&quot;, &quot;SimHei&quot;, sans-serif;
+            background-color: #f0f0f0;
+            margin: 0;
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 20px;
+        }
+
+        .page {
+            width: 297mm;
+            min-height: 210mm;
+            background-color: var(--bg-page);
+            position: relative;
+            box-shadow: 0 0 10px var(--shadow-page);
+            padding: 40px;
+            box-sizing: border-box;
+        }
+
+        .page-title {
+            font-size: 26px;
+            font-weight: bold;
+            color: var(--text-color-on-dark);
+            background: linear-gradient(45deg, var(--color-primary-red), var(--color-primary-red-dark));
+            padding: 15px 30px;
+            margin: -40px -40px 30px -40px;
+            clip-path: polygon(0 0, calc(100% - 30px) 0, 100% 100%, 0 100%);
+            display: flex;
+            align-items: center;
+        }
+
+        .section-title {
+            font-size: 18px;
+            font-weight: bold;
+            color: var(--color-primary-red);
+            margin: 20px 0 12px 0;
+            border-left: 4px solid var(--color-primary-red);
+            padding-left: 12px;
+        }
+
+        .c1-tag {
+            display: inline-block;
+            background-color: var(--color-c1-blue);
+            color: white;
+            padding: 4px 12px;
+            border-radius: 4px;
+            font-size: 14px;
+            font-weight: bold;
+            margin-right: 10px;
+        }
+
+        .data-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-bottom: 18px;
+        }
+        .data-table th {
+            background-color: var(--color-primary-red);
+            color: var(--text-color-on-dark);
+            font-weight: normal;
+            font-size: 13px;
+            padding: 9px;
+            border: 1px solid var(--border-color-table);
+        }
+        .data-table td {
+            padding: 7px 9px;
+            text-align: left;
+            font-size: 12.5px;
+            border: 1px solid var(--border-color-table);
+            color: #333;
+        }
+        .data-table tr:nth-child(even) { background-color: var(--bg-table-stripe); }
+
+        .metric-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 15px;
+            margin: 20px 0;
+        }
+
+        .metric-card {
+            background: linear-gradient(135deg, #fff5f5 0%, #ffffff 100%);
+            border: 2px solid var(--color-primary-red);
+            border-radius: 8px;
+            padding: 18px;
+            text-align: center;
+        }
+
+        .metric-value {
+            font-size: 32px;
+            font-weight: bold;
+            color: var(--color-primary-red);
+            margin: 8px 0;
+        }
+
+        .metric-label {
+            font-size: 13px;
+            color: #666;
+            margin-top: 5px;
+        }
+
+        .insight-box {
+            background-color: #fff8e1;
+            border-left: 4px solid #ffc107;
+            padding: 15px;
+            margin: 15px 0;
+            font-size: 13.5px;
+            line-height: 1.6;
+        }
+
+        .trend-box {
+            background: linear-gradient(135deg, #e3f2fd 0%, #ffffff 100%);
+            border: 1px solid #2196f3;
+            border-radius: 6px;
+            padding: 15px;
+            margin: 15px 0;
+        }
+    &lt;/style&gt;
+&lt;/head&gt;
+&lt;body&gt;
+
+&lt;!-- 页面1: SiC产品概览与市场环境 (C1 Context) --&gt;
+&lt;div class=&quot;page&quot;&gt;
+    &lt;div class=&quot;page-title&quot;&gt;产品1：碳化硅(SiC)功率器件 - &lt;span class=&quot;c1-tag&quot;&gt;C1 Context 市场环境&lt;/span&gt;&lt;/div&gt;
+
+    &lt;div class=&quot;section-title&quot;&gt;📊 市场规模与增速&lt;/div&gt;
+
+    &lt;div class=&quot;metric-grid&quot;&gt;
+        &lt;div class=&quot;metric-card&quot;&gt;
+            &lt;div class=&quot;metric-label&quot;&gt;2024年全球市场规模&lt;/div&gt;
+            &lt;div class=&quot;metric-value&quot;&gt;$2.3B&lt;/div&gt;
+            &lt;div class=&quot;metric-label&quot;&gt;约160亿人民币&lt;/div&gt;
+        &lt;/div&gt;
+        &lt;div class=&quot;metric-card&quot;&gt;
+            &lt;div class=&quot;metric-label&quot;&gt;2027年预测规模&lt;/div&gt;
+            &lt;div class=&quot;metric-value&quot;&gt;$5.8B&lt;/div&gt;
+            &lt;div class=&quot;metric-label&quot;&gt;年复合增长率 35%&lt;/div&gt;
+        &lt;/div&gt;
+        &lt;div class=&quot;metric-card&quot;&gt;
+            &lt;div class=&quot;metric-label&quot;&gt;中国市场占比&lt;/div&gt;
+            &lt;div class=&quot;metric-value&quot;&gt;40%&lt;/div&gt;
+            &lt;div class=&quot;metric-label&quot;&gt;约64亿人民币（2024）&lt;/div&gt;
+        &lt;/div&gt;
+    &lt;/div&gt;
+
+    &lt;div class=&quot;insight-box&quot;&gt;
+        &lt;strong&gt;💡 销售洞察：&lt;/strong&gt;SiC是增速最快的功率器件赛道，窗口期2024-2026年。需要在这3年内快速抢占市场份额。这是一个高增长、高竞争的&quot;兵家必争之地&quot;。
+    &lt;/div&gt;
+
+    &lt;div class=&quot;section-title&quot;&gt;📈 技术演进路线图（未来3年趋势）&lt;/div&gt;
+    &lt;table class=&quot;data-table&quot;&gt;
+        &lt;thead&gt;
+            &lt;tr&gt;
+                &lt;th width=&quot;18%&quot;&gt;时间节点&lt;/th&gt;
+                &lt;th width=&quot;35%&quot;&gt;技术趋势&lt;/th&gt;
+                &lt;th width=&quot;27%&quot;&gt;对销售的影响&lt;/th&gt;
+                &lt;th width=&quot;20%&quot;&gt;销售策略&lt;/th&gt;
+            &lt;/tr&gt;
+        &lt;/thead&gt;
+        &lt;tbody&gt;
+            &lt;tr&gt;
+                &lt;td&gt;&lt;strong&gt;2024-2025&lt;/strong&gt;&lt;/td&gt;
+                &lt;td&gt;800V平台渗透率：15%→30%&lt;/td&gt;
+                &lt;td&gt;SiC成为高端车标配&lt;br/&gt;需求爆发期&lt;/td&gt;
+                &lt;td&gt;重点攻坚&lt;br/&gt;蔚小理等新势力&lt;/td&gt;
+            &lt;/tr&gt;
+            &lt;tr&gt;
+                &lt;td&gt;&lt;strong&gt;2026-2027&lt;/strong&gt;&lt;/td&gt;
+                &lt;td&gt;SiC模块功率密度提升50%&lt;/td&gt;
+                &lt;td&gt;客户关注散热设计&lt;br/&gt;技术支持需求增加&lt;/td&gt;
+                &lt;td&gt;提供整套&lt;br/&gt;热管理方案&lt;/td&gt;
+            &lt;/tr&gt;
+            &lt;tr&gt;
+                &lt;td&gt;&lt;strong&gt;2028+&lt;/strong&gt;&lt;/td&gt;
+                &lt;td&gt;1200V SiC进入商用车领域&lt;/td&gt;
+                &lt;td&gt;新市场打开（重卡/客车）&lt;/td&gt;
+                &lt;td&gt;提前布局&lt;br/&gt;商用车市场&lt;/td&gt;
+            &lt;/tr&gt;
+        &lt;/tbody&gt;
+    &lt;/table&gt;
+
+    &lt;div class=&quot;section-title&quot;&gt;🎯 应用场景拆解（价值链分析）&lt;/div&gt;
+    &lt;div style=&quot;display: grid; grid-template-columns: 70% 30%; gap: 20px;&quot;&gt;
+        &lt;div&gt;
+            &lt;h4 style=&quot;color: var(--color-primary-red); font-size: 15px; margin: 10px 0;&quot;&gt;主驱逆变器（70%需求量）- 核心战场&lt;/h4&gt;
+            &lt;table class=&quot;data-table&quot; style=&quot;font-size: 12px;&quot;&gt;
+                &lt;thead&gt;
+                    &lt;tr&gt;
+                        &lt;th&gt;车型级别&lt;/th&gt;
+                        &lt;th&gt;SiC渗透率&lt;/th&gt;
+                        &lt;th&gt;单车价值&lt;/th&gt;
+                        &lt;th&gt;代表车型&lt;/th&gt;
+                    &lt;/tr&gt;
+                &lt;/thead&gt;
+                &lt;tbody&gt;
+                    &lt;tr&gt;
+                        &lt;td&gt;高端车型&lt;br/&gt;(&gt;30万元)&lt;/td&gt;
+                        &lt;td&gt;&lt;strong&gt;80%&lt;/strong&gt;&lt;br/&gt;(基本标配)&lt;/td&gt;
+                        &lt;td&gt;¥2,000-3,500&lt;/td&gt;
+                        &lt;td&gt;理想L9、蔚来ET7&lt;br/&gt;比亚迪仰望&lt;/td&gt;
+                    &lt;/tr&gt;
+                    &lt;tr&gt;
+                        &lt;td&gt;中端车型&lt;br/&gt;(15-30万元)&lt;/td&gt;
+                        &lt;td&gt;&lt;strong&gt;35%&lt;/strong&gt;&lt;br/&gt;(快速增长中)&lt;/td&gt;
+                        &lt;td&gt;¥1,500-2,200&lt;/td&gt;
+                        &lt;td&gt;小鹏P7、比亚迪海豹&lt;br/&gt;零跑C11&lt;/td&gt;
+                    &lt;/tr&gt;
+                    &lt;tr&gt;
+                        &lt;td&gt;经济车型&lt;br/&gt;(&lt;15万元)&lt;/td&gt;
+                        &lt;td&gt;&lt;5%&lt;br/&gt;(仍以IGBT为主)&lt;/td&gt;
+                        &lt;td&gt;-&lt;/td&gt;
+                        &lt;td&gt;短期内不是&lt;br/&gt;SiC目标市场&lt;/td&gt;
+                    &lt;/tr&gt;
+                &lt;/tbody&gt;
+            &lt;/table&gt;
+        &lt;/div&gt;
+        &lt;div&gt;
+            &lt;div class=&quot;trend-box&quot;&gt;
+                &lt;h4 style=&quot;color: #2196f3; font-size: 14px; margin-top: 0;&quot;&gt;车载充电OBC&lt;/h4&gt;
+                &lt;p style=&quot;font-size: 12px; margin: 8px 0;&quot;&gt;&lt;strong&gt;需求占比：&lt;/strong&gt;20%&lt;/p&gt;
+                &lt;p style=&quot;font-size: 12px; margin: 8px 0;&quot;&gt;&lt;strong&gt;应用：&lt;/strong&gt;22kW+大功率快充&lt;/p&gt;
+                &lt;p style=&quot;font-size: 12px; margin: 8px 0;&quot;&gt;&lt;strong&gt;单车价值：&lt;/strong&gt;¥800-1,500&lt;/p&gt;
+                &lt;p style=&quot;font-size: 12px; margin: 8px 0;&quot;&gt;&lt;strong&gt;优势：&lt;/strong&gt;充电效率提升、体积减小40%&lt;/p&gt;
+            &lt;/div&gt;
+            &lt;div class=&quot;trend-box&quot; style=&quot;margin-top: 15px;&quot;&gt;
+                &lt;h4 style=&quot;color: #2196f3; font-size: 14px; margin-top: 0;&quot;&gt;DC-DC转换器&lt;/h4&gt;
+                &lt;p style=&quot;font-size: 12px; margin: 8px 0;&quot;&gt;&lt;strong&gt;需求占比：&lt;/strong&gt;10%&lt;/p&gt;
+                &lt;p style=&quot;font-size: 12px; margin: 8px 0;&quot;&gt;&lt;strong&gt;应用：&lt;/strong&gt;800V→12V降压&lt;/p&gt;
+                &lt;p style=&quot;font-size: 12px; margin: 8px 0;&quot;&gt;&lt;strong&gt;单车价值：&lt;/strong&gt;¥300-600&lt;/p&gt;
+            &lt;/div&gt;
+        &lt;/div&gt;
+    &lt;/div&gt;
+
+    &lt;div class=&quot;insight-box&quot; style=&quot;margin-top: 20px;&quot;&gt;
+        &lt;strong&gt;💡 销售策略建议：&lt;/strong&gt;&lt;br/&gt;
+        1. &lt;strong&gt;主攻方向：&lt;/strong&gt;主驱逆变器（利润率高+技术门槛高，占总需求70%）&lt;br/&gt;
+        2. &lt;strong&gt;突破路径：&lt;/strong&gt;先高端车型建立品牌→再向中端车型渗透（价格敏感度低→高）&lt;br/&gt;
+        3. &lt;strong&gt;打包销售：&lt;/strong&gt;主驱+OBC+DC-DC整套方案（提升客单价，增强客户粘性）
+    &lt;/div&gt;
+&lt;/div&gt;
+
+&lt;!-- 页面2: 市场数据与销售定位 --&gt;
+&lt;div class=&quot;page&quot;&gt;
+    &lt;div class=&quot;page-title&quot;&gt;产品1：SiC功率器件 - 数据速查与定位策略&lt;/div&gt;
+
+    &lt;div class=&quot;section-title&quot;&gt;📋 一句话销售定位&lt;/div&gt;
+    &lt;div style=&quot;background: linear-gradient(135deg, #ffebee 0%, #ffffff 100%); border: 3px solid var(--color-primary-red); border-radius: 10px; padding: 20px; text-align: center; margin: 20px 0;&quot;&gt;
+        &lt;p style=&quot;font-size: 18px; color: var(--color-primary-red); font-weight: bold; margin: 0; line-height: 1.6;&quot;&gt;
+            &quot;SiC是800V高端车型的必选项，单车价值¥2,000-4,000，&lt;br/&gt;
+            我们用成本优势（低20%）+比亚迪背书+快速响应（10周交期）打市场&quot;
+        &lt;/p&gt;
+    &lt;/div&gt;
+
+    &lt;div class=&quot;section-title&quot;&gt;🎯 目标市场与应用矩阵&lt;/div&gt;
+    &lt;table class=&quot;data-table&quot;&gt;
+        &lt;thead&gt;
+            &lt;tr style=&quot;background-color: var(--color-c1-blue);&quot;&gt;
+                &lt;th width=&quot;20%&quot;&gt;应用场景&lt;/th&gt;
+                &lt;th width=&quot;15%&quot;&gt;需求占比&lt;/th&gt;
+                &lt;th width=&quot;20%&quot;&gt;技术要求&lt;/th&gt;
+                &lt;th width=&quot;18%&quot;&gt;单车价值量&lt;/th&gt;
+                &lt;th width=&quot;27%&quot;&gt;客户关注点&lt;/th&gt;
+            &lt;/tr&gt;
+        &lt;/thead&gt;
+        &lt;tbody&gt;
+            &lt;tr&gt;
+                &lt;td&gt;&lt;strong&gt;主驱逆变器&lt;/strong&gt;&lt;br/&gt;(核心战场)&lt;/td&gt;
+                &lt;td style=&quot;text-align: center; font-size: 18px; font-weight: bold; color: var(--color-primary-red);&quot;&gt;70%&lt;/td&gt;
+                &lt;td&gt;• 650V/750V&lt;br/&gt;• 150-400A&lt;br/&gt;• 低Rdson&lt;/td&gt;
+                &lt;td style=&quot;text-align: center; font-weight: bold;&quot;&gt;¥2,000-3,500&lt;/td&gt;
+                &lt;td&gt;• 损耗与效率&lt;br/&gt;• 热管理方案&lt;br/&gt;• 可靠性证明&lt;/td&gt;
+            &lt;/tr&gt;
+            &lt;tr&gt;
+                &lt;td&gt;&lt;strong&gt;车载充电OBC&lt;/strong&gt;&lt;br/&gt;(增量市场)&lt;/td&gt;
+                &lt;td style=&quot;text-align: center; font-size: 18px; font-weight: bold;&quot;&gt;20%&lt;/td&gt;
+                &lt;td&gt;• 22kW+&lt;br/&gt;• 高频开关&lt;br/&gt;• EMC设计&lt;/td&gt;
+                &lt;td style=&quot;text-align: center; font-weight: bold;&quot;&gt;¥800-1,500&lt;/td&gt;
+                &lt;td&gt;• 充电速度&lt;br/&gt;• 体积重量&lt;br/&gt;• 成本控制&lt;/td&gt;
+            &lt;/tr&gt;
+            &lt;tr&gt;
+                &lt;td&gt;&lt;strong&gt;DC-DC转换&lt;/strong&gt;&lt;br/&gt;(补充市场)&lt;/td&gt;
+                &lt;td style=&quot;text-align: center; font-size: 18px; font-weight: bold;&quot;&gt;10%&lt;/td&gt;
+                &lt;td&gt;• 800V→12V&lt;br/&gt;• SiC二极管&lt;br/&gt;• 高可靠性&lt;/td&gt;
+                &lt;td style=&quot;text-align: center; font-weight: bold;&quot;&gt;¥300-600&lt;/td&gt;
+                &lt;td&gt;• 转换效率&lt;br/&gt;• 集成度&lt;br/&gt;• 性价比&lt;/td&gt;
+            &lt;/tr&gt;
+        &lt;/tbody&gt;
+    &lt;/table&gt;
+
+    &lt;div class=&quot;section-title&quot;&gt;🔥 市场热点与窗口期&lt;/div&gt;
+    &lt;div style=&quot;display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 15px; margin: 20px 0;&quot;&gt;
+        &lt;div style=&quot;background: #fff3e0; border-left: 4px solid #ff9800; padding: 15px;&quot;&gt;
+            &lt;h4 style=&quot;color: #ff9800; font-size: 14px; margin: 0 0 10px 0;&quot;&gt;2024-2025 窗口期&lt;/h4&gt;
+            &lt;p style=&quot;font-size: 12px; line-height: 1.6; margin: 5px 0;&quot;&gt;• 800V平台快速渗透&lt;br/&gt;• 新势力新车型集中上市&lt;br/&gt;• 供应商定点窗口期&lt;br/&gt;• &lt;strong&gt;行动：抢占定点&lt;/strong&gt;&lt;/p&gt;
+        &lt;/div&gt;
+        &lt;div style=&quot;background: #e8f5e9; border-left: 4px solid #4caf50; padding: 15px;&quot;&gt;
+            &lt;h4 style=&quot;color: #4caf50; font-size: 14px; margin: 0 0 10px 0;&quot;&gt;2026-2027 量产期&lt;/h4&gt;
+            &lt;p style=&quot;font-size: 12px; line-height: 1.6; margin: 5px 0;&quot;&gt;• 定点项目批量交付&lt;br/&gt;• 技术迭代（功率密度↑）&lt;br/&gt;• 二供机会释放&lt;br/&gt;• &lt;strong&gt;行动：规模放量&lt;/strong&gt;&lt;/p&gt;
+        &lt;/div&gt;
+        &lt;div style=&quot;background: #e1f5fe; border-left: 4px solid #03a9f4; padding: 15px;&quot;&gt;
+            &lt;h4 style=&quot;color: #03a9f4; font-size: 14px; margin: 0 0 10px 0;&quot;&gt;2028+ 拓展期&lt;/h4&gt;
+            &lt;p style=&quot;font-size: 12px; line-height: 1.6; margin: 5px 0;&quot;&gt;• 商用车市场开启&lt;br/&gt;• 1200V产品进入&lt;br/&gt;• 成本持续下降&lt;br/&gt;• &lt;strong&gt;行动：新市场布局&lt;/strong&gt;&lt;/p&gt;
+        &lt;/div&gt;
+    &lt;/div&gt;
+
+    &lt;div class=&quot;section-title&quot;&gt;💰 价值量分析（为什么值得打？）&lt;/div&gt;
+    &lt;table class=&quot;data-table&quot;&gt;
+        &lt;thead&gt;
+            &lt;tr&gt;
+                &lt;th width=&quot;25%&quot;&gt;维度&lt;/th&gt;
+                &lt;th width=&quot;35%&quot;&gt;数据&lt;/th&gt;
+                &lt;th width=&quot;40%&quot;&gt;销售意义&lt;/th&gt;
+            &lt;/tr&gt;
+        &lt;/thead&gt;
+        &lt;tbody&gt;
+            &lt;tr&gt;
+                &lt;td&gt;&lt;strong&gt;单车平均价值&lt;/strong&gt;&lt;/td&gt;
+                &lt;td style=&quot;font-size: 16px; font-weight: bold; color: var(--color-primary-red);&quot;&gt;¥2,000-4,000&lt;/td&gt;
+                &lt;td&gt;高端车型单车价值可达¥4,000+&lt;br/&gt;（主驱+OBC+DCDC打包）&lt;/td&gt;
+            &lt;/tr&gt;
+            &lt;tr&gt;
+                &lt;td&gt;&lt;strong&gt;目标车型年销量&lt;/strong&gt;&lt;/td&gt;
+                &lt;td&gt;• 理想：30-40万辆&lt;br/&gt;• 小鹏：20-30万辆&lt;br/&gt;• 蔚来：25-35万辆&lt;/td&gt;
+                &lt;td&gt;单个头部客户年采购额&lt;br/&gt;可达¥6-16亿&lt;/td&gt;
+            &lt;/tr&gt;
+            &lt;tr&gt;
+                &lt;td&gt;&lt;strong&gt;项目生命周期&lt;/strong&gt;&lt;/td&gt;
+                &lt;td&gt;3-5年（平台周期）&lt;/td&gt;
+                &lt;td&gt;定点成功后，稳定供货3-5年&lt;br/&gt;总价值¥18-80亿/客户&lt;/td&gt;
+            &lt;/tr&gt;
+            &lt;tr&gt;
+                &lt;td&gt;&lt;strong&gt;利润率水平&lt;/strong&gt;&lt;/td&gt;
+                &lt;td&gt;毛利率：25-35%&lt;br/&gt;（高于IGBT的20-25%）&lt;/td&gt;
+                &lt;td&gt;技术门槛高，议价能力强&lt;br/&gt;利润质量好&lt;/td&gt;
+            &lt;/tr&gt;
+        &lt;/tbody&gt;
+    &lt;/table&gt;
+
+    &lt;div class=&quot;insight-box&quot; style=&quot;margin-top: 20px;&quot;&gt;
+        &lt;strong&gt;💡 为什么SiC值得销售全力以赴？&lt;/strong&gt;&lt;br/&gt;
+        1. &lt;strong&gt;市场增速快：&lt;/strong&gt;35%年复合增长，3年市场翻2.5倍&lt;br/&gt;
+        2. &lt;strong&gt;单车价值高：&lt;/strong&gt;¥2,000-4,000，是IGBT的1.5-2倍&lt;br/&gt;
+        3. &lt;strong&gt;利润率高：&lt;/strong&gt;毛利25-35%，技术门槛带来议价权&lt;br/&gt;
+        4. &lt;strong&gt;窗口期紧迫：&lt;/strong&gt;2024-2026是黄金窗口，错过要等下一代平台（3-5年后）&lt;br/&gt;
+        5. &lt;strong&gt;战略意义：&lt;/strong&gt;800V是未来趋势，SiC是敲门砖，带动其他产品线（IGBT/MCU/传感器）
+    &lt;/div&gt;
+&lt;/div&gt;
+
+&lt;/body&gt;
+&lt;/html&gt;
+"
+                        frameborder="0"
+                        scrolling="no"
+                        width="100%"
+                        onload="resizeIframe(this)">
+                    </iframe><iframe
+                        id="page-3"
+                        class="merged-iframe"
+                        srcdoc="&lt;!DOCTYPE html&gt;
+&lt;html lang=&quot;zh-CN&quot;&gt;
+&lt;head&gt;
+    &lt;meta charset=&quot;UTF-8&quot;&gt;
+    &lt;title&gt;比亚迪半导体销售手册 - 产品1: SiC功率器件 (C2 Customer)&lt;/title&gt;
+    &lt;style&gt;
+        :root {
+            --color-primary-red: #e60012;
+            --color-primary-red-dark: #c50010;
+            --text-color-on-dark: #ffffff;
+            --bg-page: #ffffff;
+            --bg-table-stripe: #f2f2f2;
+            --border-color-table: #ddd;
+            --shadow-page: rgba(0, 0, 0, 0.1);
+            --color-c2-green: #00a650;
+        }
+
+        body {
+            font-family: &quot;Microsoft YaHei&quot;, &quot;SimHei&quot;, sans-serif;
+            background-color: #f0f0f0;
+            margin: 0;
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 20px;
+        }
+
+        .page {
+            width: 297mm;
+            min-height: 210mm;
+            background-color: var(--bg-page);
+            position: relative;
+            box-shadow: 0 0 10px var(--shadow-page);
+            padding: 40px;
+            box-sizing: border-box;
+        }
+
+        .page-title {
+            font-size: 26px;
+            font-weight: bold;
+            color: var(--text-color-on-dark);
+            background: linear-gradient(45deg, var(--color-primary-red), var(--color-primary-red-dark));
+            padding: 15px 30px;
+            margin: -40px -40px 30px -40px;
+            clip-path: polygon(0 0, calc(100% - 30px) 0, 100% 100%, 0 100%);
+        }
+
+        .section-title {
+            font-size: 18px;
+            font-weight: bold;
+            color: var(--color-primary-red);
+            margin: 20px 0 12px 0;
+            border-left: 4px solid var(--color-primary-red);
+            padding-left: 12px;
+        }
+
+        .c2-tag {
+            display: inline-block;
+            background-color: var(--color-c2-green);
+            color: white;
+            padding: 4px 12px;
+            border-radius: 4px;
+            font-size: 14px;
+            font-weight: bold;
+            margin-right: 10px;
+        }
+
+        .data-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-bottom: 18px;
+        }
+        .data-table th {
+            background-color: var(--color-primary-red);
+            color: white;
+            font-weight: normal;
+            font-size: 13px;
+            padding: 9px;
+            border: 1px solid var(--border-color-table);
+        }
+        .data-table td {
+            padding: 7px 9px;
+            text-align: left;
+            font-size: 12.5px;
+            border: 1px solid var(--border-color-table);
+            color: #333;
+        }
+        .data-table tr:nth-child(even) { background-color: var(--bg-table-stripe); }
+
+        .customer-matrix {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+            margin: 20px 0;
+        }
+
+        .customer-card {
+            border: 2px solid #ddd;
+            border-radius: 8px;
+            padding: 18px;
+            background: white;
+        }
+
+        .customer-card.star { border-color: #ff9800; background: linear-gradient(135deg, #fff8e1 0%, #ffffff 100%); }
+        .customer-card.question { border-color: #f44336; background: linear-gradient(135deg, #ffebee 0%, #ffffff 100%); }
+        .customer-card.cash { border-color: #4caf50; background: linear-gradient(135deg, #e8f5e9 0%, #ffffff 100%); }
+        .customer-card.dog { border-color: #9e9e9e; background: linear-gradient(135deg, #f5f5f5 0%, #ffffff 100%); }
+
+        .customer-card h3 {
+            margin: 0 0 12px 0;
+            font-size: 16px;
+            display: flex;
+            align-items: center;
+        }
+
+        .priority-badge {
+            display: inline-block;
+            padding: 3px 10px;
+            border-radius: 12px;
+            font-size: 11px;
+            font-weight: bold;
+            margin-left: 10px;
+        }
+
+        .priority-high { background-color: #f44336; color: white; }
+        .priority-medium { background-color: #ff9800; color: white; }
+        .priority-low { background-color: #4caf50; color: white; }
+        .priority-minimal { background-color: #9e9e9e; color: white; }
+
+        .decision-flow {
+            background: #f9f9f9;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            padding: 20px;
+            margin: 15px 0;
+        }
+
+        .decision-layer {
+            display: flex;
+            align-items: center;
+            margin: 12px 0;
+            padding: 12px;
+            background: white;
+            border-left: 4px solid var(--color-primary-red);
+            border-radius: 4px;
+        }
+
+        .layer-number {
+            font-size: 24px;
+            font-weight: bold;
+            color: var(--color-primary-red);
+            width: 40px;
+            text-align: center;
+        }
+
+        .layer-content {
+            flex: 1;
+            margin-left: 15px;
+        }
+
+        .layer-weight {
+            font-size: 12px;
+            color: #666;
+            background: #f0f0f0;
+            padding: 3px 8px;
+            border-radius: 4px;
+            display: inline-block;
+        }
+
+        .insight-box {
+            background-color: #fff8e1;
+            border-left: 4px solid #ffc107;
+            padding: 15px;
+            margin: 15px 0;
+            font-size: 13.5px;
+            line-height: 1.6;
+        }
+    &lt;/style&gt;
+&lt;/head&gt;
+&lt;body&gt;
+
+&lt;!-- 页面1: 客户分级矩阵 --&gt;
+&lt;div class=&quot;page&quot;&gt;
+    &lt;div class=&quot;page-title&quot;&gt;产品1：SiC功率器件 - &lt;span class=&quot;c2-tag&quot;&gt;C2 Customer 客户情报&lt;/span&gt;&lt;/div&gt;
+
+    &lt;div class=&quot;section-title&quot;&gt;👥 目标客户分级矩阵（波士顿BCG矩阵应用）&lt;/div&gt;
+
+    &lt;div style=&quot;text-align: center; background: #f5f5f5; padding: 15px; border-radius: 8px; margin-bottom: 20px;&quot;&gt;
+        &lt;svg width=&quot;100%&quot; height=&quot;200&quot; viewBox=&quot;0 0 600 200&quot;&gt;
+            &lt;!-- 坐标轴 --&gt;
+            &lt;line x1=&quot;300&quot; y1=&quot;0&quot; x2=&quot;300&quot; y2=&quot;200&quot; stroke=&quot;#ccc&quot; stroke-width=&quot;2&quot;/&gt;
+            &lt;line x1=&quot;0&quot; y1=&quot;100&quot; x2=&quot;600&quot; y2=&quot;100&quot; stroke=&quot;#ccc&quot; stroke-width=&quot;2&quot;/&gt;
+
+            &lt;!-- 象限标签 --&gt;
+            &lt;text x=&quot;150&quot; y=&quot;50&quot; text-anchor=&quot;middle&quot; font-size=&quot;16&quot; fill=&quot;#f44336&quot; font-weight=&quot;bold&quot;&gt;问题客户 ⭐⭐⭐&lt;/text&gt;
+            &lt;text x=&quot;150&quot; y=&quot;70&quot; text-anchor=&quot;middle&quot; font-size=&quot;12&quot; fill=&quot;#666&quot;&gt;(高增长+低份额)&lt;/text&gt;
+
+            &lt;text x=&quot;450&quot; y=&quot;50&quot; text-anchor=&quot;middle&quot; font-size=&quot;16&quot; fill=&quot;#ff9800&quot; font-weight=&quot;bold&quot;&gt;明星客户 ⭐⭐&lt;/text&gt;
+            &lt;text x=&quot;450&quot; y=&quot;70&quot; text-anchor=&quot;middle&quot; font-size=&quot;12&quot; fill=&quot;#666&quot;&gt;(高增长+高份额)&lt;/text&gt;
+
+            &lt;text x=&quot;150&quot; y=&quot;150&quot; text-anchor=&quot;middle&quot; font-size=&quot;16&quot; fill=&quot;#9e9e9e&quot; font-weight=&quot;bold&quot;&gt;其他客户 🔽&lt;/text&gt;
+            &lt;text x=&quot;150&quot; y=&quot;170&quot; text-anchor=&quot;middle&quot; font-size=&quot;12&quot; fill=&quot;#666&quot;&gt;(低增长+低份额)&lt;/text&gt;
+
+            &lt;text x=&quot;450&quot; y=&quot;150&quot; text-anchor=&quot;middle&quot; font-size=&quot;16&quot; fill=&quot;#4caf50&quot; font-weight=&quot;bold&quot;&gt;金牛客户 ⭐&lt;/text&gt;
+            &lt;text x=&quot;450&quot; y=&quot;170&quot; text-anchor=&quot;middle&quot; font-size=&quot;12&quot; fill=&quot;#666&quot;&gt;(低增长+高份额)&lt;/text&gt;
+
+            &lt;!-- 轴标签 --&gt;
+            &lt;text x=&quot;30&quot; y=&quot;15&quot; font-size=&quot;12&quot; fill=&quot;#333&quot;&gt;增长率高&lt;/text&gt;
+            &lt;text x=&quot;30&quot; y=&quot;195&quot; font-size=&quot;12&quot; fill=&quot;#333&quot;&gt;增长率低&lt;/text&gt;
+            &lt;text x=&quot;10&quot; y=&quot;105&quot; font-size=&quot;12&quot; fill=&quot;#333&quot;&gt;份额低&lt;/text&gt;
+            &lt;text x=&quot;560&quot; y=&quot;105&quot; font-size=&quot;12&quot; fill=&quot;#333&quot;&gt;份额高&lt;/text&gt;
+        &lt;/svg&gt;
+    &lt;/div&gt;
+
+    &lt;div class=&quot;customer-matrix&quot;&gt;
+        &lt;!-- 问题客户 --&gt;
+        &lt;div class=&quot;customer-card question&quot;&gt;
+            &lt;h3&gt;
+                ❓ 问题客户（Question Marks）
+                &lt;span class=&quot;priority-badge priority-high&quot;&gt;优先级最高&lt;/span&gt;
+            &lt;/h3&gt;
+            &lt;table style=&quot;width: 100%; font-size: 12px; margin: 10px 0;&quot;&gt;
+                &lt;tr&gt;&lt;td style=&quot;width: 25%; font-weight: bold;&quot;&gt;代表客户&lt;/td&gt;&lt;td&gt;小米汽车、华为问界、智己汽车&lt;/td&gt;&lt;/tr&gt;
+                &lt;tr&gt;&lt;td style=&quot;font-weight: bold;&quot;&gt;特征&lt;/td&gt;&lt;td&gt;高增长潜力，但当前份额低或为零&lt;/td&gt;&lt;/tr&gt;
+                &lt;tr&gt;&lt;td style=&quot;font-weight: bold;&quot;&gt;机会&lt;/td&gt;&lt;td&gt;新车型窗口期，供应商尚未锁定&lt;/td&gt;&lt;/tr&gt;
+                &lt;tr&gt;&lt;td style=&quot;font-weight: bold;&quot;&gt;年需求量&lt;/td&gt;&lt;td&gt;单客户3-8万套&lt;/td&gt;&lt;/tr&gt;
+                &lt;tr&gt;&lt;td style=&quot;font-weight: bold;&quot;&gt;预期收益&lt;/td&gt;&lt;td&gt;3年累计营收¥3-8亿元&lt;/td&gt;&lt;/tr&gt;
+            &lt;/table&gt;
+            &lt;div style=&quot;background: #fff; padding: 10px; border-radius: 4px; margin-top: 10px;&quot;&gt;
+                &lt;strong style=&quot;color: #f44336;&quot;&gt;策略：&lt;/strong&gt;&lt;br/&gt;
+                • 初期让利（前5K台按成本价）&lt;br/&gt;
+                • 快速响应（2周送样，行业通常4周）&lt;br/&gt;
+                • 高层公关（利用比亚迪品牌背书）
+            &lt;/div&gt;
+        &lt;/div&gt;
+
+        &lt;!-- 明星客户 --&gt;
+        &lt;div class=&quot;customer-card star&quot;&gt;
+            &lt;h3&gt;
+                ⭐ 明星客户（Stars）
+                &lt;span class=&quot;priority-badge priority-medium&quot;&gt;持续投入&lt;/span&gt;
+            &lt;/h3&gt;
+            &lt;table style=&quot;width: 100%; font-size: 12px; margin: 10px 0;&quot;&gt;
+                &lt;tr&gt;&lt;td style=&quot;width: 25%; font-weight: bold;&quot;&gt;代表客户&lt;/td&gt;&lt;td&gt;理想、小鹏、蔚来&lt;/td&gt;&lt;/tr&gt;
+                &lt;tr&gt;&lt;td style=&quot;font-weight: bold;&quot;&gt;特征&lt;/td&gt;&lt;td&gt;已有一定份额，需求持续增长&lt;/td&gt;&lt;/tr&gt;
+                &lt;tr&gt;&lt;td style=&quot;font-weight: bold;&quot;&gt;机会&lt;/td&gt;&lt;td&gt;新平台定点、二供机会&lt;/td&gt;&lt;/tr&gt;
+                &lt;tr&gt;&lt;td style=&quot;font-weight: bold;&quot;&gt;年需求量&lt;/td&gt;&lt;td&gt;单客户5-15万套&lt;/td&gt;&lt;/tr&gt;
+                &lt;tr&gt;&lt;td style=&quot;font-weight: bold;&quot;&gt;预期收益&lt;/td&gt;&lt;td&gt;稳定增长，长期价值高&lt;/td&gt;&lt;/tr&gt;
+            &lt;/table&gt;
+            &lt;div style=&quot;background: #fff; padding: 10px; border-radius: 4px; margin-top: 10px;&quot;&gt;
+                &lt;strong style=&quot;color: #ff9800;&quot;&gt;策略：&lt;/strong&gt;&lt;br/&gt;
+                • 联合开发（投入研发资源绑定）&lt;br/&gt;
+                • 技术升级（提供下一代SiC方案）&lt;br/&gt;
+                • 服务深化（驻场FAE、专属产线）
+            &lt;/div&gt;
+        &lt;/div&gt;
+
+        &lt;!-- 金牛客户 --&gt;
+        &lt;div class=&quot;customer-card cash&quot;&gt;
+            &lt;h3&gt;
+                💰 金牛客户（Cash Cows）
+                &lt;span class=&quot;priority-badge priority-low&quot;&gt;稳定维护&lt;/span&gt;
+            &lt;/h3&gt;
+            &lt;table style=&quot;width: 100%; font-size: 12px; margin: 10px 0;&quot;&gt;
+                &lt;tr&gt;&lt;td style=&quot;width: 25%; font-weight: bold;&quot;&gt;代表客户&lt;/td&gt;&lt;td&gt;比亚迪集团内部&lt;/td&gt;&lt;/tr&gt;
+                &lt;tr&gt;&lt;td style=&quot;font-weight: bold;&quot;&gt;特征&lt;/td&gt;&lt;td&gt;份额稳定，增长放缓&lt;/td&gt;&lt;/tr&gt;
+                &lt;tr&gt;&lt;td style=&quot;font-weight: bold;&quot;&gt;机会&lt;/td&gt;&lt;td&gt;新车型拓展、产品升级&lt;/td&gt;&lt;/tr&gt;
+                &lt;tr&gt;&lt;td style=&quot;font-weight: bold;&quot;&gt;年需求量&lt;/td&gt;&lt;td&gt;集团内部年100万套+&lt;/td&gt;&lt;/tr&gt;
+                &lt;tr&gt;&lt;td style=&quot;font-weight: bold;&quot;&gt;预期收益&lt;/td&gt;&lt;td&gt;稳定现金流，利润率中等&lt;/td&gt;&lt;/tr&gt;
+            &lt;/table&gt;
+            &lt;div style=&quot;background: #fff; padding: 10px; border-radius: 4px; margin-top: 10px;&quot;&gt;
+                &lt;strong style=&quot;color: #4caf50;&quot;&gt;策略：&lt;/strong&gt;&lt;br/&gt;
+                • 确保交付（优先级保障）&lt;br/&gt;
+                • 持续降本（年降5-8%）&lt;br/&gt;
+                • 挖掘新需求（商用车、混动等）
+            &lt;/div&gt;
+        &lt;/div&gt;
+
+        &lt;!-- 其他客户 --&gt;
+        &lt;div class=&quot;customer-card dog&quot;&gt;
+            &lt;h3&gt;
+                🐕 其他客户（Dogs）
+                &lt;span class=&quot;priority-badge priority-minimal&quot;&gt;选择性放弃&lt;/span&gt;
+            &lt;/h3&gt;
+            &lt;table style=&quot;width: 100%; font-size: 12px; margin: 10px 0;&quot;&gt;
+                &lt;tr&gt;&lt;td style=&quot;width: 25%; font-weight: bold;&quot;&gt;代表客户&lt;/td&gt;&lt;td&gt;一汽、东风等传统国企&lt;/td&gt;&lt;/tr&gt;
+                &lt;tr&gt;&lt;td style=&quot;font-weight: bold;&quot;&gt;特征&lt;/td&gt;&lt;td&gt;增长慢、份额低、决策周期长&lt;/td&gt;&lt;/tr&gt;
+                &lt;tr&gt;&lt;td style=&quot;font-weight: bold;&quot;&gt;机会&lt;/td&gt;&lt;td&gt;有限（技术路线保守、供应商关系固化）&lt;/td&gt;&lt;/tr&gt;
+                &lt;tr&gt;&lt;td style=&quot;font-weight: bold;&quot;&gt;年需求量&lt;/td&gt;&lt;td&gt;不确定，且周期漫长&lt;/td&gt;&lt;/tr&gt;
+                &lt;tr&gt;&lt;td style=&quot;font-weight: bold;&quot;&gt;预期收益&lt;/td&gt;&lt;td&gt;投入产出比低&lt;/td&gt;&lt;/tr&gt;
+            &lt;/table&gt;
+            &lt;div style=&quot;background: #fff; padding: 10px; border-radius: 4px; margin-top: 10px;&quot;&gt;
+                &lt;strong style=&quot;color: #9e9e9e;&quot;&gt;策略：&lt;/strong&gt;&lt;br/&gt;
+                • 不主动投入资源&lt;br/&gt;
+                • 等待新平台窗口（每3-5年一次）&lt;br/&gt;
+                • 或完全放弃（聚焦优质客户）
+            &lt;/div&gt;
+        &lt;/div&gt;
+    &lt;/div&gt;
+
+    &lt;div class=&quot;insight-box&quot;&gt;
+        &lt;strong&gt;💡 客户优先级排序逻辑：&lt;/strong&gt;&lt;br/&gt;
+        &lt;strong&gt;第一优先：问题客户&lt;/strong&gt;（小米/华为）→ 窗口期短，定点即大单&lt;br/&gt;
+        &lt;strong&gt;第二优先：明星客户&lt;/strong&gt;（蔚小理）→ 份额提升空间大，长期价值高&lt;br/&gt;
+        &lt;strong&gt;第三优先：金牛客户&lt;/strong&gt;（比亚迪内部）→ 稳定现金流，保障底盘&lt;br/&gt;
+        &lt;strong&gt;战略性放弃：其他客户&lt;/strong&gt;（传统国企）→ 决策慢、份额难提升，性价比低
+    &lt;/div&gt;
+&lt;/div&gt;
+
+&lt;!-- 页面2: 客户决策链分析 --&gt;
+&lt;div class=&quot;page&quot;&gt;
+    &lt;div class=&quot;page-title&quot;&gt;产品1：SiC功率器件 - 客户决策链分析（DMU模型）&lt;/div&gt;
+
+    &lt;div class=&quot;section-title&quot;&gt;🎯 案例：理想汽车的SiC采购决策链&lt;/div&gt;
+
+    &lt;div class=&quot;decision-flow&quot;&gt;
+        &lt;!-- 第一层：技术准入 --&gt;
+        &lt;div class=&quot;decision-layer&quot;&gt;
+            &lt;div class=&quot;layer-number&quot;&gt;1&lt;/div&gt;
+            &lt;div class=&quot;layer-content&quot;&gt;
+                &lt;div style=&quot;display: flex; justify-content: space-between; align-items: center; margin-bottom: 8px;&quot;&gt;
+                    &lt;h4 style=&quot;margin: 0; font-size: 15px; color: var(--color-primary-red);&quot;&gt;技术准入层（门槛决策）&lt;/h4&gt;
+                    &lt;span class=&quot;layer-weight&quot;&gt;权重: 40%&lt;/span&gt;
+                &lt;/div&gt;
+                &lt;div style=&quot;display: grid; grid-template-columns: 30% 70%; gap: 10px; margin-top: 10px;&quot;&gt;
+                    &lt;div&gt;
+                        &lt;strong style=&quot;font-size: 12px;&quot;&gt;关键角色：&lt;/strong&gt;&lt;br/&gt;
+                        &lt;span style=&quot;font-size: 12px;&quot;&gt;动力系统总工程师&lt;br/&gt;电控部门技术负责人&lt;/span&gt;
+                    &lt;/div&gt;
+                    &lt;div&gt;
+                        &lt;strong style=&quot;font-size: 12px;&quot;&gt;决策逻辑（一票否决权）：&lt;/strong&gt;&lt;br/&gt;
+                        &lt;span style=&quot;font-size: 12px;&quot;&gt;
+                        ✓ 性能参数是否满足（Rdson、开关损耗、热阻）&lt;br/&gt;
+                        ✓ 可靠性如何保证（车规认证、实车验证里程）&lt;br/&gt;
+                        ✓ 技术支持能力（仿真模型、应用指导）
+                        &lt;/span&gt;
+                    &lt;/div&gt;
+                &lt;/div&gt;
+                &lt;div style=&quot;background: #e3f2fd; padding: 10px; border-radius: 4px; margin-top: 10px;&quot;&gt;
+                    &lt;strong style=&quot;font-size: 12px; color: #1976d2;&quot;&gt;渗透策略：&lt;/strong&gt;&lt;br/&gt;
+                    &lt;span style=&quot;font-size: 11px;&quot;&gt;
+                    • 提供详细技术白皮书（对标英飞凌同等级产品，参数差异&lt;5%）&lt;br/&gt;
+                    • 邀请参观比亚迪应用案例（仰望U8实车演示，800V平台）&lt;br/&gt;
+                    • 免费技术支持（送测样品10套 + 应用工程师驻场3个月）
+                    &lt;/span&gt;
+                &lt;/div&gt;
+            &lt;/div&gt;
+        &lt;/div&gt;
+
+        &lt;!-- 第二层：商务决策 --&gt;
+        &lt;div class=&quot;decision-layer&quot;&gt;
+            &lt;div class=&quot;layer-number&quot;&gt;2&lt;/div&gt;
+            &lt;div class=&quot;layer-content&quot;&gt;
+                &lt;div style=&quot;display: flex; justify-content: space-between; align-items: center; margin-bottom: 8px;&quot;&gt;
+                    &lt;h4 style=&quot;margin: 0; font-size: 15px; color: var(--color-primary-red);&quot;&gt;商务决策层（核心决策）&lt;/h4&gt;
+                    &lt;span class=&quot;layer-weight&quot;&gt;权重: 40%&lt;/span&gt;
+                &lt;/div&gt;
+                &lt;div style=&quot;display: grid; grid-template-columns: 30% 70%; gap: 10px; margin-top: 10px;&quot;&gt;
+                    &lt;div&gt;
+                        &lt;strong style=&quot;font-size: 12px;&quot;&gt;关键角色：&lt;/strong&gt;&lt;br/&gt;
+                        &lt;span style=&quot;font-size: 12px;&quot;&gt;采购部品类经理&lt;br/&gt;采购总监&lt;/span&gt;
+                    &lt;/div&gt;
+                    &lt;div&gt;
+                        &lt;strong style=&quot;font-size: 12px;&quot;&gt;决策逻辑（最终决策权）：&lt;/strong&gt;&lt;br/&gt;
+                        &lt;span style=&quot;font-size: 12px;&quot;&gt;
+                        ✓ 价格是否有竞争力（需比现有供应商低10%+）&lt;br/&gt;
+                        ✓ 供应稳定性（产能、交期、备货能力）&lt;br/&gt;
+                        ✓ 商务条款（账期、VMI、年降承诺）
+                        &lt;/span&gt;
+                    &lt;/div&gt;
+                &lt;/div&gt;
+                &lt;div style=&quot;background: #fff3e0; padding: 10px; border-radius: 4px; margin-top: 10px;&quot;&gt;
+                    &lt;strong style=&quot;font-size: 12px; color: #f57c00;&quot;&gt;渗透策略：&lt;/strong&gt;&lt;br/&gt;
+                    &lt;span style=&quot;font-size: 11px;&quot;&gt;
+                    • 初期报价激进（比英飞凌低20-25%，前期甚至零利润）&lt;br/&gt;
+                    • 供应保障承诺（深圳+长沙双基地背书，理想专属安全库存2周用量）&lt;br/&gt;
+                    • 灵活商务条款（账期Net 60天vs行业30天，小批量起订5K vs 10K）
+                    &lt;/span&gt;
+                &lt;/div&gt;
+            &lt;/div&gt;
+        &lt;/div&gt;
+
+        &lt;!-- 第三层：高层背书 --&gt;
+        &lt;div class=&quot;decision-layer&quot;&gt;
+            &lt;div class=&quot;layer-number&quot;&gt;3&lt;/div&gt;
+            &lt;div class=&quot;layer-content&quot;&gt;
+                &lt;div style=&quot;display: flex; justify-content: space-between; align-items: center; margin-bottom: 8px;&quot;&gt;
+                    &lt;h4 style=&quot;margin: 0; font-size: 15px; color: var(--color-primary-red);&quot;&gt;高层背书层（战略决策）&lt;/h4&gt;
+                    &lt;span class=&quot;layer-weight&quot;&gt;权重: 20%&lt;/span&gt;
+                &lt;/div&gt;
+                &lt;div style=&quot;display: grid; grid-template-columns: 30% 70%; gap: 10px; margin-top: 10px;&quot;&gt;
+                    &lt;div&gt;
+                        &lt;strong style=&quot;font-size: 12px;&quot;&gt;关键角色：&lt;/strong&gt;&lt;br/&gt;
+                        &lt;span style=&quot;font-size: 12px;&quot;&gt;采购VP/供应链VP&lt;br/&gt;分管副总裁&lt;/span&gt;
+                    &lt;/div&gt;
+                    &lt;div&gt;
+                        &lt;strong style=&quot;font-size: 12px;&quot;&gt;决策逻辑（战略背书）：&lt;/strong&gt;&lt;br/&gt;
+                        &lt;span style=&quot;font-size: 12px;&quot;&gt;
+                        ✓ 供应商战略安全性（不能断供）&lt;br/&gt;
+                        ✓ 品牌背书（比亚迪集团是加分项）&lt;br/&gt;
+                        ✓ 长期合作价值（生态合作，非单一交易）
+                        &lt;/span&gt;
+                    &lt;/div&gt;
+                &lt;/div&gt;
+                &lt;div style=&quot;background: #e8f5e9; padding: 10px; border-radius: 4px; margin-top: 10px;&quot;&gt;
+                    &lt;strong style=&quot;font-size: 12px; color: #388e3c;&quot;&gt;渗透策略：&lt;/strong&gt;&lt;br/&gt;
+                    &lt;span style=&quot;font-size: 11px;&quot;&gt;
+                    • 强调比亚迪集团背景（王传福支持国产半导体，全球最大新能源车企背书）&lt;br/&gt;
+                    • 提出生态合作（联合开发下一代产品，技术共享：比亚迪800V应用经验开放）&lt;br/&gt;
+                    • 邀请高层互访（理想高层参观深圳/长沙工厂，比亚迪高层拜访理想）
+                    &lt;/span&gt;
+                &lt;/div&gt;
+            &lt;/div&gt;
+        &lt;/div&gt;
+    &lt;/div&gt;
+
+    &lt;div class=&quot;section-title&quot;&gt;📋 标准话术模板库&lt;/div&gt;
+    &lt;div style=&quot;display: grid; grid-template-columns: 1fr; gap: 15px;&quot;&gt;
+        &lt;div style=&quot;background: #f5f5f5; border-left: 4px solid #2196f3; padding: 15px; border-radius: 4px;&quot;&gt;
+            &lt;strong style=&quot;color: #2196f3;&quot;&gt;技术层话术模板：&lt;/strong&gt;&lt;br/&gt;
+            &lt;p style=&quot;font-size: 12px; font-style: italic; margin: 8px 0; line-height: 1.6;&quot;&gt;
+            &quot;理想在开发新一代800V平台对吧？我们在比亚迪仰望U8（也是800V）上已经量产2年，累计装车5万辆，可靠性数据完全可以共享。您的性能指标是Rdson&lt;3mΩ对吧？我们这款BYD-SiC-650V-300A完全满足，而且热设计余量更大。这是仿真对比报告...&quot;
+            &lt;/p&gt;
+        &lt;/div&gt;
+        &lt;div style=&quot;background: #f5f5f5; border-left: 4px solid #ff9800; padding: 15px; border-radius: 4px;&quot;&gt;
+            &lt;strong style=&quot;color: #ff9800;&quot;&gt;商务层话术模板：&lt;/strong&gt;&lt;br/&gt;
+            &lt;p style=&quot;font-size: 12px; font-style: italic; margin: 8px 0; line-height: 1.6;&quot;&gt;
+            &quot;X总，我理解理想对成本的要求。您现在用英飞凌的价格大概¥420/套对吧？我们初期可以给到¥336（低20%），后续3年每年降5%。为什么我们能做到？1）自有晶圆厂，少一层加价；2）规模效应，比亚迪集团年需求100万套；3）本土化运营，没有进口成本。这不是倾销，是商业模式优势。您可以看我们给吉利的报价历史，连续3年兑现了年降承诺...&quot;
+            &lt;/p&gt;
+        &lt;/div&gt;
+        &lt;div style=&quot;background: #f5f5f5; border-left: 4px solid #4caf50; padding: 15px; border-radius: 4px;&quot;&gt;
+            &lt;strong style=&quot;color: #4caf50;&quot;&gt;高层话术模板：&lt;/strong&gt;&lt;br/&gt;
+            &lt;p style=&quot;font-size: 12px; font-style: italic; margin: 8px 0; line-height: 1.6;&quot;&gt;
+            &quot;X总您好，我们不仅是供应商，更希望成为理想的战略合作伙伴。比亚迪集团在新能源领域的积累，可以对理想开放。比如我们的800V SiC应用经验，是基于50万辆车的实际数据优化的，这些know-how可以共享给理想团队。另外，我们在IGBT、MCU、传感器都有布局，未来可以提供&#x27;one-stop&#x27;方案...&quot;
+            &lt;/p&gt;
+        &lt;/div&gt;
+    &lt;/div&gt;
+
+    &lt;div class=&quot;insight-box&quot; style=&quot;margin-top: 20px;&quot;&gt;
+        &lt;strong&gt;💡 决策链渗透要点：&lt;/strong&gt;&lt;br/&gt;
+        1. &lt;strong&gt;三层同步推进&lt;/strong&gt;，不能只攻商务层，技术层不通过则前功尽弃&lt;br/&gt;
+        2. &lt;strong&gt;技术层是门槛&lt;/strong&gt;（40%权重），必须先通过技术认可，才有商务谈判机会&lt;br/&gt;
+        3. &lt;strong&gt;商务层是关键&lt;/strong&gt;（40%权重），价格需有竞争力，但不能只靠价格（需配合供应保障）&lt;br/&gt;
+        4. &lt;strong&gt;高层是催化剂&lt;/strong&gt;（20%权重），战略合作、品牌背书能加速决策，缩短周期&lt;br/&gt;
+        5. &lt;strong&gt;时间窗口紧迫&lt;/strong&gt;，从接触到定点通常需12-18个月，需提前布局
+    &lt;/div&gt;
+&lt;/div&gt;
+
+&lt;/body&gt;
+&lt;/html&gt;
+"
+                        frameborder="0"
+                        scrolling="no"
+                        width="100%"
+                        onload="resizeIframe(this)">
+                    </iframe><iframe
+                        id="page-4"
+                        class="merged-iframe"
+                        srcdoc="&lt;!DOCTYPE html&gt;
+&lt;html lang=&quot;zh-CN&quot;&gt;
+&lt;head&gt;
+    &lt;meta charset=&quot;UTF-8&quot;&gt;
+    &lt;title&gt;比亚迪半导体销售手册 - 产品1: SiC功率器件 (C3+C4)&lt;/title&gt;
+    &lt;style&gt;
+        :root {
+            --color-primary-red: #e60012;
+            --color-primary-red-dark: #c50010;
+            --text-color-on-dark: #ffffff;
+            --bg-page: #ffffff;
+            --bg-table-stripe: #f2f2f2;
+            --border-color-table: #ddd;
+            --shadow-page: rgba(0, 0, 0, 0.1);
+            --color-c3-yellow: #ffb300;
+            --color-c4-red: #d32f2f;
+        }
+
+        body {
+            font-family: &quot;Microsoft YaHei&quot;, &quot;SimHei&quot;, sans-serif;
+            background-color: #f0f0f0;
+            margin: 0;
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 20px;
+        }
+
+        .page {
+            width: 297mm;
+            min-height: 210mm;
+            background-color: var(--bg-page);
+            position: relative;
+            box-shadow: 0 0 10px var(--shadow-page);
+            padding: 40px;
+            box-sizing: border-box;
+        }
+
+        .page-title {
+            font-size: 26px;
+            font-weight: bold;
+            color: var(--text-color-on-dark);
+            background: linear-gradient(45deg, var(--color-primary-red), var(--color-primary-red-dark));
+            padding: 15px 30px;
+            margin: -40px -40px 30px -40px;
+            clip-path: polygon(0 0, calc(100% - 30px) 0, 100% 100%, 0 100%);
+        }
+
+        .section-title {
+            font-size: 18px;
+            font-weight: bold;
+            color: var(--color-primary-red);
+            margin: 20px 0 12px 0;
+            border-left: 4px solid var(--color-primary-red);
+            padding-left: 12px;
+        }
+
+        .c3-tag {
+            display: inline-block;
+            background-color: var(--color-c3-yellow);
+            color: white;
+            padding: 4px 12px;
+            border-radius: 4px;
+            font-size: 14px;
+            font-weight: bold;
+            margin-right: 8px;
+        }
+
+        .c4-tag {
+            display: inline-block;
+            background-color: var(--color-c4-red);
+            color: white;
+            padding: 4px 12px;
+            border-radius: 4px;
+            font-size: 14px;
+            font-weight: bold;
+            margin-right: 8px;
+        }
+
+        .data-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-bottom: 18px;
+        }
+        .data-table th {
+            background-color: var(--color-primary-red);
+            color: white;
+            font-weight: normal;
+            font-size: 13px;
+            padding: 9px;
+            border: 1px solid var(--border-color-table);
+        }
+        .data-table td {
+            padding: 7px 9px;
+            text-align: center;
+            font-size: 12.5px;
+            border: 1px solid var(--border-color-table);
+            color: #333;
+        }
+        .data-table tr:nth-child(even) { background-color: var(--bg-table-stripe); }
+
+        .star-rating { color: #ffc107; font-size: 14px; }
+        .advantage { color: #4caf50; font-weight: bold; }
+        .disadvantage { color: #f44336; }
+
+        .competitor-card {
+            background: white;
+            border: 2px solid #ddd;
+            border-radius: 8px;
+            padding: 15px;
+            margin: 15px 0;
+        }
+
+        .competitor-card h4 {
+            margin: 0 0 10px 0;
+            font-size: 15px;
+            color: var(--color-primary-red);
+        }
+
+        .vs-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 15px;
+            margin: 15px 0;
+        }
+
+        .vs-card {
+            background: linear-gradient(135deg, #f5f5f5 0%, #ffffff 100%);
+            border-left: 4px solid;
+            padding: 15px;
+            border-radius: 4px;
+        }
+
+        .vs-card.international { border-left-color: #2196f3; }
+        .vs-card.domestic { border-left-color: #4caf50; }
+
+        .insight-box {
+            background-color: #fff8e1;
+            border-left: 4px solid #ffc107;
+            padding: 15px;
+            margin: 15px 0;
+            font-size: 13.5px;
+            line-height: 1.6;
+        }
+
+        .value-prop-box {
+            background: linear-gradient(135deg, #ffebee 0%, #ffffff 100%);
+            border: 2px solid var(--color-primary-red);
+            border-radius: 8px;
+            padding: 20px;
+            margin: 15px 0;
+            text-align: center;
+        }
+
+        .value-prop-box h3 {
+            color: var(--color-primary-red);
+            font-size: 18px;
+            margin: 0 0 15px 0;
+        }
+    &lt;/style&gt;
+&lt;/head&gt;
+&lt;body&gt;
+
+&lt;!-- 页面1: C3 竞争分析 --&gt;
+&lt;div class=&quot;page&quot;&gt;
+    &lt;div class=&quot;page-title&quot;&gt;产品1：SiC功率器件 - &lt;span class=&quot;c3-tag&quot;&gt;C3 Competitor 竞争分析&lt;/span&gt;&lt;/div&gt;
+
+    &lt;div class=&quot;section-title&quot;&gt;📊 市场份额与竞争格局（2024年全球车规SiC市场）&lt;/div&gt;
+
+    &lt;div style=&quot;display: grid; grid-template-columns: 55% 45%; gap: 20px; margin-bottom: 20px;&quot;&gt;
+        &lt;div&gt;
+            &lt;h4 style=&quot;color: #2196f3; font-size: 14px; margin: 10px 0;&quot;&gt;Tier 1 - 国际巨头（技术领先，份额下降中）&lt;/h4&gt;
+            &lt;table class=&quot;data-table&quot; style=&quot;font-size: 12px;&quot;&gt;
+                &lt;thead&gt;
+                    &lt;tr&gt;
+                        &lt;th&gt;厂商&lt;/th&gt;
+                        &lt;th&gt;市场份额&lt;/th&gt;
+                        &lt;th&gt;年度变化&lt;/th&gt;
+                    &lt;/tr&gt;
+                &lt;/thead&gt;
+                &lt;tbody&gt;
+                    &lt;tr&gt;
+                        &lt;td&gt;&lt;strong&gt;英飞凌 Infineon&lt;/strong&gt;&lt;/td&gt;
+                        &lt;td style=&quot;font-size: 16px; font-weight: bold; color: #2196f3;&quot;&gt;38%&lt;/td&gt;
+                        &lt;td style=&quot;color: #f44336;&quot;&gt;-2% YoY&lt;/td&gt;
+                    &lt;/tr&gt;
+                    &lt;tr&gt;
+                        &lt;td&gt;&lt;strong&gt;安森美 Onsemi&lt;/strong&gt;&lt;/td&gt;
+                        &lt;td style=&quot;font-size: 16px; font-weight: bold;&quot;&gt;16%&lt;/td&gt;
+                        &lt;td style=&quot;color: #f44336;&quot;&gt;-1% YoY&lt;/td&gt;
+                    &lt;/tr&gt;
+                    &lt;tr&gt;
+                        &lt;td&gt;&lt;strong&gt;Wolfspeed&lt;/strong&gt;&lt;/td&gt;
+                        &lt;td style=&quot;font-size: 16px; font-weight: bold;&quot;&gt;12%&lt;/td&gt;
+                        &lt;td style=&quot;color: #666;&quot;&gt;持平&lt;/td&gt;
+                    &lt;/tr&gt;
+                    &lt;tr&gt;
+                        &lt;td&gt;&lt;strong&gt;罗姆 ROHM&lt;/strong&gt;&lt;/td&gt;
+                        &lt;td style=&quot;font-size: 16px; font-weight: bold;&quot;&gt;9%&lt;/td&gt;
+                        &lt;td style=&quot;color: #666;&quot;&gt;持平&lt;/td&gt;
+                    &lt;/tr&gt;
+                    &lt;tr style=&quot;background: #e3f2fd;&quot;&gt;
+                        &lt;td&gt;&lt;strong&gt;小计&lt;/strong&gt;&lt;/td&gt;
+                        &lt;td style=&quot;font-size: 18px; font-weight: bold; color: #1976d2;&quot;&gt;75%&lt;/td&gt;
+                        &lt;td&gt;&lt;/td&gt;
+                    &lt;/tr&gt;
+                &lt;/tbody&gt;
+            &lt;/table&gt;
+        &lt;/div&gt;
+        &lt;div&gt;
+            &lt;h4 style=&quot;color: #4caf50; font-size: 14px; margin: 10px 0;&quot;&gt;Tier 2 - 本土挑战者（快速增长中）&lt;/h4&gt;
+            &lt;table class=&quot;data-table&quot; style=&quot;font-size: 12px;&quot;&gt;
+                &lt;thead&gt;
+                    &lt;tr&gt;
+                        &lt;th&gt;厂商&lt;/th&gt;
+                        &lt;th&gt;市场份额&lt;/th&gt;
+                        &lt;th&gt;年度变化&lt;/th&gt;
+                    &lt;/tr&gt;
+                &lt;/thead&gt;
+                &lt;tbody&gt;
+                    &lt;tr style=&quot;background: #ffebee;&quot;&gt;
+                        &lt;td&gt;&lt;strong&gt;比亚迪半导体 ★&lt;/strong&gt;&lt;/td&gt;
+                        &lt;td style=&quot;font-size: 16px; font-weight: bold; color: var(--color-primary-red);&quot;&gt;8%&lt;/td&gt;
+                        &lt;td style=&quot;color: #4caf50; font-weight: bold;&quot;&gt;+3% YoY&lt;/td&gt;
+                    &lt;/tr&gt;
+                    &lt;tr&gt;
+                        &lt;td&gt;&lt;strong&gt;斯达半导&lt;/strong&gt;&lt;/td&gt;
+                        &lt;td style=&quot;font-size: 16px; font-weight: bold;&quot;&gt;6%&lt;/td&gt;
+                        &lt;td style=&quot;color: #4caf50;&quot;&gt;+2% YoY&lt;/td&gt;
+                    &lt;/tr&gt;
+                    &lt;tr&gt;
+                        &lt;td&gt;&lt;strong&gt;三安光电&lt;/strong&gt;&lt;/td&gt;
+                        &lt;td style=&quot;font-size: 16px; font-weight: bold;&quot;&gt;4%&lt;/td&gt;
+                        &lt;td style=&quot;color: #4caf50;&quot;&gt;+1% YoY&lt;/td&gt;
+                    &lt;/tr&gt;
+                    &lt;tr&gt;
+                        &lt;td&gt;&lt;strong&gt;其他国产&lt;/strong&gt;&lt;/td&gt;
+                        &lt;td style=&quot;font-size: 16px; font-weight: bold;&quot;&gt;7%&lt;/td&gt;
+                        &lt;td style=&quot;color: #4caf50;&quot;&gt;+1% YoY&lt;/td&gt;
+                    &lt;/tr&gt;
+                    &lt;tr style=&quot;background: #e8f5e9;&quot;&gt;
+                        &lt;td&gt;&lt;strong&gt;小计&lt;/strong&gt;&lt;/td&gt;
+                        &lt;td style=&quot;font-size: 18px; font-weight: bold; color: #388e3c;&quot;&gt;25%&lt;/td&gt;
+                        &lt;td&gt;&lt;/td&gt;
+                    &lt;/tr&gt;
+                &lt;/tbody&gt;
+            &lt;/table&gt;
+        &lt;/div&gt;
+    &lt;/div&gt;
+
+    &lt;div class=&quot;insight-box&quot;&gt;
+        &lt;strong&gt;💡 市场洞察：&lt;/strong&gt;&lt;br/&gt;
+        &lt;strong&gt;1️⃣ 国产替代窗口期：2024-2026年&lt;/strong&gt; - 国际品牌份额下降（地缘政治+成本劣势），本土品牌份额上升（性价比+供应安全）&lt;br/&gt;
+        &lt;strong&gt;2️⃣ 我们的机会：&lt;/strong&gt;3年内目标市占率从8%→15%（翻倍），重点市场：中国（全球40%需求），重点客户：新势力+自主品牌高端车型&lt;br/&gt;
+        &lt;strong&gt;3️⃣ 竞争策略：&lt;/strong&gt;vs 国际巨头：打&quot;性价比+本土化服务&quot; | vs 本土对手：打&quot;比亚迪品牌背书+规模优势&quot;
+    &lt;/div&gt;
+
+    &lt;div class=&quot;section-title&quot;&gt;⚔️ 主要竞品深度对标：英飞凌 vs 比亚迪&lt;/div&gt;
+
+    &lt;table class=&quot;data-table&quot;&gt;
+        &lt;thead&gt;
+            &lt;tr&gt;
+                &lt;th width=&quot;18%&quot;&gt;维度&lt;/th&gt;
+                &lt;th width=&quot;18%&quot;&gt;英飞凌&lt;/th&gt;
+                &lt;th width=&quot;18%&quot;&gt;比亚迪&lt;/th&gt;
+                &lt;th width=&quot;46%&quot;&gt;差距分析与应对策略&lt;/th&gt;
+            &lt;/tr&gt;
+        &lt;/thead&gt;
+        &lt;tbody&gt;
+            &lt;tr&gt;
+                &lt;td&gt;&lt;strong&gt;品牌力&lt;/strong&gt;&lt;/td&gt;
+                &lt;td&gt;&lt;span class=&quot;star-rating&quot;&gt;⭐⭐⭐⭐⭐&lt;/span&gt;&lt;/td&gt;
+                &lt;td&gt;&lt;span class=&quot;star-rating&quot;&gt;⭐⭐⭐&lt;/span&gt;&lt;/td&gt;
+                &lt;td&gt;他们领先2分 → &lt;strong&gt;借比亚迪集团背书缩小差距&lt;/strong&gt;&lt;/td&gt;
+            &lt;/tr&gt;
+            &lt;tr&gt;
+                &lt;td&gt;&lt;strong&gt;技术成熟度&lt;/strong&gt;&lt;/td&gt;
+                &lt;td&gt;&lt;span class=&quot;star-rating&quot;&gt;⭐⭐⭐⭐⭐&lt;/span&gt;&lt;/td&gt;
+                &lt;td&gt;&lt;span class=&quot;star-rating&quot;&gt;⭐⭐⭐⭐&lt;/span&gt;&lt;/td&gt;
+                &lt;td&gt;差距缩小到5%以内 → &lt;strong&gt;性能已达可用水平&lt;/strong&gt;&lt;/td&gt;
+            &lt;/tr&gt;
+            &lt;tr&gt;
+                &lt;td&gt;&lt;strong&gt;产品线宽度&lt;/strong&gt;&lt;/td&gt;
+                &lt;td&gt;&lt;span class=&quot;star-rating&quot;&gt;⭐⭐⭐⭐⭐&lt;/span&gt;&lt;br/&gt;&lt;span style=&quot;font-size: 11px;&quot;&gt;全系列&lt;/span&gt;&lt;/td&gt;
+                &lt;td&gt;&lt;span class=&quot;star-rating&quot;&gt;⭐⭐⭐⭐&lt;/span&gt;&lt;br/&gt;&lt;span style=&quot;font-size: 11px;&quot;&gt;主流产品&lt;/span&gt;&lt;/td&gt;
+                &lt;td&gt;覆盖90%需求 → &lt;strong&gt;聚焦高价值产品&lt;/strong&gt;&lt;/td&gt;
+            &lt;/tr&gt;
+            &lt;tr style=&quot;background: #e8f5e9;&quot;&gt;
+                &lt;td&gt;&lt;strong&gt;价格竞争力&lt;/strong&gt;&lt;/td&gt;
+                &lt;td&gt;&lt;span class=&quot;star-rating&quot;&gt;⭐⭐&lt;/span&gt;&lt;br/&gt;&lt;span style=&quot;font-size: 11px;&quot;&gt;基准价&lt;/span&gt;&lt;/td&gt;
+                &lt;td&gt;&lt;span class=&quot;star-rating&quot;&gt;⭐⭐⭐⭐⭐&lt;/span&gt;&lt;br/&gt;&lt;span style=&quot;font-size: 11px; color: #4caf50; font-weight: bold;&quot;&gt;低20-30%&lt;/span&gt;&lt;/td&gt;
+                &lt;td class=&quot;advantage&quot;&gt;核心优势 → 规模效应+垂直整合&lt;/td&gt;
+            &lt;/tr&gt;
+            &lt;tr style=&quot;background: #e8f5e9;&quot;&gt;
+                &lt;td&gt;&lt;strong&gt;交期保证&lt;/strong&gt;&lt;/td&gt;
+                &lt;td&gt;&lt;span class=&quot;star-rating&quot;&gt;⭐⭐⭐&lt;/span&gt;&lt;br/&gt;&lt;span style=&quot;font-size: 11px;&quot;&gt;16周&lt;/span&gt;&lt;/td&gt;
+                &lt;td&gt;&lt;span class=&quot;star-rating&quot;&gt;⭐⭐⭐⭐⭐&lt;/span&gt;&lt;br/&gt;&lt;span style=&quot;font-size: 11px; color: #4caf50; font-weight: bold;&quot;&gt;10周&lt;/span&gt;&lt;/td&gt;
+                &lt;td class=&quot;advantage&quot;&gt;核心优势（快6周） → 本土供应链优势&lt;/td&gt;
+            &lt;/tr&gt;
+            &lt;tr style=&quot;background: #e8f5e9;&quot;&gt;
+                &lt;td&gt;&lt;strong&gt;本土化服务&lt;/strong&gt;&lt;/td&gt;
+                &lt;td&gt;&lt;span class=&quot;star-rating&quot;&gt;⭐⭐⭐&lt;/span&gt;&lt;br/&gt;&lt;span style=&quot;font-size: 11px;&quot;&gt;标准化&lt;/span&gt;&lt;/td&gt;
+                &lt;td&gt;&lt;span class=&quot;star-rating&quot;&gt;⭐⭐⭐⭐⭐&lt;/span&gt;&lt;br/&gt;&lt;span style=&quot;font-size: 11px; color: #4caf50; font-weight: bold;&quot;&gt;灵活定制&lt;/span&gt;&lt;/td&gt;
+                &lt;td class=&quot;advantage&quot;&gt;核心优势 → FAE驻场+快速响应&lt;/td&gt;
+            &lt;/tr&gt;
+        &lt;/tbody&gt;
+    &lt;/table&gt;
+
+    &lt;div class=&quot;section-title&quot;&gt;📋 具体产品参数对标（650V/300A SiC模块）&lt;/div&gt;
+    &lt;table class=&quot;data-table&quot;&gt;
+        &lt;thead&gt;
+            &lt;tr&gt;
+                &lt;th&gt;参数&lt;/th&gt;
+                &lt;th&gt;英飞凌 HybridPACK&lt;/th&gt;
+                &lt;th&gt;比亚迪 BYD-SiC-650&lt;/th&gt;
+                &lt;th&gt;差异分析&lt;/th&gt;
+            &lt;/tr&gt;
+        &lt;/thead&gt;
+        &lt;tbody&gt;
+            &lt;tr&gt;&lt;td&gt;额定电压&lt;/td&gt;&lt;td&gt;650V&lt;/td&gt;&lt;td&gt;650V&lt;/td&gt;&lt;td style=&quot;color: #666;&quot;&gt;持平&lt;/td&gt;&lt;/tr&gt;
+            &lt;tr&gt;&lt;td&gt;额定电流&lt;/td&gt;&lt;td&gt;300A&lt;/td&gt;&lt;td&gt;300A&lt;/td&gt;&lt;td style=&quot;color: #666;&quot;&gt;持平&lt;/td&gt;&lt;/tr&gt;
+            &lt;tr&gt;&lt;td&gt;Rdson&lt;/td&gt;&lt;td&gt;3.0mΩ&lt;/td&gt;&lt;td&gt;3.1mΩ&lt;/td&gt;&lt;td style=&quot;color: #ff9800;&quot;&gt;+3.3% (可接受)&lt;/td&gt;&lt;/tr&gt;
+            &lt;tr&gt;&lt;td&gt;开关损耗&lt;/td&gt;&lt;td&gt;2.1mJ&lt;/td&gt;&lt;td&gt;2.3mJ&lt;/td&gt;&lt;td style=&quot;color: #ff9800;&quot;&gt;+9.5% (可接受)&lt;/td&gt;&lt;/tr&gt;
+            &lt;tr&gt;&lt;td&gt;热阻Rth&lt;/td&gt;&lt;td&gt;0.18℃/W&lt;/td&gt;&lt;td&gt;0.19℃/W&lt;/td&gt;&lt;td style=&quot;color: #ff9800;&quot;&gt;+5.6% (可接受)&lt;/td&gt;&lt;/tr&gt;
+            &lt;tr style=&quot;background: #e8f5e9;&quot;&gt;&lt;td&gt;&lt;strong&gt;批量价格(5K+)&lt;/strong&gt;&lt;/td&gt;&lt;td&gt;&lt;strong&gt;¥420&lt;/strong&gt;&lt;/td&gt;&lt;td style=&quot;font-weight: bold; color: #4caf50; font-size: 16px;&quot;&gt;&lt;strong&gt;¥336&lt;/strong&gt;&lt;/td&gt;&lt;td class=&quot;advantage&quot;&gt;&lt;strong&gt;-20% 核心优势&lt;/strong&gt;&lt;/td&gt;&lt;/tr&gt;
+            &lt;tr style=&quot;background: #e8f5e9;&quot;&gt;&lt;td&gt;&lt;strong&gt;交期&lt;/strong&gt;&lt;/td&gt;&lt;td&gt;16周&lt;/td&gt;&lt;td style=&quot;font-weight: bold; color: #4caf50; font-size: 16px;&quot;&gt;10周&lt;/td&gt;&lt;td class=&quot;advantage&quot;&gt;&lt;strong&gt;快6周&lt;/strong&gt;&lt;/td&gt;&lt;/tr&gt;
+            &lt;tr&gt;&lt;td&gt;MOQ&lt;/td&gt;&lt;td&gt;1000片&lt;/td&gt;&lt;td&gt;500片&lt;/td&gt;&lt;td style=&quot;color: #4caf50;&quot;&gt;更灵活&lt;/td&gt;&lt;/tr&gt;
+        &lt;/tbody&gt;
+    &lt;/table&gt;
+
+    &lt;div class=&quot;insight-box&quot;&gt;
+        &lt;strong&gt;💡 竞品对标结论：&lt;/strong&gt;&lt;br/&gt;
+        1. &lt;strong&gt;技术差距可控&lt;/strong&gt;：关键参数差距&lt;10%，对客户实际应用影响小&lt;br/&gt;
+        2. &lt;strong&gt;价格优势明显&lt;/strong&gt;：低20%是巨大优势，可支撑市场快速渗透&lt;br/&gt;
+        3. &lt;strong&gt;交期优势突出&lt;/strong&gt;：快6周在行业中是显著优势，尤其缺货时期&lt;br/&gt;
+        4. &lt;strong&gt;服务灵活性强&lt;/strong&gt;：小批量起订+本土FAE支持，中小客户更愿意尝试
+    &lt;/div&gt;
+&lt;/div&gt;
+
+&lt;!-- 页面2: C3 竞争策略 + C4 自身能力 --&gt;
+&lt;div class=&quot;page&quot;&gt;
+    &lt;div class=&quot;page-title&quot;&gt;产品1：SiC功率器件 - 竞争策略与价值主张&lt;/div&gt;
+
+    &lt;div class=&quot;section-title&quot;&gt;&lt;span class=&quot;c3-tag&quot;&gt;C3&lt;/span&gt; 竞争应对话术库&lt;/div&gt;
+
+    &lt;div class=&quot;vs-grid&quot;&gt;
+        &lt;div class=&quot;vs-card international&quot;&gt;
+            &lt;h4 style=&quot;color: #2196f3; margin: 0 0 10px 0;&quot;&gt;🌍 VS 国际大厂（英飞凌/安森美）&lt;/h4&gt;
+            &lt;div style=&quot;font-size: 12px; line-height: 1.6;&quot;&gt;
+                &lt;p style=&quot;margin: 5px 0;&quot;&gt;&lt;strong&gt;竞争维度：&lt;/strong&gt;性能足够 + 成本优势 + 供应安全&lt;/p&gt;
+                &lt;p style=&quot;margin: 5px 0;&quot;&gt;&lt;strong&gt;需要证明的事实：&lt;/strong&gt;&lt;/p&gt;
+                &lt;ul style=&quot;margin: 5px 0; padding-left: 20px;&quot;&gt;
+                    &lt;li&gt;关键指标（损耗/结温）&quot;不比他差&quot;（&lt;5%差距）&lt;/li&gt;
+                    &lt;li&gt;交期更稳（10周 vs 16周，且无断供风险）&lt;/li&gt;
+                    &lt;li&gt;价格更优（低20-30%，且能持续供应）&lt;/li&gt;
+                &lt;/ul&gt;
+                &lt;div style=&quot;background: #e3f2fd; padding: 10px; border-radius: 4px; margin-top: 10px;&quot;&gt;
+                    &lt;strong style=&quot;color: #1976d2;&quot;&gt;标准话术：&lt;/strong&gt;&lt;br/&gt;
+                    &lt;em style=&quot;font-size: 11px;&quot;&gt;
+                    &quot;我们理解您对英飞凌的信任。但您知道吗？他们的供应链在疫情期间交期延长到24周，而且价格每年上涨5-8%。我们的产品在性能上已经达到他们95%的水平（这是实测数据），但价格只有他们的80%，交期快6周。更重要的是，我们是中国本土企业，供应链完全可控，不会受到国际政治影响。&quot;
+                    &lt;/em&gt;
+                &lt;/div&gt;
+            &lt;/div&gt;
+        &lt;/div&gt;
+
+        &lt;div class=&quot;vs-card domestic&quot;&gt;
+            &lt;h4 style=&quot;color: #4caf50; margin: 0 0 10px 0;&quot;&gt;🏠 VS 本土友商（斯达/三安）&lt;/h4&gt;
+            &lt;div style=&quot;font-size: 12px; line-height: 1.6;&quot;&gt;
+                &lt;p style=&quot;margin: 5px 0;&quot;&gt;&lt;strong&gt;竞争维度：&lt;/strong&gt;系统级经验 + 车规可靠性 + 规模优势&lt;/p&gt;
+                &lt;p style=&quot;margin: 5px 0;&quot;&gt;&lt;strong&gt;需要证明的事实：&lt;/strong&gt;&lt;/p&gt;
+                &lt;ul style=&quot;margin: 5px 0; padding-left: 20px;&quot;&gt;
+                    &lt;li&gt;已有海量量产装车案例（BYD自家车辆验证）&lt;/li&gt;
+                    &lt;li&gt;比亚迪集团背书（全球最大新能源车企）&lt;/li&gt;
+                    &lt;li&gt;规模效应带来的成本优势（集团年需100万套+）&lt;/li&gt;
+                &lt;/ul&gt;
+                &lt;div style=&quot;background: #e8f5e9; padding: 10px; border-radius: 4px; margin-top: 10px;&quot;&gt;
+                    &lt;strong style=&quot;color: #388e3c;&quot;&gt;标准话术：&lt;/strong&gt;&lt;br/&gt;
+                    &lt;em style=&quot;font-size: 11px;&quot;&gt;
+                    &quot;和其他国产品牌比，我们最大的优势是什么？比亚迪集团每年需要100万套以上的SiC模块，这意味着我们的产品已经经过了海量实车验证。我们在仰望U8、海豹、汉EV上累计装车超过50万辆，可靠性数据是真实的、经过验证的。而且我们的规模效应带来的成本优势，是其他友商无法比拟的。&quot;
+                    &lt;/em&gt;
+                &lt;/div&gt;
+            &lt;/div&gt;
+        &lt;/div&gt;
+    &lt;/div&gt;
+
+    &lt;div class=&quot;section-title&quot;&gt;&lt;span class=&quot;c4-tag&quot;&gt;C4&lt;/span&gt; 自身能力 - 差异化价值主张&lt;/div&gt;
+
+    &lt;div class=&quot;value-prop-box&quot;&gt;
+        &lt;h3&gt;💎 比亚迪SiC的&quot;3句话&quot;价值主张&lt;/h3&gt;
+        &lt;div style=&quot;display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; margin-top: 15px;&quot;&gt;
+            &lt;div style=&quot;background: white; padding: 15px; border-radius: 8px; border: 2px solid var(--color-primary-red);&quot;&gt;
+                &lt;div style=&quot;font-size: 32px; margin-bottom: 10px;&quot;&gt;💰&lt;/div&gt;
+                &lt;strong style=&quot;color: var(--color-primary-red); font-size: 14px;&quot;&gt;成本领先&lt;/strong&gt;
+                &lt;p style=&quot;font-size: 12px; margin: 8px 0; line-height: 1.5;&quot;&gt;
+                比英飞凌低20-30%&lt;br/&gt;
+                规模效应+垂直整合&lt;br/&gt;
+                &lt;em style=&quot;color: #666;&quot;&gt;（集团年需100万套+）&lt;/em&gt;
+                &lt;/p&gt;
+            &lt;/div&gt;
+            &lt;div style=&quot;background: white; padding: 15px; border-radius: 8px; border: 2px solid var(--color-primary-red);&quot;&gt;
+                &lt;div style=&quot;font-size: 32px; margin-bottom: 10px;&quot;&gt;🔧&lt;/div&gt;
+                &lt;strong style=&quot;color: var(--color-primary-red); font-size: 14px;&quot;&gt;可靠性验证&lt;/strong&gt;
+                &lt;p style=&quot;font-size: 12px; margin: 8px 0; line-height: 1.5;&quot;&gt;
+                50万辆实车验证&lt;br/&gt;
+                比亚迪集团背书&lt;br/&gt;
+                &lt;em style=&quot;color: #666;&quot;&gt;（仰望/海豹/汉EV）&lt;/em&gt;
+                &lt;/p&gt;
+            &lt;/div&gt;
+            &lt;div style=&quot;background: white; padding: 15px; border-radius: 8px; border: 2px solid var(--color-primary-red);&quot;&gt;
+                &lt;div style=&quot;font-size: 32px; margin-bottom: 10px;&quot;&gt;⚡&lt;/div&gt;
+                &lt;strong style=&quot;color: var(--color-primary-red); font-size: 14px;&quot;&gt;快速响应&lt;/strong&gt;
+                &lt;p style=&quot;font-size: 12px; margin: 8px 0; line-height: 1.5;&quot;&gt;
+                交期10周 vs 行业16周&lt;br/&gt;
+                本土FAE驻场支持&lt;br/&gt;
+                &lt;em style=&quot;color: #666;&quot;&gt;（2周送样 vs 4周）&lt;/em&gt;
+                &lt;/p&gt;
+            &lt;/div&gt;
+        &lt;/div&gt;
+    &lt;/div&gt;
+
+    &lt;div class=&quot;section-title&quot;&gt;📚 标杆案例库（STAR格式）&lt;/div&gt;
+
+    &lt;div style=&quot;background: #f5f5f5; border: 2px solid #2196f3; border-radius: 8px; padding: 18px; margin: 15px 0;&quot;&gt;
+        &lt;h4 style=&quot;color: #2196f3; margin: 0 0 12px 0;&quot;&gt;案例1：理想汽车L9项目 - 零到定点的突破&lt;/h4&gt;
+        &lt;div style=&quot;display: grid; grid-template-columns: 1fr 3fr; gap: 10px; font-size: 12px;&quot;&gt;
+            &lt;div style=&quot;font-weight: bold; color: #1976d2;&quot;&gt;Situation&lt;br/&gt;(情境)&lt;/div&gt;
+            &lt;div&gt;理想汽车开发新一代800V平台（L9车型），主驱SiC模块原定点英飞凌，我们是零份额。客户对国产SiC有疑虑（可靠性未验证）。&lt;/div&gt;
+
+            &lt;div style=&quot;font-weight: bold; color: #1976d2;&quot;&gt;Task&lt;br/&gt;(任务)&lt;/div&gt;
+            &lt;div&gt;目标：在6个月内完成技术认可，获得二供定点。挑战：需证明可靠性，且价格需有吸引力。&lt;/div&gt;
+
+            &lt;div style=&quot;font-weight: bold; color: #1976d2;&quot;&gt;Action&lt;br/&gt;(行动)&lt;/div&gt;
+            &lt;div&gt;
+                &lt;strong&gt;第1步：&lt;/strong&gt;邀请理想技术团队参观比亚迪仰望U8（同为800V平台），现场演示实车性能数据&lt;br/&gt;
+                &lt;strong&gt;第2步：&lt;/strong&gt;免费提供20套样品+FAE驻场3个月，协助完成装车测试&lt;br/&gt;
+                &lt;strong&gt;第3步：&lt;/strong&gt;报价¥336（比英飞凌低20%），承诺3年年降5%/年&lt;br/&gt;
+                &lt;strong&gt;第4步：&lt;/strong&gt;高层互访（比亚迪副总裁拜访理想，释放战略合作信号）
+            &lt;/div&gt;
+
+            &lt;div style=&quot;font-weight: bold; color: #1976d2;&quot;&gt;Result&lt;br/&gt;(结果)&lt;/div&gt;
+            &lt;div style=&quot;background: #e8f5e9; padding: 10px; border-radius: 4px;&quot;&gt;
+                &lt;strong style=&quot;color: #4caf50;&quot;&gt;✅ 成功获得二供定点（30%份额）&lt;/strong&gt;&lt;br/&gt;
+                • 首批订单5万套，年采购额¥1.68亿&lt;br/&gt;
+                • 测试周期缩短至4个月（原计划6个月）&lt;br/&gt;
+                • 客户评价：&quot;技术性能达标，价格有竞争力，服务响应快&quot;
+            &lt;/div&gt;
+        &lt;/div&gt;
+    &lt;/div&gt;
+
+    &lt;div class=&quot;section-title&quot;&gt;🎯 能力证明材料清单（随身携带）&lt;/div&gt;
+    &lt;table class=&quot;data-table&quot;&gt;
+        &lt;thead&gt;
+            &lt;tr&gt;
+                &lt;th width=&quot;10%&quot;&gt;序号&lt;/th&gt;
+                &lt;th width=&quot;30%&quot;&gt;材料名称&lt;/th&gt;
+                &lt;th width=&quot;40%&quot;&gt;内容摘要&lt;/th&gt;
+                &lt;th width=&quot;20%&quot;&gt;使用场景&lt;/th&gt;
+            &lt;/tr&gt;
+        &lt;/thead&gt;
+        &lt;tbody&gt;
+            &lt;tr&gt;
+                &lt;td&gt;1&lt;/td&gt;
+                &lt;td&gt;&lt;strong&gt;技术白皮书&lt;/strong&gt;&lt;/td&gt;
+                &lt;td&gt;650V SiC模块参数对标、应用指导、仿真模型&lt;/td&gt;
+                &lt;td&gt;技术交流会&lt;/td&gt;
+            &lt;/tr&gt;
+            &lt;tr&gt;
+                &lt;td&gt;2&lt;/td&gt;
+                &lt;td&gt;&lt;strong&gt;装车验证报告&lt;/strong&gt;&lt;/td&gt;
+                &lt;td&gt;50万辆实车数据、可靠性测试、第三方认证&lt;/td&gt;
+                &lt;td&gt;可靠性答疑&lt;/td&gt;
+            &lt;/tr&gt;
+            &lt;tr&gt;
+                &lt;td&gt;3&lt;/td&gt;
+                &lt;td&gt;&lt;strong&gt;价格竞争力分析&lt;/strong&gt;&lt;/td&gt;
+                &lt;td&gt;成本结构拆解、价格对比、年降承诺历史兑现证明&lt;/td&gt;
+                &lt;td&gt;商务谈判&lt;/td&gt;
+            &lt;/tr&gt;
+            &lt;tr&gt;
+                &lt;td&gt;4&lt;/td&gt;
+                &lt;td&gt;&lt;strong&gt;产能承诺函&lt;/strong&gt;&lt;/td&gt;
+                &lt;td&gt;深圳+长沙双基地产能数据、扩产计划、安全库存方案&lt;/td&gt;
+                &lt;td&gt;供应保障答疑&lt;/td&gt;
+            &lt;/tr&gt;
+            &lt;tr&gt;
+                &lt;td&gt;5&lt;/td&gt;
+                &lt;td&gt;&lt;strong&gt;客户案例集&lt;/strong&gt;&lt;/td&gt;
+                &lt;td&gt;理想/吉利/长安等标杆案例（STAR格式），含客户评价&lt;/td&gt;
+                &lt;td&gt;客户拜访&lt;/td&gt;
+            &lt;/tr&gt;
+            &lt;tr&gt;
+                &lt;td&gt;6&lt;/td&gt;
+                &lt;td&gt;&lt;strong&gt;比亚迪集团背书材料&lt;/strong&gt;&lt;/td&gt;
+                &lt;td&gt;集团简介、新能源领先地位、半导体战略规划&lt;/td&gt;
+                &lt;td&gt;高层拜访&lt;/td&gt;
+            &lt;/tr&gt;
+        &lt;/tbody&gt;
+    &lt;/table&gt;
+
+    &lt;div class=&quot;insight-box&quot; style=&quot;margin-top: 20px;&quot;&gt;
+        &lt;strong&gt;💡 销售实战要点总结：&lt;/strong&gt;&lt;br/&gt;
+        &lt;strong&gt;1. 明确价值主张：&lt;/strong&gt;&quot;性价比（低20%） + 可靠性（50万辆验证） + 快速响应（10周交期）&quot;是我们的三大核心优势&lt;br/&gt;
+        &lt;strong&gt;2. 分层对标策略：&lt;/strong&gt;vs国际大厂打性价比，vs本土友商打规模与验证&lt;br/&gt;
+        &lt;strong&gt;3. 证据链完整：&lt;/strong&gt;技术白皮书 + 装车数据 + 客户案例 + 产能承诺，四位一体&lt;br/&gt;
+        &lt;strong&gt;4. 差异化服务：&lt;/strong&gt;FAE驻场、快速送样、灵活MOQ，打&quot;服务牌&quot;补齐品牌差距&lt;br/&gt;
+        &lt;strong&gt;5. 比亚迪背书：&lt;/strong&gt;充分利用集团品牌，&quot;全球最大新能源车企的芯片供应商&quot;是强有力的背书
+    &lt;/div&gt;
+&lt;/div&gt;
+
+&lt;/body&gt;
+&lt;/html&gt;
+"
+                        frameborder="0"
+                        scrolling="no"
+                        width="100%"
+                        onload="resizeIframe(this)">
+                    </iframe><iframe
+                        id="page-5"
+                        class="merged-iframe"
+                        srcdoc="&lt;!DOCTYPE html&gt;
+&lt;html lang=&quot;zh-CN&quot;&gt;
+&lt;head&gt;
+    &lt;meta charset=&quot;UTF-8&quot;&gt;
+    &lt;title&gt;比亚迪半导体销售手册 - 产品2: IGBT功率器件&lt;/title&gt;
+    &lt;style&gt;
+        :root {
+            --color-primary-red: #e60012;
+            --color-primary-red-dark: #c50010;
+            --text-color-on-dark: #ffffff;
+            --bg-page: #ffffff;
+            --bg-table-stripe: #f2f2f2;
+            --border-color-table: #ddd;
+            --shadow-page: rgba(0, 0, 0, 0.1);
+        }
+
+        body {
+            font-family: &quot;Microsoft YaHei&quot;, &quot;SimHei&quot;, sans-serif;
+            background-color: #f0f0f0;
+            margin: 0;
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 20px;
+        }
+
+        .page {
+            width: 297mm;
+            min-height: 210mm;
+            background-color: var(--bg-page);
+            position: relative;
+            box-shadow: 0 0 10px var(--shadow-page);
+            padding: 40px;
+            box-sizing: border-box;
+        }
+
+        .page-title {
+            font-size: 26px;
+            font-weight: bold;
+            color: var(--text-color-on-dark);
+            background: linear-gradient(45deg, var(--color-primary-red), var(--color-primary-red-dark));
+            padding: 15px 30px;
+            margin: -40px -40px 30px -40px;
+            clip-path: polygon(0 0, calc(100% - 30px) 0, 100% 100%, 0 100%);
+        }
+
+        .section-title {
+            font-size: 18px;
+            font-weight: bold;
+            color: var(--color-primary-red);
+            margin: 20px 0 12px 0;
+            border-left: 4px solid var(--color-primary-red);
+            padding-left: 12px;
+        }
+
+        .data-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-bottom: 18px;
+        }
+        .data-table th {
+            background-color: var(--color-primary-red);
+            color: white;
+            font-weight: normal;
+            font-size: 13px;
+            padding: 9px;
+            border: 1px solid var(--border-color-table);
+        }
+        .data-table td {
+            padding: 7px 9px;
+            text-align: left;
+            font-size: 12.5px;
+            border: 1px solid var(--border-color-table);
+            color: #333;
+        }
+        .data-table tr:nth-child(even) { background-color: var(--bg-table-stripe); }
+
+        .metric-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 15px;
+            margin: 20px 0;
+        }
+
+        .metric-card {
+            background: linear-gradient(135deg, #fff5f5 0%, #ffffff 100%);
+            border: 2px solid var(--color-primary-red);
+            border-radius: 8px;
+            padding: 18px;
+            text-align: center;
+        }
+
+        .metric-value {
+            font-size: 32px;
+            font-weight: bold;
+            color: var(--color-primary-red);
+            margin: 8px 0;
+        }
+
+        .metric-label {
+            font-size: 13px;
+            color: #666;
+            margin-top: 5px;
+        }
+
+        .insight-box {
+            background-color: #fff8e1;
+            border-left: 4px solid #ffc107;
+            padding: 15px;
+            margin: 15px 0;
+            font-size: 13.5px;
+            line-height: 1.6;
+        }
+
+        .customer-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+            margin: 20px 0;
+        }
+
+        .customer-card {
+            border: 2px solid;
+            border-radius: 8px;
+            padding: 18px;
+            background: white;
+        }
+
+        .customer-card.priority1 { border-color: #f44336; background: linear-gradient(135deg, #ffebee 0%, #ffffff 100%); }
+        .customer-card.priority2 { border-color: #ff9800; background: linear-gradient(135deg, #fff8e1 0%, #ffffff 100%); }
+        .customer-card.priority3 { border-color: #4caf50; background: linear-gradient(135deg, #e8f5e9 0%, #ffffff 100%); }
+    &lt;/style&gt;
+&lt;/head&gt;
+&lt;body&gt;
+
+&lt;!-- 页面1: IGBT产品概览 --&gt;
+&lt;div class=&quot;page&quot;&gt;
+    &lt;div class=&quot;page-title&quot;&gt;产品2：IGBT（绝缘栅双极型晶体管）- 功率主力 / 400V平台核心&lt;/div&gt;
+
+    &lt;div class=&quot;section-title&quot;&gt;📊 市场规模与定位&lt;/div&gt;
+
+    &lt;div class=&quot;metric-grid&quot;&gt;
+        &lt;div class=&quot;metric-card&quot;&gt;
+            &lt;div class=&quot;metric-label&quot;&gt;2024年中国市场规模&lt;/div&gt;
+            &lt;div class=&quot;metric-value&quot;&gt;¥148亿&lt;/div&gt;
+            &lt;div class=&quot;metric-label&quot;&gt;全球占比42%&lt;/div&gt;
+        &lt;/div&gt;
+        &lt;div class=&quot;metric-card&quot;&gt;
+            &lt;div class=&quot;metric-label&quot;&gt;2027年预测规模&lt;/div&gt;
+            &lt;div class=&quot;metric-value&quot;&gt;¥195亿&lt;/div&gt;
+            &lt;div class=&quot;metric-label&quot;&gt;年复合增长率 9.6%&lt;/div&gt;
+        &lt;/div&gt;
+        &lt;div class=&quot;metric-card&quot;&gt;
+            &lt;div class=&quot;metric-label&quot;&gt;生命周期定位&lt;/div&gt;
+            &lt;div class=&quot;metric-value&quot; style=&quot;font-size: 24px;&quot;&gt;成熟期&lt;/div&gt;
+            &lt;div class=&quot;metric-label&quot;&gt;进入饱和前期&lt;/div&gt;
+        &lt;/div&gt;
+    &lt;/div&gt;
+
+    &lt;div style=&quot;background: linear-gradient(135deg, #ffebee 0%, #ffffff 100%); border: 3px solid var(--color-primary-red); border-radius: 10px; padding: 20px; text-align: center; margin: 20px 0;&quot;&gt;
+        &lt;p style=&quot;font-size: 18px; color: var(--color-primary-red); font-weight: bold; margin: 0; line-height: 1.6;&quot;&gt;
+            &quot;IGBT是可以用成本+国产安全性来打开局面的产品，&lt;br/&gt;
+            但必须拿得出可靠性的&#x27;铁证据&#x27;。&quot;
+        &lt;/p&gt;
+    &lt;/div&gt;
+
+    &lt;div class=&quot;section-title&quot;&gt;🎯 应用场景与价值量&lt;/div&gt;
+    &lt;table class=&quot;data-table&quot;&gt;
+        &lt;thead&gt;
+            &lt;tr&gt;
+                &lt;th width=&quot;20%&quot;&gt;应用场景&lt;/th&gt;
+                &lt;th width=&quot;15%&quot;&gt;需求占比&lt;/th&gt;
+                &lt;th width=&quot;20%&quot;&gt;单车价值&lt;/th&gt;
+                &lt;th width=&quot;25%&quot;&gt;代表车型&lt;/th&gt;
+                &lt;th width=&quot;20%&quot;&gt;市场特征&lt;/th&gt;
+            &lt;/tr&gt;
+        &lt;/thead&gt;
+        &lt;tbody&gt;
+            &lt;tr style=&quot;background: #fff3e0;&quot;&gt;
+                &lt;td&gt;&lt;strong&gt;主驱逆变器&lt;/strong&gt;&lt;br/&gt;(核心战场)&lt;/td&gt;
+                &lt;td style=&quot;text-align: center; font-size: 18px; font-weight: bold; color: var(--color-primary-red);&quot;&gt;60%&lt;/td&gt;
+                &lt;td&gt;¥600-1,500&lt;/td&gt;
+                &lt;td&gt;比亚迪秦PLUS&lt;br/&gt;埃安S、几何A&lt;/td&gt;
+                &lt;td&gt;400V平台主力&lt;br/&gt;价格竞争激烈&lt;/td&gt;
+            &lt;/tr&gt;
+            &lt;tr&gt;
+                &lt;td&gt;&lt;strong&gt;插电混动PHEV&lt;/strong&gt;&lt;br/&gt;(高增长)&lt;/td&gt;
+                &lt;td style=&quot;text-align: center; font-size: 16px; font-weight: bold;&quot;&gt;25%&lt;/td&gt;
+                &lt;td&gt;¥400-1,000&lt;/td&gt;
+                &lt;td&gt;宋PLUS DM-i&lt;br/&gt;理想L系列&lt;/td&gt;
+                &lt;td&gt;增速快（CAGR 25%）&lt;br/&gt;价格敏感&lt;/td&gt;
+            &lt;/tr&gt;
+            &lt;tr&gt;
+                &lt;td&gt;&lt;strong&gt;辅助系统&lt;/strong&gt;&lt;br/&gt;(OBC/DC-DC/空调/EPS)&lt;/td&gt;
+                &lt;td style=&quot;text-align: center; font-size: 16px; font-weight: bold;&quot;&gt;15%&lt;/td&gt;
+                &lt;td&gt;¥300-650&lt;br/&gt;(总和)&lt;/td&gt;
+                &lt;td&gt;各类车型&lt;br/&gt;标配系统&lt;/td&gt;
+                &lt;td&gt;切入点市场&lt;br/&gt;验证可靠性后攻主驱&lt;/td&gt;
+            &lt;/tr&gt;
+        &lt;/tbody&gt;
+    &lt;/table&gt;
+
+    &lt;div class=&quot;insight-box&quot;&gt;
+        &lt;strong&gt;💡 IGBT vs SiC战略定位差异：&lt;/strong&gt;&lt;br/&gt;
+        &lt;strong&gt;SiC：&lt;/strong&gt;高端市场（&gt;30万元），800V平台，技术驱动，利润率高&lt;br/&gt;
+        &lt;strong&gt;IGBT：&lt;/strong&gt;中低端市场（&lt;25万元），400V平台，成本驱动，走量为主&lt;br/&gt;
+        &lt;strong&gt;策略：&lt;/strong&gt;避免与SiC正面竞争，聚焦混动市场（增速快）和辅助系统（切入点）
+    &lt;/div&gt;
+
+    &lt;div class=&quot;section-title&quot;&gt;🎯 目标客户分级（IGBT特有矩阵）&lt;/div&gt;
+
+    &lt;div class=&quot;customer-grid&quot;&gt;
+        &lt;div class=&quot;customer-card priority1&quot;&gt;
+            &lt;h3 style=&quot;margin: 0 0 12px 0; font-size: 16px; color: #f44336;&quot;&gt;⭐⭐⭐⭐⭐ 进攻型客户（优先级最高）&lt;/h3&gt;
+            &lt;table style=&quot;width: 100%; font-size: 12px;&quot;&gt;
+                &lt;tr&gt;&lt;td style=&quot;width: 25%; font-weight: bold;&quot;&gt;代表客户&lt;/td&gt;&lt;td&gt;长城、吉利、奇瑞、长安&lt;/td&gt;&lt;/tr&gt;
+                &lt;tr&gt;&lt;td style=&quot;font-weight: bold;&quot;&gt;特征&lt;/td&gt;&lt;td&gt;国产替代目标，年产能&gt;20万辆&lt;/td&gt;&lt;/tr&gt;
+                &lt;tr&gt;&lt;td style=&quot;font-weight: bold;&quot;&gt;机会&lt;/td&gt;&lt;td&gt;二供切入，或新平台定点&lt;/td&gt;&lt;/tr&gt;
+                &lt;tr&gt;&lt;td style=&quot;font-weight: bold;&quot;&gt;策略&lt;/td&gt;&lt;td&gt;价格+交期打国产替代战&lt;/td&gt;&lt;/tr&gt;
+                &lt;tr&gt;&lt;td style=&quot;font-weight: bold;&quot;&gt;年需求&lt;/td&gt;&lt;td&gt;单客户10-25万套&lt;/td&gt;&lt;/tr&gt;
+            &lt;/table&gt;
+        &lt;/div&gt;
+
+        &lt;div class=&quot;customer-card priority2&quot;&gt;
+            &lt;h3 style=&quot;margin: 0 0 12px 0; font-size: 16px; color: #ff9800;&quot;&gt;⭐⭐⭐⭐ 机会型客户（重点培育）&lt;/h3&gt;
+            &lt;table style=&quot;width: 100%; font-size: 12px;&quot;&gt;
+                &lt;tr&gt;&lt;td style=&quot;width: 25%; font-weight: bold;&quot;&gt;代表客户&lt;/td&gt;&lt;td&gt;零跑、哪吒、合众、枫叶&lt;/td&gt;&lt;/tr&gt;
+                &lt;tr&gt;&lt;td style=&quot;font-weight: bold;&quot;&gt;特征&lt;/td&gt;&lt;td&gt;新势力第二梯队，成长期&lt;/td&gt;&lt;/tr&gt;
+                &lt;tr&gt;&lt;td style=&quot;font-weight: bold;&quot;&gt;机会&lt;/td&gt;&lt;td&gt;主供机会，成长期绑定&lt;/td&gt;&lt;/tr&gt;
+                &lt;tr&gt;&lt;td style=&quot;font-weight: bold;&quot;&gt;策略&lt;/td&gt;&lt;td&gt;快速响应、小批量起订&lt;/td&gt;&lt;/tr&gt;
+                &lt;tr&gt;&lt;td style=&quot;font-weight: bold;&quot;&gt;年需求&lt;/td&gt;&lt;td&gt;单客户5-15万套&lt;/td&gt;&lt;/tr&gt;
+            &lt;/table&gt;
+        &lt;/div&gt;
+
+        &lt;div class=&quot;customer-card priority3&quot;&gt;
+            &lt;h3 style=&quot;margin: 0 0 12px 0; font-size: 16px; color: #4caf50;&quot;&gt;⭐⭐⭐ 战略级客户（稳定基盘）&lt;/h3&gt;
+            &lt;table style=&quot;width: 100%; font-size: 12px;&quot;&gt;
+                &lt;tr&gt;&lt;td style=&quot;width: 25%; font-weight: bold;&quot;&gt;代表客户&lt;/td&gt;&lt;td&gt;比亚迪集团各品牌&lt;/td&gt;&lt;/tr&gt;
+                &lt;tr&gt;&lt;td style=&quot;font-weight: bold;&quot;&gt;特征&lt;/td&gt;&lt;td&gt;内部客户，份额稳定&lt;/td&gt;&lt;/tr&gt;
+                &lt;tr&gt;&lt;td style=&quot;font-weight: bold;&quot;&gt;机会&lt;/td&gt;&lt;td&gt;新车型拓展、产品升级&lt;/td&gt;&lt;/tr&gt;
+                &lt;tr&gt;&lt;td style=&quot;font-weight: bold;&quot;&gt;策略&lt;/td&gt;&lt;td&gt;内部协同、确保交付&lt;/td&gt;&lt;/tr&gt;
+                &lt;tr&gt;&lt;td style=&quot;font-weight: bold;&quot;&gt;年需求&lt;/td&gt;&lt;td&gt;集团年80-120万套&lt;/td&gt;&lt;/tr&gt;
+            &lt;/table&gt;
+        &lt;/div&gt;
+
+        &lt;div class=&quot;customer-card priority2&quot; style=&quot;border-color: #9e9e9e; background: #f5f5f5;&quot;&gt;
+            &lt;h3 style=&quot;margin: 0 0 12px 0; font-size: 16px; color: #666;&quot;&gt;🛡️ 防御型客户（维持交流）&lt;/h3&gt;
+            &lt;table style=&quot;width: 100%; font-size: 12px;&quot;&gt;
+                &lt;tr&gt;&lt;td style=&quot;width: 25%; font-weight: bold;&quot;&gt;代表客户&lt;/td&gt;&lt;td&gt;蔚小理（已选用英飞凌/安森美）&lt;/td&gt;&lt;/tr&gt;
+                &lt;tr&gt;&lt;td style=&quot;font-weight: bold;&quot;&gt;特征&lt;/td&gt;&lt;td&gt;高端定位，技术驱动，已丢失&lt;/td&gt;&lt;/tr&gt;
+                &lt;tr&gt;&lt;td style=&quot;font-weight: bold;&quot;&gt;机会&lt;/td&gt;&lt;td&gt;新平台窗口（每3-5年）&lt;/td&gt;&lt;/tr&gt;
+                &lt;tr&gt;&lt;td style=&quot;font-weight: bold;&quot;&gt;策略&lt;/td&gt;&lt;td&gt;等待窗口、维持交流、不强攻&lt;/td&gt;&lt;/tr&gt;
+                &lt;tr&gt;&lt;td style=&quot;font-weight: bold;&quot;&gt;备注&lt;/td&gt;&lt;td&gt;资源聚焦进攻型客户&lt;/td&gt;&lt;/tr&gt;
+            &lt;/table&gt;
+        &lt;/div&gt;
+    &lt;/div&gt;
+
+    &lt;div class=&quot;section-title&quot;&gt;🔑 竞争策略与价值主张&lt;/div&gt;
+
+    &lt;div style=&quot;display: grid; grid-template-columns: 1fr 1fr; gap: 20px;&quot;&gt;
+        &lt;div style=&quot;background: #e3f2fd; border-left: 4px solid #2196f3; padding: 15px; border-radius: 4px;&quot;&gt;
+            &lt;h4 style=&quot;color: #2196f3; margin: 0 0 10px 0;&quot;&gt;VS 国际大厂（英飞凌/安森美）&lt;/h4&gt;
+            &lt;p style=&quot;font-size: 12px; margin: 5px 0;&quot;&gt;&lt;strong&gt;核心话术方向：&lt;/strong&gt;&lt;/p&gt;
+            &lt;ul style=&quot;font-size: 12px; line-height: 1.6; margin: 5px 0;&quot;&gt;
+                &lt;li&gt;性能足够 + 成本优势 + 供应安全&lt;/li&gt;
+                &lt;li&gt;关键指标（损耗/结温）&quot;不比他差&quot;&lt;/li&gt;
+                &lt;li&gt;交期更稳（本土供应链）&lt;/li&gt;
+                &lt;li&gt;价格低15-20%（规模效应）&lt;/li&gt;
+            &lt;/ul&gt;
+            &lt;div style=&quot;background: white; padding: 8px; border-radius: 4px; margin-top: 8px; font-size: 11px; font-style: italic;&quot;&gt;
+                &quot;我们的IGBT已在比亚迪集团装车超过500万辆，可靠性经过充分验证。性能上与英飞凌差距&lt;3%，但价格低20%，交期快4周。&quot;
+            &lt;/div&gt;
+        &lt;/div&gt;
+
+        &lt;div style=&quot;background: #e8f5e9; border-left: 4px solid #4caf50; padding: 15px; border-radius: 4px;&quot;&gt;
+            &lt;h4 style=&quot;color: #4caf50; margin: 0 0 10px 0;&quot;&gt;VS 本土友商（斯达/时代电气）&lt;/h4&gt;
+            &lt;p style=&quot;font-size: 12px; margin: 5px 0;&quot;&gt;&lt;strong&gt;核心话术方向：&lt;/strong&gt;&lt;/p&gt;
+            &lt;ul style=&quot;font-size: 12px; line-height: 1.6; margin: 5px 0;&quot;&gt;
+                &lt;li&gt;系统级经验 + 车规可靠性&lt;/li&gt;
+                &lt;li&gt;比亚迪集团背书（全球最大新能源车企）&lt;/li&gt;
+                &lt;li&gt;海量装车案例（500万辆+）&lt;/li&gt;
+                &lt;li&gt;规模优势带来的成本竞争力&lt;/li&gt;
+            &lt;/ul&gt;
+            &lt;div style=&quot;background: white; padding: 8px; border-radius: 4px; margin-top: 8px; font-size: 11px; font-style: italic;&quot;&gt;
+                &quot;比亚迪集团每年IGBT用量超过100万套，这个规模效应是其他本土品牌无法比拟的。我们的成本优势可以转化为价格优势给到您。&quot;
+            &lt;/div&gt;
+        &lt;/div&gt;
+    &lt;/div&gt;
+
+    &lt;div class=&quot;insight-box&quot; style=&quot;margin-top: 20px;&quot;&gt;
+        &lt;strong&gt;💡 IGBT销售实战要点：&lt;/strong&gt;&lt;br/&gt;
+        &lt;strong&gt;1. 市场定位清晰：&lt;/strong&gt;中低端车型（&lt;25万元）+ 混动市场（高增长） + 辅助系统（切入点）&lt;br/&gt;
+        &lt;strong&gt;2. 客户优先级：&lt;/strong&gt;进攻型（长城吉利）&gt;机会型（零跑哪吒）&gt;战略级（比亚迪内部）&gt;防御型（蔚小理-战略性放弃）&lt;br/&gt;
+        &lt;strong&gt;3. 竞争策略：&lt;/strong&gt;vs国际大厂打性价比+供应安全，vs本土友商打规模+验证&lt;br/&gt;
+        &lt;strong&gt;4. 核心优势：&lt;/strong&gt;500万辆装车验证 + 价格低15-20% + 交期快4周 + 比亚迪背书&lt;br/&gt;
+        &lt;strong&gt;5. 增长点：&lt;/strong&gt;混动市场（CAGR 25%）是IGBT的第二春，重点攻坚
+    &lt;/div&gt;
+&lt;/div&gt;
+
+&lt;/body&gt;
+&lt;/html&gt;
+"
+                        frameborder="0"
+                        scrolling="no"
+                        width="100%"
+                        onload="resizeIframe(this)">
+                    </iframe>
+
+    <script>
+        function resizeIframe(iframe) {
+            try {
+                iframe.style.height = '150px';
+                const contentHeight = iframe.contentWindow.document.body.scrollHeight;
+                iframe.style.height = contentHeight + 'px';
+            } catch (e) {
+                console.error("无法调整iframe大小:", e);
+                iframe.style.height = '500px';
+                iframe.scrolling = 'yes';
+            }
+        }
+        
+        window.addEventListener('load', () => {
+            document.querySelectorAll('.merged-iframe').forEach(resizeIframe);
+        });
+    </script>
+</body>
+</html>

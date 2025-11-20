@@ -1,0 +1,331 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>比亚迪半导体销售情报支持手册 - 导航页</title>
+  <link rel="stylesheet" href="byd-theme.css">
+  <style>
+    /* 导航页专用样式 */
+    .hero {
+      background: linear-gradient(135deg, var(--byd-red) 0%, var(--byd-red-dark) 100%);
+      color: white;
+      padding: var(--space-xl) var(--space-lg);
+      border-radius: 12px;
+      margin-bottom: var(--space-xl);
+      text-align: center;
+      box-shadow: var(--shadow-lg);
+    }
+
+    .hero h1 {
+      font-size: 2.8rem;
+      margin-bottom: var(--space-sm);
+      font-weight: 700;
+      text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+    }
+
+    .hero p {
+      font-size: 1.2rem;
+      opacity: 0.95;
+      max-width: 800px;
+      margin: 0 auto;
+    }
+
+    .nav-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: var(--space-md);
+      margin-bottom: var(--space-xl);
+    }
+
+    .nav-card {
+      background: var(--bg-white);
+      border-radius: 12px;
+      padding: var(--space-lg);
+      box-shadow: var(--shadow-sm);
+      border-top: 4px solid var(--byd-red);
+      transition: all 0.3s ease;
+      text-decoration: none;
+      color: inherit;
+      display: block;
+    }
+
+    .nav-card:hover {
+      transform: translateY(-5px);
+      box-shadow: var(--shadow-lg);
+      border-top-color: var(--byd-red-dark);
+    }
+
+    .nav-card-number {
+      display: inline-block;
+      width: 48px;
+      height: 48px;
+      background: var(--byd-red);
+      color: white;
+      border-radius: 50%;
+      text-align: center;
+      line-height: 48px;
+      font-size: 1.5rem;
+      font-weight: 700;
+      margin-bottom: var(--space-sm);
+    }
+
+    .nav-card-title {
+      font-size: 1.4rem;
+      font-weight: 600;
+      color: var(--primary-black);
+      margin-bottom: var(--space-xs);
+    }
+
+    .nav-card-desc {
+      color: var(--text-secondary);
+      font-size: 0.95rem;
+      line-height: 1.6;
+    }
+
+    .nav-card-meta {
+      display: flex;
+      justify-content: space-between;
+      margin-top: var(--space-sm);
+      padding-top: var(--space-sm);
+      border-top: 1px solid var(--bg-gray);
+      font-size: 0.85rem;
+      color: var(--text-light);
+    }
+
+    .section-divider {
+      display: flex;
+      align-items: center;
+      margin: var(--space-xl) 0 var(--space-lg) 0;
+    }
+
+    .section-divider::before,
+    .section-divider::after {
+      content: '';
+      flex: 1;
+      height: 2px;
+      background: var(--bg-gray);
+    }
+
+    .section-divider h2 {
+      padding: 0 var(--space-md);
+      color: var(--byd-red);
+      font-size: 1.5rem;
+      font-weight: 600;
+    }
+
+    .footer {
+      text-align: center;
+      padding: var(--space-lg);
+      color: var(--text-secondary);
+      border-top: 2px solid var(--bg-gray);
+      margin-top: var(--space-xl);
+    }
+
+    .stats-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: var(--space-md);
+      margin: var(--space-lg) 0;
+    }
+
+    @media (max-width: 768px) {
+      .stats-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+
+      .nav-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .hero h1 {
+        font-size: 2rem;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="ppt-container">
+    <!-- 顶部标题区 -->
+    <div class="hero">
+      <h1>📘 比亚迪半导体销售情报支持手册</h1>
+      <p>系统化的市场情报 · 竞争分析 · 实战工具 | 第一批内容：产品线情报库</p>
+    </div>
+
+    <!-- 统计卡片 -->
+    <div class="stats-grid">
+      <div class="metric-card">
+        <span class="metric-value">6</span>
+        <span class="metric-label">页面总数</span>
+      </div>
+      <div class="metric-card">
+        <span class="metric-value">5</span>
+        <span class="metric-label">核心产品</span>
+      </div>
+      <div class="metric-card">
+        <span class="metric-value">4C</span>
+        <span class="metric-label">分析框架</span>
+      </div>
+      <div class="metric-card">
+        <span class="metric-value">100%</span>
+        <span class="metric-label">数据驱动</span>
+      </div>
+    </div>
+
+    <!-- 手册概览 -->
+    <div class="section-divider">
+      <h2>📋 手册概览</h2>
+    </div>
+
+    <div class="nav-grid">
+      <a href="00_overview-intro.html" class="nav-card">
+        <div class="nav-card-number">0</div>
+        <div class="nav-card-title">手册引言与框架</div>
+        <div class="nav-card-desc">
+          手册使用说明、4C情报框架、金字塔原理结构、目录导航
+        </div>
+        <div class="nav-card-meta">
+          <span>📄 基础框架</span>
+          <span>⏱️ 5分钟阅读</span>
+        </div>
+      </a>
+    </div>
+
+    <!-- 产品线情报库 -->
+    <div class="section-divider">
+      <h2>🎯 第一部分：产品线情报库</h2>
+    </div>
+
+    <div class="nav-grid">
+      <a href="01_product-sic.html" class="nav-card">
+        <div class="nav-card-number">1</div>
+        <div class="nav-card-title">碳化硅（SiC）功率器件</div>
+        <div class="nav-card-desc">
+          全球车规SiC市场160亿元 | 年增35% | 800V平台核心器件 | 高端车型标配
+        </div>
+        <div class="nav-card-meta">
+          <span>💰 高价值市场</span>
+          <span>⏱️ 15分钟阅读</span>
+        </div>
+      </a>
+
+      <a href="02_product-igbt.html" class="nav-card">
+        <div class="nav-card-number">2</div>
+        <div class="nav-card-title">IGBT（绝缘栅双极型晶体管）</div>
+        <div class="nav-card-desc">
+          中国车规IGBT市场160亿元 | 400V平台主力 | 中低端市场核心 | 成熟技术路线
+        </div>
+        <div class="nav-card-meta">
+          <span>📊 稳定增长</span>
+          <span>⏱️ 18分钟阅读</span>
+        </div>
+      </a>
+
+      <a href="03_product-camera.html" class="nav-card">
+        <div class="nav-card-number">3</div>
+        <div class="nav-card-title">摄像头模组</div>
+        <div class="nav-card-desc">
+          全球车载摄像头400亿元 | 智能驾驶核心传感器 | 单车8-11颗 | 高清化趋势
+        </div>
+        <div class="nav-card-meta">
+          <span>📸 智能驾驶</span>
+          <span>⏱️ 12分钟阅读</span>
+        </div>
+      </a>
+
+      <a href="04_product-led.html" class="nav-card">
+        <div class="nav-card-number">4</div>
+        <div class="nav-card-title">车规级LED</div>
+        <div class="nav-card-desc">
+          全球车用LED照明280亿元 | 智能大灯渗透率提升 | 矩阵式LED | ADB自适应照明
+        </div>
+        <div class="nav-card-meta">
+          <span>💡 照明升级</span>
+          <span>⏱️ 14分钟阅读</span>
+        </div>
+      </a>
+
+      <a href="05_product-current-sensor.html" class="nav-card">
+        <div class="nav-card-number">5</div>
+        <div class="nav-card-title">电流传感器</div>
+        <div class="nav-card-desc">
+          车规电流传感器市场快速增长 | 电池管理核心器件 | 三电系统必备 | 高精度需求
+        </div>
+        <div class="nav-card-meta">
+          <span>🔋 电池安全</span>
+          <span>⏱️ 10分钟阅读</span>
+        </div>
+      </a>
+    </div>
+
+    <!-- 使用指南 -->
+    <div class="page" style="margin-top: var(--space-xl);">
+      <h2 class="section-title">📖 使用指南</h2>
+
+      <div class="grid-2" style="margin-top: var(--space-md);">
+        <div class="highlight-box info">
+          <strong>💡 查看建议</strong>
+          <ul class="bullet-list" style="margin-top: var(--space-sm);">
+            <li>先阅读"手册引言与框架"了解4C分析方法</li>
+            <li>根据需要选择具体产品页面深入学习</li>
+            <li>每个产品页面包含完整的市场情报和竞争分析</li>
+            <li>建议配合原始markdown文件进行深度研究</li>
+          </ul>
+        </div>
+
+        <div class="highlight-box warning">
+          <strong>⚠️ 注意事项</strong>
+          <ul class="bullet-list" style="margin-top: var(--space-sm);">
+            <li>部分Mermaid图表需要在线加载CDN资源</li>
+            <li>建议使用现代浏览器（Chrome/Edge/Firefox）查看</li>
+            <li>表格数据来源于2024年市场调研</li>
+            <li>本批次仅包含产品1-5，产品6及其他部分待后续转换</li>
+          </ul>
+        </div>
+      </div>
+
+      <h3 class="subsection-title" style="margin-top: var(--space-lg);">后续批次计划</h3>
+      <table class="data-table">
+        <thead>
+          <tr>
+            <th>批次</th>
+            <th>内容</th>
+            <th>状态</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><strong>第一批</strong></td>
+            <td>手册概览 + 产品1-5（SiC/IGBT/摄像头/LED/电流传感器）</td>
+            <td><span class="badge success">✅ 已完成</span></td>
+          </tr>
+          <tr>
+            <td><strong>第二批</strong></td>
+            <td>产品6（MCU微控制单元）</td>
+            <td><span class="badge warning">⏳ 待转换</span></td>
+          </tr>
+          <tr>
+            <td><strong>第三批</strong></td>
+            <td>销售场景剧本（8个典型场景）</td>
+            <td><span class="badge warning">⏳ 待转换</span></td>
+          </tr>
+          <tr>
+            <td><strong>第四批</strong></td>
+            <td>快速响应机制 + 情报工具箱</td>
+            <td><span class="badge warning">⏳ 待转换</span></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <!-- 页脚 -->
+    <div class="footer">
+      <p><strong>比亚迪半导体销售情报支持手册</strong></p>
+      <p>生成时间：2025-11-20 | 版本：v1.0 | 第一批内容</p>
+      <p style="margin-top: var(--space-sm); font-size: 0.85rem;">
+        基于4C竞争分析框架（Context/Customer/Competitor/Company）构建
+      </p>
+    </div>
+  </div>
+</body>
+</html>

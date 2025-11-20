@@ -1,0 +1,403 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <title>比亚迪半导体销售手册 - 产品5-6: 传感器与控制器件</title>
+    <style>
+        :root {
+            --color-primary-red: #e60012;
+            --color-primary-red-dark: #c50010;
+            --text-color-on-dark: #ffffff;
+            --bg-page: #ffffff;
+            --bg-table-stripe: #f2f2f2;
+            --border-color-table: #ddd;
+            --shadow-page: rgba(0, 0, 0, 0.1);
+        }
+
+        body {
+            font-family: "Microsoft YaHei", "SimHei", sans-serif;
+            background-color: #f0f0f0;
+            margin: 0;
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 20px;
+        }
+
+        .page {
+            width: 297mm;
+            min-height: 210mm;
+            background-color: var(--bg-page);
+            position: relative;
+            box-shadow: 0 0 10px var(--shadow-page);
+            padding: 40px;
+            box-sizing: border-box;
+        }
+
+        .page-title {
+            font-size: 26px;
+            font-weight: bold;
+            color: var(--text-color-on-dark);
+            background: linear-gradient(45deg, var(--color-primary-red), var(--color-primary-red-dark));
+            padding: 15px 30px;
+            margin: -40px -40px 30px -40px;
+            clip-path: polygon(0 0, calc(100% - 30px) 0, 100% 100%, 0 100%);
+        }
+
+        .section-title {
+            font-size: 18px;
+            font-weight: bold;
+            color: var(--color-primary-red);
+            margin: 20px 0 12px 0;
+            border-left: 4px solid var(--color-primary-red);
+            padding-left: 12px;
+        }
+
+        .data-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-bottom: 18px;
+        }
+        .data-table th {
+            background-color: var(--color-primary-red);
+            color: white;
+            font-weight: normal;
+            font-size: 13px;
+            padding: 9px;
+            border: 1px solid var(--border-color-table);
+        }
+        .data-table td {
+            padding: 7px 9px;
+            text-align: left;
+            font-size: 12.5px;
+            border: 1px solid var(--border-color-table);
+            color: #333;
+        }
+        .data-table tr:nth-child(even) { background-color: var(--bg-table-stripe); }
+
+        .metric-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 15px;
+            margin: 20px 0;
+        }
+
+        .metric-card {
+            background: linear-gradient(135deg, #fff5f5 0%, #ffffff 100%);
+            border: 2px solid var(--color-primary-red);
+            border-radius: 8px;
+            padding: 15px;
+            text-align: center;
+        }
+
+        .metric-value {
+            font-size: 28px;
+            font-weight: bold;
+            color: var(--color-primary-red);
+            margin: 8px 0;
+        }
+
+        .metric-label {
+            font-size: 12px;
+            color: #666;
+            margin-top: 5px;
+        }
+
+        .insight-box {
+            background-color: #fff8e1;
+            border-left: 4px solid #ffc107;
+            padding: 15px;
+            margin: 15px 0;
+            font-size: 13.5px;
+            line-height: 1.6;
+        }
+
+        .product-split {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+            margin: 20px 0;
+        }
+    </style>
+</head>
+<body>
+
+<!-- 页面1: 产品5 电流传感器 -->
+<div class="page">
+    <div class="page-title">产品5：电流传感器 - 电控系统的"血压计"</div>
+
+    <div class="section-title">📊 市场规模与定位</div>
+    <div class="metric-grid">
+        <div class="metric-card">
+            <div class="metric-label">2024年全球市场规模</div>
+            <div class="metric-value">$2.8B</div>
+            <div class="metric-label">约¥203亿，中国占42%</div>
+        </div>
+        <div class="metric-card">
+            <div class="metric-label">2027年预测规模</div>
+            <div class="metric-value">$4.5B</div>
+            <div class="metric-label">年复合增长率 17.2%</div>
+        </div>
+        <div class="metric-card">
+            <div class="metric-label">核心驱动</div>
+            <div class="metric-value" style="font-size: 20px;">800V平台</div>
+            <div class="metric-label">精细化管理需求</div>
+        </div>
+    </div>
+
+    <div style="background: linear-gradient(135deg, #ffebee 0%, #ffffff 100%); border: 3px solid var(--color-primary-red); border-radius: 10px; padding: 18px; text-align: center; margin: 20px 0;">
+        <p style="font-size: 17px; color: var(--color-primary-red); font-weight: bold; margin: 0; line-height: 1.6;">
+            "精度-成本-安全的平衡艺术"<br/>
+            <span style="font-size: 14px; color: #666;">BMS要高精度（±0.5%），主驱要高响应（<1ms），OBC要低成本</span>
+        </p>
+    </div>
+
+    <div class="section-title">🎯 应用场景与技术路线（按功能域分类）</div>
+    <table class="data-table">
+        <thead>
+            <tr>
+                <th width="18%">应用位置</th>
+                <th width="22%">核心诉求</th>
+                <th width="22%">技术路线</th>
+                <th width="18%">单车用量</th>
+                <th width="20%">单车价值</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr style="background: #fff3e0;">
+                <td><strong>BMS电池管理</strong><br/>(Pack级)</td>
+                <td>高精度（±0.5%）<br/>SOC估算准确</td>
+                <td><strong>霍尔效应</strong>（70%）<br/>磁阻AMR/GMR（5%）</td>
+                <td>2-8个<br/>(800V需求↑)</td>
+                <td style="font-weight: bold; color: var(--color-primary-red);">¥300-1,500</td>
+            </tr>
+            <tr style="background: #e3f2fd;">
+                <td><strong>主驱电机</strong><br/>(三相电流)</td>
+                <td>高响应（<1ms）<br/>大电流±1000A<br/>保护性能</td>
+                <td><strong>霍尔开环</strong>（主流）<br/>分流器（低成本）</td>
+                <td>3个<br/>(U/V/W三相)</td>
+                <td style="font-weight: bold; color: #2196f3;">¥450-900</td>
+            </tr>
+            <tr>
+                <td><strong>OBC/DCDC</strong><br/>(辅助系统)</td>
+                <td>成本控制<br/>体积小<br/>集成度高</td>
+                <td><strong>分流器</strong>（主流）<br/>霍尔（高端）</td>
+                <td>3-5个<br/>(输入+输出)</td>
+                <td>¥200-500</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <div class="insight-box">
+        <strong>💡 市场洞察：</strong>800V平台普及带来需求提升。单车从3-5个→8-12个（增加BMS分支监测），价值量翻倍。精细化电池管理（延长寿命、提升安全）成为刚需。
+    </div>
+
+    <div class="section-title">🔑 技术路线对比与选型策略</div>
+    <div class="product-split">
+        <div style="background: #e3f2fd; border: 2px solid #2196f3; border-radius: 8px; padding: 15px;">
+            <h4 style="color: #2196f3; margin: 0 0 10px 0;">霍尔效应式（主流，占比70%）</h4>
+            <table style="width: 100%; font-size: 12px;">
+                <tr><td style="padding: 4px 0;"><strong>优点：</strong></td><td>非接触测量、精度高（±0.5%）、响应快</td></tr>
+                <tr><td style="padding: 4px 0;"><strong>缺点：</strong></td><td>成本高、温漂大（需补偿）</td></tr>
+                <tr><td style="padding: 4px 0;"><strong>应用：</strong></td><td>BMS主传感器、主驱三相电流</td></tr>
+                <tr><td style="padding: 4px 0;"><strong>价格：</strong></td><td>¥150-300/个（Pack级）</td></tr>
+            </table>
+        </div>
+        <div style="background: #fff3e0; border: 2px solid #ff9800; border-radius: 8px; padding: 15px;">
+            <h4 style="color: #ff9800; margin: 0 0 10px 0;">分流器式（低成本，占比25%）</h4>
+            <table style="width: 100%; font-size: 12px;">
+                <tr><td style="padding: 4px 0;"><strong>优点：</strong></td><td>成本低（1/3）、温度稳定性好</td></tr>
+                <tr><td style="padding: 4px 0;"><strong>缺点：</strong></td><td>接触测量、功耗大、精度一般（±1%）</td></tr>
+                <tr><td style="padding: 4px 0;"><strong>应用：</strong></td><td>OBC/DCDC、BMS分支</td></tr>
+                <tr><td style="padding: 4px 0;"><strong>价格：</strong></td><td>¥50-100/个</td></tr>
+            </table>
+        </div>
+    </div>
+
+    <div class="section-title">📋 销售策略与关键决策点</div>
+    <div style="display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 15px;">
+        <div style="background: #e8f5e9; border-left: 4px solid #4caf50; padding: 12px; border-radius: 4px;">
+            <h4 style="color: #4caf50; font-size: 13px; margin: 0 0 8px 0;">应用分层策略</h4>
+            <p style="font-size: 11.5px; line-height: 1.6; margin: 0;">
+            BMS（霍尔，高精度）→主驱（霍尔，高响应）→OBC（分流器，低成本）。不同应用场景，技术路线不同。
+            </p>
+        </div>
+        <div style="background: #e3f2fd; border-left: 4px solid #2196f3; padding: 12px; border-radius: 4px;">
+            <h4 style="color: #2196f3; font-size: 13px; margin: 0 0 8px 0;">800V平台机会</h4>
+            <p style="font-size: 11.5px; line-height: 1.6; margin: 0;">
+            800V平台对电流传感器要求更高（大电流±1000A、高压隔离），单车用量增加，ASP提升20-30%。
+            </p>
+        </div>
+        <div style="background: #fff3e0; border-left: 4px solid #ff9800; padding: 12px; border-radius: 4px;">
+            <h4 style="color: #ff9800; font-size: 13px; margin: 0 0 8px 0;">产业链位置</h4>
+            <p style="font-size: 11.5px; line-height: 1.6; margin: 0;">
+            传感器嵌入BMS/电机控制器，需与Tier1（宁德时代、方正电机）合作，提供整套解决方案。
+            </p>
+        </div>
+    </div>
+
+    <div class="insight-box" style="margin-top: 15px;">
+        <strong>💡 销售实战要点：</strong><br/>
+        <strong>1. 技术路线选择：</strong>BMS用霍尔（精度±0.5%），OBC用分流器（成本1/3）<br/>
+        <strong>2. 800V红利：</strong>单车从3-5个→8-12个，价值量¥600→¥1,500（翻倍）<br/>
+        <strong>3. 精度是门槛：</strong>BMS传感器精度直接影响SOC估算，±0.5%是行业标准<br/>
+        <strong>4. 切入策略：</strong>从OBC/DCDC（低成本分流器）切入→BMS分支→BMS主传感器
+    </div>
+</div>
+
+<!-- 页面2: 产品6 MCU -->
+<div class="page">
+    <div class="page-title">产品6：MCU（微控制单元）- 感知、决策、执行的控制核心</div>
+
+    <div class="section-title">📊 产品定位与核心优势</div>
+
+    <div style="background: linear-gradient(135deg, #ffebee 0%, #ffffff 100%); border: 3px solid var(--color-primary-red); border-radius: 10px; padding: 20px; margin: 20px 0;">
+        <h3 style="color: var(--color-primary-red); margin: 0 0 15px 0; font-size: 18px;">💎 四大核心优势</h3>
+        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 15px;">
+            <div style="background: white; padding: 12px; border-radius: 6px; border: 2px solid var(--color-primary-red);">
+                <div style="font-size: 24px; margin-bottom: 8px;">🔧</div>
+                <strong style="color: var(--color-primary-red); font-size: 13px;">500万台实车验证</strong>
+                <p style="font-size: 11.5px; margin: 6px 0 0 0; line-height: 1.5;">
+                2020-2024累计装车500万+台<br/>
+                覆盖汉/唐/海豹/元Plus全系<br/>
+                PPM<5（行业领先）
+                </p>
+            </div>
+            <div style="background: white; padding: 12px; border-radius: 6px; border: 2px solid var(--color-primary-red);">
+                <div style="font-size: 24px; margin-bottom: 8px;">✅</div>
+                <strong style="color: var(--color-primary-red); font-size: 13px;">车规级全认证</strong>
+                <p style="font-size: 11.5px; margin: 6px 0 0 0; line-height: 1.5;">
+                AEC-Q100、ISO 26262 ASIL-B/C<br/>
+                IATF 16949、EMC Class 5<br/>
+                -40℃~150℃工作温度
+                </p>
+            </div>
+            <div style="background: white; padding: 12px; border-radius: 6px; border: 2px solid var(--color-primary-red);">
+                <div style="font-size: 24px; margin-bottom: 8px;">⚡</div>
+                <strong style="color: var(--color-primary-red); font-size: 13px;">技术领先</strong>
+                <p style="font-size: 11.5px; margin: 6px 0 0 0; line-height: 1.5;">
+                低功耗：休眠<10μA（同类50μA+）<br/>
+                高EMC：抗干扰>200V/m<br/>
+                快速启动：冷启动<50ms
+                </p>
+            </div>
+            <div style="background: white; padding: 12px; border-radius: 6px; border: 2px solid var(--color-primary-red);">
+                <div style="font-size: 24px; margin-bottom: 8px;">💰</div>
+                <strong style="color: var(--color-primary-red); font-size: 13px;">成本优势</strong>
+                <p style="font-size: 11.5px; margin: 6px 0 0 0; line-height: 1.5;">
+                vs瑞萨：低25-35%<br/>
+                vs NXP：低20-30%<br/>
+                vs英飞凌：低15-25%
+                </p>
+            </div>
+        </div>
+    </div>
+
+    <div class="section-title">🎯 产品系列矩阵</div>
+    <table class="data-table">
+        <thead>
+            <tr>
+                <th width="15%">系列</th>
+                <th width="18%">内核/主频</th>
+                <th width="27%">典型应用场景</th>
+                <th width="20%">竞品对标</th>
+                <th width="20%">价格优势</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td><strong>8位通用</strong></td>
+                <td>8051<br/>16-48MHz</td>
+                <td>简单车身控制（灯光、车窗、雨刷）</td>
+                <td>瑞萨RL78</td>
+                <td style="color: #4caf50; font-weight: bold;">低30-40%</td>
+            </tr>
+            <tr style="background: #fff8e1;">
+                <td><strong>32位车规M3</strong></td>
+                <td>ARM M3<br/>80-120MHz</td>
+                <td><strong>BCM车身、BMS从站</strong></td>
+                <td>瑞萨RH850</td>
+                <td style="color: #4caf50; font-weight: bold;">低25-35%</td>
+            </tr>
+            <tr style="background: #e3f2fd;">
+                <td><strong>32位车规M4</strong></td>
+                <td>ARM M4F<br/>120-200MHz</td>
+                <td><strong>电机控制、域控</strong></td>
+                <td>NXP S32K</td>
+                <td style="color: #4caf50; font-weight: bold;">低20-30%</td>
+            </tr>
+            <tr>
+                <td><strong>高性能M7</strong></td>
+                <td>ARM M7<br/>300MHz+</td>
+                <td>ADAS辅助、智能座舱</td>
+                <td>英飞凌TC3xx</td>
+                <td style="color: #4caf50; font-weight: bold;">低15-25%</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <div class="insight-box">
+        <strong>💡 架构演进影响：</strong>分布式ECU→域控制器→中央计算。<strong>域控架构</strong>导致MCU需求结构性变化：<strong>高性能MCU（M4/M7）需求↑</strong>（域控需要），<strong>低端MCU（8位）需求↓</strong>（功能整合）。单车MCU数量从80-120个→20-40个（域控时代）。
+    </div>
+
+    <div class="section-title">🎯 应用场景与替代策略</div>
+    <div class="product-split">
+        <div style="background: #e8f5e9; border: 2px solid #4caf50; border-radius: 8px; padding: 15px;">
+            <h4 style="color: #4caf50; margin: 0 0 10px 0;">✅ 易替代场景（优先攻坚）</h4>
+            <table style="width: 100%; font-size: 12px;">
+                <tr style="background: #f5f5f5;"><td style="padding: 6px; font-weight: bold;" colspan="2">非安全关键节点（ASIL-A/QM）</td></tr>
+                <tr><td style="padding: 4px 8px; width: 35%;">车窗控制</td><td style="padding: 4px 8px;">技术门槛低，价格敏感</td></tr>
+                <tr><td style="padding: 4px 8px;">座椅调节</td><td style="padding: 4px 8px;">标准化程度高</td></tr>
+                <tr><td style="padding: 4px 8px;">灯光控制</td><td style="padding: 4px 8px;">BCM外围节点</td></tr>
+                <tr><td style="padding: 4px 8px;">雨刷控制</td><td style="padding: 4px 8px;">简单逻辑，8位MCU即可</td></tr>
+                <tr style="background: #e8f5e9;"><td style="padding: 6px; font-weight: bold;" colspan="2">替代策略：价格优势（低30%）+快速送样</td></tr>
+            </table>
+        </div>
+        <div style="background: #ffebee; border: 2px solid #f44336; border-radius: 8px; padding: 15px;">
+            <h4 style="color: #f44336; margin: 0 0 10px 0;">❌ 难替代场景（战略性放弃）</h4>
+            <table style="width: 100%; font-size: 12px;">
+                <tr style="background: #f5f5f5;"><td style="padding: 6px; font-weight: bold;" colspan="2">安全关键节点（ASIL-C/D）</td></tr>
+                <tr><td style="padding: 4px 8px; width: 35%;">ABS/ESC</td><td style="padding: 4px 8px;">博世/大陆垄断</td></tr>
+                <tr><td style="padding: 4px 8px;">EPS转向</td><td style="padding: 4px 8px;">功能安全要求高</td></tr>
+                <tr><td style="padding: 4px 8px;">ADAS主控</td><td style="padding: 4px; 8px;">生态依赖重（AUTOSAR）</td></tr>
+                <tr><td style="padding: 4px 8px;">气囊控制</td><td style="padding: 4px 8px;">认证周期长（3-5年）</td></tr>
+                <tr style="background: #ffebee;"><td style="padding: 6px; font-weight: bold;" colspan="2;">壁垒：历史代码迁移成本高+客户保守</td></tr>
+            </table>
+        </div>
+    </div>
+
+    <div class="section-title">📋 销售策略与竞争打法</div>
+    <div style="display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 15px;">
+        <div style="background: #e3f2fd; border-left: 4px solid #2196f3; padding: 12px; border-radius: 4px;">
+            <h4 style="color: #2196f3; font-size: 13px; margin: 0 0 8px 0;">从外围切入</h4>
+            <p style="font-size: 11.5px; line-height: 1.6; margin: 0;">
+            车窗/座椅/灯光（ASIL-A/QM）→BMS从站/热管理（ASIL-B）→域控边缘节点（ASIL-C）。逐步渗透。
+            </p>
+        </div>
+        <div style="background: #fff3e0; border-left: 4px solid #ff9800; padding: 12px; border-radius: 4px;">
+            <h4 style="color: #ff9800; font-size: 13px; margin: 0 0 8px 0;">比亚迪背书</h4>
+            <p style="font-size: 11.5px; line-height: 1.6; margin: 0;">
+            "500万台实车验证"是最强背书。覆盖10-30万价位全系车型，可靠性数据充分。
+            </p>
+        </div>
+        <div style="background: #e8f5e9; border-left: 4px solid #4caf50; padding: 12px; border-radius: 4px;">
+            <h4 style="color: #4caf50; font-size: 13px; margin: 0 0 8px 0;">新势力友好</h4>
+            <p style="font-size: 11.5px; line-height: 1.6; margin: 0;">
+            新势力（零跑/哪吒）技术包袱小，更愿意尝试国产MCU。价格敏感度高，是突破口。
+            </p>
+        </div>
+    </div>
+
+    <div class="insight-box" style="margin-top: 15px;">
+        <strong>💡 销售实战要点：</strong><br/>
+        <strong>1. 从外围突破：</strong>非安全关键节点（车窗/座椅）→安全关键节点（BMS/EPS），逐步渗透<br/>
+        <strong>2. 500万台验证：</strong>比亚迪集团背书是最强武器，PPM<5行业领先<br/>
+        <strong>3. 价格优势明显：</strong>vs瑞萨低25-35%，vs NXP低20-30%，成本驱动客户首选<br/>
+        <strong>4. 架构演进机会：</strong>域控时代，高性能MCU（M4/M7）需求↑，是切入高端市场的窗口<br/>
+        <strong>5. 目标客户：</strong>新势力（零跑/哪吒）>自主品牌（长城/吉利）>传统车企（一汽/东风-战略性放弃）
+    </div>
+</div>
+
+</body>
+</html>

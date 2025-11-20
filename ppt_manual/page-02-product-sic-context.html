@@ -1,0 +1,372 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <title>比亚迪半导体销售手册 - 产品1: SiC功率器件 (C1 Context)</title>
+    <style>
+        :root {
+            --color-primary-red: #e60012;
+            --color-primary-red-dark: #c50010;
+            --text-color-on-dark: #ffffff;
+            --text-color-body: #000000;
+            --text-color-light: #666666;
+            --text-color-highlight-green: #008000;
+            --bg-page: #ffffff;
+            --bg-table-stripe: #f2f2f2;
+            --border-color-table: #ddd;
+            --shadow-page: rgba(0, 0, 0, 0.1);
+            --color-c1-blue: #0066cc;
+        }
+
+        body {
+            font-family: "Microsoft YaHei", "SimHei", sans-serif;
+            background-color: #f0f0f0;
+            margin: 0;
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 20px;
+        }
+
+        .page {
+            width: 297mm;
+            min-height: 210mm;
+            background-color: var(--bg-page);
+            position: relative;
+            box-shadow: 0 0 10px var(--shadow-page);
+            padding: 40px;
+            box-sizing: border-box;
+        }
+
+        .page-title {
+            font-size: 26px;
+            font-weight: bold;
+            color: var(--text-color-on-dark);
+            background: linear-gradient(45deg, var(--color-primary-red), var(--color-primary-red-dark));
+            padding: 15px 30px;
+            margin: -40px -40px 30px -40px;
+            clip-path: polygon(0 0, calc(100% - 30px) 0, 100% 100%, 0 100%);
+            display: flex;
+            align-items: center;
+        }
+
+        .section-title {
+            font-size: 18px;
+            font-weight: bold;
+            color: var(--color-primary-red);
+            margin: 20px 0 12px 0;
+            border-left: 4px solid var(--color-primary-red);
+            padding-left: 12px;
+        }
+
+        .c1-tag {
+            display: inline-block;
+            background-color: var(--color-c1-blue);
+            color: white;
+            padding: 4px 12px;
+            border-radius: 4px;
+            font-size: 14px;
+            font-weight: bold;
+            margin-right: 10px;
+        }
+
+        .data-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-bottom: 18px;
+        }
+        .data-table th {
+            background-color: var(--color-primary-red);
+            color: var(--text-color-on-dark);
+            font-weight: normal;
+            font-size: 13px;
+            padding: 9px;
+            border: 1px solid var(--border-color-table);
+        }
+        .data-table td {
+            padding: 7px 9px;
+            text-align: left;
+            font-size: 12.5px;
+            border: 1px solid var(--border-color-table);
+            color: #333;
+        }
+        .data-table tr:nth-child(even) { background-color: var(--bg-table-stripe); }
+
+        .metric-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 15px;
+            margin: 20px 0;
+        }
+
+        .metric-card {
+            background: linear-gradient(135deg, #fff5f5 0%, #ffffff 100%);
+            border: 2px solid var(--color-primary-red);
+            border-radius: 8px;
+            padding: 18px;
+            text-align: center;
+        }
+
+        .metric-value {
+            font-size: 32px;
+            font-weight: bold;
+            color: var(--color-primary-red);
+            margin: 8px 0;
+        }
+
+        .metric-label {
+            font-size: 13px;
+            color: #666;
+            margin-top: 5px;
+        }
+
+        .insight-box {
+            background-color: #fff8e1;
+            border-left: 4px solid #ffc107;
+            padding: 15px;
+            margin: 15px 0;
+            font-size: 13.5px;
+            line-height: 1.6;
+        }
+
+        .trend-box {
+            background: linear-gradient(135deg, #e3f2fd 0%, #ffffff 100%);
+            border: 1px solid #2196f3;
+            border-radius: 6px;
+            padding: 15px;
+            margin: 15px 0;
+        }
+    </style>
+</head>
+<body>
+
+<!-- 页面1: SiC产品概览与市场环境 (C1 Context) -->
+<div class="page">
+    <div class="page-title">产品1：碳化硅(SiC)功率器件 - <span class="c1-tag">C1 Context 市场环境</span></div>
+
+    <div class="section-title">📊 市场规模与增速</div>
+
+    <div class="metric-grid">
+        <div class="metric-card">
+            <div class="metric-label">2024年全球市场规模</div>
+            <div class="metric-value">$2.3B</div>
+            <div class="metric-label">约160亿人民币</div>
+        </div>
+        <div class="metric-card">
+            <div class="metric-label">2027年预测规模</div>
+            <div class="metric-value">$5.8B</div>
+            <div class="metric-label">年复合增长率 35%</div>
+        </div>
+        <div class="metric-card">
+            <div class="metric-label">中国市场占比</div>
+            <div class="metric-value">40%</div>
+            <div class="metric-label">约64亿人民币（2024）</div>
+        </div>
+    </div>
+
+    <div class="insight-box">
+        <strong>💡 销售洞察：</strong>SiC是增速最快的功率器件赛道，窗口期2024-2026年。需要在这3年内快速抢占市场份额。这是一个高增长、高竞争的"兵家必争之地"。
+    </div>
+
+    <div class="section-title">📈 技术演进路线图（未来3年趋势）</div>
+    <table class="data-table">
+        <thead>
+            <tr>
+                <th width="18%">时间节点</th>
+                <th width="35%">技术趋势</th>
+                <th width="27%">对销售的影响</th>
+                <th width="20%">销售策略</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td><strong>2024-2025</strong></td>
+                <td>800V平台渗透率：15%→30%</td>
+                <td>SiC成为高端车标配<br/>需求爆发期</td>
+                <td>重点攻坚<br/>蔚小理等新势力</td>
+            </tr>
+            <tr>
+                <td><strong>2026-2027</strong></td>
+                <td>SiC模块功率密度提升50%</td>
+                <td>客户关注散热设计<br/>技术支持需求增加</td>
+                <td>提供整套<br/>热管理方案</td>
+            </tr>
+            <tr>
+                <td><strong>2028+</strong></td>
+                <td>1200V SiC进入商用车领域</td>
+                <td>新市场打开（重卡/客车）</td>
+                <td>提前布局<br/>商用车市场</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <div class="section-title">🎯 应用场景拆解（价值链分析）</div>
+    <div style="display: grid; grid-template-columns: 70% 30%; gap: 20px;">
+        <div>
+            <h4 style="color: var(--color-primary-red); font-size: 15px; margin: 10px 0;">主驱逆变器（70%需求量）- 核心战场</h4>
+            <table class="data-table" style="font-size: 12px;">
+                <thead>
+                    <tr>
+                        <th>车型级别</th>
+                        <th>SiC渗透率</th>
+                        <th>单车价值</th>
+                        <th>代表车型</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>高端车型<br/>(>30万元)</td>
+                        <td><strong>80%</strong><br/>(基本标配)</td>
+                        <td>¥2,000-3,500</td>
+                        <td>理想L9、蔚来ET7<br/>比亚迪仰望</td>
+                    </tr>
+                    <tr>
+                        <td>中端车型<br/>(15-30万元)</td>
+                        <td><strong>35%</strong><br/>(快速增长中)</td>
+                        <td>¥1,500-2,200</td>
+                        <td>小鹏P7、比亚迪海豹<br/>零跑C11</td>
+                    </tr>
+                    <tr>
+                        <td>经济车型<br/>(<15万元)</td>
+                        <td><5%<br/>(仍以IGBT为主)</td>
+                        <td>-</td>
+                        <td>短期内不是<br/>SiC目标市场</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        <div>
+            <div class="trend-box">
+                <h4 style="color: #2196f3; font-size: 14px; margin-top: 0;">车载充电OBC</h4>
+                <p style="font-size: 12px; margin: 8px 0;"><strong>需求占比：</strong>20%</p>
+                <p style="font-size: 12px; margin: 8px 0;"><strong>应用：</strong>22kW+大功率快充</p>
+                <p style="font-size: 12px; margin: 8px 0;"><strong>单车价值：</strong>¥800-1,500</p>
+                <p style="font-size: 12px; margin: 8px 0;"><strong>优势：</strong>充电效率提升、体积减小40%</p>
+            </div>
+            <div class="trend-box" style="margin-top: 15px;">
+                <h4 style="color: #2196f3; font-size: 14px; margin-top: 0;">DC-DC转换器</h4>
+                <p style="font-size: 12px; margin: 8px 0;"><strong>需求占比：</strong>10%</p>
+                <p style="font-size: 12px; margin: 8px 0;"><strong>应用：</strong>800V→12V降压</p>
+                <p style="font-size: 12px; margin: 8px 0;"><strong>单车价值：</strong>¥300-600</p>
+            </div>
+        </div>
+    </div>
+
+    <div class="insight-box" style="margin-top: 20px;">
+        <strong>💡 销售策略建议：</strong><br/>
+        1. <strong>主攻方向：</strong>主驱逆变器（利润率高+技术门槛高，占总需求70%）<br/>
+        2. <strong>突破路径：</strong>先高端车型建立品牌→再向中端车型渗透（价格敏感度低→高）<br/>
+        3. <strong>打包销售：</strong>主驱+OBC+DC-DC整套方案（提升客单价，增强客户粘性）
+    </div>
+</div>
+
+<!-- 页面2: 市场数据与销售定位 -->
+<div class="page">
+    <div class="page-title">产品1：SiC功率器件 - 数据速查与定位策略</div>
+
+    <div class="section-title">📋 一句话销售定位</div>
+    <div style="background: linear-gradient(135deg, #ffebee 0%, #ffffff 100%); border: 3px solid var(--color-primary-red); border-radius: 10px; padding: 20px; text-align: center; margin: 20px 0;">
+        <p style="font-size: 18px; color: var(--color-primary-red); font-weight: bold; margin: 0; line-height: 1.6;">
+            "SiC是800V高端车型的必选项，单车价值¥2,000-4,000，<br/>
+            我们用成本优势（低20%）+比亚迪背书+快速响应（10周交期）打市场"
+        </p>
+    </div>
+
+    <div class="section-title">🎯 目标市场与应用矩阵</div>
+    <table class="data-table">
+        <thead>
+            <tr style="background-color: var(--color-c1-blue);">
+                <th width="20%">应用场景</th>
+                <th width="15%">需求占比</th>
+                <th width="20%">技术要求</th>
+                <th width="18%">单车价值量</th>
+                <th width="27%">客户关注点</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td><strong>主驱逆变器</strong><br/>(核心战场)</td>
+                <td style="text-align: center; font-size: 18px; font-weight: bold; color: var(--color-primary-red);">70%</td>
+                <td>• 650V/750V<br/>• 150-400A<br/>• 低Rdson</td>
+                <td style="text-align: center; font-weight: bold;">¥2,000-3,500</td>
+                <td>• 损耗与效率<br/>• 热管理方案<br/>• 可靠性证明</td>
+            </tr>
+            <tr>
+                <td><strong>车载充电OBC</strong><br/>(增量市场)</td>
+                <td style="text-align: center; font-size: 18px; font-weight: bold;">20%</td>
+                <td>• 22kW+<br/>• 高频开关<br/>• EMC设计</td>
+                <td style="text-align: center; font-weight: bold;">¥800-1,500</td>
+                <td>• 充电速度<br/>• 体积重量<br/>• 成本控制</td>
+            </tr>
+            <tr>
+                <td><strong>DC-DC转换</strong><br/>(补充市场)</td>
+                <td style="text-align: center; font-size: 18px; font-weight: bold;">10%</td>
+                <td>• 800V→12V<br/>• SiC二极管<br/>• 高可靠性</td>
+                <td style="text-align: center; font-weight: bold;">¥300-600</td>
+                <td>• 转换效率<br/>• 集成度<br/>• 性价比</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <div class="section-title">🔥 市场热点与窗口期</div>
+    <div style="display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 15px; margin: 20px 0;">
+        <div style="background: #fff3e0; border-left: 4px solid #ff9800; padding: 15px;">
+            <h4 style="color: #ff9800; font-size: 14px; margin: 0 0 10px 0;">2024-2025 窗口期</h4>
+            <p style="font-size: 12px; line-height: 1.6; margin: 5px 0;">• 800V平台快速渗透<br/>• 新势力新车型集中上市<br/>• 供应商定点窗口期<br/>• <strong>行动：抢占定点</strong></p>
+        </div>
+        <div style="background: #e8f5e9; border-left: 4px solid #4caf50; padding: 15px;">
+            <h4 style="color: #4caf50; font-size: 14px; margin: 0 0 10px 0;">2026-2027 量产期</h4>
+            <p style="font-size: 12px; line-height: 1.6; margin: 5px 0;">• 定点项目批量交付<br/>• 技术迭代（功率密度↑）<br/>• 二供机会释放<br/>• <strong>行动：规模放量</strong></p>
+        </div>
+        <div style="background: #e1f5fe; border-left: 4px solid #03a9f4; padding: 15px;">
+            <h4 style="color: #03a9f4; font-size: 14px; margin: 0 0 10px 0;">2028+ 拓展期</h4>
+            <p style="font-size: 12px; line-height: 1.6; margin: 5px 0;">• 商用车市场开启<br/>• 1200V产品进入<br/>• 成本持续下降<br/>• <strong>行动：新市场布局</strong></p>
+        </div>
+    </div>
+
+    <div class="section-title">💰 价值量分析（为什么值得打？）</div>
+    <table class="data-table">
+        <thead>
+            <tr>
+                <th width="25%">维度</th>
+                <th width="35%">数据</th>
+                <th width="40%">销售意义</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td><strong>单车平均价值</strong></td>
+                <td style="font-size: 16px; font-weight: bold; color: var(--color-primary-red);">¥2,000-4,000</td>
+                <td>高端车型单车价值可达¥4,000+<br/>（主驱+OBC+DCDC打包）</td>
+            </tr>
+            <tr>
+                <td><strong>目标车型年销量</strong></td>
+                <td>• 理想：30-40万辆<br/>• 小鹏：20-30万辆<br/>• 蔚来：25-35万辆</td>
+                <td>单个头部客户年采购额<br/>可达¥6-16亿</td>
+            </tr>
+            <tr>
+                <td><strong>项目生命周期</strong></td>
+                <td>3-5年（平台周期）</td>
+                <td>定点成功后，稳定供货3-5年<br/>总价值¥18-80亿/客户</td>
+            </tr>
+            <tr>
+                <td><strong>利润率水平</strong></td>
+                <td>毛利率：25-35%<br/>（高于IGBT的20-25%）</td>
+                <td>技术门槛高，议价能力强<br/>利润质量好</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <div class="insight-box" style="margin-top: 20px;">
+        <strong>💡 为什么SiC值得销售全力以赴？</strong><br/>
+        1. <strong>市场增速快：</strong>35%年复合增长，3年市场翻2.5倍<br/>
+        2. <strong>单车价值高：</strong>¥2,000-4,000，是IGBT的1.5-2倍<br/>
+        3. <strong>利润率高：</strong>毛利25-35%，技术门槛带来议价权<br/>
+        4. <strong>窗口期紧迫：</strong>2024-2026是黄金窗口，错过要等下一代平台（3-5年后）<br/>
+        5. <strong>战略意义：</strong>800V是未来趋势，SiC是敲门砖，带动其他产品线（IGBT/MCU/传感器）
+    </div>
+</div>
+
+</body>
+</html>

@@ -1,0 +1,302 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <title>比亚迪半导体销售手册 - 产品2: IGBT功率器件</title>
+    <style>
+        :root {
+            --color-primary-red: #e60012;
+            --color-primary-red-dark: #c50010;
+            --text-color-on-dark: #ffffff;
+            --bg-page: #ffffff;
+            --bg-table-stripe: #f2f2f2;
+            --border-color-table: #ddd;
+            --shadow-page: rgba(0, 0, 0, 0.1);
+        }
+
+        body {
+            font-family: "Microsoft YaHei", "SimHei", sans-serif;
+            background-color: #f0f0f0;
+            margin: 0;
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 20px;
+        }
+
+        .page {
+            width: 297mm;
+            min-height: 210mm;
+            background-color: var(--bg-page);
+            position: relative;
+            box-shadow: 0 0 10px var(--shadow-page);
+            padding: 40px;
+            box-sizing: border-box;
+        }
+
+        .page-title {
+            font-size: 26px;
+            font-weight: bold;
+            color: var(--text-color-on-dark);
+            background: linear-gradient(45deg, var(--color-primary-red), var(--color-primary-red-dark));
+            padding: 15px 30px;
+            margin: -40px -40px 30px -40px;
+            clip-path: polygon(0 0, calc(100% - 30px) 0, 100% 100%, 0 100%);
+        }
+
+        .section-title {
+            font-size: 18px;
+            font-weight: bold;
+            color: var(--color-primary-red);
+            margin: 20px 0 12px 0;
+            border-left: 4px solid var(--color-primary-red);
+            padding-left: 12px;
+        }
+
+        .data-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-bottom: 18px;
+        }
+        .data-table th {
+            background-color: var(--color-primary-red);
+            color: white;
+            font-weight: normal;
+            font-size: 13px;
+            padding: 9px;
+            border: 1px solid var(--border-color-table);
+        }
+        .data-table td {
+            padding: 7px 9px;
+            text-align: left;
+            font-size: 12.5px;
+            border: 1px solid var(--border-color-table);
+            color: #333;
+        }
+        .data-table tr:nth-child(even) { background-color: var(--bg-table-stripe); }
+
+        .metric-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 15px;
+            margin: 20px 0;
+        }
+
+        .metric-card {
+            background: linear-gradient(135deg, #fff5f5 0%, #ffffff 100%);
+            border: 2px solid var(--color-primary-red);
+            border-radius: 8px;
+            padding: 18px;
+            text-align: center;
+        }
+
+        .metric-value {
+            font-size: 32px;
+            font-weight: bold;
+            color: var(--color-primary-red);
+            margin: 8px 0;
+        }
+
+        .metric-label {
+            font-size: 13px;
+            color: #666;
+            margin-top: 5px;
+        }
+
+        .insight-box {
+            background-color: #fff8e1;
+            border-left: 4px solid #ffc107;
+            padding: 15px;
+            margin: 15px 0;
+            font-size: 13.5px;
+            line-height: 1.6;
+        }
+
+        .customer-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+            margin: 20px 0;
+        }
+
+        .customer-card {
+            border: 2px solid;
+            border-radius: 8px;
+            padding: 18px;
+            background: white;
+        }
+
+        .customer-card.priority1 { border-color: #f44336; background: linear-gradient(135deg, #ffebee 0%, #ffffff 100%); }
+        .customer-card.priority2 { border-color: #ff9800; background: linear-gradient(135deg, #fff8e1 0%, #ffffff 100%); }
+        .customer-card.priority3 { border-color: #4caf50; background: linear-gradient(135deg, #e8f5e9 0%, #ffffff 100%); }
+    </style>
+</head>
+<body>
+
+<!-- 页面1: IGBT产品概览 -->
+<div class="page">
+    <div class="page-title">产品2：IGBT（绝缘栅双极型晶体管）- 功率主力 / 400V平台核心</div>
+
+    <div class="section-title">📊 市场规模与定位</div>
+
+    <div class="metric-grid">
+        <div class="metric-card">
+            <div class="metric-label">2024年中国市场规模</div>
+            <div class="metric-value">¥148亿</div>
+            <div class="metric-label">全球占比42%</div>
+        </div>
+        <div class="metric-card">
+            <div class="metric-label">2027年预测规模</div>
+            <div class="metric-value">¥195亿</div>
+            <div class="metric-label">年复合增长率 9.6%</div>
+        </div>
+        <div class="metric-card">
+            <div class="metric-label">生命周期定位</div>
+            <div class="metric-value" style="font-size: 24px;">成熟期</div>
+            <div class="metric-label">进入饱和前期</div>
+        </div>
+    </div>
+
+    <div style="background: linear-gradient(135deg, #ffebee 0%, #ffffff 100%); border: 3px solid var(--color-primary-red); border-radius: 10px; padding: 20px; text-align: center; margin: 20px 0;">
+        <p style="font-size: 18px; color: var(--color-primary-red); font-weight: bold; margin: 0; line-height: 1.6;">
+            "IGBT是可以用成本+国产安全性来打开局面的产品，<br/>
+            但必须拿得出可靠性的'铁证据'。"
+        </p>
+    </div>
+
+    <div class="section-title">🎯 应用场景与价值量</div>
+    <table class="data-table">
+        <thead>
+            <tr>
+                <th width="20%">应用场景</th>
+                <th width="15%">需求占比</th>
+                <th width="20%">单车价值</th>
+                <th width="25%">代表车型</th>
+                <th width="20%">市场特征</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr style="background: #fff3e0;">
+                <td><strong>主驱逆变器</strong><br/>(核心战场)</td>
+                <td style="text-align: center; font-size: 18px; font-weight: bold; color: var(--color-primary-red);">60%</td>
+                <td>¥600-1,500</td>
+                <td>比亚迪秦PLUS<br/>埃安S、几何A</td>
+                <td>400V平台主力<br/>价格竞争激烈</td>
+            </tr>
+            <tr>
+                <td><strong>插电混动PHEV</strong><br/>(高增长)</td>
+                <td style="text-align: center; font-size: 16px; font-weight: bold;">25%</td>
+                <td>¥400-1,000</td>
+                <td>宋PLUS DM-i<br/>理想L系列</td>
+                <td>增速快（CAGR 25%）<br/>价格敏感</td>
+            </tr>
+            <tr>
+                <td><strong>辅助系统</strong><br/>(OBC/DC-DC/空调/EPS)</td>
+                <td style="text-align: center; font-size: 16px; font-weight: bold;">15%</td>
+                <td>¥300-650<br/>(总和)</td>
+                <td>各类车型<br/>标配系统</td>
+                <td>切入点市场<br/>验证可靠性后攻主驱</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <div class="insight-box">
+        <strong>💡 IGBT vs SiC战略定位差异：</strong><br/>
+        <strong>SiC：</strong>高端市场（>30万元），800V平台，技术驱动，利润率高<br/>
+        <strong>IGBT：</strong>中低端市场（<25万元），400V平台，成本驱动，走量为主<br/>
+        <strong>策略：</strong>避免与SiC正面竞争，聚焦混动市场（增速快）和辅助系统（切入点）
+    </div>
+
+    <div class="section-title">🎯 目标客户分级（IGBT特有矩阵）</div>
+
+    <div class="customer-grid">
+        <div class="customer-card priority1">
+            <h3 style="margin: 0 0 12px 0; font-size: 16px; color: #f44336;">⭐⭐⭐⭐⭐ 进攻型客户（优先级最高）</h3>
+            <table style="width: 100%; font-size: 12px;">
+                <tr><td style="width: 25%; font-weight: bold;">代表客户</td><td>长城、吉利、奇瑞、长安</td></tr>
+                <tr><td style="font-weight: bold;">特征</td><td>国产替代目标，年产能>20万辆</td></tr>
+                <tr><td style="font-weight: bold;">机会</td><td>二供切入，或新平台定点</td></tr>
+                <tr><td style="font-weight: bold;">策略</td><td>价格+交期打国产替代战</td></tr>
+                <tr><td style="font-weight: bold;">年需求</td><td>单客户10-25万套</td></tr>
+            </table>
+        </div>
+
+        <div class="customer-card priority2">
+            <h3 style="margin: 0 0 12px 0; font-size: 16px; color: #ff9800;">⭐⭐⭐⭐ 机会型客户（重点培育）</h3>
+            <table style="width: 100%; font-size: 12px;">
+                <tr><td style="width: 25%; font-weight: bold;">代表客户</td><td>零跑、哪吒、合众、枫叶</td></tr>
+                <tr><td style="font-weight: bold;">特征</td><td>新势力第二梯队，成长期</td></tr>
+                <tr><td style="font-weight: bold;">机会</td><td>主供机会，成长期绑定</td></tr>
+                <tr><td style="font-weight: bold;">策略</td><td>快速响应、小批量起订</td></tr>
+                <tr><td style="font-weight: bold;">年需求</td><td>单客户5-15万套</td></tr>
+            </table>
+        </div>
+
+        <div class="customer-card priority3">
+            <h3 style="margin: 0 0 12px 0; font-size: 16px; color: #4caf50;">⭐⭐⭐ 战略级客户（稳定基盘）</h3>
+            <table style="width: 100%; font-size: 12px;">
+                <tr><td style="width: 25%; font-weight: bold;">代表客户</td><td>比亚迪集团各品牌</td></tr>
+                <tr><td style="font-weight: bold;">特征</td><td>内部客户，份额稳定</td></tr>
+                <tr><td style="font-weight: bold;">机会</td><td>新车型拓展、产品升级</td></tr>
+                <tr><td style="font-weight: bold;">策略</td><td>内部协同、确保交付</td></tr>
+                <tr><td style="font-weight: bold;">年需求</td><td>集团年80-120万套</td></tr>
+            </table>
+        </div>
+
+        <div class="customer-card priority2" style="border-color: #9e9e9e; background: #f5f5f5;">
+            <h3 style="margin: 0 0 12px 0; font-size: 16px; color: #666;">🛡️ 防御型客户（维持交流）</h3>
+            <table style="width: 100%; font-size: 12px;">
+                <tr><td style="width: 25%; font-weight: bold;">代表客户</td><td>蔚小理（已选用英飞凌/安森美）</td></tr>
+                <tr><td style="font-weight: bold;">特征</td><td>高端定位，技术驱动，已丢失</td></tr>
+                <tr><td style="font-weight: bold;">机会</td><td>新平台窗口（每3-5年）</td></tr>
+                <tr><td style="font-weight: bold;">策略</td><td>等待窗口、维持交流、不强攻</td></tr>
+                <tr><td style="font-weight: bold;">备注</td><td>资源聚焦进攻型客户</td></tr>
+            </table>
+        </div>
+    </div>
+
+    <div class="section-title">🔑 竞争策略与价值主张</div>
+
+    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px;">
+        <div style="background: #e3f2fd; border-left: 4px solid #2196f3; padding: 15px; border-radius: 4px;">
+            <h4 style="color: #2196f3; margin: 0 0 10px 0;">VS 国际大厂（英飞凌/安森美）</h4>
+            <p style="font-size: 12px; margin: 5px 0;"><strong>核心话术方向：</strong></p>
+            <ul style="font-size: 12px; line-height: 1.6; margin: 5px 0;">
+                <li>性能足够 + 成本优势 + 供应安全</li>
+                <li>关键指标（损耗/结温）"不比他差"</li>
+                <li>交期更稳（本土供应链）</li>
+                <li>价格低15-20%（规模效应）</li>
+            </ul>
+            <div style="background: white; padding: 8px; border-radius: 4px; margin-top: 8px; font-size: 11px; font-style: italic;">
+                "我们的IGBT已在比亚迪集团装车超过500万辆，可靠性经过充分验证。性能上与英飞凌差距<3%，但价格低20%，交期快4周。"
+            </div>
+        </div>
+
+        <div style="background: #e8f5e9; border-left: 4px solid #4caf50; padding: 15px; border-radius: 4px;">
+            <h4 style="color: #4caf50; margin: 0 0 10px 0;">VS 本土友商（斯达/时代电气）</h4>
+            <p style="font-size: 12px; margin: 5px 0;"><strong>核心话术方向：</strong></p>
+            <ul style="font-size: 12px; line-height: 1.6; margin: 5px 0;">
+                <li>系统级经验 + 车规可靠性</li>
+                <li>比亚迪集团背书（全球最大新能源车企）</li>
+                <li>海量装车案例（500万辆+）</li>
+                <li>规模优势带来的成本竞争力</li>
+            </ul>
+            <div style="background: white; padding: 8px; border-radius: 4px; margin-top: 8px; font-size: 11px; font-style: italic;">
+                "比亚迪集团每年IGBT用量超过100万套，这个规模效应是其他本土品牌无法比拟的。我们的成本优势可以转化为价格优势给到您。"
+            </div>
+        </div>
+    </div>
+
+    <div class="insight-box" style="margin-top: 20px;">
+        <strong>💡 IGBT销售实战要点：</strong><br/>
+        <strong>1. 市场定位清晰：</strong>中低端车型（<25万元）+ 混动市场（高增长） + 辅助系统（切入点）<br/>
+        <strong>2. 客户优先级：</strong>进攻型（长城吉利）>机会型（零跑哪吒）>战略级（比亚迪内部）>防御型（蔚小理-战略性放弃）<br/>
+        <strong>3. 竞争策略：</strong>vs国际大厂打性价比+供应安全，vs本土友商打规模+验证<br/>
+        <strong>4. 核心优势：</strong>500万辆装车验证 + 价格低15-20% + 交期快4周 + 比亚迪背书<br/>
+        <strong>5. 增长点：</strong>混动市场（CAGR 25%）是IGBT的第二春，重点攻坚
+    </div>
+</div>
+
+</body>
+</html>

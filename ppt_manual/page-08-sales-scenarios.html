@@ -1,0 +1,448 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <title>比亚迪半导体销售手册 - 销售场景剧本与快速响应</title>
+    <style>
+        :root {
+            --color-primary-red: #e60012;
+            --color-primary-red-dark: #c50010;
+            --text-color-on-dark: #ffffff;
+            --bg-page: #ffffff;
+            --bg-table-stripe: #f2f2f2;
+            --border-color-table: #ddd;
+            --shadow-page: rgba(0, 0, 0, 0.1);
+        }
+
+        body {
+            font-family: "Microsoft YaHei", "SimHei", sans-serif;
+            background-color: #f0f0f0;
+            margin: 0;
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 20px;
+        }
+
+        .page {
+            width: 297mm;
+            min-height: 210mm;
+            background-color: var(--bg-page);
+            position: relative;
+            box-shadow: 0 0 10px var(--shadow-page);
+            padding: 40px;
+            box-sizing: border-box;
+        }
+
+        .page-title {
+            font-size: 26px;
+            font-weight: bold;
+            color: var(--text-color-on-dark);
+            background: linear-gradient(45deg, var(--color-primary-red), var(--color-primary-red-dark));
+            padding: 15px 30px;
+            margin: -40px -40px 30px -40px;
+            clip-path: polygon(0 0, calc(100% - 30px) 0, 100% 100%, 0 100%);
+        }
+
+        .section-title {
+            font-size: 18px;
+            font-weight: bold;
+            color: var(--color-primary-red);
+            margin: 20px 0 12px 0;
+            border-left: 4px solid var(--color-primary-red);
+            padding-left: 12px;
+        }
+
+        .data-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-bottom: 18px;
+        }
+        .data-table th {
+            background-color: var(--color-primary-red);
+            color: white;
+            font-weight: normal;
+            font-size: 13px;
+            padding: 9px;
+            border: 1px solid var(--border-color-table);
+        }
+        .data-table td {
+            padding: 7px 9px;
+            text-align: left;
+            font-size: 12.5px;
+            border: 1px solid var(--border-color-table);
+            color: #333;
+        }
+        .data-table tr:nth-child(even) { background-color: var(--bg-table-stripe); }
+
+        .scenario-card {
+            background: linear-gradient(135deg, #f5f5f5 0%, #ffffff 100%);
+            border: 2px solid;
+            border-radius: 8px;
+            padding: 15px;
+            margin: 15px 0;
+        }
+
+        .scenario-card.s1 { border-color: #ff9800; }
+        .scenario-card.s2 { border-color: #f44336; }
+        .scenario-card.s3 { border-color: #2196f3; }
+        .scenario-card.s4 { border-color: #9c27b0; }
+        .scenario-card.s5 { border-color: #ff5722; }
+        .scenario-card.s6 { border-color: #4caf50; }
+
+        .insight-box {
+            background-color: #fff8e1;
+            border-left: 4px solid #ffc107;
+            padding: 15px;
+            margin: 15px 0;
+            font-size: 13.5px;
+            line-height: 1.6;
+        }
+    </style>
+</head>
+<body>
+
+<!-- 页面1: 六大销售场景剧本 -->
+<div class="page">
+    <div class="page-title">第二部分：销售场景剧本 - Know How to Sell</div>
+
+    <div style="background: linear-gradient(135deg, #ffebee 0%, #ffffff 100%); border: 3px solid var(--color-primary-red); border-radius: 10px; padding: 18px; text-align: center; margin: 20px 0;">
+        <p style="font-size: 17px; color: var(--color-primary-red); font-weight: bold; margin: 0; line-height: 1.6;">
+            "遇到XX情况怎么办？"<br/>
+            <span style="font-size: 14px; color: #666;">场景分类 + STAR案例 + 标准话术 = 8大典型场景的应对指南</span>
+        </p>
+    </div>
+
+    <div class="section-title">🎯 六大销售场景总览</div>
+    <table class="data-table">
+        <thead>
+            <tr>
+                <th width="8%">场景</th>
+                <th width="25%">典型情况</th>
+                <th width="37%">核心应对策略</th>
+                <th width="30%">关键话术/工具</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td><strong>场景1</strong></td>
+                <td>客户砍价到底线以下</td>
+                <td>判断砍价真实性→识别客户意图→寻找降本方案（技术优化/批量折扣）</td>
+                <td>"让我们一起看TCO（总拥有成本）"</td>
+            </tr>
+            <tr>
+                <td><strong>场景2</strong></td>
+                <td>竞品挖墙脚，如何保住份额</td>
+                <td>情报收集→风险评估→快速响应（价格匹配/服务升级/高层公关）</td>
+                <td>"我们能提供竞品做不到的X"</td>
+            </tr>
+            <tr>
+                <td><strong>场景3</strong></td>
+                <td>大客户要求独家供应</td>
+                <td>评估风险收益→谈判条件（量价绑定/技术授权/排他补偿）</td>
+                <td>"独家供应需要年采购量保障"</td>
+            </tr>
+            <tr>
+                <td><strong>场景4</strong></td>
+                <td>技术测试不通过</td>
+                <td>快速定位问题→技术支持介入→迭代优化（2-3轮）→备用方案</td>
+                <td>"我们的FAE团队48h内给方案"</td>
+            </tr>
+            <tr>
+                <td><strong>场景5</strong></td>
+                <td>客户投诉质量问题</td>
+                <td>8小时响应→现场分析→根因分析（8D报告）→预防措施</td>
+                <td>"质量问题我们承担全部责任"</td>
+            </tr>
+            <tr>
+                <td><strong>场景6</strong></td>
+                <td>新客户冷启动（0→1突破）</td>
+                <td>建立信任→技术切入→小批量试错→成功复制</td>
+                <td>"免费送样+FAE驻场3个月"</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <div class="section-title">📋 场景详解（STAR格式）</div>
+
+    <div class="scenario-card s1">
+        <h4 style="color: #ff9800; margin: 0 0 10px 0; font-size: 15px;">场景1：客户砍价到底线以下 💰</h4>
+        <div style="display: grid; grid-template-columns: 1fr 2fr; gap: 10px; font-size: 12px;">
+            <div style="font-weight: bold;">背景（Situation）</div>
+            <div>技术评审已通过，商务谈判阶段客户持续压价，要求价格低于公司底线（例：报价¥12，客户要求¥9）</div>
+
+            <div style="font-weight: bold;">任务（Task）</div>
+            <div>在不损失利润的前提下，达成订单或保持客户关系</div>
+
+            <div style="font-weight: bold;">行动（Action）</div>
+            <div>
+                <strong>步骤1：</strong>判断砍价真实性（竞品报价是否真实？是否可持续？）<br/>
+                <strong>步骤2：</strong>识别客户意图（真预算有限 vs 谈判技巧 vs 确实有更低报价）<br/>
+                <strong>步骤3：</strong>差异化价值论证（TCO对比：¥12产品寿命长、故障率低，5年总成本更优）<br/>
+                <strong>步骤4：</strong>创造性降本（技术优化/批量折扣/延长账期/VMI库存）
+            </div>
+
+            <div style="font-weight: bold;">结果（Result）</div>
+            <div style="background: #fff3e0; padding: 8px; border-radius: 4px;">
+                <strong>案例：</strong>客户要求¥9，我们坚持¥11（底线¥10），最终通过"前3万套¥10.5 + 后续订单¥11"的阶梯价格达成。客户获得初期优惠，我们保住利润。
+            </div>
+        </div>
+    </div>
+
+    <div class="scenario-card s2">
+        <h4 style="color: #f44336; margin: 0 0 10px 0; font-size: 15px;">场景2：竞品挖墙脚，如何保住份额 🛡️</h4>
+        <div style="display: grid; grid-template-columns: 1fr 2fr; gap: 10px; font-size: 12px;">
+            <div style="font-weight: bold;">背景</div>
+            <div>客户已使用我们产品2年，竞品（瑞萨/英飞凌）开始挖墙脚，报价更低或承诺更多</div>
+
+            <div style="font-weight: bold;">任务</div>
+            <div>保住现有份额，防止客户流失</div>
+
+            <div style="font-weight: bold;">行动</div>
+            <div>
+                <strong>步骤1：</strong>情报收集（竞品报价多少？做了哪些承诺？客户为何动摇？）<br/>
+                <strong>步骤2：</strong>风险评估（客户流失风险：高/中/低？切换成本多大？）<br/>
+                <strong>步骤3：</strong>快速响应（价格匹配/服务升级/高层公关，48h内给方案）<br/>
+                <strong>步骤4：</strong>强化粘性（联合开发/技术绑定/长期协议）
+            </div>
+
+            <div style="font-weight: bold;">标准话术</div>
+            <div style="background: #ffebee; padding: 8px; border-radius: 4px;">
+                "我理解您的压力。但请注意，竞品的低价可能是促销价（不可持续），我们的价格是长期稳定的。而且我们提供的本地化服务（FAE驻场/48h响应），竞品做不到。"
+            </div>
+        </div>
+    </div>
+
+    <div class="scenario-card s3">
+        <h4 style="color: #2196f3; margin: 0 0 10px 0; font-size: 15px;">场景3：大客户要求独家供应 🤝</h4>
+        <div style="display: grid; grid-template-columns: 1fr 2fr; gap: 10px; font-size: 12px;">
+            <div style="font-weight: bold;">核心策略</div>
+            <div>
+                <strong>评估风险收益：</strong>客户年采购量>10万套？能否覆盖产能50%+？<br/>
+                <strong>谈判条件：</strong>量价绑定（年采购量保障）+ 排他补偿（提前支付/保证金）+ 技术授权（共同开发）
+            </div>
+
+            <div style="font-weight: bold;">标准话术</div>
+            <div style="background: #e3f2fd; padding: 8px; border-radius: 4px;">
+                "独家供应我们可以考虑，但需要双方深度绑定。我们需要您承诺年采购量≥10万套（占我们产能50%+），以及3年长期协议。这样我们才能为您预留专属产能和定制化服务。"
+            </div>
+        </div>
+    </div>
+
+    <div style="display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 15px; margin-top: 20px;">
+        <div class="scenario-card s4" style="margin: 0;">
+            <h4 style="color: #9c27b0; margin: 0 0 8px 0; font-size: 14px;">场景4：技术测试不通过 🔧</h4>
+            <p style="font-size: 11.5px; margin: 5px 0; line-height: 1.5;">
+                <strong>快速响应：</strong>48h定位问题→FAE驻场→迭代优化（2-3轮）→备用方案<br/>
+                <strong>话术：</strong>"测试不通过不代表产品不行，可能是应用场景匹配问题。我们FAE团队48h内给优化方案。"
+            </p>
+        </div>
+        <div class="scenario-card s5" style="margin: 0;">
+            <h4 style="color: #ff5722; margin: 0 0 8px 0; font-size: 14px;">场景5：客户投诉质量问题 ⚠️</h4>
+            <p style="font-size: 11.5px; margin: 5px 0; line-height: 1.5;">
+                <strong>8小时响应：</strong>质量问题立即启动紧急响应→现场分析→8D报告→预防措施<br/>
+                <strong>话术：</strong>"质量问题我们承担全部责任，8小时内到现场，3天内给根因分析报告。"
+            </p>
+        </div>
+        <div class="scenario-card s6" style="margin: 0;">
+            <h4 style="color: #4caf50; margin: 0 0 8px 0; font-size: 14px;">场景6：新客户冷启动（0→1） 🚀</h4>
+            <p style="font-size: 11.5px; margin: 5px 0; line-height: 1.5;">
+                <strong>信任建立：</strong>免费送样（10-20套）+FAE驻场3个月+比亚迪背书→小批量试错→成功复制<br/>
+                <strong>话术：</strong>"前5K台按成本价供货，让您zero risk试用。成功后再谈长期合作。"
+            </p>
+        </div>
+    </div>
+
+    <div class="insight-box" style="margin-top: 15px;">
+        <strong>💡 场景剧本使用要点：</strong><br/>
+        <strong>1. STAR格式：</strong>Situation（背景）→ Task（任务）→ Action（行动）→ Result（结果），结构化应对<br/>
+        <strong>2. 话术模板：</strong>每个场景都有标准话术，可直接使用或根据实际情况调整<br/>
+        <strong>3. 快速响应：</strong>质量问题8小时、技术问题48小时、商务问题周内，速度是竞争力<br/>
+        <strong>4. 证据链：</strong>所有承诺都要有证据支持（装车数据/认证报告/客户案例/成本分析）
+    </div>
+</div>
+
+<!-- 页面2: 快速响应机制与情报工具箱 -->
+<div class="page">
+    <div class="page-title">第三部分：快速响应机制 + 第四部分：情报工具箱</div>
+
+    <div class="section-title">⚡ 30分钟紧急情报支持流程</div>
+
+    <div style="background: #f5f5f5; border: 2px solid var(--color-primary-red); border-radius: 8px; padding: 20px;">
+        <h4 style="color: var(--color-primary-red); margin: 0 0 15px 0;">销售-市场协同SOP</h4>
+        <table class="data-table" style="margin-bottom: 15px;">
+            <thead>
+                <tr>
+                    <th width="15%">紧急程度</th>
+                    <th width="25%">典型场景</th>
+                    <th width="20%">响应时间</th>
+                    <th width="40%">支持内容</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr style="background: #ffebee;">
+                    <td><strong>紧急</strong><br/>(P0)</td>
+                    <td>质量投诉、客户流失风险、大单谈判</td>
+                    <td style="font-weight: bold; color: #f44336;">30分钟响应<br/>8小时到现场</td>
+                    <td>市场部总监直接对接<br/>调动全部资源</td>
+                </tr>
+                <tr style="background: #fff3e0;">
+                    <td><strong>重要</strong><br/>(P1)</td>
+                    <td>技术测试问题、竞品情报、新客户开拓</td>
+                    <td style="font-weight: bold; color: #ff9800;">4小时响应<br/>48小时给方案</td>
+                    <td>FAE技术支持<br/>竞品对标报告</td>
+                </tr>
+                <tr>
+                    <td><strong>常规</strong><br/>(P2)</td>
+                    <td>客户拜访准备、产品咨询、市场调研</td>
+                    <td>1个工作日</td>
+                    <td>情报卡片、技术白皮书<br/>客户画像</td>
+                </tr>
+            </tbody>
+        </table>
+        <div style="background: #fff8e1; padding: 12px; border-radius: 4px; border-left: 4px solid #ffc107;">
+            <strong>求助渠道：</strong><br/>
+            • 微信群：销售-市场协同群（@市场部总监）<br/>
+            • 钉钉：紧急情报支持工单（30分钟必回）<br/>
+            • 电话：市场部热线 400-XXX-XXXX（7×24小时）
+        </div>
+    </div>
+
+    <div class="section-title">🛠️ 情报工具箱（麦肯锡式分析模板）</div>
+
+    <table class="data-table">
+        <thead>
+            <tr>
+                <th width="8%">编号</th>
+                <th width="27%">工具名称</th>
+                <th width="45%">解决的关键问题</th>
+                <th width="20%">使用时机</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>S-01</td>
+                <td><strong>4C情报分析框架</strong></td>
+                <td>系统化梳理产品竞争态势（Context/Customer/Competitor/Company）</td>
+                <td>新产品学习</td>
+            </tr>
+            <tr>
+                <td>S-02</td>
+                <td><strong>重点客户/车型机会清单</strong></td>
+                <td>先追哪个客户？哪个平台？（优先级排序）</td>
+                <td>季度规划</td>
+            </tr>
+            <tr>
+                <td>S-03</td>
+                <td><strong>客户/车型作战手册</strong></td>
+                <td>去见某客户、谈某平台时怎么打？</td>
+                <td>大项目准备</td>
+            </tr>
+            <tr>
+                <td>S-04</td>
+                <td><strong>竞品作战卡 (Battle Card)</strong></td>
+                <td>对着竞品A/B，我方该说什么？（参数/价格/话术）</td>
+                <td>竞标前</td>
+            </tr>
+            <tr>
+                <td>S-05</td>
+                <td><strong>价格 & 商务情报月报</strong></td>
+                <td>现在行情偏紧还是偏松？报价策略如何调整？</td>
+                <td>月度回顾</td>
+            </tr>
+            <tr>
+                <td>S-06</td>
+                <td><strong>技术卖点 & 案例库</strong></td>
+                <td>把技术参数翻译成客户听得懂的价值语言</td>
+                <td>客户拜访</td>
+            </tr>
+            <tr>
+                <td>S-12</td>
+                <td><strong>项目复盘报告</strong></td>
+                <td>赢在哪里？输在哪里？如何复制成功？</td>
+                <td>重大项目后</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <div class="section-title">📊 竞品作战卡示例（Battle Card模板）</div>
+
+    <div style="background: white; border: 2px solid #2196f3; border-radius: 8px; padding: 18px; margin: 15px 0;">
+        <h4 style="color: #2196f3; margin: 0 0 12px 0;">作战卡：IGBT - 某客户主驱项目</h4>
+        <table class="data-table" style="font-size: 12px;">
+            <thead>
+                <tr>
+                    <th width="20%">指标</th>
+                    <th width="27%" style="background: var(--color-primary-red);">我方 (BYD)</th>
+                    <th width="27%">竞品 A (英飞凌)</th>
+                    <th width="26%">竞品 B (斯达)</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>损耗/效率</td>
+                    <td style="font-weight: bold; color: #4caf50;">降低 5% ✓</td>
+                    <td>基准</td>
+                    <td>持平</td>
+                </tr>
+                <tr>
+                    <td>结温 Tjmax</td>
+                    <td>175℃</td>
+                    <td>150℃</td>
+                    <td>175℃</td>
+                </tr>
+                <tr>
+                    <td>价格竞争力</td>
+                    <td style="font-weight: bold; color: #4caf50;">★★★★★<br/>低20%</td>
+                    <td>★★</td>
+                    <td>★★★★</td>
+                </tr>
+                <tr>
+                    <td>交期</td>
+                    <td style="font-weight: bold; color: #4caf50;">10周 ✓</td>
+                    <td>16周</td>
+                    <td>12周</td>
+                </tr>
+            </tbody>
+        </table>
+        <div style="background: #e8f5e9; padding: 10px; border-radius: 4px; margin-top: 10px; font-size: 12px;">
+            <strong>攻坚话术：</strong><br/>
+            • "在贵司的工况下，我们的低损耗特性可换算为整车续航增加X km。"<br/>
+            • "相比英飞凌，我们提供本地化24h技术支持，且无断供风险。交期快6周。"<br/>
+            • "500万台实车验证数据可以共享，可靠性有保障。"
+        </div>
+    </div>
+
+    <div class="insight-box">
+        <strong>💡 工具箱使用要点：</strong><br/>
+        <strong>1. 模板标准化：</strong>所有报告使用统一模板，方便快速查阅和知识沉淀<br/>
+        <strong>2. 证据ID编码：</strong>统一EID（Evidence ID）编码，方便溯源和三角校验<br/>
+        <strong>3. 战例库积累：</strong>复盘赢单/输单的关键要素，提炼可复制的成功经验<br/>
+        <strong>4. 快速检索：</strong>按产品线/客户/场景分类，5分钟内找到需要的材料
+    </div>
+
+    <div style="background: linear-gradient(135deg, #ffebee 0%, #ffffff 100%); border: 3px solid var(--color-primary-red); border-radius: 10px; padding: 20px; text-align: center; margin-top: 20px;">
+        <h3 style="color: var(--color-primary-red); margin: 0 0 10px 0;">🎯 销售成功三要素</h3>
+        <div style="display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 15px; margin-top: 15px;">
+            <div style="background: white; padding: 15px; border-radius: 8px;">
+                <div style="font-size: 32px; margin-bottom: 8px;">📚</div>
+                <strong style="color: var(--color-primary-red);">Know What to Sell</strong>
+                <p style="font-size: 12px; margin: 8px 0 0 0;">产品线情报库<br/>4C分析框架</p>
+            </div>
+            <div style="background: white; padding: 15px; border-radius: 8px;">
+                <div style="font-size: 32px; margin-bottom: 8px;">🎭</div>
+                <strong style="color: var(--color-primary-red);">Know How to Sell</strong>
+                <p style="font-size: 12px; margin: 8px 0 0 0;">销售场景剧本<br/>STAR案例+话术</p>
+            </div>
+            <div style="background: white; padding: 15px; border-radius: 8px;">
+                <div style="font-size: 32px; margin-bottom: 8px;">⚡</div>
+                <strong style="color: var(--color-primary-red);">Get Support Fast</strong>
+                <p style="font-size: 12px; margin: 8px 0 0 0;">快速响应机制<br/>30分钟支持</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+</body>
+</html>

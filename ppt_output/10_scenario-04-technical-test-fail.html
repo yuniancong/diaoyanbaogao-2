@@ -1,0 +1,389 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>比亚迪半导体销售手册 - 10_scenario-04-technical-test-fail</title>
+  <link rel="stylesheet" href="byd-theme.css">
+  <script type="module">
+    import mermaid from 'https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.esm.min.mjs';
+    mermaid.initialize({
+      startOnLoad: true,
+      theme: 'default',
+      themeVariables: {
+        primaryColor: '#C8102E',
+        primaryTextColor: '#fff',
+        primaryBorderColor: '#A00D24',
+        lineColor: '#666',
+        secondaryColor: '#E6153A',
+        tertiaryColor: '#FFE5E9'
+      }
+    });
+  </script>
+</head>
+<body>
+  <div class="ppt-container">
+    <div class="page animate-fade-in">
+      
+<p>
+<h2 class="section-title">场景4：技术测试不通过</h2>
+</p>
+<p>
+<h3 class="subsection-title">【背景】</h3>
+</p>
+<p>
+客户在技术验证阶段发现我们的MCU测试不通过（性能、EMC、可靠性等问题）。
+</p>
+<p>
+<h3 class="subsection-title">【典型对话】</h3>
+</p>
+<p>
+<pre><code class="language-">客户：&quot;你们的MCU在EMC测试中失败了，辐射抗扰度只有120V/m，
+      达不到我们150V/m的要求。这个问题怎么解决？&quot;
+</p>
+<p>
+销售：&quot;（内心OS：糟了，技术问题！）能详细说说测试情况吗？
+      用的什么测试条件？&quot;
+</p>
+<p>
+客户：&quot;我们按照ISO 11452标准测试的，频率80MHz-1GHz扫描，
+      120V/m就开始误动作了。&quot;</code></pre>
+</p>
+<p>
+<hr>
+</p>
+<p>
+<h3 class="subsection-title">【分析框架】</h3>
+</p>
+<p>
+<strong>步骤1：问题定位</strong>
+</p>
+<p>
+<strong>快速诊断清单：</strong>
+</p>
+<p>
+<strong>1. 测试条件是否正确？</strong>
+</p>
+<p>
+<ul class="bullet-list">
+  <li>测试标准（ISO 11452 / ISO 7637等）</li>
+  <li>测试环境（温度、湿度、供电）</li>
+  <li>测试设备（是否校准）</li>
+  <li>测试方法（是否符合标准）</li>
+</ul>
+</p>
+<p>
+<strong>2. 硬件设计是否合理？</strong>
+</p>
+<p>
+<ul class="bullet-list">
+  <li>PCB布局（电源、地线、信号线）</li>
+  <li>去耦电容（数量、位置、容值）</li>
+  <li>晶振电路（频率、负载电容）</li>
+  <li>接口保护（ESD、过压、过流）</li>
+</ul>
+</p>
+<p>
+<strong>3. 软件配置是否正确？</strong>
+</p>
+<p>
+<ul class="bullet-list">
+  <li>时钟配置（PLL、分频、源选择）</li>
+  <li>外设配置（CAN、ADC、PWM等）</li>
+  <li>中断优先级（是否合理）</li>
+  <li>看门狗设置（超时时间）</li>
+</ul>
+</p>
+<p>
+<strong>4. 测试样本是否代表性？</strong>
+</p>
+<p>
+<ul class="bullet-list">
+  <li>样片批次（是否工程样）</li>
+  <li>样片数量（单片 vs 批量）</li>
+  <li>样片状态（新片 vs 返工片）</li>
+</ul>
+</p>
+<p>
+<strong>问题分类：</strong>
+</p>
+<p>
+| 问题类型                                | 严重程度 | 处理方式     |
+| --------------------------------------- | -------- | ------------ |
+| 类型A：芯片本身问题（EMC设计缺陷）      | ⭐⭐⭐⭐⭐    | 需要芯片改版 |
+| 类型B：客户设计问题（PCB布局/元件选型） | ⭐⭐⭐      | FAE指导优化  |
+| 类型C：测试方法问题（测试条件不当）     | ⭐⭐       | 重新测试     |
+| 类型D：软件配置问题（寄存器设置）       | ⭐        | 更新代码     |
+</p>
+<p>
+<hr>
+</p>
+<p>
+<h3 class="subsection-title">【应对策略】</h3>
+</p>
+<p>
+<h4><strong>策略1：快速响应（24小时内给方案）</strong></h4>
+</p>
+<p>
+<strong>标准响应流程：</strong>
+</p>
+<p>
+<strong>第1小时：接到通知</strong>
+</p>
+<p>
+<ul class="bullet-list">
+  <li>行动：立即联系客户，确认问题详情</li>
+  <li>话术："非常抱歉听到这个问题。能否把测试报告和原理图发给我？我马上组织FAE团队分析。"</li>
+</ul>
+</p>
+<p>
+<strong>第2-4小时：问题诊断</strong>
+</p>
+<p>
+<ul class="bullet-list">
+  <li>行动：FAE团队分析测试报告、原理图、PCB layout</li>
+  <li>输出：初步诊断报告（问题分类、可能原因）</li>
+</ul>
+</p>
+<p>
+<strong>第4-8小时：实验室复现</strong>
+</p>
+<p>
+<ul class="bullet-list">
+  <li>行动：我方实验室复现问题（如果有条件）</li>
+  <li>输出：复现结果、对比测试数据</li>
+</ul>
+</p>
+<p>
+<strong>第8-24小时：解决方案</strong>
+</p>
+<p>
+<ul class="bullet-list">
+  <li>行动：制定解决方案（硬件优化/软件调整/测试方法）</li>
+  <li>输出：正式解决方案文档</li>
+</ul>
+</p>
+<p>
+<strong>第24-48小时：现场支持</strong>
+</p>
+<p>
+<ul class="bullet-list">
+  <li>行动：FAE现场指导客户整改、重新测试</li>
+  <li>输出：测试通过报告</li>
+</ul>
+</p>
+<p>
+<h4><strong>策略2：问题分类应对</strong></h4>
+</p>
+<p>
+<strong>类型A：芯片本身问题（最严重）</strong>
+</p>
+<p>
+<strong>话术模板：</strong>
+</p>
+<p>
+"经过我们实验室分析，确实是芯片在某个频段的抗干扰能力不足。这是我们的责任，我代表公司向您致歉。
+</p>
+<p>
+我们的解决方案：
+</p>
+<p>
+<h3 class="subsection-title">短期方案（1个月内）</h3>
+</p>
+<p>
+<strong>1. 提供workaround方案：</strong>
+</p>
+<p>
+<ul class="bullet-list">
+  <li>硬件：增加外部EMC滤波器（我们提供设计）</li>
+  <li>软件：优化抗干扰算法（我们提供代码）</li>
+  <li>测试：协助您通过EMC测试</li>
+</ul>
+</p>
+<p>
+<strong>2. 免费提供技术支持：</strong>
+</p>
+<p>
+<ul class="bullet-list">
+  <li>FAE驻场支持，直到问题解决</li>
+  <li>提供EMC测试设备租赁（或免费借用）</li>
+  <li>协助完成车规认证</li>
+</ul>
+</p>
+<p>
+<h3 class="subsection-title">长期方案（3-6个月）</h3>
+</p>
+<p>
+<strong>1. 芯片改版：</strong>
+</p>
+<p>
+<ul class="bullet-list">
+  <li>优化EMC设计（增强抗干扰能力）</li>
+  <li>重新流片（6个月交付新版本）</li>
+  <li>价格不变，性能提升</li>
+</ul>
+</p>
+<p>
+<strong>2. 客户补偿：</strong>
+</p>
+<p>
+<ul class="bullet-list">
+  <li>给您6个月的额外折扣（10%）</li>
+  <li>免费更换新版本芯片（如果您愿意）</li>
+  <li>优先供应新版本（您是第一批客户）</li>
+</ul>
+</p>
+<p>
+<h3 class="subsection-title">我们的承诺</h3>
+</p>
+<p>
+<ul class="bullet-list">
+  <li>✓ 短期方案1个月内解决，不影响您的量产计划</li>
+  <li>✓ 长期方案6个月内芯片改版，彻底解决问题</li>
+  <li>✓ 费用我们承担（EMC器件、FAE、测试）</li>
+  <li>✓ 给您补偿（折扣、优先供应）</li>
+</ul>
+</p>
+<p>
+我们绝不会让这个问题影响您的项目。我们会负责到底。"
+</p>
+<p>
+<strong>类型B：客户设计问题（常见）</strong>
+</p>
+<p>
+<strong>话术模板：</strong>
+</p>
+<p>
+"经过我们FAE分析，问题主要出在PCB布局和元件选型上。我给您具体指出来：
+</p>
+<p>
+<h3 class="subsection-title">问题1：电源去耦电容不足</h3>
+</p>
+<p>
+<ul class="bullet-list">
+  <li>现状：您只放了2个0.1μF电容</li>
+  <li>建议：增加到4个（0.1μF + 1μF + 10μF + 100μF）</li>
+  <li>位置：尽量靠近芯片VDD引脚（<5mm）</li>
+  <li>原因：去耦不足导致电源纹波大，抗干扰能力弱</li>
+</ul>
+</p>
+<p>
+<h3 class="subsection-title">问题2：晶振布局不合理</h3>
+</p>
+<p>
+<ul class="bullet-list">
+  <li>现状：晶振离芯片10mm，走线很长</li>
+  <li>建议：晶振紧贴芯片（<3mm），走线最短</li>
+  <li>地平面：晶振下方铺地，形成屏蔽</li>
+  <li>原因：晶振是辐射源，距离远会增强干扰</li>
+</ul>
+</p>
+<p>
+<h3 class="subsection-title">问题3：地线分割</h3>
+</p>
+<p>
+<ul class="bullet-list">
+  <li>现状：数字地和模拟地分开，中间有缝隙</li>
+  <li>建议：地平面统一，不要分割（单点接地）</li>
+  <li>原因：地线分割会形成环路，增强辐射</li>
+</ul>
+</p>
+<p>
+我已经标注在原理图上（见附件）。您按照我们的建议改版，EMC测试应该能通过。
+</p>
+<p>
+<h3 class="subsection-title">我们的支持</h3>
+</p>
+<p>
+<ul class="bullet-list">
+  <li>✓ FAE现场指导您改版（免费）</li>
+  <li>✓ 提供EMC优化指南（文档）</li>
+  <li>✓ 协助您重新测试（陪同去测试实验室）</li>
+  <li>✓ 提供参考设计（已通过EMC测试的PCB）</li>
+</ul>
+</p>
+<p>
+预计改版后，EMC性能能提升到180V/m，超过您的要求。"
+</p>
+<p>
+<strong>类型C：测试方法问题</strong>
+</p>
+<p>
+<strong>话术模板：</strong>
+</p>
+<p>
+"我看了您的测试报告，发现测试方法有些问题：
+</p>
+<p>
+<h3 class="subsection-title">问题1：测试电压设置不当</h3>
+</p>
+<p>
+<ul class="bullet-list">
+  <li>您的测试：供电电压3.0V</li>
+  <li>标准要求：供电电压3.3V±10%（3.0-3.6V）</li>
+  <li>影响：低电压会导致抗干扰能力下降20-30%</li>
+  <li>建议：用3.3V重新测试</li>
+</ul>
+</p>
+<p>
+<h3 class="subsection-title">问题2：测试频段选择不全</h3>
+</p>
+<p>
+<ul class="bullet-list">
+  <li>您的测试：只测了80-1000MHz</li>
+  <li>标准要求：需要测10MHz-18GHz（分段测试）</li>
+  <li>影响：可能漏测敏感频段</li>
+  <li>建议：按标准完整测试</li>
+</ul>
+</p>
+<p>
+<h3 class="subsection-title">问题3：测试样本数不足</h3>
+</p>
+<p>
+<ul class="bullet-list">
+  <li>您的测试：只测了1片样片</li>
+  <li>标准要求：至少3片（取最差值）</li>
+  <li>影响：单片测试结果可能不具代表性</li>
+  <li>建议：增加样本数</li>
+</ul>
+</p>
+<p>
+<h3 class="subsection-title">我们建议</h3>
+</p>
+<p>
+<ul class="bullet-list">
+  <li>✓ 按照标准测试条件重新测试</li>
+  <li>✓ 我们提供技术指导（测试方法、测试设置）</li>
+  <li>✓ 我们陪同您去测试实验室（现场支持）</li>
+  <li>✓ 我们提供已通过测试的样片（对比测试）</li>
+</ul>
+</p>
+<p>
+我相信按标准测试后，应该能通过。"
+</p>
+<p>
+<hr>
+</p>
+<p>
+<h3 class="subsection-title">【补救措施】</h3>
+</p>
+<p>
+<strong>补救方案矩阵：</strong>
+</p>
+<p>
+| 方案                        | 适用场景           | 周期                | 成本                           | 成功率 |
+| --------------------------- | ------------------ | ------------------- | ------------------------------ | ------ |
+| 方案A：硬件优化（PCB改版）  | 客户设计问题       | 2-4周               | ¥10-30万（客户承担）           | 90%+   |
+| 方案B：软件调整（固件优化） | 软件配置问题       | 1-2周               | 免费                           | 70-80% |
+| 方案C：外加EMC器件          | 芯片EMC能力不足    | 1周                 | 增加BOM成本¥2-5/套（客户承担） | 85%+   |
+| 方案D：芯片改版（重新流片） | 芯片本身缺陷       | 6个月               | ¥500万+（我们承担）            | 100%   |
+| 方案E：更换芯片型号         | 现有型号确实不合适 | 2-3个月（重新验证） | 客户承担开发成本               | 100%   |
+</p>
+<p>
+<h1 class="page-title">第二部分：销售场景剧本（场景5-8）</h1>
+</p>
+
+    </div>
+  </div>
+</body>
+</html>

@@ -1,0 +1,687 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>快速响应机制 | 比亚迪半导体销售手册</title>
+    <style>
+        :root {
+            --color-primary-red: #e60012;
+            --color-primary-red-dark: #c50010;
+            --bg-page: #ffffff;
+            --bg-body: #f0f0f0;
+            --text-color-primary: #333333;
+            --text-color-on-dark: #ffffff;
+            --shadow-page: rgba(0, 0, 0, 0.1);
+            --border-light: #e0e0e0;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: "Microsoft YaHei", "SimHei", sans-serif;
+            background-color: var(--bg-body);
+            color: var(--text-color-primary);
+            line-height: 1.6;
+            padding: 20px 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 20px;
+        }
+
+        .page {
+            width: 297mm;
+            min-height: 210mm;
+            background-color: var(--bg-page);
+            position: relative;
+            box-shadow: 0 0 10px var(--shadow-page);
+            padding: 40px;
+            box-sizing: border-box;
+        }
+
+        .page-title {
+            font-size: 26px;
+            font-weight: bold;
+            color: var(--text-color-on-dark);
+            background: linear-gradient(45deg, var(--color-primary-red), var(--color-primary-red-dark));
+            padding: 15px 30px;
+            margin: -40px -40px 30px -40px;
+            clip-path: polygon(0 0, calc(100% - 30px) 0, 100% 100%, 0 100%);
+        }
+
+        .section-title {
+            font-size: 20px;
+            font-weight: bold;
+            color: var(--color-primary-red);
+            margin: 25px 0 15px 0;
+            padding-bottom: 8px;
+            border-bottom: 3px solid var(--color-primary-red);
+        }
+
+        .subsection-title {
+            font-size: 17px;
+            font-weight: bold;
+            color: var(--text-color-primary);
+            margin: 18px 0 10px 0;
+            padding-left: 12px;
+            border-left: 4px solid var(--color-primary-red);
+        }
+
+        .strategy-box {
+            background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+            border-radius: 8px;
+            padding: 20px;
+            margin: 15px 0;
+            border: 2px solid var(--border-light);
+        }
+
+        .strategy-title {
+            font-size: 16px;
+            font-weight: bold;
+            color: var(--color-primary-red);
+            margin-bottom: 12px;
+            padding-left: 25px;
+            position: relative;
+        }
+
+        .strategy-title::before {
+            content: "▶";
+            position: absolute;
+            left: 0;
+            color: var(--color-primary-red);
+        }
+
+        .data-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 12px 0;
+            font-size: 13px;
+        }
+
+        .data-table thead {
+            background: linear-gradient(135deg, var(--color-primary-red), var(--color-primary-red-dark));
+            color: white;
+        }
+
+        .data-table th {
+            padding: 10px;
+            text-align: left;
+            font-weight: bold;
+            border: 1px solid #ccc;
+        }
+
+        .data-table td {
+            padding: 10px;
+            border: 1px solid #ddd;
+            vertical-align: top;
+        }
+
+        .data-table tbody tr:nth-child(even) {
+            background-color: #f9f9f9;
+        }
+
+        .data-table tbody tr:hover {
+            background-color: #fff8f8;
+        }
+
+        .grid-2col {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+            margin: 15px 0;
+        }
+
+        .grid-3col {
+            display: grid;
+            grid-template-columns: 1fr 1fr 1fr;
+            gap: 15px;
+            margin: 15px 0;
+        }
+
+        .highlight-box {
+            background: #fff9e6;
+            border-left: 4px solid #ffc107;
+            padding: 15px;
+            margin: 12px 0;
+            font-size: 14px;
+        }
+
+        .success-box {
+            background: #e8f5e9;
+            border-left: 4px solid #4caf50;
+            padding: 15px;
+            margin: 12px 0;
+            font-size: 14px;
+        }
+
+        .warning-box {
+            background: #ffebee;
+            border-left: 4px solid #f44336;
+            padding: 15px;
+            margin: 12px 0;
+            font-size: 14px;
+        }
+
+        .steps-container {
+            background: #f8f9fa;
+            border-radius: 8px;
+            padding: 20px;
+            margin: 15px 0;
+        }
+
+        .step-item {
+            display: flex;
+            align-items: flex-start;
+            margin: 12px 0;
+            padding: 12px;
+            background: white;
+            border-radius: 6px;
+            border-left: 4px solid var(--color-primary-red);
+        }
+
+        .step-number {
+            background: var(--color-primary-red);
+            color: white;
+            width: 30px;
+            height: 30px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            margin-right: 15px;
+            flex-shrink: 0;
+        }
+
+        .step-content {
+            flex: 1;
+        }
+
+        strong {
+            color: var(--color-primary-red);
+        }
+
+        .page-number {
+            position: absolute;
+            bottom: 20px;
+            right: 40px;
+            font-size: 12px;
+            color: #999;
+        }
+    </style>
+</head>
+<body>
+
+<!-- 第1页：快速响应机制总览 + 销售市场协同 -->
+<div class="page">
+    <div class="page-title">第三部分：快速响应机制 ⚡</div>
+
+    <div class="section-title">一、销售-市场协同SOP</div>
+
+    <div class="highlight-box">
+        <strong>核心理念：</strong>市场部 = 销售部的"情报参谋部"和"火力支援部"
+    </div>
+
+    <div class="grid-2col">
+        <div class="strategy-box">
+            <div class="strategy-title">市场部职责</div>
+            ✓ 提供市场情报（竞品、客户、行业趋势）<br>
+            ✓ 制作销售工具（PPT、方案、案例）<br>
+            ✓ 支持大客户攻坚（高端材料、定制方案）<br>
+            ✓ 品牌宣传（案例推广、展会、公关）
+        </div>
+        <div class="strategy-box">
+            <div class="strategy-title">销售部职责</div>
+            ✓ 反馈一线情报（客户需求、竞品动态）<br>
+            ✓ 提出支持需求（需要什么材料、什么数据）<br>
+            ✓ 验证市场策略（市场部的方案是否有效）
+        </div>
+    </div>
+
+    <div class="subsection-title">协同场景1：新客户开发支持</div>
+
+    <table class="data-table">
+        <thead>
+            <tr>
+                <th style="width: 25%;">支持项</th>
+                <th style="width: 15%;">时限</th>
+                <th style="width: 60%;">具体内容</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr style="background: #e3f2fd;">
+                <td><strong>1. 客户情报包</strong></td>
+                <td>4小时内</td>
+                <td>公司概况、车型规划、MCU需求预估、现有供应商、决策链、痛点分析、切入点</td>
+            </tr>
+            <tr style="background: #fff3e0;">
+                <td><strong>2. 定制化方案PPT</strong></td>
+                <td>24小时内</td>
+                <td>6部分：客户行业地位分析 + MCU趋势 + 产品矩阵 + 定制方案（BCM/BMS） + 成功案例 + 合作路线图（18个月）</td>
+            </tr>
+            <tr style="background: #e8f5e9;">
+                <td><strong>3. 技术白皮书</strong></td>
+                <td>48小时内</td>
+                <td>车规MCU技术趋势报告、技术优势详解、500万台实车验证数据</td>
+            </tr>
+            <tr style="background: #f3e5f5;">
+                <td><strong>4. 竞品对比表</strong></td>
+                <td>24小时内</td>
+                <td>比亚迪 vs 瑞萨 vs NXP（性能、价格、交期、服务对比）</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <div class="subsection-title">协同场景2：商务谈判支持</div>
+
+    <div class="steps-container">
+        <div class="step-item">
+            <div class="step-number">1</div>
+            <div class="step-content">
+                <strong>竞品价格真实性分析</strong>（4小时内）<br>
+                官方价格、大批量折扣、最低可能价格、结论（是否合理）
+            </div>
+        </div>
+        <div class="step-item">
+            <div class="step-number">2</div>
+            <div class="step-content">
+                <strong>TCO总拥有成本对比表</strong>（Excel）<br>
+                采购成本 + 开发成本 + 风险成本 = 我们比瑞萨低¥320万/年
+            </div>
+        </div>
+        <div class="step-item">
+            <div class="step-number">3</div>
+            <div class="step-content">
+                <strong>谈判话术库</strong><br>
+                应对"竞品更便宜"的10种话术 + 阶梯式让步策略 + 守住底线的5个技巧
+            </div>
+        </div>
+        <div class="step-item">
+            <div class="step-number">4</div>
+            <div class="step-content">
+                <strong>紧急授权</strong><br>
+                销售总监→市场VP→CEO（24小时）
+            </div>
+        </div>
+    </div>
+
+    <div class="page-number">第1页 | 快速响应机制 - 销售市场协同</div>
+</div>
+
+<!-- 第2页：协同工具 + 获客渠道 -->
+<div class="page">
+    <div class="page-title">销售-市场协同工具 + 获客渠道开发 🛠️📡</div>
+
+    <div class="section-title">【协同工具】</div>
+
+    <div class="subsection-title">工具1：销售-市场协同工作台（在线系统）</div>
+
+    <table class="data-table">
+        <thead>
+            <tr>
+                <th style="width: 20%;">模块</th>
+                <th style="width: 50%;">功能</th>
+                <th style="width: 30%;">响应时限SLA</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td><strong>1. 需求提交</strong></td>
+                <td>销售填写支持需求单、选择类型（客户开发/商务谈判/技术支持/市场活动）、填写紧急程度</td>
+                <td rowspan="4">
+                    <strong>紧急需求：</strong><br>2h响应，24h交付<br><br>
+                    <strong>重要需求：</strong><br>4h响应，48h交付<br><br>
+                    <strong>一般需求：</strong><br>8h响应，72h交付
+                </td>
+            </tr>
+            <tr>
+                <td><strong>2. 任务分配</strong></td>
+                <td>市场部接收需求、自动分配负责人、设定完成时限</td>
+            </tr>
+            <tr>
+                <td><strong>3. 进度跟踪</strong></td>
+                <td>实时查看任务进展、阶段性成果展示、延期预警</td>
+            </tr>
+            <tr>
+                <td><strong>4. 成果交付</strong></td>
+                <td>文件在线共享、销售反馈评价、归档知识库</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <div class="subsection-title">工具2：周例会机制（每周五下午）</div>
+
+    <div class="grid-2col">
+        <div class="highlight-box">
+            <strong>1. 上周重点项目进展</strong>（15分钟）<br>
+            销售：汇报关键客户进展<br>
+            市场：汇报支持效果
+        </div>
+        <div class="highlight-box">
+            <strong>2. 竞品动态分享</strong>（10分钟）<br>
+            销售：一线竞品情报<br>
+            市场：公开渠道竞品信息
+        </div>
+        <div class="highlight-box">
+            <strong>3. 下周重点客户攻坚</strong>（20分钟）<br>
+            销售：列出下周重点客户<br>
+            市场：承诺支持方案
+        </div>
+        <div class="highlight-box">
+            <strong>4. 问题与改进</strong>（15分钟）<br>
+            双方：反馈不足、讨论解决方案
+        </div>
+    </div>
+
+    <div class="section-title">二、获客渠道开发指南</div>
+
+    <div class="subsection-title">线上渠道（3大渠道）</div>
+
+    <div class="grid-3col">
+        <div class="strategy-box">
+            <div class="strategy-title">渠道1：官网SEO优化</div>
+            <strong>目标：</strong>"车规MCU"搜索排名前3<br><br>
+            <strong>关键词：</strong><br>
+            车规级MCU、国产车规MCU、新能源汽车MCU<br><br>
+            <strong>内容营销（每月）：</strong><br>
+            • 技术博客×4<br>
+            • 白皮书×1<br>
+            • 成功案例×2<br><br>
+            <strong>预期效果：</strong><br>
+            ✓ 3个月进入百度前10<br>
+            ✓ 6个月月访问50000+<br>
+            ✓ 每月获客10-20个
+        </div>
+        <div class="strategy-box">
+            <div class="strategy-title">渠道2：行业垂直媒体</div>
+            <strong>目标媒体：</strong><br>
+            • 半导体：芯智讯、集微网<br>
+            • 汽车：盖世汽车、车云网<br>
+            • 科技：36氪、钛媒体<br><br>
+            <strong>合作方式：</strong><br>
+            • 每月1-2篇专业文章<br>
+            • 每季度1次深度专访<br>
+            • 每半年1次重大新闻<br><br>
+            <strong>内容方向：</strong><br>
+            技术科普、趋势分析、案例分享、高管观点
+        </div>
+        <div class="strategy-box">
+            <div class="strategy-title">渠道3：社交媒体运营</div>
+            <strong>微信公众号：</strong>主阵地<br>
+            每周2-3篇（技术干货+行业洞察+公司动态）<br><br>
+            <strong>知乎：</strong>技术影响力<br>
+            回答车规MCU问题、发布专栏文章<br><br>
+            <strong>LinkedIn：</strong>国际化<br>
+            英文内容、面向海外客户<br><br>
+            <strong>要点：</strong>专业有价值、定期更新、互动回复
+        </div>
+    </div>
+
+    <div class="page-number">第2页 | 协同工具 + 获客渠道（线上）</div>
+</div>
+
+<!-- 第3页：线下渠道 + 30分钟紧急响应机制 -->
+<div class="page">
+    <div class="page-title">线下渠道 + 30分钟紧急响应机制 🏢⚡</div>
+
+    <div class="section-title">线下渠道（3大渠道）</div>
+
+    <div class="subsection-title">渠道4：行业展会</div>
+
+    <table class="data-table">
+        <thead>
+            <tr>
+                <th style="width: 25%;">展会</th>
+                <th style="width: 15%;">时间</th>
+                <th style="width: 30%;">规模</th>
+                <th style="width: 30%;">ROI目标</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td><strong>慕尼黑上海电子展</strong></td>
+                <td>每年3月</td>
+                <td>10万+专业观众</td>
+                <td rowspan="3">
+                    <strong>获客数量：</strong>200+潜在客户<br>
+                    <strong>转化率：</strong>10%（20个意向）<br>
+                    <strong>成交率：</strong>20%（4个签约）<br>
+                    <strong>投入产出比：</strong>1:5<br>
+                    （投入¥50万，产出¥250万订单）
+                </td>
+            </tr>
+            <tr>
+                <td><strong>中国汽车供应链峰会</strong></td>
+                <td>每年6月</td>
+                <td>5000+汽车专业人士</td>
+            </tr>
+            <tr>
+                <td><strong>中国国际半导体博览会</strong></td>
+                <td>每年10月</td>
+                <td>5万+专业观众</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <div class="grid-3col">
+        <div class="highlight-box">
+            <strong>展前（1个月）：</strong><br>
+            ✓ 邀请重点客户参观<br>
+            ✓ 媒体预热<br>
+            ✓ 准备物料
+        </div>
+        <div class="highlight-box">
+            <strong>展中（3天）：</strong><br>
+            ✓ 收集名片（目标200+）<br>
+            ✓ 产品演示<br>
+            ✓ 媒体采访<br>
+            ✓ 商务洽谈
+        </div>
+        <div class="highlight-box">
+            <strong>展后（2周内）：</strong><br>
+            ✓ 线索分类（A/B/C级）<br>
+            ✓ 48h内联系A级<br>
+            ✓ 1周内联系B级<br>
+            ✓ 2周内群发C级
+        </div>
+    </div>
+
+    <div class="subsection-title">渠道5：行业协会/联盟</div>
+
+    <div class="grid-2col">
+        <div class="strategy-box">
+            <div class="strategy-title">重点加入组织</div>
+            • <strong>中国汽车芯片产业创新联盟</strong> - 理事单位<br>
+            • <strong>中国汽车工程学会</strong> - 企业会员<br>
+            • <strong>中国半导体行业协会</strong> - 常务理事
+        </div>
+        <div class="strategy-box">
+            <div class="strategy-title">参与策略</div>
+            ✓ 积极参与标准制定（体现技术实力）<br>
+            ✓ 主动承办活动（扩大影响力）<br>
+            ✓ 高管担任职务（理事、副秘书长）<br>
+            ✓ 发布行业报告（建立thought leadership）
+        </div>
+    </div>
+
+    <div class="subsection-title">渠道6：客户推荐（老客户转介绍）</div>
+
+    <div class="success-box">
+        <strong>激励政策：</strong>推荐成功（签约）后，推荐人获得：<br>
+        • <strong>现金奖励：</strong>新客户首年采购额的2%<br>
+        • <strong>或价格折扣：</strong>本人下批订单额外5%折扣<br>
+        • <strong>或优先权：</strong>产能紧张时优先供应<br><br>
+        <strong>预期效果：</strong>✓ 每季度推荐2-3个新客户 | ✓ 转化率高（有推荐人背书） | ✓ 成本低（ROI高）
+    </div>
+
+    <div class="section-title">三、30分钟紧急响应机制</div>
+
+    <div class="subsection-title">紧急情况定义（3级分类）</div>
+
+    <table class="data-table">
+        <thead>
+            <tr>
+                <th style="width: 15%;">级别</th>
+                <th style="width: 20%;">响应时间</th>
+                <th style="width: 65%;">情况</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr style="background: #ffebee;">
+                <td><strong>🔴 超级紧急</strong></td>
+                <td><strong style="font-size: 16px;">立即响应<br>30分钟内</strong></td>
+                <td>• 大客户质量投诉（批次不良、安全隐患）<br>• 重大商机（短时间内需要决策支持）<br>• 竞品恶性竞争（抹黑、不正当手段）<br>• 媒体负面报道（需要紧急公关）</td>
+            </tr>
+            <tr style="background: #fff9e6;">
+                <td><strong>🟡 紧急</strong></td>
+                <td>2小时内响应</td>
+                <td>• 客户技术问题（影响生产）<br>• 商务谈判支持（需要数据、材料）<br>• 竞品价格战（需要应对策略）<br>• 重要客户拜访支持</td>
+            </tr>
+            <tr style="background: #e8f5e9;">
+                <td><strong>🟢 重要</strong></td>
+                <td>24小时内响应</td>
+                <td>• 常规技术咨询<br>• 销售材料需求<br>• 客户背景调研<br>• 行业信息查询</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <div class="page-number">第3页 | 线下渠道 + 紧急响应机制定义</div>
+</div>
+
+<!-- 第4页：超级紧急响应流程 + 应急资源库 -->
+<div class="page">
+    <div class="page-title">30分钟超级紧急响应流程 + 应急资源库 🚨🛡️</div>
+
+    <div class="section-title">超级紧急情况响应流程（30分钟）</div>
+
+    <div class="steps-container">
+        <div class="step-item">
+            <div class="step-number">1</div>
+            <div class="step-content">
+                <strong>销售发现并上报（5分钟内）</strong><br>
+                <strong>行动：</strong><br>
+                • 立即电话通知市场总监（不是微信，是电话！）<br>
+                • 简要说明情况（谁、什么问题、多紧急）<br>
+                • 发送书面情况说明（微信/邮件，附照片/录音）<br><br>
+                <strong>话术：</strong>"王总您好！我是XX，有紧急情况向您汇报。客户YY刚才反馈我们MCU有批次质量问题，已经影响到他们生产线，情况非常紧急。我需要技术支持和高层协调。"
+            </div>
+        </div>
+        <div class="step-item">
+            <div class="step-number">2</div>
+            <div class="step-content">
+                <strong>市场总监评估（10分钟内）</strong><br>
+                <strong>行动：</strong><br>
+                • 判断紧急程度（是否真的超级紧急）<br>
+                • 决定响应级别（是否启动应急机制）<br>
+                • 通知相关人员（FAE、质量、高层）<br><br>
+                <strong>决策树：</strong><br>
+                • 如果是质量问题 → 启动质量应急预案<br>
+                • 如果是商务问题 → 高层介入谈判<br>
+                • 如果是公关危机 → 启动危机公关预案
+            </div>
+        </div>
+        <div class="step-item">
+            <div class="step-number">3</div>
+            <div class="step-content">
+                <strong>组建应急小组（15分钟内）</strong><br>
+                <strong>人员配置：</strong><br>
+                • 销售负责人×1（一线协调）<br>
+                • FAE工程师×2（技术支持）<br>
+                • 质量工程师×1（质量问题分析）<br>
+                • 市场总监×1（资源协调）<br>
+                • 高层×1（CEO/VP，必要时）<br><br>
+                <strong>任务分工：</strong>销售→客户沟通 | FAE→技术诊断 | 质量→问题调查 | 市场→资源调配 | 高层→高层沟通
+            </div>
+        </div>
+        <div class="step-item">
+            <div class="step-number">4</div>
+            <div class="step-content">
+                <strong>现场支持（30分钟内出发）</strong><br>
+                <strong>行动：</strong><br>
+                • 最近的FAE立即出发（自驾/打车/包车）<br>
+                • 准备应急物资（测试设备、备品备件）<br>
+                • 预订最快交通（飞机/高铁）<br>
+                • <strong>目标：6小时内到达客户现场（国内）</strong><br><br>
+                <strong>同步行动：</strong><br>
+                • 电话安抚客户（"我们非常重视，团队正在路上"）<br>
+                • 准备应急方案（在路上就开始分析问题）<br>
+                • 准备赔偿方案（预估损失，准备补偿）
+            </div>
+        </div>
+    </div>
+
+    <div class="section-title">【应急资源库】</div>
+
+    <table class="data-table">
+        <thead>
+            <tr>
+                <th style="width: 25%;">资源类别</th>
+                <th style="width: 75%;">内容</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr style="background: #e3f2fd;">
+                <td><strong>1. 标准材料库</strong><br>（随时可调用）</td>
+                <td>
+                    • 产品介绍PPT（6个产品）<br>
+                    • 竞品对比表（vs 瑞萨/NXP/英飞凌等）<br>
+                    • 成功案例（10+案例，Word/PDF）<br>
+                    • 技术白皮书（5份）<br>
+                    • 公司介绍视频（3分钟/10分钟版本）
+                </td>
+            </tr>
+            <tr style="background: #fff3e0;">
+                <td><strong>2. FAE资源池</strong><br>（24小时on-call）</td>
+                <td>
+                    • 华东FAE：8人（上海、苏州、杭州）<br>
+                    • 华南FAE：7人（深圳、广州、东莞）<br>
+                    • 华北FAE：5人（北京、天津、西安）<br>
+                    • 24小时on-call（轮班制）
+                </td>
+            </tr>
+            <tr style="background: #e8f5e9;">
+                <td><strong>3. 实物资源</strong></td>
+                <td>
+                    • 样片库存：每个型号1000片（深圳/上海仓）<br>
+                    • 开发板：50套（可快递）<br>
+                    • 演示设备：10套（可携带）
+                </td>
+            </tr>
+            <tr style="background: #f3e5f5;">
+                <td><strong>4. 资金授权</strong><br>（应急先执行后补审批）</td>
+                <td>
+                    • 市场总监授权：单笔¥10万以内<br>
+                    • VP授权：单笔¥50万以内<br>
+                    • CEO授权：¥50万以上<br>
+                    • <strong style="color: #f44336;">应急情况：先执行后补审批</strong>
+                </td>
+            </tr>
+            <tr style="background: #fff9e6;">
+                <td><strong>5. 合作伙伴资源</strong></td>
+                <td>
+                    • 第三方测试实验室（EMC、可靠性）<br>
+                    • 物流合作伙伴（紧急配送）<br>
+                    • 媒体资源（危机公关）
+                </td>
+            </tr>
+        </tbody>
+    </table>
+
+    <div class="warning-box">
+        <strong>⚠️ 关键成功因素：</strong><br>
+        1️⃣ <strong>速度第一</strong> - 30分钟响应是底线，越快越好<br>
+        2️⃣ <strong>资源保障</strong> - 人员、物资、资金随时待命<br>
+        3️⃣ <strong>授权清晰</strong> - 紧急情况下，先执行后审批<br>
+        4️⃣ <strong>客户至上</strong> - 第一时间安抚客户，体现重视
+    </div>
+
+    <div class="page-number">第4页 | 超级紧急响应流程 + 应急资源库</div>
+</div>
+
+</body>
+</html>

@@ -1,0 +1,826 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>情报工具箱 | 比亚迪半导体销售手册</title>
+    <style>
+        :root {
+            --color-primary-red: #e60012;
+            --color-primary-red-dark: #c50010;
+            --bg-page: #ffffff;
+            --bg-body: #f0f0f0;
+            --text-color-primary: #333333;
+            --text-color-on-dark: #ffffff;
+            --shadow-page: rgba(0, 0, 0, 0.1);
+            --border-light: #e0e0e0;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: "Microsoft YaHei", "SimHei", sans-serif;
+            background-color: var(--bg-body);
+            color: var(--text-color-primary);
+            line-height: 1.6;
+            padding: 20px 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 20px;
+        }
+
+        .page {
+            width: 297mm;
+            min-height: 210mm;
+            background-color: var(--bg-page);
+            position: relative;
+            box-shadow: 0 0 10px var(--shadow-page);
+            padding: 40px;
+            box-sizing: border-box;
+        }
+
+        .page-title {
+            font-size: 26px;
+            font-weight: bold;
+            color: var(--text-color-on-dark);
+            background: linear-gradient(45deg, var(--color-primary-red), var(--color-primary-red-dark));
+            padding: 15px 30px;
+            margin: -40px -40px 30px -40px;
+            clip-path: polygon(0 0, calc(100% - 30px) 0, 100% 100%, 0 100%);
+        }
+
+        .section-title {
+            font-size: 20px;
+            font-weight: bold;
+            color: var(--color-primary-red);
+            margin: 25px 0 15px 0;
+            padding-bottom: 8px;
+            border-bottom: 3px solid var(--color-primary-red);
+        }
+
+        .subsection-title {
+            font-size: 17px;
+            font-weight: bold;
+            color: var(--text-color-primary);
+            margin: 18px 0 10px 0;
+            padding-left: 12px;
+            border-left: 4px solid var(--color-primary-red);
+        }
+
+        .strategy-box {
+            background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+            border-radius: 8px;
+            padding: 20px;
+            margin: 15px 0;
+            border: 2px solid var(--border-light);
+        }
+
+        .strategy-title {
+            font-size: 16px;
+            font-weight: bold;
+            color: var(--color-primary-red);
+            margin-bottom: 12px;
+            padding-left: 25px;
+            position: relative;
+        }
+
+        .strategy-title::before {
+            content: "▶";
+            position: absolute;
+            left: 0;
+            color: var(--color-primary-red);
+        }
+
+        .data-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 12px 0;
+            font-size: 13px;
+        }
+
+        .data-table thead {
+            background: linear-gradient(135deg, var(--color-primary-red), var(--color-primary-red-dark));
+            color: white;
+        }
+
+        .data-table th {
+            padding: 10px;
+            text-align: left;
+            font-weight: bold;
+            border: 1px solid #ccc;
+        }
+
+        .data-table td {
+            padding: 10px;
+            border: 1px solid #ddd;
+            vertical-align: top;
+        }
+
+        .data-table tbody tr:nth-child(even) {
+            background-color: #f9f9f9;
+        }
+
+        .data-table tbody tr:hover {
+            background-color: #fff8f8;
+        }
+
+        .grid-2col {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+            margin: 15px 0;
+        }
+
+        .grid-3col {
+            display: grid;
+            grid-template-columns: 1fr 1fr 1fr;
+            gap: 15px;
+            margin: 15px 0;
+        }
+
+        .grid-4col {
+            display: grid;
+            grid-template-columns: 1fr 1fr 1fr 1fr;
+            gap: 12px;
+            margin: 15px 0;
+        }
+
+        .highlight-box {
+            background: #fff9e6;
+            border-left: 4px solid #ffc107;
+            padding: 15px;
+            margin: 12px 0;
+            font-size: 14px;
+        }
+
+        .success-box {
+            background: #e8f5e9;
+            border-left: 4px solid #4caf50;
+            padding: 15px;
+            margin: 12px 0;
+            font-size: 14px;
+        }
+
+        .warning-box {
+            background: #ffebee;
+            border-left: 4px solid #f44336;
+            padding: 15px;
+            margin: 12px 0;
+            font-size: 14px;
+        }
+
+        strong {
+            color: var(--color-primary-red);
+        }
+
+        .page-number {
+            position: absolute;
+            bottom: 20px;
+            right: 40px;
+            font-size: 12px;
+            color: #999;
+        }
+
+        .matrix {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            grid-template-rows: 1fr 1fr;
+            gap: 15px;
+            margin: 15px 0;
+            height: 280px;
+        }
+
+        .matrix-cell {
+            border: 2px solid var(--color-primary-red);
+            border-radius: 8px;
+            padding: 15px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            font-size: 14px;
+        }
+
+        .matrix-cell-1 {
+            background: linear-gradient(135deg, #e8f5e9 0%, #c8e6c9 100%);
+        }
+
+        .matrix-cell-2 {
+            background: linear-gradient(135deg, #fff9e6 0%, #ffecb3 100%);
+        }
+
+        .matrix-cell-3 {
+            background: linear-gradient(135deg, #fff3e0 0%, #ffe0b2 100%);
+        }
+
+        .matrix-cell-4 {
+            background: linear-gradient(135deg, #ffebee 0%, #ffcdd2 100%);
+        }
+    </style>
+</head>
+<body>
+
+<!-- 第1页：麦肯锡式分析模板 -->
+<div class="page">
+    <div class="page-title">第四部分：情报工具箱 📊🔍</div>
+
+    <div class="section-title">一、麦肯锡式分析模板</div>
+
+    <div class="subsection-title">模板1：MECE框架（客户分析）</div>
+
+    <div class="highlight-box">
+        <strong>MECE = Mutually Exclusive, Collectively Exhaustive = 相互独立，完全穷尽</strong><br>
+        <strong>应用：</strong>客户分类与优先级排序
+    </div>
+
+    <div class="grid-2col">
+        <div class="strategy-box">
+            <div class="strategy-title">维度1：客户类型</div>
+            <strong>整车厂：</strong><br>
+            • 新势力（理想、小鹏、蔚来）<br>
+            • 传统转型（吉利、长安）<br>
+            • 商用车（宇通、福田）<br><br>
+            <strong>Tier 1供应商：</strong><br>
+            • 座舱（德赛、华阳）<br>
+            • 底盘（博世、采埃孚）<br>
+            • 电池（宁德、比克）
+        </div>
+        <div class="strategy-box">
+            <div class="strategy-title">维度2-4：量/难度/阶段</div>
+            <strong>采购量（年度）：</strong><br>
+            • 大客户：200万颗+<br>
+            • 中客户：50-200万颗<br>
+            • 小客户：<50万颗<br><br>
+            <strong>成交难度：</strong><br>
+            • 容易：已有国产MCU使用经验<br>
+            • 中等：在评估国产替代<br>
+            • 困难：固守国际品牌<br><br>
+            <strong>合作阶段：</strong><br>
+            潜在→意向→合作→流失
+        </div>
+    </div>
+
+    <div class="subsection-title">分析矩阵：客户价值 vs 成交难度（2×2矩阵）</div>
+
+    <div class="matrix">
+        <div class="matrix-cell matrix-cell-1">
+            <strong style="font-size: 18px; margin-bottom: 10px;">① 优先客户</strong><br>
+            <strong style="color: #4caf50;">又容易又大</strong><br><br>
+            <strong>策略：</strong>投入80%资源<br>
+            全力攻坚，快速成交
+        </div>
+        <div class="matrix-cell matrix-cell-3">
+            <strong style="font-size: 18px; margin-bottom: 10px;">③ 重点攻坚</strong><br>
+            <strong style="color: #ff9800;">难但值得</strong><br><br>
+            <strong>策略：</strong>高层介入<br>
+            长期耕耘，战略合作
+        </div>
+        <div class="matrix-cell matrix-cell-2">
+            <strong style="font-size: 18px; margin-bottom: 10px;">② 快速成交</strong><br>
+            <strong style="color: #ffc107;">容易但小</strong><br><br>
+            <strong>策略：</strong>标准化流程<br>
+            快速签约，批量复制
+        </div>
+        <div class="matrix-cell matrix-cell-4">
+            <strong style="font-size: 18px; margin-bottom: 10px;">④ 暂缓</strong><br>
+            <strong style="color: #f44336;">难又小</strong><br><br>
+            <strong>策略：</strong>标准服务<br>
+            不主动投入资源
+        </div>
+    </div>
+
+    <div class="subsection-title">模板2：5C分析框架（市场环境）</div>
+
+    <div class="highlight-box">
+        <strong>5C = Company, Customer, Competitor, Collaborator, Context</strong><br>
+        <strong>应用：</strong>新产品上市前的市场分析
+    </div>
+
+    <table class="data-table">
+        <thead>
+            <tr>
+                <th style="width: 20%;">维度</th>
+                <th style="width: 80%;">分析内容</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr style="background: #e8f5e9;">
+                <td><strong>Company<br>（我方）</strong></td>
+                <td>
+                    <strong>优势：</strong>500万台实车验证、价格低30%、交期快（12周）<br>
+                    <strong>劣势：</strong>品牌认知度低、高端产品线不全、国际化不足
+                </td>
+            </tr>
+            <tr style="background: #e3f2fd;">
+                <td><strong>Customer<br>（客户）</strong></td>
+                <td>
+                    <strong>需求：</strong>供应链安全、成本控制<br>
+                    <strong>痛点：</strong>国际品牌缺货、涨价<br>
+                    <strong>决策：</strong>技术评审→商务谈判→高层决策
+                </td>
+            </tr>
+            <tr style="background: #fff3e0;">
+                <td><strong>Competitor<br>（竞品）</strong></td>
+                <td>
+                    <strong>国际：</strong>瑞萨/NXP/英飞凌 - 技术强、品牌响 | 价格高、缺货<br>
+                    <strong>国产：</strong>兆易创新/中颖电子 - 价格低 | 车规经验少
+                </td>
+            </tr>
+            <tr style="background: #f3e5f5;">
+                <td><strong>Collaborator<br>（合作伙伴）</strong></td>
+                <td>
+                    <strong>上游：</strong>晶圆厂（自有）、设备商<br>
+                    <strong>下游：</strong>Tier 1供应商（渠道）<br>
+                    <strong>横向：</strong>行业协会、研究机构
+                </td>
+            </tr>
+            <tr style="background: #fff9e6;">
+                <td><strong>Context<br>（外部环境）</strong></td>
+                <td>
+                    <strong>政策：</strong>国产替代、新能源补贴<br>
+                    <strong>经济：</strong>电动车高速增长<br>
+                    <strong>技术：</strong>MCU向高性能、低功耗发展<br>
+                    <strong>社会：</strong>供应链安全意识提升
+                </td>
+            </tr>
+        </tbody>
+    </table>
+
+    <div class="success-box">
+        <strong>结论与策略：</strong><br>
+        <strong>机会：</strong>国产替代 + 供应链安全 + 成本压力<br>
+        <strong>策略：</strong>差异化定位（性价比 + 供应保障）<br>
+        <strong>路径：</strong>从中低端切入，逐步向上突破
+    </div>
+
+    <div class="page-number">第1页 | 麦肯锡式分析模板（MECE + 5C）</div>
+</div>
+
+<!-- 第2页：Excel工具包 -->
+<div class="page">
+    <div class="page-title">Excel工具包：客户情报 + 竞品对标 + TCO计算 📊</div>
+
+    <div class="section-title">二、Excel工具包</div>
+
+    <div class="subsection-title">工具1：客户情报数据库.xlsx</div>
+
+    <div class="grid-2col">
+        <div class="strategy-box">
+            <div class="strategy-title">工作表1：客户基本信息</div>
+            • 客户名称、类型（整车厂/Tier 1）<br>
+            • 年产量/产值、主营业务<br>
+            • 联系人（姓名、职位、电话、邮箱）<br>
+            • 决策链（技术/采购/高层）
+        </div>
+        <div class="strategy-box">
+            <div class="strategy-title">工作表2：MCU使用现状</div>
+            • 现有供应商、使用型号<br>
+            • 年采购量（万颗）、单价（¥）<br>
+            • 年度采购额（万元）<br>
+            • 应用场景、合同到期时间<br>
+            • 客户满意度（1-5分）
+        </div>
+        <div class="strategy-box">
+            <div class="strategy-title">工作表3：商机跟踪</div>
+            • 客户名称、项目名称<br>
+            • 项目阶段（立项/评审/验证/谈判/签约）<br>
+            • 预计采购量、单价、年度价值<br>
+            • 竞争对手、成交概率（%）<br>
+            • 预计签约时间、责任销售<br>
+            • 下次跟进时间
+        </div>
+        <div class="strategy-box">
+            <div class="strategy-title">工作表4：拜访记录</div>
+            • 日期、客户名称<br>
+            • 拜访人、接待人<br>
+            • 沟通内容摘要、客户反馈<br>
+            • 下一步行动、下次拜访时间
+        </div>
+    </div>
+
+    <div class="highlight-box">
+        <strong>使用技巧：</strong><br>
+        ✓ 数据透视表分析（客户分布、商机统计）<br>
+        ✓ 条件格式（高亮重点客户、逾期跟进）<br>
+        ✓ 下拉菜单（标准化输入）<br>
+        ✓ 公式自动计算（年度价值=采购量×单价）
+    </div>
+
+    <div class="subsection-title">工具2：竞品对标分析.xlsx</div>
+
+    <table class="data-table">
+        <thead>
+            <tr>
+                <th style="width: 20%;">对比类别</th>
+                <th style="width: 80%;">对比维度</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td><strong>基本参数</strong></td>
+                <td>内核、主频（MHz）、Flash大小（KB）、RAM大小（KB）、封装形式、工作温度（℃）</td>
+            </tr>
+            <tr>
+                <td><strong>性能指标</strong></td>
+                <td>DMIPS（性能）、运行功耗（mA）、待机功耗（μA）、ADC精度（bit）、CAN通道数</td>
+            </tr>
+            <tr>
+                <td><strong>认证与质量</strong></td>
+                <td>AEC-Q100、ISO 26262（ASIL等级）、MTBF（小时）、PPM</td>
+            </tr>
+            <tr>
+                <td><strong>商务条件</strong></td>
+                <td>单价（¥）、MOQ（最小起订量）、交期（周）、付款条件</td>
+            </tr>
+            <tr>
+                <td><strong>支持与服务</strong></td>
+                <td>FAE响应时间、开发工具、技术文档、培训支持</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <div class="grid-3col">
+        <div class="highlight-box">
+            <strong>视觉化展示：</strong><br>
+            雷达图：多维度对比
+        </div>
+        <div class="highlight-box">
+            <strong>柱状图：</strong><br>
+            价格对比
+        </div>
+        <div class="highlight-box">
+            <strong>表格热力图：</strong><br>
+            优势绿色，劣势红色
+        </div>
+    </div>
+
+    <div class="subsection-title">工具3：TCO总拥有成本计算器.xlsx</div>
+
+    <table class="data-table">
+        <thead>
+            <tr>
+                <th style="width: 30%;">成本维度</th>
+                <th style="width: 25%;">方案A（竞品）</th>
+                <th style="width: 25%;">方案B（我们）</th>
+                <th style="width: 20%;">差异</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr style="background: #fff3e0;">
+                <td><strong>1. 采购成本</strong></td>
+                <td>单价×年度用量</td>
+                <td>单价×年度用量</td>
+                <td>▼节省</td>
+            </tr>
+            <tr style="background: #e3f2fd;">
+                <td><strong>2. 开发成本</strong></td>
+                <td>人力+工具+认证</td>
+                <td>人力+工具+认证</td>
+                <td>▼节省</td>
+            </tr>
+            <tr style="background: #f3e5f5;">
+                <td><strong>3. 风险成本</strong></td>
+                <td>缺货+质量+涨价</td>
+                <td>缺货+质量+涨价</td>
+                <td>▼节省</td>
+            </tr>
+            <tr style="background: #e8f5e9;">
+                <td><strong>TCO总成本</strong></td>
+                <td>¥___万</td>
+                <td>¥___万</td>
+                <td><strong style="color: #4caf50;">节省__%</strong></td>
+            </tr>
+        </tbody>
+    </table>
+
+    <div class="success-box">
+        <strong>使用场景：</strong><br>
+        ✓ 客户砍价时展示TCO | ✓ 商务谈判支持 | ✓ 项目立项评估<br><br>
+        <strong>输出：</strong>对比柱状图（直观展示成本差异）+ 饼图（成本构成分析）+ 结论报告（自动生成文字说明）
+    </div>
+
+    <div class="page-number">第2页 | Excel工具包（3大工具）</div>
+</div>
+
+<!-- 第3页：信息源清单 -->
+<div class="page">
+    <div class="page-title">信息源清单 + 情报收集SOP 📰🔍</div>
+
+    <div class="section-title">三、信息源清单</div>
+
+    <div class="subsection-title">类型1：行业媒体</div>
+
+    <div class="grid-2col">
+        <div class="strategy-box">
+            <div class="strategy-title">半导体行业</div>
+            • <strong>芯智讯</strong> - 半导体行业新闻、深度分析（每日）<br>
+            • <strong>集微网</strong> - 半导体供应链、市场数据（每日）<br>
+            • <strong>半导体行业观察</strong> - 行业评论、趋势分析（每日）
+        </div>
+        <div class="strategy-box">
+            <div class="strategy-title">汽车行业</div>
+            • <strong>盖世汽车</strong> - 汽车供应链、新车动态（每日）<br>
+            • <strong>车云网</strong> - 智能汽车、技术趋势（每日）<br>
+            • <strong>电动汽车资源网</strong> - 新能源汽车政策、市场（每日）
+        </div>
+    </div>
+
+    <div class="subsection-title">类型2：市场研究报告</div>
+
+    <div class="grid-2col">
+        <div class="strategy-box">
+            <div class="strategy-title">付费数据库（⭐⭐⭐⭐⭐价值）</div>
+            • <strong>IC Insights</strong> - MCU市场规模、预测（$5000/年）<br>
+            • <strong>IHS Markit</strong> - 汽车半导体市场分析（$10000/年）<br>
+            • <strong>Gartner</strong> - 半导体行业趋势（$15000/年）
+        </div>
+        <div class="strategy-box">
+            <div class="strategy-title">免费资源</div>
+            • <strong>中国汽车工业协会</strong> - 汽车产销数据（月度）<br>
+            • <strong>中国半导体行业协会</strong> - 半导体产业报告（年度）<br>
+            • <strong>艾瑞咨询</strong> - 行业研究报告（部分免费）
+        </div>
+    </div>
+
+    <div class="subsection-title">类型3：竞品信息</div>
+
+    <table class="data-table">
+        <thead>
+            <tr>
+                <th style="width: 20%;">渠道</th>
+                <th style="width: 40%;">来源</th>
+                <th style="width: 40%;">内容</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr style="background: #e8f5e9;">
+                <td><strong>竞品官网</strong></td>
+                <td>瑞萨、NXP、英飞凌、兆易创新官网</td>
+                <td>产品参数、新闻、白皮书</td>
+            </tr>
+            <tr style="background: #e3f2fd;">
+                <td><strong>竞品财报</strong></td>
+                <td>公司投资者关系网站</td>
+                <td>营收、产品线、战略（季度/年度）</td>
+            </tr>
+            <tr style="background: #fff3e0;">
+                <td><strong>竞品专利</strong></td>
+                <td>国家知识产权局、Google Patents</td>
+                <td>技术方向、研发投入</td>
+            </tr>
+            <tr style="background: #f3e5f5;">
+                <td><strong>客户反馈</strong></td>
+                <td>一线销售收集</td>
+                <td>竞品价格、服务、问题</td>
+            </tr>
+            <tr style="background: #fff9e6;">
+                <td><strong>行业展会</strong></td>
+                <td>现场观摩、展位交流</td>
+                <td>竞品新产品、市场策略</td>
+            </tr>
+            <tr style="background: #ffebee;">
+                <td><strong>第三方评测</strong></td>
+                <td>电子工程专辑、EDN China</td>
+                <td>产品性能对比</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <div class="subsection-title">类型4：客户信息</div>
+
+    <div class="grid-2col">
+        <div class="strategy-box">
+            <div class="strategy-title">公开信息</div>
+            • <strong>企业官网</strong> - 公司介绍、产品、新闻<br>
+            • <strong>天眼查/企查查</strong> - 工商信息、股权结构、诉讼<br>
+            • <strong>招聘网站</strong> - 组织架构、人员规模、项目（Boss直聘、拉勾）<br>
+            • <strong>社交媒体</strong> - 公司动态、高管观点（微信、微博、LinkedIn）
+        </div>
+        <div class="strategy-box">
+            <div class="strategy-title">内部渠道</div>
+            • 销售拜访记录<br>
+            • 技术交流会纪要<br>
+            • 客户投诉/反馈记录<br>
+            • 合同/订单记录
+        </div>
+    </div>
+
+    <div class="section-title">【情报收集SOP】</div>
+
+    <div class="grid-3col">
+        <div class="strategy-box">
+            <div class="strategy-title">日常情报收集（每日）</div>
+            <strong>时间：</strong>每天9:00-10:00<br>
+            <strong>负责人：</strong>市场专员×1<br><br>
+            <strong>任务：</strong><br>
+            ✓ 浏览5个核心媒体<br>
+            ✓ 搜索关键词新闻<br>
+            ✓ 整理当日要闻（3-5条）<br>
+            ✓ 发送到销售团队群
+        </div>
+        <div class="strategy-box">
+            <div class="strategy-title">周度情报汇总（每周）</div>
+            <strong>时间：</strong>每周五下午<br>
+            <strong>负责人：</strong>市场经理×1<br><br>
+            <strong>输出：</strong>周度情报简报（PPT,5-10页）<br><br>
+            <strong>内容：</strong><br>
+            • 行业动态<br>
+            • 竞品动态<br>
+            • 客户动态<br>
+            • 下周重点关注
+        </div>
+        <div class="strategy-box">
+            <div class="strategy-title">月度深度分析（每月）</div>
+            <strong>时间：</strong>每月第一周<br>
+            <strong>负责人：</strong>市场总监×1<br><br>
+            <strong>输出：</strong>月度市场分析报告（Word,20-30页）<br><br>
+            <strong>内容：</strong><br>
+            • 市场规模与增长趋势<br>
+            • 竞争格局变化<br>
+            • 客户需求变化<br>
+            • 我方市场份额<br>
+            • 下月策略建议
+        </div>
+    </div>
+
+    <div class="page-number">第3页 | 信息源清单 + 情报收集SOP</div>
+</div>
+
+<!-- 第4页：快速查询索引 + 使用检查清单 -->
+<div class="page">
+    <div class="page-title">快速查询索引 + 手册使用检查清单 ✅</div>
+
+    <div class="section-title">📚 附录：快速查询索引</div>
+
+    <div class="grid-2col">
+        <div class="strategy-box">
+            <div class="strategy-title">销售场景速查</div>
+            <table class="data-table">
+                <thead>
+                    <tr>
+                        <th>场景</th>
+                        <th>位置</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr><td>客户砍价</td><td>场景1</td></tr>
+                    <tr><td>竞品挖墙脚</td><td>场景2</td></tr>
+                    <tr><td>独家供应要求</td><td>场景3</td></tr>
+                    <tr><td>技术测试不通过</td><td>场景4</td></tr>
+                    <tr><td>质量投诉</td><td>场景5</td></tr>
+                    <tr><td>新客户开发</td><td>场景6</td></tr>
+                    <tr><td>商务谈判僵局</td><td>场景7</td></tr>
+                    <tr><td>丢单复盘</td><td>场景8</td></tr>
+                </tbody>
+            </table>
+        </div>
+        <div class="strategy-box">
+            <div class="strategy-title">产品情报速查</div>
+            <table class="data-table">
+                <thead>
+                    <tr>
+                        <th>产品</th>
+                        <th>位置</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr><td>IGBT模块</td><td>产品线情报库</td></tr>
+                    <tr><td>SiC功率器件</td><td>产品线情报库</td></tr>
+                    <tr><td>摄像头模组</td><td>产品线情报库</td></tr>
+                    <tr><td>车规LED</td><td>产品线情报库</td></tr>
+                    <tr><td>电流传感器</td><td>产品线情报库</td></tr>
+                    <tr><td>MCU微控制器</td><td>产品线情报库</td></tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <div class="section-title">✅ 手册使用检查清单</div>
+
+    <div class="subsection-title">新销售入职（第1周）</div>
+
+    <div class="grid-4col">
+        <div class="highlight-box">
+            □ 通读手册一遍<br>（了解框架）
+        </div>
+        <div class="highlight-box">
+            □ 熟记6大产品<br>核心优势
+        </div>
+        <div class="highlight-box">
+            □ 背诵3个典型<br>客户案例
+        </div>
+        <div class="highlight-box">
+            □ 练习5个标准<br>销售话术
+        </div>
+    </div>
+
+    <div class="subsection-title">客户拜访前（每次）</div>
+
+    <div class="grid-4col">
+        <div class="success-box">
+            □ 查询客户<br>情报卡片
+        </div>
+        <div class="success-box">
+            □ 准备对应<br>产品材料
+        </div>
+        <div class="success-box">
+            □ 准备竞品<br>对比表
+        </div>
+        <div class="success-box">
+            □ 预演销售话术<br>确认FAE支持
+        </div>
+    </div>
+
+    <div class="subsection-title">商务谈判前（每次）</div>
+
+    <div class="grid-4col">
+        <div class="warning-box">
+            □ 制作TCO<br>对比表
+        </div>
+        <div class="warning-box">
+            □ 准备阶梯式<br>让步方案
+        </div>
+        <div class="warning-box">
+            □ 确认价格<br>授权范围
+        </div>
+        <div class="warning-box">
+            □ 准备成功案例<br>演练谈判话术
+        </div>
+    </div>
+
+    <div class="subsection-title">月度复盘（每月）</div>
+
+    <div class="grid-4col">
+        <div class="highlight-box">
+            □ 更新客户情报<br>数据库
+        </div>
+        <div class="highlight-box">
+            □ 总结本月<br>成功/失败案例
+        </div>
+        <div class="highlight-box">
+            □ 分享竞品<br>最新动态
+        </div>
+        <div class="highlight-box">
+            □ 提出手册改进<br>学习新增工具
+        </div>
+    </div>
+
+    <div class="section-title">📞 紧急联系方式</div>
+
+    <div class="grid-2col">
+        <div class="strategy-box">
+            <div class="strategy-title">内部支持（24小时）</div>
+            <table class="data-table">
+                <thead>
+                    <tr>
+                        <th>部门</th>
+                        <th>电话</th>
+                        <th>服务时间</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr><td>市场部热线</td><td>XXX-XXXX-XXXX</td><td>24小时</td></tr>
+                    <tr><td>FAE紧急支持</td><td>XXX-XXXX-XXXX</td><td>24小时</td></tr>
+                    <tr><td>质量部应急</td><td>XXX-XXXX-XXXX</td><td>工作时间</td></tr>
+                    <tr><td>销售总监</td><td>XXX-XXXX-XXXX</td><td>工作时间</td></tr>
+                    <tr><td>市场VP</td><td>XXX-XXXX-XXXX</td><td>重大事项</td></tr>
+                </tbody>
+            </table>
+        </div>
+        <div class="strategy-box">
+            <div class="strategy-title">外部资源</div>
+            <table class="data-table">
+                <thead>
+                    <tr>
+                        <th>服务</th>
+                        <th>电话</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr><td>第三方测试实验室</td><td>XXX-XXXX-XXXX</td></tr>
+                    <tr><td>紧急物流</td><td>XXX-XXXX-XXXX</td></tr>
+                    <tr><td>媒体公关</td><td>XXX-XXXX-XXXX</td></tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <div class="success-box">
+        <strong>🎯 手册使用原则：</strong><br>
+        1️⃣ <strong>手册是工具，不是教条</strong> - 根据实际情况灵活调整<br>
+        2️⃣ <strong>持续更新</strong> - 每月总结新案例、新话术、新工具<br>
+        3️⃣ <strong>团队共创</strong> - 鼓励销售团队贡献经验、改进手册<br>
+        4️⃣ <strong>学以致用</strong> - 不只是读，要在实战中应用和验证
+    </div>
+
+    <div class="page-number">第4页 | 快速查询索引 + 使用检查清单</div>
+</div>
+
+</body>
+</html>
